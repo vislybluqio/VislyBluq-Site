@@ -3,29 +3,29 @@ import { Shield, Lock, Eye, FileText } from 'lucide-react';
 
 const Privacy = () => {
     return (
-        <div className="pt-20 bg-white">
+        <div className="pt-16 bg-white">
             {/* Header */}
-            <section className="bg-visly-dark py-16">
+            <section className="bg-visly-dark py-12">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="inline-flex items-center space-x-2 bg-visly-blue/10 text-visly-cyan px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-visly-blue/20">
+                    <div className="inline-flex items-center space-x-2 bg-visly-blue/10 text-visly-cyan px-3 py-1.5 rounded-full text-xs font-semibold mb-4 border border-visly-blue/20">
                         <Shield className="h-4 w-4" />
                         <span>LEGAL</span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
+                    <h1 className="text-3xl md:text-4xl font-semibold text-white mb-4">
                         Privacy Policy
                     </h1>
-                    <p className="text-xl text-gray-300 font-light">
+                    <p className="text-base text-gray-300">
                         We value your trust and are committed to protecting your personal information.
                     </p>
                 </div>
             </section>
 
             {/* Content */}
-            <section className="py-20">
-                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section className="py-16">
+                <div className="max-w-prose mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="prose prose-lg prose-blue max-w-none text-gray-600">
                         <p className="lead text-xl text-visly-dark font-medium mb-8">
-                            Last updated: December 19, 2025
+                            Last updated: December May 20, 2026
                         </p>
 
                         <div className="space-y-12">

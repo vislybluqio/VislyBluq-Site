@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased scroll-smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-700 bg-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-visly-dark;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

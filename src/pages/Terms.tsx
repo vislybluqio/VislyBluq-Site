@@ -3,7 +3,7 @@ import { FileCheck, AlertCircle, HelpCircle } from 'lucide-react';
 
 const Terms = () => {
     return (
-        <div className="pt-20 bg-white">
+        <div className="pt-16 bg-white">
             {/* Header */}
             <section className="bg-visly-dark py-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -11,7 +11,7 @@ const Terms = () => {
                         <FileCheck className="h-4 w-4" />
                         <span>LEGAL</span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
+                    <h1 className="text-3xl md:text-4xl font-semibold text-white mb-4">
                         Terms of Service
                     </h1>
                     <p className="text-xl text-gray-300 font-light">

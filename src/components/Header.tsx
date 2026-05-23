@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, AppWindow, ChevronDown } from 'lucide-react';
+import Button from './ui/Button';
+import { services } from '../data/services';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,13 +11,14 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -23,38 +26,32 @@ const Header = () => {
     { name: 'Services', path: '/services', hasDropdown: true },
     { name: 'Case Studies', path: '/case-studies' },
     { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/contact' }
-  ];
-
-  const serviceItems = [
-    { name: 'App Development', path: '/services#digital-product-development' },
-    { name: 'Data Strategy', path: '/services#data-strategy' },
-    { name: 'Machine Learning & AI', path: '/services#ml-ai' },
-    { name: 'Business Intelligence', path: '/services#business-intelligence' },
-    { name: 'Data Engineering', path: '/services#data-engineering' }
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
-    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
-      }`}>
+    <header
+      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-visly-navy to-visly-blue rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300 shadow-lg">
-                <AppWindow className="h-6 w-6 text-white" />
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-visly-cyan rounded-full border-2 border-white"></div>
+        <div className="flex items-center justify-between h-16">
+          <Link to="/" className="flex items-center space-x-2.5 group">
+            <div className="w-9 h-9 bg-gradient-to-br from-visly-navy to-visly-blue rounded-lg flex items-center justify-center shadow-sm">
+              <AppWindow className="h-5 w-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-black text-visly-dark tracking-tight leading-none">VislyBluq</span>
-              <span className="text-[0.65rem] font-bold text-visly-blue uppercase tracking-widest leading-none mt-1">Digital Product Company</span>
+              <span className="text-xl font-bold text-visly-dark tracking-tight leading-none">
+                VislyBluq
+              </span>
+              <span className="text-[0.6rem] font-medium text-visly-blue uppercase tracking-widest leading-none mt-0.5">
+                Build & Consult
+              </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-7">
             {navItems.map((item) => (
               <div key={item.name} className="relative">
                 {item.hasDropdown ? (
@@ -65,30 +62,31 @@ const Header = () => {
                   >
                     <Link
                       to="/services"
-                      className={`flex items-center space-x-1 font-semibold transition-colors ${location.pathname === '/services'
-                        ? 'text-visly-blue'
-                        : 'text-gray-700 hover:text-visly-blue'
-                        }`}
+                      className={`flex items-center space-x-1 text-sm font-medium transition-colors ${
+                        location.pathname === '/services'
+                          ? 'text-visly-blue'
+                          : 'text-gray-700 hover:text-visly-blue'
+                      }`}
                     >
                       <span>{item.name}</span>
                       <ChevronDown className="h-4 w-4" />
                     </Link>
                     {isServicesOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 overflow-hidden z-20">
+                      <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-20">
                         <Link
                           to="/services"
-                          className="block px-4 py-3 text-visly-blue hover:bg-visly-gray transition-colors font-bold border-l-4 border-visly-blue"
+                          className="block px-4 py-2.5 text-visly-blue hover:bg-visly-gray text-sm font-semibold border-l-4 border-visly-blue"
                         >
                           View All Services
                         </Link>
-                        <div className="h-px bg-gray-100 mx-4 my-1"></div>
-                        {serviceItems.map((service) => (
+                        <div className="h-px bg-gray-100 mx-3 my-1" />
+                        {services.map((service) => (
                           <Link
-                            key={service.name}
-                            to={service.path}
-                            className="block px-4 py-3 text-gray-700 hover:bg-visly-gray hover:text-visly-blue transition-colors font-medium border-l-4 border-transparent hover:border-visly-blue"
+                            key={service.id}
+                            to={`/services?service=${service.id}#${service.id}`}
+                            className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-visly-gray hover:text-visly-blue border-l-4 border-transparent hover:border-visly-blue"
                           >
-                            {service.name}
+                            {service.title}
                           </Link>
                         ))}
                       </div>
@@ -97,10 +95,11 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.path}
-                    className={`font-semibold transition-colors ${location.pathname === item.path
-                      ? 'text-visly-blue'
-                      : 'text-gray-700 hover:text-visly-blue'
-                      }`}
+                    className={`text-sm font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? 'text-visly-blue'
+                        : 'text-gray-700 hover:text-visly-blue'
+                    }`}
                   >
                     {item.name}
                   </Link>
@@ -109,65 +108,59 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/contact"
-              className="bg-visly-navy text-white px-8 py-3 rounded-full font-bold hover:bg-visly-blue transition-colors transform hover:scale-105 duration-200 shadow-lg hover:shadow-visly-blue/30"
-            >
+          <div className="hidden md:block">
+            <Button to="/contact" size="sm">
               Get Started
-            </Link>
+            </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="h-6 w-6 text-visly-navy" /> : <Menu className="h-6 w-6 text-visly-navy" />}
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-visly-navy" />
+            ) : (
+              <Menu className="h-6 w-6 text-visly-navy" />
+            )}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100 bg-white h-screen">
-            <div className="space-y-2 px-2">
+          <div className="md:hidden py-4 border-t border-gray-100 max-h-[calc(100vh-4rem)] overflow-y-auto">
+            <div className="space-y-1">
               {navItems.map((item) => (
                 <div key={item.name}>
                   <Link
                     to={item.path}
-                    className={`block px-4 py-3 rounded-xl font-semibold transition-colors ${location.pathname === item.path
-                      ? 'text-visly-blue bg-visly-gray'
-                      : 'text-gray-700 hover:bg-gray-50'
-                      }`}
-                    onClick={() => setIsMenuOpen(false)}
+                    className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${
+                      location.pathname === item.path
+                        ? 'text-visly-blue bg-visly-gray'
+                        : 'text-gray-700 hover:bg-gray-50'
+                    }`}
                   >
                     {item.name}
                   </Link>
                   {item.hasDropdown && (
-                    <div className="pl-6 space-y-1 mt-1">
-                      {serviceItems.map((service) => (
+                    <div className="pl-4 space-y-0.5 mb-2">
+                      {services.map((service) => (
                         <Link
-                          key={service.name}
-                          to={service.path}
-                          className="block px-4 py-2 text-sm text-gray-500 hover:text-visly-blue transition-colors font-medium"
-                          onClick={() => setIsMenuOpen(false)}
+                          key={service.id}
+                          to={`/services?service=${service.id}`}
+                          className="block px-4 py-2 text-xs text-gray-500 hover:text-visly-blue"
                         >
-                          {service.name}
+                          {service.shortTitle}
                         </Link>
                       ))}
                     </div>
                   )}
                 </div>
               ))}
-              <div className="pt-4 mt-4 border-t border-gray-100">
-                <Link
-                  to="/contact"
-                  className="block bg-visly-navy text-white px-4 py-3 rounded-full font-bold hover:bg-visly-blue transition-colors text-center shadow-lg"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+              <div className="pt-3 px-4">
+                <Button to="/contact" size="sm" className="w-full">
                   Get Started
-                </Link>
+                </Button>
               </div>
             </div>
           </div>
