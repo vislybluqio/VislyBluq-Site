@@ -2,53 +2,47 @@ import { Users, BookOpen, Shield, Zap } from 'lucide-react';
 import PageHero from '../components/ui/PageHero';
 import Section from '../components/ui/Section';
 import Card from '../components/ui/Card';
+import teamPhoto1 from '../images/1725732793686.jpeg';
+import teamPhoto2 from '../images/WhatsApp Image 2026-05-24 at 17.59.11.jpeg';
+import teamPhoto3 from '../images/WhatsApp Image 2026-05-24 at 17.58.54.jpeg';
+import teamPhoto4 from '../images/WhatsApp Image 2026-05-24 at 18.16.37moses.jpeg';
 
 const About = () => {
   const team = [
     {
-      name: 'Sarah Chen',
-      role: 'CEO & Data Strategist',
-      bio: '15+ years in data architecture and business intelligence.',
-      image:
-        'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Odelola Solomon O.',
+      role: '*write title*',
+      image: teamPhoto1,
       color: 'from-visly-blue to-visly-cyan',
     },
     {
-      name: 'Michael Rodriguez',
-      role: 'CTO & ML Engineer',
-      bio: 'Expert in deep learning and AI model deployment at scale.',
-      image:
-        'https://images.pexels.com/photos/3778876/pexels-photo-3778876.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Ibekwe Kyngsley',
+      role: '*write title*',
+      image: teamPhoto2,
       color: 'from-visly-navy to-visly-blue',
     },
     {
-      name: 'Emily Johnson',
-      role: 'Lead Data Scientist',
-      bio: 'Specialized in predictive analytics and statistical modeling.',
-      image:
-        'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Ibrahim Modupe',
+      role: '*write title*',
+      image: teamPhoto3,
       color: 'from-amber-500 to-orange-400',
     },
     {
-      name: 'David Park',
-      role: 'Cloud Solutions Architect',
-      bio: '12+ years building scalable data platforms in the cloud.',
-      image:
-        'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Festus Moses',
+      role: '*write title*',
+      image: teamPhoto4,
       color: 'from-visly-teal to-emerald-400',
     },
     {
       name: 'Amara Okafor',
-      role: 'Senior Full Stack Engineer',
-      bio: 'Builds robust web and mobile products with React, Node.js, and modern APIs.',
+      role: '*write title*',
       image:
         'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-purple-600 to-pink-500',
     },
     {
       name: 'Lisa Thompson',
-      role: 'UI/UX & Product Designer',
-      bio: 'Crafts intuitive interfaces and design systems that users love.',
+      role: '*write title*',
       image:
         'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-rose-500 to-orange-400',
@@ -150,18 +144,17 @@ const About = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {team.map((member) => (
             <Card key={member.name} hover className="!p-0 overflow-hidden">
-              <div className={`bg-gradient-to-br ${member.color} p-5 flex justify-center`}>
+              <div className={`bg-gradient-to-br ${member.color} p-4 md:p-5`}>
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-20 h-20 rounded-xl object-cover border-2 border-white"
+                  className="w-full aspect-[3/4] max-h-72 rounded-2xl object-cover object-top border-2 border-white shadow-sm"
                   loading="lazy"
                 />
               </div>
-              <div className="p-4 text-center">
-                <h3 className="font-semibold text-visly-dark text-sm">{member.name}</h3>
-                <p className="text-visly-blue text-xs font-medium mb-2">{member.role}</p>
-                <p className="text-gray-600 text-xs leading-relaxed">{member.bio}</p>
+              <div className="p-5 text-center">
+                <h3 className="font-semibold text-visly-dark text-base">{member.name}</h3>
+                <p className="text-visly-blue text-sm font-medium mt-1 italic">{member.role}</p>
               </div>
             </Card>
           ))}

@@ -13,6 +13,7 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import FAQ from './pages/FAQ';
 import Apply from './pages/Apply';
+import ChatWidget from './components/chat/ChatWidget';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <ChatWidget />
       </div>
     </Router>
   );

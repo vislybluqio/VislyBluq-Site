@@ -18,6 +18,7 @@ import {
 import Button from '../components/ui/Button';
 import Section from '../components/ui/Section';
 import Card from '../components/ui/Card';
+import StoryVideoCard from '../components/StoryVideoCard';
 
 function TrendingUpIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -110,33 +111,38 @@ const Home = () => {
   const trustedLogos = ['NovaTech', 'DataFlow', 'ScaleUp', 'CloudNine', 'InsightLab'];
 
   return (
-    <div className="pt-16 overflow-hidden bg-white">
+    <div className="pt-16 bg-white">
       {/* Hero */}
-      <section className="relative bg-visly-dark py-16 lg:py-24 overflow-hidden">
+      <section className="relative bg-visly-dark py-16 lg:py-24 overflow-x-clip">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-2/3 h-full bg-visly-navy/50 transform -skew-x-12 translate-x-16" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-visly-blue/10 rounded-full blur-3xl" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5 text-balance">
-              We consult, design & build{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-visly-blue to-visly-cyan">
-                world-class digital products
-              </span>
-            </h1>
-            <p className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed max-w-2xl">
-              VislyBluq is your partner for expert technology consultation and hands-on delivery —
-              from strategy and roadmaps to websites, mobile apps, AI powered, and intelligent data systems.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button to="/contact?service=technology-consulting">Book a Consultation</Button>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold text-base border border-white/30 text-white hover:bg-white/10 transition-colors"
-              >
-                Start Your Project
-              </Link>
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] gap-10 lg:gap-8 items-center">
+            <div className="min-w-0 max-w-3xl">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5 text-balance">
+                We consult, design & build{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-visly-blue to-visly-cyan">
+                  world-class digital products
+                </span>
+              </h1>
+              <p className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed max-w-2xl">
+                VislyBluq is your partner for expert technology consultation and hands-on delivery —
+                from strategy and roadmaps to websites, mobile apps, AI powered, and intelligent data systems.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button to="/contact?service=technology-consulting">Book a Consultation</Button>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold text-base border border-white/30 text-white hover:bg-white/10 transition-colors"
+                >
+                  Start Your Project
+                </Link>
+              </div>
+            </div>
+            <div className="w-full max-w-[360px] mx-auto lg:mx-0 lg:justify-self-end shrink-0">
+              <StoryVideoCard />
             </div>
           </div>
         </div>
