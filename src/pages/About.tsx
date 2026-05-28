@@ -1,4 +1,4 @@
-import { Users, BookOpen, Shield, Zap } from 'lucide-react';
+import { Users, BookOpen, Shield, Zap, Linkedin } from 'lucide-react';
 import PageHero from '../components/ui/PageHero';
 import Section from '../components/ui/Section';
 import Card from '../components/ui/Card';
@@ -11,31 +11,36 @@ const About = () => {
   const team = [
     {
       name: 'Odelola Solomon O.',
-      role: '*write title*',
+      role: 'Senior AI/ML & Software Engineer',
+      linkedin: '',
       image: teamPhoto1,
       color: 'from-visly-blue to-visly-cyan',
     },
     {
       name: 'Ibekwe Kyngsley',
-      role: '*write title*',
+      role: 'Senior AI/ML & Software Engineer',
+      linkedin: '',
       image: teamPhoto2,
       color: 'from-visly-navy to-visly-blue',
     },
     {
       name: 'Ibrahim Modupe',
-      role: '*write title*',
+      role: 'Product Manager',
+      linkedin: '',
       image: teamPhoto3,
       color: 'from-amber-500 to-orange-400',
     },
     {
       name: 'Festus Moses',
       role: '*write title*',
+      linkedin: '',
       image: teamPhoto4,
       color: 'from-visly-teal to-emerald-400',
     },
     {
       name: 'Amara Okafor',
       role: '*write title*',
+      linkedin: '',
       image:
         'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-purple-600 to-pink-500',
@@ -43,6 +48,7 @@ const About = () => {
     {
       name: 'Lisa Thompson',
       role: '*write title*',
+      linkedin: '',
       image:
         'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-rose-500 to-orange-400',
@@ -138,7 +144,7 @@ const About = () => {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-semibold text-visly-dark mb-2">Meet our team</h2>
           <p className="text-base text-gray-600">
-            A focused team of six — consultants, engineers, and data experts working together for your success.
+            A focused team of consultants, engineers, AI experts, Testers, Product designers and managers, data experts and Legal professionals working together for your success.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -152,9 +158,23 @@ const About = () => {
                   loading="lazy"
                 />
               </div>
-              <div className="p-5 text-center">
-                <h3 className="font-semibold text-visly-dark text-base">{member.name}</h3>
-                <p className="text-visly-blue text-sm font-medium mt-1 italic">{member.role}</p>
+              <div className="px-5 py-4 text-center border-t border-gray-100">
+                <h3 className="font-semibold text-visly-dark text-base tracking-tight">
+                  {member.name}
+                </h3>
+                <p className="text-gray-600 text-sm mt-1">{member.role}</p>
+                {member.linkedin ? (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 mt-3 text-xs font-medium text-gray-500 hover:text-[#0A66C2] transition-colors"
+                    aria-label={`${member.name} on LinkedIn`}
+                  >
+                    <Linkedin className="h-4 w-4" strokeWidth={1.75} />
+                    LinkedIn
+                  </a>
+                ) : null}
               </div>
             </Card>
           ))}

@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { COMPANY_KNOWLEDGE, LANGUAGE_NAMES } from './knowledge';
+import { COMPANY_KNOWLEDGE, LANGUAGE_NAMES } from './knowledge.js';
 
 const GROQ_MODEL = 'llama-3.3-70b-versatile';
 const MAX_MESSAGE_LEN = 2000;
