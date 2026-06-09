@@ -12,15 +12,25 @@ const Footer = () => {
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsEmail) return;
+    
+    // Check honeypot field
+    const formElement = e.target as HTMLFormElement;
+    const honeypot = formElement.elements.namedItem('website') as HTMLInputElement;
+    if (honeypot && honeypot.value) {
+      // Likely a bot, silently fail
+      return;
+    }
+
     setIsSubscribing(true);
     try {
-      const response = await fetch('https://formsubmit.co/ajax/vislybluq5@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/info@vislybluq.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           email: newsEmail,
           _subject: 'New VislyBluq Newsletter Subscription',
-          message: `Activate newsletter for: ${newsEmail}`,
+          message: `New newsletter subscription from: ${newsEmail}`,
+          source: 'Footer',
         }),
       });
       if (response.ok) {
@@ -50,6 +60,15 @@ const Footer = () => {
                 </p>
               </div>
               <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+                {/* Honeypot field for spam protection */}
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{ position: 'absolute', left: '-9999px' }}
+                  aria-hidden="true"
+                />
                 <input
                   type="email"
                   value={newsEmail}
@@ -156,10 +175,10 @@ const Footer = () => {
             </ul>
             <p className="text-xs text-gray-500 mb-1">11 Apaola Street, Ketu Ikosi, Lagos</p>
             <a
-              href="mailto:vislybluq5@gmail.com"
+              href="mailto:info@vislybluq.com"
               className="text-sm text-white font-medium hover:text-visly-cyan"
             >
-              vislybluq5@gmail.com
+              info@vislybluq.com
             </a>
           </div>
         </div>

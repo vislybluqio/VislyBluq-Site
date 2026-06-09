@@ -11,10 +11,17 @@
     "dev:api": "vercel dev --yes"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
+    "country-flag-icons": "^1.6.17",
+    "libphonenumber-js": "^1.13.6",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.6.3"
+    "react-google-recaptcha-v3": "^1.11.0",
+    "react-hook-form": "^7.78.0",
+    "react-phone-number-input": "^3.4.17",
+    "react-router-dom": "^7.6.3",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

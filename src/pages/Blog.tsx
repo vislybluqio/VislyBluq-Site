@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHero from '../components/ui/PageHero';
 import Section from '../components/ui/Section';
@@ -7,6 +7,45 @@ import Card from '../components/ui/Card';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All Posts');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    
+    // Check honeypot field
+    const formElement = e.target as HTMLFormElement;
+    const honeypot = formElement.elements.namedItem('website') as HTMLInputElement;
+    if (honeypot && honeypot.value) {
+      // Likely a bot, silently fail
+      return;
+    }
+
+    setIsNewsletterSubmitting(true);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/info@vislybluq.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          email: newsletterEmail,
+          _subject: 'New VislyBluq Newsletter Subscription',
+          message: `New newsletter subscription from: ${newsletterEmail}`,
+          source: 'Blog Page',
+        }),
+      });
+      if (response.ok) {
+        setNewsletterSubscribed(true);
+        setNewsletterEmail('');
+        setTimeout(() => setNewsletterSubscribed(false), 5000);
+      }
+    } catch (error) {
+      console.error('Newsletter error:', error);
+    } finally {
+      setIsNewsletterSubmitting(false);
+    }
+  };
 
   const featuredPost = {
     title: 'The Future of AI in Business: 5 Trends to Watch in 2025',
@@ -209,19 +248,44 @@ const Blog = () => {
           <p className="text-sm text-gray-400 mb-6">
             Weekly insights on data science and AI.
           </p>
-          <div className="flex flex-col sm:flex-row gap-2">
+          <form onSubmit={handleNewsletterSubmit} className="space-y-2">
+            {/* Honeypot field for spam protection */}
             <input
-              type="email"
-              placeholder="Your email"
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white/10 border border-white/10 text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-visly-blue"
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              style={{ position: 'absolute', left: '-9999px' }}
+              aria-hidden="true"
             />
-            <button
-              type="button"
-              className="bg-visly-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-visly-cyan transition-colors"
-            >
-              Subscribe
-            </button>
-          </div>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <input
+                type="email"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                placeholder="Your email"
+                required
+                className="flex-1 px-4 py-2.5 rounded-xl bg-white/10 border border-white/10 text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-visly-blue"
+              />
+              <button
+                type="submit"
+                disabled={isNewsletterSubmitting}
+                className="bg-visly-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-visly-cyan transition-colors disabled:opacity-50 inline-flex items-center justify-center"
+              >
+                {isNewsletterSubmitting ? (
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+                ) : (
+                  'Subscribe'
+                )}
+              </button>
+            </div>
+            {newsletterSubscribed && (
+              <p className="text-visly-cyan text-sm font-medium flex items-center justify-center gap-2">
+                <CheckCircle className="h-4 w-4" />
+                You&apos;re subscribed. Thank you!
+              </p>
+            )}
+          </form>
           <p className="text-xs text-gray-500 mt-4">
             See our{' '}
             <Link to="/privacy" className="underline hover:text-white">

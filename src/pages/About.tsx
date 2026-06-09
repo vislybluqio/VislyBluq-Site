@@ -4,55 +4,48 @@ import Section from '../components/ui/Section';
 import Card from '../components/ui/Card';
 import teamPhoto1 from '../images/1725732793686.jpeg';
 import teamPhoto2 from '../images/WhatsApp Image 2026-05-24 at 17.59.11.jpeg';
-import teamPhoto3 from '../images/WhatsApp Image 2026-05-24 at 17.58.54.jpeg';
-import teamPhoto4 from '../images/WhatsApp Image 2026-05-24 at 18.16.37moses.jpeg';
+import teamPhoto3 from '../images/funmi.jpeg';
+import teamPhoto4 from '../images/WhatsApp Image 2026-05-24 at 17.58.54.jpeg';
+import teamPhoto5 from '../images/WhatsApp Image 2026-05-24 at 18.16.37moses.jpeg';
 
 const About = () => {
   const team = [
     {
       name: 'Odelola Solomon O.',
-      role: 'Senior AI/ML & Software Engineer',
+      role: 'Co-Founder/Managing Director, and Head of Engineering',
       linkedin: '',
       image: teamPhoto1,
       color: 'from-visly-blue to-visly-cyan',
     },
     {
       name: 'Ibekwe Kyngsley',
-      role: 'Senior AI/ML & Software Engineer',
+      role: 'Co-founder/CEO and Senior Software Engineer',
       linkedin: '',
       image: teamPhoto2,
       color: 'from-visly-navy to-visly-blue',
     },
     {
-      name: 'Ibrahim Modupe',
-      role: 'Product Manager',
+      name: 'Funmi',
+      role: 'Co-founder and Head of AI and Data Engineering',
       linkedin: '',
       image: teamPhoto3,
+      color: 'from-purple-600 to-pink-500',
+    },
+    {
+      name: 'Ibrahim Modupe',
+      role: 'Product and Operations lead',
+      linkedin: '',
+      image: teamPhoto4,
       color: 'from-amber-500 to-orange-400',
     },
     {
       name: 'Festus Moses',
-      role: '*write title*',
+      role: 'Head of Legal & Corporate Affairs',
       linkedin: '',
-      image: teamPhoto4,
+      image: teamPhoto5,
       color: 'from-visly-teal to-emerald-400',
     },
-    {
-      name: 'Amara Okafor',
-      role: '*write title*',
-      linkedin: '',
-      image:
-        'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-      color: 'from-purple-600 to-pink-500',
-    },
-    {
-      name: 'Lisa Thompson',
-      role: '*write title*',
-      linkedin: '',
-      image:
-        'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400',
-      color: 'from-rose-500 to-orange-400',
-    },
+  
   ];
 
   const values = [
@@ -95,8 +88,12 @@ const About = () => {
                   The Vision
                 </h3>
                 <p className="text-sm text-white italic leading-relaxed">
-                  To be the bedrock of digital transformation globally — where every product we build
-                  is reliable, sustainable, and excellent.
+                  To be the bedrock of digital transformation globally, where every product we build and services rendered
+                  is reliable, sustainable, accessible, maintainable, understandable, and excellent.
+                  Building with optimum Integrity, and intelligence.
+
+
+
                 </p>
               </div>
             </div>
@@ -104,7 +101,7 @@ const About = () => {
           <Card className="bg-gradient-to-br from-visly-navy via-visly-blue to-visly-cyan !border-0 text-white">
             <h3 className="text-lg font-semibold text-white mb-2">Established excellence</h3>
             <p className="text-white/90 text-sm mb-6">
-              Founded by experts who saw the need for accessible, enterprise-grade data solutions.
+              Founded by experts who saw the need for accessible, enterprise-grade tech solutions.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">

@@ -1,0 +1,131 @@
+/* React Phone Number Input Styles */
+.PhoneInput {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.PhoneInputInput {
+  flex: 1;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background-color: white;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #111827;
+  transition: all 0.2s;
+}
+
+.PhoneInputInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.PhoneInputInput::placeholder {
+  color: #9ca3af;
+}
+
+.PhoneInputCountry {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+.PhoneInputCountrySelect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.PhoneInputCountrySelect:focus + .PhoneInputCountryIcon {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+}
+
+.PhoneInputCountryIcon {
+  width: 4rem;
+  height: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 0;
+}
+
+.PhoneInputCountryIcon:hover {
+  border-color: #3b82f6;
+  background-color: #f9fafb;
+}
+
+.PhoneInputCountryIcon--border {
+  box-shadow: none;
+}
+
+.PhoneInputCountryIconImg {
+  display: block;
+  width: 1.5rem;
+  height: 1rem;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.PhoneInputCountrySelectArrow {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #6b7280;
+  margin-left: auto;
+  opacity: 0.6;
+  transition: transform 0.2s;
+}
+
+.PhoneInputCountrySelect:focus ~ .PhoneInputCountryIcon .PhoneInputCountrySelectArrow {
+  transform: rotate(180deg);
+}
+
+/* Error state */
+.PhoneInput--error .PhoneInputInput {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.PhoneInput--error .PhoneInputInput:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+}
+
+.PhoneInput--error .PhoneInputCountryIcon {
+  border-color: #ef4444;
+}
+
+/* Make sure dropdown works on mobile */
+@media (max-width: 640px) {
+  .PhoneInputCountryIcon {
+    width: 3.5rem;
+    padding: 0.5rem;
+  }
+  
+  .PhoneInputCountryIconImg {
+    width: 1.25rem;
+  }
+}
