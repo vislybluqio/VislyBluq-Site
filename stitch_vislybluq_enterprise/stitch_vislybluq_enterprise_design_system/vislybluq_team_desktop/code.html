@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Team | VislyBluq Enterprise Technology Consulting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(20, 36, 74, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            transform: translateY(-12px);
+            border: 1px solid rgba(173, 198, 255, 0.3);
+            box-shadow: 0 0 40px rgba(46, 126, 247, 0.15);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(173, 198, 255, 0.4);
+        }
+        .blue-gradient-text {
+            background: linear-gradient(to right, #adc6ff, #77d8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#2a3546",
+                    "on-tertiary-fixed-variant": "#37466d",
+                    "on-primary-container": "#00285d",
+                    "secondary": "#77d8ff",
+                    "outline-variant": "#414754",
+                    "inverse-surface": "#d7e3f9",
+                    "on-primary-fixed-variant": "#004494",
+                    "inverse-on-surface": "#253142",
+                    "surface-tint": "#adc6ff",
+                    "primary-fixed-dim": "#adc6ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-tertiary-container": "#18284e",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#8c90a0",
+                    "on-secondary-fixed-variant": "#004d63",
+                    "on-primary-fixed": "#001a41",
+                    "primary-container": "#4d8eff",
+                    "error-container": "#93000a",
+                    "surface": "#071423",
+                    "on-tertiary": "#202f55",
+                    "on-error": "#690005",
+                    "surface-container-high": "#1f2b3b",
+                    "tertiary-fixed": "#dae2ff",
+                    "secondary-container": "#04bff0",
+                    "primary": "#adc6ff",
+                    "on-primary": "#002e69",
+                    "tertiary": "#b7c5f5",
+                    "on-secondary-container": "#004a5e",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#60d4ff",
+                    "inverse-primary": "#005ac2",
+                    "on-secondary-fixed": "#001f29",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-bright": "#2e3a4b",
+                    "surface-variant": "#2a3546",
+                    "on-secondary": "#003545",
+                    "on-surface": "#d7e3f9",
+                    "surface-container-low": "#101c2c",
+                    "tertiary-container": "#8190bc",
+                    "secondary-fixed": "#bbe9ff",
+                    "surface-dim": "#071423",
+                    "background": "#071423",
+                    "surface-container-lowest": "#030f1e",
+                    "on-tertiary-fixed": "#08193f",
+                    "on-background": "#d7e3f9",
+                    "tertiary-fixed-dim": "#b7c5f5",
+                    "surface-container": "#142030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "80px",
+                    "margin-mobile": "24px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "stack-md": "48px",
+                    "stack-xl": "120px",
+                    "gutter": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "display-xl": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-xl-mobile": ["Inter"],
+                    "display-2xl": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-2xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/70 dark:bg-surface/60 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-white/10 backdrop-blur-2xl shadow-[0_0_40px_rgba(46,126,247,0.1)]">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-display-xl text-display-xl font-bold text-primary tracking-tighter">VislyBluq</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Services</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Insights</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Projects</a>
+<a class="text-primary dark:text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Team</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">search</button>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-6 py-2.5 rounded-full hover:bg-primary/10 hover:shadow-lg transition-all duration-300 scale-95 active:scale-90 font-bold">Get Started</button>
+</div>
+</div>
+</header>
+<main class="relative overflow-hidden">
+<!-- Background Animation -->
+
+<!-- Hero Section -->
+<section class="relative pt-stack-xl pb-stack-md px-margin-desktop max-w-container-max mx-auto">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-6">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Leadership</span>
+</div>
+<h1 class="font-display-2xl text-display-2xl text-on-surface mb-8">Architects of <span class="blue-gradient-text">Technological Evolution</span>.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Meet the visionaries at VislyBluq. A curated assembly of industry veterans, engineers, and strategists dedicated to redefining enterprise technology through technical sophistication and premium innovation.
+                </p>
+</div>
+</section>
+<!-- Team Grid Section -->
+<section class="relative px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Founder Card 1 (Executive) -->
+<div class="lg:col-span-2 glass-card rounded-xl p-8 flex flex-col md:flex-row gap-8 items-start">
+<div class="w-full md:w-1/2 aspect-[4/5] rounded-lg overflow-hidden relative group">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a visionary CEO in a sharp navy blazer, standing against a high-tech minimalist background with subtle blue fiber-optic light trails. The lighting is dramatic and moody, emphasizing a sense of executive leadership and technical expertise. The overall aesthetic is clean, premium, and corporate-futuristic with deep navy and cyan highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBZCj0lqhSl-2HNlGD-gLPhSUhi7xH30BcQs6hx8Yv92SuwM2NcS7wXLWSdNPBQAjswtb0RhnO49FYA6z0HUhnMQX6NoShnew3wpQC4lw9QYLau-_Qv_lR89f5RdaBCye1MIImML44weo6dW1k4SwHRid7moJ2rUFv__IJdOMOP1HMCRkv0SmBaWfv7RacrDxbeDIxAMznl7BDtADmTfEVRLc_n6hYysHWxk3QTab0A8o8XVsH7VhV-M49Jk2xotdHptZDw7dndFc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+</div>
+<div class="w-full md:w-1/2 flex flex-col h-full">
+<div class="mb-6">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Adrian Sterling</h2>
+<p class="font-body-md text-body-md text-primary font-semibold">Chief Executive Architect</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                            With over two decades of experience in distributed systems and enterprise strategy, Adrian directs the technological compass of VislyBluq, bridging the gap between high-level vision and granular engineering excellence.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">System Design</span>
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">Strategic Growth</span>
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">Cloud Infrastructure</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-6 border-t border-white/5">
+<div class="flex gap-4">
+<a class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" href="#">link</a>
+<a class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" href="#">terminal</a>
+<a class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" href="#">mail</a>
+</div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">22+ Years Exp</span>
+</div>
+</div>
+</div>
+<!-- Founder Card 2 -->
+<div class="glass-card rounded-xl p-8 flex flex-col">
+<div class="w-full aspect-square rounded-lg overflow-hidden mb-6 relative group">
+<img class="w-full h-full object-cover" data-alt="A close-up portrait of a female Chief Technology Officer with a focused expression, set in a modern laboratory environment with soft-glowing interface reflections on a glass screen. The style is technical and sophisticated, utilizing a monochromatic palette with crisp, high-performance blue accents. Soft, diffused lighting creates a premium, ethereal atmosphere of intelligence and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL_3dAO5VmXPuneUYWxSn-cJ2zn1d5xp0iqiX3iqtWW826G_5WK7ZMp0k0nKSdeiElDSo7ZtE-W64JyuSeabVNUP4jndnnqSqBvPyNd0NyvRkCxKNdQwkXU1vy7Q8_aXeJeQFKDHPQa7RynIcp89Xb99OjOp0mUp03dd3cEX7b53T_zLMR8j4Jw_gS1c2b4sOULPwqZIukUtDoW2_Sf2Nni_nV4C049b7HZjMCnzoMOCrWXNqNZQ8zM_Lb5tM8faGLYAi3cJ_bD5w"/>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-1 text-glow">Elena Vance</h3>
+<p class="font-body-md text-body-md text-primary font-semibold mb-4">CTO &amp; Core Lead</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        Pioneer in cryptographic protocols and secure architecture. Elena oversees the R&amp;D department and our proprietary security frameworks.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">Cybersecurity</span>
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">Crypto-Eng</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-white/5">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">link</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">terminal</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">15 Years</span>
+</div>
+</div>
+<!-- Founder Card 3 -->
+<div class="glass-card rounded-xl p-8 flex flex-col">
+<div class="w-full aspect-square rounded-lg overflow-hidden mb-6">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male Design Director with a thoughtful gaze, wearing a minimalist black turtleneck. The background is a clean, white-space focused studio with architectural geometric shadows. The image has a high-end editorial feel, reflecting minimalism and professional design quality. Deep spatial depth is created with soft focus and high-contrast lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBroibtTwHeDYU-mLsbf6sQRKMa-xMl2A8sGbciGd0Vy43RLr-1RfSsVrOO1C0M2-cZ9ZrtqCEyUAmUNaWk6jG3IWPNt2VX6ojKpM_7ik3Eg3_nxGNWwIYTOEgCWBKTeLbhnnfclK3rjC2_7QpuXVIqn1l5TCY4l2VS_vvHjY4P08p3XB57QZQfRsiEwqaEZCPfdpS_IpFCEHkzDE34iYdCSdepcpAJ_l3wd4qRuU5Psb_4t9URyWw6bHAULXWmW0lFnUgv8kleBrY"/>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-1 text-glow">Julian Thorne</h3>
+<p class="font-body-md text-body-md text-primary font-semibold mb-4">Experience Director</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        Master of human-machine interaction. Julian ensures every enterprise solution is as intuitive as it is powerful.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">UX/UI</span>
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">Cognitive Design</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-white/5">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">link</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">brush</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">12 Years</span>
+</div>
+</div>
+<!-- Founder Card 4 -->
+<div class="glass-card rounded-xl p-8 flex flex-col">
+<div class="w-full aspect-square rounded-lg overflow-hidden mb-6">
+<img class="w-full h-full object-cover" data-alt="A high-detail portrait of a female Head of Operations in a bright, modern office with floor-to-ceiling windows showing a blurred cityscape at night. The lighting is balanced between warm interior glow and cold city lights. Her posture conveys absolute reliability and efficiency. The style is premium corporate innovation, focusing on deep blues and vibrant cyan light accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKMUrH43nqYokYIZWAAdWEgQSOzIPJUYtt1o8S_ktOr-hrEZVOWLrFyBWkrFKyx8fs7UxCFc3-uW3J5l-BB4S7LA2xao2LEp7J-Xwp-cyV6607j6zu50jrvagOaBZCWAPHs-DnP0TswugMl_vUBfSRHXMxei2ERGI70eXNGnHS6VkAvgsJbyAfG5yuN2Mm-d5pjm0o-zCvMKHuO06DG32RoejFGMyJrcSY2opUQmi7oM_bR7KKUDOILmkOFPw48hTd4H4XbILd5mg"/>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-1 text-glow">Sarah Chen</h3>
+<p class="font-body-md text-body-md text-primary font-semibold mb-4">Operations Principal</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        A logistical maestro who streamlines complex global deployments and manages VislyBluq's elite consultant network.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">Global Ops</span>
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">Agile Scalability</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-white/5">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">link</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">mail</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">18 Years</span>
+</div>
+</div>
+<!-- Founder Card 5 -->
+<div class="glass-card rounded-xl p-8 flex flex-col">
+<div class="w-full aspect-square rounded-lg overflow-hidden mb-6">
+<img class="w-full h-full object-cover" data-alt="Portrait of an AI Research Lead with an intense expression, surrounded by subtle glowing holographic data visualisations that seem to float in the air. The room is dark and industrial, creating a tactile yet ethereal feel. High-performance accents in bright blue highlight the technical sophistication and innovation of the subject. Cinematic lighting with deep shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZCFnVvZslf0w06s5-00IN0kkBoc9ZWP478Ynejybv6uyh4Lo3fZWTVivOjo75Ci5ZhZbcE4mHDLP3dIV63ot80tTMXTaGZzzSGDF_Pkfql39mbL53mFqU4xnLvxeFeAIMpGKMwcl1KWYwfSBzg7zORHgIAfUFtL5giq9atPVggUz2f0U6f-KME9SgQSU0mpMuOjlhE05vAIWUVap-EyBsg_s1J9Giz-qigpz0fFmyK57fwOCXmRtsVnL7r3w5r2O9eP5x6wN_o8M"/>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-1 text-glow">Marcus Wolf</h3>
+<p class="font-body-md text-body-md text-primary font-semibold mb-4">Head of AI Research</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        Driving the integration of neural networks into legacy enterprise systems to foster autonomous operational intelligence.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">Machine Learning</span>
+<span class="bg-secondary/10 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full border border-secondary/20">Neural Arch</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-white/5">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">link</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">terminal</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">14 Years</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recruitment CTA / Bottom Section -->
+<section class="py-stack-xl px-margin-desktop bg-surface-container-low/50 relative">
+<div class="max-w-container-max mx-auto text-center">
+<h2 class="font-display-xl text-display-xl-mobile md:text-display-xl text-on-surface mb-6">Join the <span class="text-secondary">Vanguard</span>.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    We are always seeking exceptional minds who balance technical mastery with the pursuit of aesthetic and engineering perfection.
+                </p>
+<button class="bg-primary hover:bg-secondary text-on-primary font-bold px-10 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_50px_rgba(46,126,247,0.3)]">
+                    View Open Positions
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full rounded-t-xl border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-xl max-w-container-max mx-auto text-on-surface dark:text-on-surface">
+<div class="md:col-span-1">
+<div class="font-display-xl-mobile text-display-xl-mobile font-black text-primary mb-6">VislyBluq</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Leading the digital renaissance for enterprise technology through intentional engineering.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm uppercase tracking-widest text-primary mb-6">Navigation</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-md text-body-md" href="#">Services</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-md text-body-md" href="#">Insights</a></li>
+<li><a class="text-primary dark:text-primary underline font-body-md text-body-md" href="#">Team</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm uppercase tracking-widest text-primary mb-6">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-md text-body-md" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-md text-body-md" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm uppercase tracking-widest text-primary mb-6">Global Contact</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Headquarters: One Tech Plaza, London, UK</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">language</span>
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-white/5 max-w-container-max mx-auto text-center">
+<p class="font-label-sm text-label-sm text-outline">© 2024 VislyBluq Enterprise Technology Consulting. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential JS logic for hover effects if needed
+            });
+        });
+    </script>
+</body></html>

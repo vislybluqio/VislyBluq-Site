@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VislyBluq | Insights &amp; Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.0.3/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+        }
+        
+        body {
+            background-color: #071423;
+            color: #d7e3f9;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(20, 32, 48, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            border: 1px solid rgba(173, 198, 255, 0.3);
+            box-shadow: 0 0 40px rgba(46, 126, 247, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .premium-gradient-text {
+            background: linear-gradient(135deg, #adc6ff 0%, #77d8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .premium-btn {
+            background: linear-gradient(135deg, #4d8eff 0%, #04bff0 100%);
+            transition: all 0.3s ease;
+        }
+
+        .premium-btn:hover {
+            box-shadow: 0 0 25px rgba(77, 142, 255, 0.4);
+            transform: scale(1.02);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030f1e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3546;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #414754;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#2a3546",
+                      "on-tertiary-fixed-variant": "#37466d",
+                      "on-primary-container": "#00285d",
+                      "secondary": "#77d8ff",
+                      "outline-variant": "#414754",
+                      "inverse-surface": "#d7e3f9",
+                      "on-primary-fixed-variant": "#004494",
+                      "inverse-on-surface": "#253142",
+                      "surface-tint": "#adc6ff",
+                      "primary-fixed-dim": "#adc6ff",
+                      "primary-fixed": "#d8e2ff",
+                      "on-tertiary-container": "#18284e",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#8c90a0",
+                      "on-secondary-fixed-variant": "#004d63",
+                      "on-primary-fixed": "#001a41",
+                      "primary-container": "#4d8eff",
+                      "error-container": "#93000a",
+                      "surface": "#071423",
+                      "on-tertiary": "#202f55",
+                      "on-error": "#690005",
+                      "surface-container-high": "#1f2b3b",
+                      "tertiary-fixed": "#dae2ff",
+                      "secondary-container": "#04bff0",
+                      "primary": "#adc6ff",
+                      "on-primary": "#002e69",
+                      "tertiary": "#b7c5f5",
+                      "on-secondary-container": "#004a5e",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#60d4ff",
+                      "inverse-primary": "#005ac2",
+                      "on-secondary-fixed": "#001f29",
+                      "on-surface-variant": "#c2c6d6",
+                      "surface-bright": "#2e3a4b",
+                      "surface-variant": "#2a3546",
+                      "on-secondary": "#003545",
+                      "on-surface": "#d7e3f9",
+                      "surface-container-low": "#101c2c",
+                      "tertiary-container": "#8190bc",
+                      "secondary-fixed": "#bbe9ff",
+                      "surface-dim": "#071423",
+                      "background": "#071423",
+                      "surface-container-lowest": "#030f1e",
+                      "on-tertiary-fixed": "#08193f",
+                      "on-background": "#d7e3f9",
+                      "tertiary-fixed-dim": "#b7c5f5",
+                      "surface-container": "#142030"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-lg": "80px",
+                      "margin-mobile": "24px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "stack-md": "48px",
+                      "stack-xl": "120px",
+                      "gutter": "32px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Geist"],
+                      "display-xl": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-xl-mobile": ["Inter"],
+                      "display-2xl": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                      "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-2xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface/70 dark:bg-surface/60 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-white/10 backdrop-blur-2xl shadow-[0_0_40px_rgba(46,126,247,0.1)]">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-display-xl text-display-xl font-bold text-primary tracking-tighter" href="#">VislyBluq</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-body-md text-body-md text-primary dark:text-primary font-bold border-b-2 border-primary pb-1" href="#">Insights</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Projects</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group hidden lg:block">
+<input class="bg-surface-container-low border border-outline-variant/30 rounded-full px-4 py-2 text-label-sm font-label-sm focus:ring-2 focus:ring-primary focus:outline-none w-64 transition-all group-hover:w-80" placeholder="Search insights..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+<button class="premium-btn text-on-primary px-6 py-2.5 rounded-full font-label-sm text-label-sm font-bold scale-95 active:scale-90 transition-transform">Get Started</button>
+</div>
+</div>
+</header>
+<main class="relative">
+<!-- Atmospheric Background Element -->
+
+<!-- Section 1: Featured Article -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="relative group h-[700px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A futuristic corporate office at dusk with holographic data visualizations floating above high-end workstations. The lighting is dominated by deep blues and neon cyan accents, creating a high-performance tech atmosphere. The scene is shot with a cinematic wide-angle lens, emphasizing depth and technical sophistication. Minimalist furniture and glass partitions reflect the glowing UI elements, representing the cutting edge of enterprise consulting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDE_mJe_wBuUM3ZjuHNYoxRDGnYYi99pRsqv6UFBXBT1Fuix3oLdCaJ3-YlMJc-mU45XQk7bxaXl2_FLJIOjbcayBfHHWV7OOL9uxsqvHXtJDgJayMW9qqmNsQmoCSAjiPkcBzwQYlcaMiP1Rr5bn5ksu59Ye0dscavDlgTozFbFl-7Ozr9GoaW_U77jajc2B1eiwJyhWCaaXqYEtvSko2mbDhWrCp6-bVwrI38WjXZUP47YUs-19pMdthx1wmQIdKDe4kXfycimd4')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-12 w-full md:w-3/4">
+<div class="flex items-center gap-4 mb-6">
+<span class="bg-primary/20 text-primary px-4 py-1.5 rounded-full text-label-sm font-label-sm uppercase tracking-widest border border-primary/30">Intelligence</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm">12 Min Read</span>
+</div>
+<h1 class="font-display-2xl text-display-2xl mb-6 leading-tight premium-gradient-text">The Architecture of Quantum Enterprise Consulting.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-8">Exploring how high-performance engineering is reshaping the decision-making framework for Fortune 500 leadership in an era of absolute digital transparency.</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-primary/50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a tech executive woman with a focused, intelligent expression. She is wearing modern, minimalist business attire in dark tones. The lighting is soft but high-contrast, characteristic of a premium editorial magazine. The background is a blurred office environment with cool-toned blue accents, maintaining a professional and sophisticated vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3byT2dgwXz2ZcXseQbzYQkHkDwDnLbtbGLcTsaXUF5hQX_gRQTdHUIQO08ThHCxCkg9I_RnXkhGy_DNFmZ989MXnFJfBhfhpxrhAlkE1Xwh1Cm8ahswJ4bAAvhk7fqYgDxGIJPiMsg8nBdtCB_egBwLbNfBRToTA61yQoufK6g7bBT3x_YUhr0-XoqpSAF5EYSYZ_V6YzNoD0D0R2tzCuu4zfISrNP4INxqt-V3lk2BN5_jBPcQ3kvJPe6-Or2WACpBr9q3O3_qU"/>
+</div>
+<div>
+<p class="text-on-surface font-bold font-body-md text-body-md">Elena Valerius</p>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Managing Director, R&amp;D</p>
+</div>
+<a class="ml-auto flex items-center gap-2 text-primary font-bold group-hover:translate-x-2 transition-transform" href="#">
+                            Read Article <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Category Filters -->
+<section class="px-margin-desktop py-stack-md max-w-container-max mx-auto border-y border-outline-variant/10">
+<div class="flex flex-wrap items-center justify-between gap-6">
+<div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-sm text-label-sm font-bold whitespace-nowrap">All Insights</button>
+<button class="hover:bg-primary/10 text-on-surface-variant hover:text-primary px-6 py-2 rounded-full font-label-sm text-label-sm transition-all whitespace-nowrap">Engineering</button>
+<button class="hover:bg-primary/10 text-on-surface-variant hover:text-primary px-6 py-2 rounded-full font-label-sm text-label-sm transition-all whitespace-nowrap">Strategy</button>
+<button class="hover:bg-primary/10 text-on-surface-variant hover:text-primary px-6 py-2 rounded-full font-label-sm text-label-sm transition-all whitespace-nowrap">Operations</button>
+<button class="hover:bg-primary/10 text-on-surface-variant hover:text-primary px-6 py-2 rounded-full font-label-sm text-label-sm transition-all whitespace-nowrap">Design Ethics</button>
+<button class="hover:bg-primary/10 text-on-surface-variant hover:text-primary px-6 py-2 rounded-full font-label-sm text-label-sm transition-all whitespace-nowrap">Case Studies</button>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="font-label-sm text-label-sm">Sort by:</span>
+<select class="bg-transparent border-none focus:ring-0 font-label-sm text-label-sm font-bold text-on-surface cursor-pointer">
+<option>Newest First</option>
+<option>Most Read</option>
+<option>Curated Selection</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section 3: Article Grid -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Article Card 1 -->
+<article class="glass-card rounded-2xl flex flex-col group overflow-hidden">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A clean, minimalist 3D render of an abstract data cluster representing network efficiency. Glowing nodes in shades of light blue and white are connected by thin, sharp lines. The background is a deep, textured navy blue, creating a sense of infinite digital space. The lighting is focused and creates a professional, tech-oriented mood suitable for a premium engineering blog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2oRuNX3YUP4j_VZu1Yfl-iJGwUdBrJ8JwGW2qQj09ZEZrV7y_aKRJZDD9rBGEEhniDYQ4Lob4DttpIGE6GN_sEMxvnsn_Jsuvz4Ik6RkdmmMTVDPbdKf33WH6jMu_ksyyMaVXI9IhmWbmZ6bON7fu-K5-hmtUnwUsNLYKtIr0Ix3KRYQ5OBMWWsCoFUSsXHM5zGIglZPDdiINWyeGCiAgyBW3zaQNcZPe-rN0wO4yLRq-h42-r91BC-SXSAueeUnA6JhOmcEb9lU"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex items-center justify-between mb-4">
+<span class="text-secondary font-label-sm text-label-sm font-bold uppercase tracking-widest">Operations</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">8 Min Read</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4 leading-snug group-hover:text-primary transition-colors">Microservices: The Silent Catalyst for Enterprise Agility.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 line-clamp-3">Deconstructing the operational overhead of monolithic architectures and the transition to fluid, decoupled systems.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Headshot of a middle-aged man with sharp features, wearing a turtleneck and glasses, looking thoughtful. Studio lighting with deep shadows and soft rim lights on a dark background. High contrast, professional photography for a tech magazine contributor profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9bV3p7kDrA1ioRm8qgxi0aJgYQGLHYeycfFbz2btd-fkxUMxCq34TsITM5vR6RCUtUYFW-eASu0VRZyLIyreqAny_pzHxgFrQJkvnmy1BhOqM3vs0eDXiLiaOJYJOz6gQ4Y6nSNoEK-T8d2X2oGD-nPvza27V9b6aBC7Nm_r3FGxBr-iNjyuyKoQchaz3Ajeroc9scbIqD_mlD-K7UeKtgi5I0DI9OZ_BRbMRSCj2UYyfC1iHkJ1JfDFdusYh1e7kMfGw5QJVIiA"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Marcus Thorne</span>
+</div>
+</div>
+</article>
+<!-- Article Card 2 -->
+<article class="glass-card rounded-2xl flex flex-col group overflow-hidden">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-contrast photo of a minimalist architectural interior with sweeping curves and large glass windows. The building is designed with a monochrome palette of stark whites and deep blacks. Brilliant sunlight creates sharp geometric shadows across the polished floor. This represents technical elegance and the marriage of form and function in modern enterprise design strategy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS47zBVbeEn_xcpohAhpxEuYJELMMjqNtE00eG5IS6LdcsAnFCElF_kghC-xV_XVsyEGFutwce0O6BPDUf5Pze6RwK0iX1GggKTNeNxPK9YDqY5PeHEJqLchwLVEzijcAkNww4vK9f5ChZ04YK4SZbJ6HcGLA-CCzvGysCV16IjbybaMvP_Rp8dPZoxvJPLiH1RyBWT6h12w5grwb5mN0Ohgp6RVkOw4xPjEcMSvm8mWQWA-OGaFN6g52vA_iAkETML0sIzl9WBVM"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex items-center justify-between mb-4">
+<span class="text-secondary font-label-sm text-label-sm font-bold uppercase tracking-widest">Strategy</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">15 Min Read</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4 leading-snug group-hover:text-primary transition-colors">Risk Neutrality in Global Scaling.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 line-clamp-3">A data-driven deep dive into why conservative growth models are failing in hyper-connected markets.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young professional woman with a calm, confident gaze. Neutral color palette, soft ambient lighting. She is positioned against a clean, architectural concrete wall. Minimalist, high-end editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYjJ5vJg-hvTGnAIOXYekxx8ddEtxwZ8EBLwn24t1vjRGojB0UP39tx-KeBeCYt6JOSZEhYMu6FfbFvtlDC286jHKD7tyBpLb34daFuqOJVQUq8yVSI5VBgy8it5vVMp8UXaZ9C1_8moeJR1cnu90DoshEKD6R9MFtdXo6wBknAYy1IDjM3LCdJCkvzITJeD7bilV23jxYqNnEBWJDFe8aUueTvi8PA-EY8Sbb4FQW9o9_eDzFp0OVQTcjNPe583HeL8mzxFBvmkY"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Sarah Chen</span>
+</div>
+</div>
+</article>
+<!-- Article Card 3 -->
+<article class="glass-card rounded-2xl flex flex-col group overflow-hidden">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="An abstract visualization of digital threads weaving together to form a glowing sphere. The threads are a mix of cyan and primary blue light against a pitch-black background. This represents the integration of various technology streams into a cohesive enterprise solution. The aesthetic is ethereal, scientific, and premium, suggesting high-level intelligence and innovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_wWXoblvGqu-CvLAxd3XcKQmyUFxYPKDKQhhr3VCqxaxXwIvb35BccK4fuyEu53uBm3Fl8yR1ktoIcqr17XUjH8nGCWFaoDg7SNIYedXOgFStj9FGJQwLabDF5blQYYOPF1XcI4KEW7g11D6gf4BBPo1KfL8yu4QD_cWiColvAjck7M2by6HhlD7kizmO7xeXOxzvnOuG3Cklkz8c1aZUIhCNNvMgaK-Jg8F9YJuKOGBr4a-phkvV1IcRMBH14MHkzyg_P-OE0PA"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex items-center justify-between mb-4">
+<span class="text-secondary font-label-sm text-label-sm font-bold uppercase tracking-widest">Engineering</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">10 Min Read</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4 leading-snug group-hover:text-primary transition-colors">Refining the Edge: Low-Latency Paradigms.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 line-clamp-3">Why speed is the ultimate currency and how to optimize infrastructure at the hardware-software interface.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional close-up of a senior engineer with graying hair and an intense, focused look. Warm but subtle side-lighting highlights facial texture. He is in a dimly lit server room with soft blue indicator lights in the far background. Sharp focus on eyes, shallow depth of field, premium corporate headshot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFUBE9Be7TLQtuyDEsOc8VnieJ_118npRsn_Spps1qc237z6bjPed1qCRS5X5iweucIYseGyt4ceco0JQElMOijWlufVGSqxh4vkfsFZ4bOjz4Em9_kv8jqAaI9Ac2_OswxMmfhHu_UGQr8BYW2k0SARO6gj14dcDrtnNe86U2UbxqKyLbDNKSM5DBLga-wRHIqfaBAGsXyiSG-zLpVyzWssoMfY9fSKxp7sXUotCHYj1y5vBs8yX5dG2erY5MM0dQVVcjxVZfcd8"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Dr. Julian Vance</span>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination/Load More -->
+<div class="mt-stack-lg flex justify-center">
+<button class="group flex items-center gap-4 px-8 py-4 rounded-full border border-primary/30 hover:border-primary hover:bg-primary/5 transition-all">
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-widest text-primary">Load More Insights</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-y-1 transition-transform">keyboard_arrow_down</span>
+</button>
+</div>
+</section>
+<!-- Section 4: Newsletter Signup -->
+<section class="px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="glass-card rounded-[40px] p-12 md:p-24 relative overflow-hidden text-center">
+<!-- Atmospheric Glow Background -->
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/10 blur-[100px] rounded-full"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<span class="text-primary font-label-sm text-label-sm font-bold uppercase tracking-widest mb-6 block">Intelligence Briefing</span>
+<h2 class="font-display-xl text-display-xl mb-8 leading-tight">Stay at the frontier of technology and leadership.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12">Receive weekly deep-dives, curated research, and exclusive executive summaries directly from our lead consultants.</p>
+<form class="flex flex-col md:flex-row gap-4">
+<input class="flex-grow bg-surface-container-low border border-outline-variant/30 rounded-full px-8 py-4 font-body-md text-body-md focus:ring-2 focus:ring-primary focus:outline-none focus:border-primary transition-all" placeholder="professional.email@enterprise.com" type="email"/>
+<button class="premium-btn text-on-primary px-10 py-4 rounded-full font-label-sm text-label-sm font-bold shadow-xl" type="submit">Subscribe Now</button>
+</form>
+<p class="mt-8 font-label-sm text-label-sm text-on-surface-variant/60">We respect your absolute privacy. No noise, just signal.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full rounded-t-xl border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<span class="font-display-xl-mobile text-display-xl-mobile font-black text-primary mb-6 block">VislyBluq</span>
+<p class="text-on-surface-variant font-body-md text-body-md mb-8">Architecting the future of enterprise through technical sophistication and uncompromising innovation.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant/30 hover:text-primary hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant/30 hover:text-primary hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">lan</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant/30 hover:text-primary hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-bold mb-6 text-on-surface">Explore</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-200" href="#">Services</a></li>
+<li><a class="text-primary font-body-md text-body-md underline" href="#">Insights</a></li>
+<li><a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-200" href="#">Case Studies</a></li>
+<li><a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-200" href="#">Careers</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-bold mb-6 text-on-surface">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-200" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-200" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-200" href="#">Accessibility</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-bold mb-6 text-on-surface">Offices</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-2">San Francisco, CA</p>
+<p class="text-on-surface-variant font-body-md text-body-md mb-2">London, UK</p>
+<p class="text-on-surface-variant font-body-md text-body-md">Singapore</p>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant/10 max-w-container-max mx-auto text-center md:text-left">
+<p class="text-on-surface-variant font-label-sm text-label-sm">© 2024 VislyBluq Enterprise Technology Consulting. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Sticky Navbar subtle effect on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-xl', 'py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.remove('shadow-xl', 'py-2');
+                header.classList.add('py-4');
+            }
+        });
+    </script>
+</body></html>

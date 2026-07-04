@@ -5,11 +5,13 @@ export default {
     extend: {
       colors: {
         visly: {
-          dark: '#0B1120',
-          navy: '#1B2A4E',
-          blue: '#3B82F6',
-          cyan: '#06B6D4',
+          dark: '#071423',
+          navy: '#0B1633',
+          blue: '#2E7EF7',
+          cyan: '#20C6F7',
           teal: '#14B8A6',
+          surface: '#14244A',
+          elevated: '#1C2E5A',
           gray: '#F3F4F6',
         }
       },

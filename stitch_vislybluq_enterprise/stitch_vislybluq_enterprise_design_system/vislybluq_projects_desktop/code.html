@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VislyBluq | Projects</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --glass-bg: rgba(7, 20, 35, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            background-color: #071423;
+            color: #d7e3f9;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+        }
+        .premium-glow {
+            box-shadow: 0 0 40px rgba(46, 126, 247, 0.1);
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#2a3546",
+                    "on-tertiary-fixed-variant": "#37466d",
+                    "on-primary-container": "#00285d",
+                    "secondary": "#77d8ff",
+                    "outline-variant": "#414754",
+                    "inverse-surface": "#d7e3f9",
+                    "on-primary-fixed-variant": "#004494",
+                    "inverse-on-surface": "#253142",
+                    "surface-tint": "#adc6ff",
+                    "primary-fixed-dim": "#adc6ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-tertiary-container": "#18284e",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#8c90a0",
+                    "on-secondary-fixed-variant": "#004d63",
+                    "on-primary-fixed": "#001a41",
+                    "primary-container": "#4d8eff",
+                    "error-container": "#93000a",
+                    "surface": "#071423",
+                    "on-tertiary": "#202f55",
+                    "on-error": "#690005",
+                    "surface-container-high": "#1f2b3b",
+                    "tertiary-fixed": "#dae2ff",
+                    "secondary-container": "#04bff0",
+                    "primary": "#adc6ff",
+                    "on-primary": "#002e69",
+                    "tertiary": "#b7c5f5",
+                    "on-secondary-container": "#004a5e",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#60d4ff",
+                    "inverse-primary": "#005ac2",
+                    "on-secondary-fixed": "#001f29",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-bright": "#2e3a4b",
+                    "surface-variant": "#2a3546",
+                    "on-secondary": "#003545",
+                    "on-surface": "#d7e3f9",
+                    "surface-container-low": "#101c2c",
+                    "tertiary-container": "#8190bc",
+                    "secondary-fixed": "#bbe9ff",
+                    "surface-dim": "#071423",
+                    "background": "#071423",
+                    "surface-container-lowest": "#030f1e",
+                    "on-tertiary-fixed": "#08193f",
+                    "on-background": "#d7e3f9",
+                    "tertiary-fixed-dim": "#b7c5f5",
+                    "surface-container": "#142030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "80px",
+                    "margin-mobile": "24px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "stack-md": "48px",
+                    "stack-xl": "120px",
+                    "gutter": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "display-xl": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-xl-mobile": ["Inter"],
+                    "display-2xl": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-2xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Top Navigation Bar (Shared Component) -->
+<header class="bg-surface/70 dark:bg-surface/60 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-white/10 backdrop-blur-2xl shadow-[0_0_40px_rgba(46,126,247,0.1)]">
+<nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-display-xl text-display-xl font-bold text-primary tracking-tighter">VislyBluq</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Services</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Insights</a>
+<a class="text-primary dark:text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Projects</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Team</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-high border-none rounded-full pl-10 pr-4 py-2 text-label-sm font-label-sm focus:ring-2 focus:ring-primary w-48 transition-all duration-300" placeholder="Search projects..." type="text"/>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-sm text-label-sm hover:bg-primary/10 hover:shadow-lg transition-all duration-300 scale-95 active:scale-90 font-bold">
+                    Get Started
+                </button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Section 1: Hero -->
+<section class="relative pt-stack-xl pb-stack-md px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-8 animate-fade-in">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Global Engineering Portfolio</span>
+</div>
+<h1 class="font-display-2xl text-display-2xl mb-6 tracking-tighter leading-none">
+                    Technological Excellence <br/>
+<span class="text-primary italic font-light opacity-80">at Scale.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+                    A curated selection of our most complex digital transformations, high-performance cloud architectures, and next-generation AI deployments.
+                </p>
+<div class="flex items-center gap-12 border-t border-outline-variant/10 pt-12">
+<div class="text-center">
+<div class="font-display-xl text-display-xl text-primary leading-none">124+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-2">Projects Completed</div>
+</div>
+<div class="w-px h-12 bg-outline-variant/10"></div>
+<div class="text-center">
+<div class="font-display-xl text-display-xl text-primary leading-none">32</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-2">Enterprise Partners</div>
+</div>
+<div class="w-px h-12 bg-outline-variant/10"></div>
+<div class="text-center">
+<div class="font-display-xl text-display-xl text-primary leading-none">0.2s</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-2">Avg. Latency Delivered</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Filter Bar -->
+<section class="sticky top-20 z-40 px-margin-desktop max-w-container-max mx-auto py-8">
+<div class="glass-card rounded-full p-2 flex items-center justify-between shadow-xl">
+<div class="flex items-center gap-2">
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded-full font-label-sm text-label-sm transition-all shadow-lg">All Initiatives</button>
+<button class="hover:bg-primary/10 text-on-surface-variant px-8 py-2.5 rounded-full font-label-sm text-label-sm transition-all">AI &amp; ML</button>
+<button class="hover:bg-primary/10 text-on-surface-variant px-8 py-2.5 rounded-full font-label-sm text-label-sm transition-all">Web Ecosystems</button>
+<button class="hover:bg-primary/10 text-on-surface-variant px-8 py-2.5 rounded-full font-label-sm text-label-sm transition-all">Cloud Architecture</button>
+<button class="hover:bg-primary/10 text-on-surface-variant px-8 py-2.5 rounded-full font-label-sm text-label-sm transition-all">Mobile Solutions</button>
+</div>
+<div class="flex items-center gap-4 pr-4">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Sort by:</span>
+<button class="flex items-center gap-1 font-label-sm text-label-sm font-bold text-primary">
+                        Recent
+                        <span class="material-symbols-outlined text-[16px]">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 3: Project Bento Grid -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Project Card 1: Main Feature -->
+<div class="col-span-12 group relative overflow-hidden rounded-3xl glass-card aspect-[21/9]">
+<div class="absolute inset-0 bg-cover bg-center project-image transition-transform duration-1000" data-alt="A cinematic, ultra-high-definition photograph of a futuristic server room with rows of sleek, matte black hardware glowing with soft cyan and deep blue LED lighting. The floor is a reflective dark glass, mirroring the complex technical infrastructure. Volumetric light beams cut through a slight atmospheric haze, creating a mood of technical power and silent efficiency. The aesthetic is clean, premium, and industrial." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAI5XbSkqdBEXvzIcJuDRB6TB2FfCP2V1ygNdbUS-LNd7eAmpkVPOwNGVW73tp3sjvCFH-1Twjm3ULNq_Xm2Rza_W3oc16B0WA-tcUuf_BHYp0VIPOyJyvLo7ruUC5NcajyuUIcCNyN1lf6BCMe8osyMTt9V91Cj-FcgCoLyC6mB-WKjVFehUbVj9iNaczoo4ah9EU6Ma3a45LcgT2LuvWBmU7-nee5jVI92MzQFcnsM8jckKik_YRPJrYIjuaBHDBfyL3aOn1JTCk')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-12 w-full flex justify-between items-end">
+<div class="max-w-2xl">
+<div class="flex gap-2 mb-4">
+<span class="bg-secondary/10 border border-secondary/20 text-secondary px-3 py-1 rounded-full font-label-sm text-label-sm">Enterprise AI</span>
+<span class="bg-primary/10 border border-primary/20 text-primary px-3 py-1 rounded-full font-label-sm text-label-sm">High Performance</span>
+</div>
+<h2 class="font-display-xl text-display-xl mb-4 leading-tight">Neural Nexus Platform</h2>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80 mb-6">Real-time predictive analysis engine processing 2.4PB of data daily for global logistics networks.</p>
+<button class="group/btn inline-flex items-center gap-2 bg-white text-surface px-8 py-4 rounded-full font-label-sm text-label-sm font-bold hover:bg-primary hover:text-on-primary transition-all">
+                                View Case Study
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="hidden lg:block text-right">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Stack</div>
+<div class="font-body-md text-body-md font-bold">PyTorch / Kubernetes / Rust</div>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="col-span-12 md:col-span-7 group relative overflow-hidden rounded-3xl glass-card h-[600px]">
+<div class="absolute inset-0 bg-cover bg-center project-image transition-transform duration-1000" data-alt="A clean and minimalist 3D rendering of a modern mobile interface floating in a void of dark navy and neon blue light. The screens display elegant data visualizations with glowing lines and translucent glass elements. Soft peripheral lighting creates a professional, premium tech atmosphere. High-end product photography style with a shallow depth of field." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDHNxIV_Bs1sXFlkAXFsKNwXd0PKHa6sooh9IE9nW9H5ouRHAEtAkMAZLNlE4F2vZvsDsF2n59COHfi8qq5R0LI-b06D0pApkh3wRCveqUtAS6JrvRD3NnmqWEv5JPGRX_Rlle977J_lhU2fzxSm9fTd84XFdCxejdquBu9TpabA_cQvzJOuWeCaxbFcfrAviIDULQK09l4byu-bZAPOIGiCUvG0y2oeoVRSFN7pxpdk8mGcPoXFugVwJDiQ0QYSiOfOTiU6tGNG7Q')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+<div class="absolute inset-0 bg-surface/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm flex flex-col justify-center items-center text-center p-12">
+<h3 class="font-headline-lg text-headline-lg mb-4">Lumina Banking Suite</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-sm">Reinventing digital wealth management with biometric security and instant cross-border settlement.</p>
+<button class="border border-white/20 px-8 py-3 rounded-full font-label-sm text-label-sm hover:bg-white hover:text-surface transition-all">Explore Project</button>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="col-span-12 md:col-span-5 group relative overflow-hidden rounded-3xl glass-card h-[600px]">
+<div class="absolute inset-0 bg-cover bg-center project-image transition-transform duration-1000" data-alt="An abstract digital representation of cloud computing and networking. Glowing translucent nodes are connected by intricate pathways of light in a dark, infinite space. The color palette consists of deep indigo, electric cyan, and stark white. The composition is dynamic and sophisticated, conveying high-speed data transmission and complex architecture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAz-yYUU6E73Hezwy1_ZkXQnunQX1hZSDrIP1EhSod0duhsipyrfBQpHONcUONW41jqShRqTkimdwryRrQpAomzTbcSz8c5xC4LpT8FgoxfKDMfWEKdu7hZT51pfLaQzk1OG9_oFkGYao9P04A5Gvyb1MCA2nELBZYgs11GyYdWmAs4O7KHUhQFxDmgN03xGVgdrBbeXmMLxtpv6xf8msa2gGGwbtCcCD8VqC_gDAxYNeOmr4ko1ZTQ9JgQvX08BZcwL1SD-UitVjA')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+<div class="absolute inset-0 bg-surface/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm flex flex-col justify-center items-center text-center p-12">
+<h3 class="font-headline-lg text-headline-lg mb-4">SkyVault Infra</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-sm">A multi-region serverless infrastructure optimized for sub-100ms global latency.</p>
+<button class="border border-white/20 px-8 py-3 rounded-full font-label-sm text-label-sm hover:bg-white hover:text-surface transition-all">Explore Project</button>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="col-span-12 md:col-span-6 group relative overflow-hidden rounded-3xl glass-card h-[500px]">
+<div class="absolute inset-0 bg-cover bg-center project-image transition-transform duration-1000" data-alt="A modern office interior featuring clean architectural lines, large glass partitions, and integrated digital displays. The space is dimly lit with focus on soft blue task lighting and glowing screen reflections on polished surfaces. The design evokes high-end corporate consulting and engineering precision. Minimalist and ultra-modern style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBcffHIK21yacodA7uD9afS9O3Wb6kgBBHwtLwg5-kWt2u9GEUZGN5F6eigkG7r8nUsxXqZRvKMmp2fv62n7IZtAJ14OyuQkja5vy5jzcbiZqz5uIr4jkMZZ860iF-eWHjT8XWpFhgsju5c6ICkwrgZOyMwlJS337b9m1Yk7D9isdzWQm1Wt683TM2RinWtr4MNpDTMod7snFOpsASwKIhpQHLWOOlSavD-XBHOsimlwftTQAajZtFNbN2nWyfvoXDDuZ-YeaN50k0')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface/90 to-transparent p-10 flex flex-col justify-end">
+<div class="flex gap-2 mb-3">
+<span class="text-primary font-label-sm text-label-sm">Web Application</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-2">Visly Analytics Hub</h3>
+<div class="flex items-center gap-4">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Internal Tooling</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<a class="text-secondary font-label-sm text-label-sm underline underline-offset-4" href="#">Read Case Study</a>
+</div>
+</div>
+</div>
+<!-- Project Card 5 -->
+<div class="col-span-12 md:col-span-6 group relative overflow-hidden rounded-3xl glass-card h-[500px]">
+<div class="absolute inset-0 bg-cover bg-center project-image transition-transform duration-1000" data-alt="A close-up macro shot of an advanced processor or microchip with glowing circuit patterns. The aesthetic is inspired by high-end technology manufacturing, using a palette of metallic silvers, dark blues, and sharp electric blue light paths. Sharp focus, high contrast, and a sense of extreme precision and microscopic detail." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxkv2yx2AuQ6REL0cT2k-e4HzAHDKjhKX7gQe6pBh-4_VGKmjmusQsQouViA2FJoERQlTRQcmNGSTtgjTTgZUVmfSNxjHpp_C7w0XIo1DgyntJ_jAqeL-HzNikYHSmrrJe6c6icG4HAo1u8MS0kZ_vaxgMIeDoZVLQf8eyMpRV7BcKFlyvBWU0nVPud2XBYGl-y0NAHmWLzTb_BlPUD_rc4k4aSsLS-q3n9_gOY4OHzZIgEkp4VHxHHz7b-0Ac9OXgXGYVOMwxb20')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface/90 to-transparent p-10 flex flex-col justify-end">
+<div class="flex gap-2 mb-3">
+<span class="text-primary font-label-sm text-label-sm">Edge Computing</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-2">Cognitive Core</h3>
+<div class="flex items-center gap-4">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Hardware Integration</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<a class="text-secondary font-label-sm text-label-sm underline underline-offset-4" href="#">Read Case Study</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="glass-card rounded-[3rem] p-16 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-[80px]"></div>
+<div class="relative z-10 max-w-xl">
+<h2 class="font-display-xl text-display-xl mb-6">Have a complex problem?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">We specialize in engineering solutions for problems that haven't been solved yet. Let's discuss your roadmap.</p>
+</div>
+<div class="relative z-10">
+<button class="bg-primary text-on-primary px-12 py-5 rounded-full font-headline-lg text-headline-lg shadow-2xl hover:scale-105 transition-transform">
+                        Initiate Consultation
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full rounded-t-xl border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-display-xl-mobile text-display-xl-mobile font-black text-primary mb-6">VislyBluq</div>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-xs">Elite technology consulting for the modern enterprise. Engineering excellence at the speed of thought.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary uppercase mb-6 tracking-widest">Capabilities</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">AI Engineering</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">Cloud Architecture</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">Web Transformation</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">Strategic Research</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary uppercase mb-6 tracking-widest">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">Team</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">Insights</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary uppercase mb-6 tracking-widest">Global Offices</h4>
+<div class="space-y-4">
+<p class="text-on-surface-variant font-body-md text-body-md">San Francisco, CA</p>
+<p class="text-on-surface-variant font-body-md text-body-md">London, UK</p>
+<p class="text-on-surface-variant font-body-md text-body-md">Singapore</p>
+<div class="flex gap-4 mt-8">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">hub</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">terminal</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop py-8 border-t border-outline-variant/10 flex justify-between items-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-80">© 2024 VislyBluq Enterprise Technology Consulting. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary" href="#">Legal Compliance</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple filter button interaction
+        const filterButtons = document.querySelectorAll('.rounded-full button');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary', 'shadow-lg');
+                    b.classList.add('hover:bg-primary/10', 'text-on-surface-variant');
+                });
+                btn.classList.add('bg-primary', 'text-on-primary', 'shadow-lg');
+                btn.classList.remove('hover:bg-primary/10', 'text-on-surface-variant');
+            });
+        });
+
+        // Micro-interaction for project cards
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

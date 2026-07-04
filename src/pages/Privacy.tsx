@@ -1,95 +1,17 @@
+import type { ReactNode } from 'react';
+import { Analytics, CheckCircle, Delete, Download, EditNote, History, Person, Security, Visibility } from '../components/site/LegalIcons';
+import { GlassCard, PageIntro, Section } from '../components/site/Enterprise';
 
-import { Shield, Lock, Eye, FileText } from 'lucide-react';
-
-const Privacy = () => {
-    return (
-        <div className="pt-16 bg-white">
-            {/* Header */}
-            <section className="bg-visly-dark py-12">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="inline-flex items-center space-x-2 bg-visly-blue/10 text-visly-cyan px-3 py-1.5 rounded-full text-xs font-semibold mb-4 border border-visly-blue/20">
-                        <Shield className="h-4 w-4" />
-                        <span>LEGAL</span>
-                    </div>
-                    <h1 className="text-3xl md:text-4xl font-semibold text-white mb-4">
-                        Privacy Policy
-                    </h1>
-                    <p className="text-base text-gray-300">
-                        We value your trust and are committed to protecting your personal information.
-                    </p>
-                </div>
-            </section>
-
-            {/* Content */}
-            <section className="py-16">
-                <div className="max-w-prose mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="prose prose-lg prose-blue max-w-none text-gray-600">
-                        <p className="lead text-xl text-visly-dark font-medium mb-8">
-                            Last updated: December May 20, 2026
-                        </p>
-
-                        <div className="space-y-12">
-                            <section>
-                                <div className="flex items-center space-x-3 mb-4">
-                                    <div className="p-2 bg-visly-blue/10 rounded-lg">
-                                        <Eye className="h-6 w-6 text-visly-blue" />
-                                    </div>
-                                    <h2 className="text-2xl font-bold text-visly-dark m-0">1. Information We Collect</h2>
-                                </div>
-                                <p>
-                                    We collect information that you provide directly to us, including:
-                                </p>
-                                <ul className="list-disc pl-6 space-y-2 mt-4">
-                                    <li>Contact information (name, email address, phone number)</li>
-                                    <li>Business information (company name, job title)</li>
-                                    <li>Project requirements and technical specifications</li>
-                                    <li>Communications you send to us</li>
-                                </ul>
-                            </section>
-
-                            <section>
-                                <div className="flex items-center space-x-3 mb-4">
-                                    <div className="p-2 bg-visly-teal/10 rounded-lg">
-                                        <FileText className="h-6 w-6 text-visly-teal" />
-                                    </div>
-                                    <h2 className="text-2xl font-bold text-visly-dark m-0">2. How We Use Information</h2>
-                                </div>
-                                <p>
-                                    We use the information we collect to:
-                                </p>
-                                <ul className="list-disc pl-6 space-y-2 mt-4">
-                                    <li>Provide, maintain, and improve our services</li>
-                                    <li>Respond to your comments, questions, and requests</li>
-                                    <li>Send you technical notices, updates, and administrative messages</li>
-                                    <li>Communicate with you about products, services, and events</li>
-                                </ul>
-                            </section>
-
-                            <section>
-                                <div className="flex items-center space-x-3 mb-4">
-                                    <div className="p-2 bg-visly-navy/10 rounded-lg">
-                                        <Lock className="h-6 w-6 text-visly-navy" />
-                                    </div>
-                                    <h2 className="text-2xl font-bold text-visly-dark m-0">3. Data Security</h2>
-                                </div>
-                                <p>
-                                    We use appropriate technical and organizational measures to protect the personal information that we collect and process about you. The measures we use are designed to provide a level of security appropriate to the risk of processing your personal information.
-                                </p>
-                            </section>
-
-                            <section>
-                                <h2 className="text-2xl font-bold text-visly-dark mb-4">4. Contact Us</h2>
-                                <p>
-                                    If you have any questions about this Privacy Policy, please contact us at:
-                                    <span className="block mt-2 font-bold text-visly-blue">privacy@vislybluq.com</span>
-                                </p>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    );
-};
-
+const Privacy = () => (
+  <div>
+    <PageIntro eyebrow="Legal Framework" title={<>Privacy Policy</>} description="At VislyBluq, we are committed to safeguarding your enterprise data with technical precision and absolute transparency. This document outlines our data processing standards.">
+      <div className="flex items-center gap-2 text-sm text-[#c2c6d6]"><History /> Last Updated: November 14, 2024</div>
+    </PageIntro>
+    <Section className="pt-0"><div className="grid gap-8 lg:grid-cols-[260px_1fr]"><aside className="space-y-4"><GlassCard className="p-5"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">On this page</p>{['01 Introduction','02 Data Collection','03 Usage & Processing','04 Security Protocols','05 Third-Party Access','06 Your Rights'].map(x=><p key={x} className="mt-3 text-sm text-[#c2c6d6]">{x}</p>)}</GlassCard><GlassCard className="p-5"><p className="font-bold">Need Help?</p><p className="mt-2 text-sm text-[#c2c6d6]">Have questions about your data?</p><a href="/contact" className="mt-4 inline-flex text-sm font-bold text-[#adc6ff]">Contact Support ?</a></GlassCard></aside><article className="space-y-6"><Legal title="01 Introduction">VislyBluq Enterprise Technology Consulting operates this website and various enterprise consulting platforms. We value the privacy of our clients and partners above all else. This Privacy Policy describes our practices regarding collection, use, and disclosure of information you provide when you visit our website, use our software, or engage our consulting services.</Legal><GlassCard className="p-7"><h2 className="text-2xl font-bold">02 Data Collection</h2><div className="mt-5 grid gap-4 md:grid-cols-2"><Mini icon={<Person />} title="Personal Information" text="Names, email addresses, job titles, and company affiliations submitted through contact forms or service registrations."/><Mini icon={<Analytics />} title="Usage Telemetry" text="IP addresses, browser types, interaction heatmaps, and session durations to improve platform performance."/></div><p className="mt-5 text-sm text-[#c2c6d6]">We do not collect sensitive biological, political, or religious data unless explicitly required for specific government-vetted projects and with separate, verified consent.</p></GlassCard><GlassCard className="p-7"><h2 className="text-2xl font-bold">03 Usage & Processing</h2>{['Service Delivery: enterprise consulting insights, project dashboards, and customized roadmaps.','Advanced Personalization: AI-curated insights and case studies relevant to your industry.','Security Auditing: monitoring fraudulent activity or unauthorized access attempts.'].map(x=><p key={x} className="mt-4 flex gap-3 text-sm text-[#c2c6d6]"><CheckCircle />{x}</p>)}</GlassCard><GlassCard className="p-7"><h2 className="text-2xl font-bold">04 Security Protocols</h2><div className="mt-5 grid gap-4 md:grid-cols-3">{['Encryption: AES-256 at rest and TLS 1.3 in transit.','Access Control: MFA and RBAC enforced across all layers.','Compliance: SOC2 Type II and GDPR compliant infrastructure.'].map(x=><Mini key={x} icon={<Security />} title={x.split(':')[0]} text={x.split(':')[1]}/>)}</div></GlassCard><Legal title="05 Third-Party Access">VislyBluq does not sell, rent, or trade your data. We may share information with trusted partners only for cloud infrastructure providers, privacy-focused analytics, or legal obligations and compliance enforcement.</Legal><GlassCard className="p-7"><h2 className="text-2xl font-bold">06 Your Rights</h2><div className="mt-5 grid gap-4 md:grid-cols-2">{[[Visibility,'Right to Access','Request a copy of the personal data we hold about you.'],[EditNote,'Right to Rectify','Correct inaccurate or incomplete data.'],[Delete,'Right to Erasure','Request deletion of your data from our systems.'],[Download,'Data Portability','Receive your data in a structured, machine-readable format.']].map(([Icon,title,text])=><Mini key={title as string} icon={<Icon />} title={title as string} text={text as string}/>)}</div></GlassCard></article></div></Section>
+  </div>
+);
+const Legal=({title,children}:{title:string;children:string})=><GlassCard className="p-7"><h2 className="text-2xl font-bold">{title}</h2><p className="mt-4 text-sm leading-7 text-[#c2c6d6]">{children}</p></GlassCard>;
+const Mini=({icon,title,text}:{icon: ReactNode;title:string;text:string})=><div className="rounded-2xl bg-white/5 p-4"><div className="mb-3 text-[#adc6ff]">{icon}</div><h3 className="font-bold">{title}</h3><p className="mt-2 text-sm text-[#c2c6d6]">{text}</p></div>;
 export default Privacy;
+
+

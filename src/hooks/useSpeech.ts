@@ -1,9 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
 
-type SpeechRecognitionType = typeof window extends { webkitSpeechRecognition: infer T }
-  ? T
-  : never;
-
 interface SpeechRecognitionInstance {
   lang: string;
   continuous: boolean;
@@ -113,3 +109,4 @@ export function useSpeech() {
     stopListening,
   };
 }
+

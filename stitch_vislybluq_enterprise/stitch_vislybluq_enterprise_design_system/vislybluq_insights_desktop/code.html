@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Insights | VislyBluq Enterprise Technology Consulting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(7, 20, 35, 0.7);
+        }
+        body {
+            background-color: #071423;
+            color: #d7e3f9;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 0 40px rgba(46, 126, 247, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(173, 198, 255, 0.3);
+            box-shadow: 0 0 40px rgba(46, 126, 247, 0.15);
+            transform: translateY(-4px);
+        }
+        .luminous-text {
+            text-shadow: 0 0 20px rgba(173, 198, 255, 0.3);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2a3546;
+            border-radius: 10px;
+        }
+        .mesh-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(0, 90, 194, 0.15) 0%, transparent 50%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#2a3546",
+                      "on-tertiary-fixed-variant": "#37466d",
+                      "on-primary-container": "#00285d",
+                      "secondary": "#77d8ff",
+                      "outline-variant": "#414754",
+                      "inverse-surface": "#d7e3f9",
+                      "on-primary-fixed-variant": "#004494",
+                      "inverse-on-surface": "#253142",
+                      "surface-tint": "#adc6ff",
+                      "primary-fixed-dim": "#adc6ff",
+                      "primary-fixed": "#d8e2ff",
+                      "on-tertiary-container": "#18284e",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#8c90a0",
+                      "on-secondary-fixed-variant": "#004d63",
+                      "on-primary-fixed": "#001a41",
+                      "primary-container": "#4d8eff",
+                      "error-container": "#93000a",
+                      "surface": "#071423",
+                      "on-tertiary": "#202f55",
+                      "on-error": "#690005",
+                      "surface-container-high": "#1f2b3b",
+                      "tertiary-fixed": "#dae2ff",
+                      "secondary-container": "#04bff0",
+                      "primary": "#adc6ff",
+                      "on-primary": "#002e69",
+                      "tertiary": "#b7c5f5",
+                      "on-secondary-container": "#004a5e",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#60d4ff",
+                      "inverse-primary": "#005ac2",
+                      "on-secondary-fixed": "#001f29",
+                      "on-surface-variant": "#c2c6d6",
+                      "surface-bright": "#2e3a4b",
+                      "surface-variant": "#2a3546",
+                      "on-secondary": "#003545",
+                      "on-surface": "#d7e3f9",
+                      "surface-container-low": "#101c2c",
+                      "tertiary-container": "#8190bc",
+                      "secondary-fixed": "#bbe9ff",
+                      "surface-dim": "#071423",
+                      "background": "#071423",
+                      "surface-container-lowest": "#030f1e",
+                      "on-tertiary-fixed": "#08193f",
+                      "on-background": "#d7e3f9",
+                      "tertiary-fixed-dim": "#b7c5f5",
+                      "surface-container": "#142030"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-lg": "80px",
+                      "margin-mobile": "24px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "stack-md": "48px",
+                      "stack-xl": "120px",
+                      "gutter": "32px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Geist"],
+                      "display-xl": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-xl-mobile": ["Inter"],
+                      "display-2xl": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                      "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-2xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="bg-surface/70 dark:bg-surface/60 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-white/10 backdrop-blur-2xl shadow-[0_0_40px_rgba(46,126,247,0.1)]">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-display-xl text-display-xl font-bold text-primary tracking-tighter">VislyBluq</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Services</a>
+<a class="text-primary dark:text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Insights</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Projects</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Team</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group hidden lg:block">
+<input class="bg-surface-container-low border border-outline-variant/30 rounded-full px-6 py-2 text-label-sm font-label-sm focus:outline-none focus:border-primary w-64 transition-all group-hover:w-80" placeholder="Search insights..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-2 text-on-surface-variant">search</span>
+</div>
+<button class="bg-primary text-on-primary font-bold px-6 py-2.5 rounded-full hover:bg-primary/90 transition-all duration-300 scale-95 active:scale-90 font-label-sm text-label-sm">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="relative">
+<!-- Atmospheric Background Element -->
+<div class="absolute top-0 left-0 w-full h-[1000px] pointer-events-none overflow-hidden">
+
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background to-background"></div>
+</div>
+<!-- Section 1: Hero -->
+<section class="relative px-margin-desktop pt-stack-xl pb-stack-lg max-w-container-max mx-auto overflow-hidden">
+<div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+<div class="flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary mb-8">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Industry Intelligence</span>
+</div>
+<h1 class="font-display-2xl text-display-2xl text-on-background mb-8 tracking-tighter leading-none">Intelligence <span class="text-primary italic">Redefined.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Navigating the frontiers of artificial intelligence and enterprise transformation. Our research provides the technical clarity required for decisive leadership in an era of exponential change.
+                </p>
+<div class="mt-12 flex items-center gap-6">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-background bg-surface-container" data-alt="A professional studio portrait of a senior AI researcher with a minimalist background, featuring neutral lighting and high-end photographic quality consistent with a premium enterprise technology brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBOL3ogKcBxbEeuiucbYG92QYgss64u2erJeI4IpOPXuMVBHjRdSKTiSrZxAgWj6R70vCOYi7ygCkFTJf3mN1Wi04ynTxXsEZvoxUIqPJVP9rTzqWCcQcl2XjQo1BUHEXlFmAxZGWNPtiSWjyIXtu0scc8Z9kUFHMARfSY1Oj-FIzRPV_vwJX8WM_p1YSKerxJa9Y2HrzCVO_bWjXnY-FfaR2CAkd5Ds3oIHmCSVB20batnuF9HoC3iQ2N5sc-EIjlzwJPpYzMia98')"></div>
+<div class="w-10 h-10 rounded-full border-2 border-background bg-surface-container" data-alt="A professional studio portrait of a female data scientist looking thoughtfully at the camera, styled with soft corporate lighting and a deep blue color palette representing VislyBluq's brand identity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7j6kAB8UD_6tvAlU6eLxZE27cWKOn5ncLeFGJSf9KD03UAAKzyHZKRdZuWH6rWf7nbPJxklGVLWQO2GuMlmQeGsxsMPlDjOxmzjdrXDe-dgQkQzBAiDLjssilOiUBOgEfqg6mFMOBLp4kY8h4EybLeNjVvcpEPbDqXYuBrodeleaTeMbfMWerva6OM_dU4VwxpQxlJ8D7vwP255Si7EdUMFmK_3PExQfpzj4egXHMcQCJFoq28sB5qaYTfMEzmTG8RQs34SFa3y0')"></div>
+<div class="w-10 h-10 rounded-full border-2 border-background bg-surface-container" data-alt="A professional studio portrait of an enterprise technology consultant with a slight smile, positioned in a high-tech minimalist environment that conveys intellectual authority." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA5ePs72hkcvGjJ4EzEpe2e_aOjAb52W9eebYQvLHxmsiYN1a_p5pGUKi8YJIn6KxftyMgNIzbMHhnxfOnzOn3QZLCeg-9GYlBhnmxeTewMm7AWn1RmCTbXYc2qG2jQgaAJxKmvM4NzuFdaOU-n3e06_9p5HWBMVBoljJebQV_x0uNQWEKNgg5QHNZPYqTgR3w9NspbihPj_MBVYncNndq_x7O9Wsytj5tPH0buc2VwdaDk6r92S_JocHHm3wjfMAcZAQKzXOtmtdk')"></div>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Trusted by <span class="text-on-surface font-bold">500+ Global Enterprises</span></p>
+</div>
+</div>
+</section>
+<!-- Section 2: Featured Research Paper -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col md:flex-row min-h-[500px]">
+<div class="md:w-1/2 relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay group-hover:bg-primary/10 transition-all duration-700"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-110" data-alt="An abstract, high-resolution digital rendering of neural network structures glowing with soft cyan and blue light against a deep navy background. The image represents the complexity of AI research with a clean, clinical aesthetic suitable for an enterprise whitepaper cover." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCukRGyBBLmjvNZhZ3IYBH90a5yCnqHZHCGgh9VfJno0vJqiEjNGXUA6ovwY4guiwOqPpxaXUgy3qoEvpCmXRtRGh3Rrtz06jeLDnVFXThy8CmNKhZ1PjeJKigD5coLktE3l9UBdtgygDrmqSTC21t-Zy4VSThNCFGGsUn0On5kNYajlX94oVShlN_4EhdcWflWS8IfehReOPYtb-cB_opmYRAWWg0RkeHNAgDsz0m8eXYdvCB-flCj1hbt9x0laDhQEcsEf31tFNI')"></div>
+<div class="absolute bottom-8 left-8">
+<div class="bg-surface/80 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10">
+<span class="text-primary font-label-sm text-label-sm">PUBLISHED JUNE 2024</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 p-12 flex flex-col justify-center">
+<span class="text-secondary font-label-sm text-label-sm mb-4">WHITE PAPER • 45 MIN READ</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6 leading-tight">The Generative Singularity: Architecting Autonomous Enterprise Systems</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                        Our latest comprehensive study on the integration of Large Language Models within legacy infrastructure. Discover how the top 1% of Fortune 500 companies are achieving 40% efficiency gains through hierarchical agent architectures.
+                    </p>
+<div class="flex flex-wrap gap-4 mb-10">
+<span class="px-3 py-1 bg-surface-container-highest rounded-full text-label-sm font-label-sm text-on-surface-variant">Autonomous Agents</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-full text-label-sm font-label-sm text-on-surface-variant">LLM Infrastructure</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-full text-label-sm font-label-sm text-on-surface-variant">Scalability</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-primary text-on-primary font-bold px-8 py-4 rounded-xl flex items-center gap-3 hover:shadow-[0_0_20px_rgba(46,126,247,0.4)] transition-all">
+                            Read Full Paper
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="text-on-surface font-bold flex items-center gap-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+                            Download PDF
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Trend Chart Visualizations -->
+<section class="px-margin-desktop py-stack-lg bg-surface-container-lowest/50">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Strategic Trajectories</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time market sentiment and adoption velocity tracked across our proprietary intelligence network.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-3 rounded-full border border-outline-variant/30 hover:border-primary transition-colors">
+<span class="material-symbols-outlined">west</span>
+</button>
+<button class="p-3 rounded-full border border-outline-variant/30 hover:border-primary transition-colors">
+<span class="material-symbols-outlined">east</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Chart Card 1 -->
+<div class="glass-card p-8 rounded-2xl flex flex-col h-[400px]">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-on-surface font-bold text-lg mb-1">Adoption Velocity</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Global Enterprise Sector</p>
+</div>
+<span class="text-secondary font-bold text-xl">+12.4%</span>
+</div>
+<div class="flex-grow flex items-end justify-between gap-2 relative">
+<!-- Abstract Stylized Chart -->
+<div class="w-full h-48 relative overflow-hidden rounded-lg">
+
+</div>
+</div>
+<div class="mt-8 flex justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span>Q1 2023</span>
+<span>Forecast Q4 2024</span>
+</div>
+</div>
+<!-- Chart Card 2 -->
+<div class="glass-card p-8 rounded-2xl flex flex-col h-[400px]">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-on-surface font-bold text-lg mb-1">Investment Density</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Cloud Infrastructure</p>
+</div>
+<span class="material-symbols-outlined text-primary">monitoring</span>
+</div>
+<div class="flex-grow flex items-center justify-center">
+<div class="relative w-48 h-48">
+<svg class="transform -rotate-90 w-full h-full" viewbox="0 0 100 100">
+<circle class="text-surface-container-highest" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary transition-all duration-1000 ease-out" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="70" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center transform rotate-90">
+<span class="text-3xl font-bold text-on-surface">75%</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Efficiency</span>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center text-label-sm font-label-sm text-on-surface-variant">
+                            Infrastructure optimization vs. traditional spend
+                        </div>
+</div>
+<!-- Chart Card 3 -->
+<div class="glass-card p-8 rounded-2xl flex flex-col h-[400px]">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-on-surface font-bold text-lg mb-1">Risk Assessment</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Security Convergence</p>
+</div>
+<span class="material-symbols-outlined text-error">shield</span>
+</div>
+<div class="flex-grow overflow-hidden flex items-center justify-center">
+
+</div>
+<div class="mt-8 text-center text-label-sm font-label-sm text-on-surface-variant">
+                            Neural threat detection success rates
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Grid of Industry Reports -->
+<section class="px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Deep-Dive Reports</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Vertical-specific analysis for the modern executive.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-5 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-label-sm font-label-sm hover:border-primary transition-all">All Sectors</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-label-sm font-label-sm hover:border-primary transition-all">Financial Tech</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-label-sm font-label-sm hover:border-primary transition-all">Health Systems</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Report Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A professional business report cover design for banking and financial technology, featuring a dark blue color scheme with subtle grid patterns and abstract data visualizations. The aesthetic is clean, sharp, and highly intellectual." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTsRFP3OMqTPIgCpJvwqADnugtYJucyXrsytw7WZWFyDrKAwh8oVrEfBes7WcVhnL1eNiLG6yIKsnoxHjIf151MGFcg1ByM5PnEd_iyKEF7vARWxbmt9_l91IhJU4aEwRufVleVPrZC_XIi64s9YMbSf7V26PDYIFCjhDTkI44unmUnUifhncd9tZpI4mgmhIEVcqUXFzAyvvjVDgwC7wibL4nEtZ7U04hJLpvsO2beoGtmyZyzXQpyNlw0blYAS9xsJ5j-6bFFwM')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute top-4 right-4 p-2 rounded-full bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">download</span>
+</div>
+</div>
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-2 block">FinTech</span>
+<h4 class="text-on-surface font-bold text-xl mb-3 leading-snug group-hover:text-primary transition-colors">The Future of Decentralized Banking Hubs</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-3">Evaluating the shift from legacy processing to distributed ledger architectures in European markets.</p>
+</div>
+<!-- Report Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A high-end research report cover focused on healthcare technology and medical AI. The image features a minimalist medical diagram with flowing organic shapes in shades of blue and white against a dark background, evoking precision and safety." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJ4okG0UtLZVPfFv_eOLbvsz5OlYI5bbmsBq-84oa2hWbryfndaf591s7rN8JhfzZDuNeUTiFy3ydunEkRsMXIRdKzucOvdCk5E8gb4E7jLihU-wAUbB19tC-elE5UYKUjIeDmHSGAcpHy2-BXgpsLbiG-gMivEu7MN8BpyYTBzgcJtUQH6pAmQHcHeZADRai2NGHSsDJLWp-hqzwdiSuoq1lywVaejkCVcZIUIpJk1QOjhPknlIOgMS6bqp-QPNJP-3F3WHLS1DI')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute top-4 right-4 p-2 rounded-full bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">download</span>
+</div>
+</div>
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-2 block">Healthcare</span>
+<h4 class="text-on-surface font-bold text-xl mb-3 leading-snug group-hover:text-primary transition-colors">Precision Medicine &amp; Neural Diagnostics</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-3">A 2024 outlook on AI-integrated pathology and the regulatory landscape for clinical algorithms.</p>
+</div>
+<!-- Report Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="An industrial and manufacturing industry report cover showing a close-up of high-precision robotic parts in a dark, atmospheric setting. The metallic textures and cyan highlights create a sense of technical sophistication and advanced engineering." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLAl5cHs_pmDMUABoItcTnPtqAIx8gzQChdg9kdPaenGAJbxEOY8h-HVUYLq08SlZTMI3Xm2AByJGZjLwfyUV9EtXOCa8btRvULNF24oBIYnzpb1JurNOoxiG7eqFBHHSNm2aIZ43YCFUws8jkyxHt7Igk_OhrMNWIcV_V-it5c-XXufylp5Co3BNHZqk0dxLvt88TXo_Q6gxeTK3bWt8Icv08-8jsZkMt3SKH-Fz88yveD_fByuuu9LxxB5S3PS4Q-xpK-zFAdsU')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute top-4 right-4 p-2 rounded-full bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">download</span>
+</div>
+</div>
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-2 block">Logistics</span>
+<h4 class="text-on-surface font-bold text-xl mb-3 leading-snug group-hover:text-primary transition-colors">Autonomous Supply Chain Orchestration</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-3">How predictive analytics are eliminating latency in global shipping corridors during geopolitical shifts.</p>
+</div>
+<!-- Report Card 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A clean, minimalist executive report cover focused on energy and sustainability. The visual style uses a deep blue background with glowing light-trace lines representing renewable energy grids and connectivity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQ-iLRSX2VSK34SRvRAyal6W4JWpmr9ZtEcwwujcqUjnspY0DqYo11RvwXJt9J9g8H0Q99o43ohTcVEQM23USzrqkxnrRZ6szTNij283yVT5yeeQ_BJ8qc-oTnnqnNRgF4iul101h5bgYPHbkBH0A0yi6ToU840bN2ucDxkK7RIDtP0H7Sjo9db_LF_PNy7QamNejI16OqnZDvLGSJlqREmEUC89akNNIgORHCWOPtV3vlVhk0aq-qlUN-BMf3CAJFSo_Hw1XaZcM')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute top-4 right-4 p-2 rounded-full bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">download</span>
+</div>
+</div>
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-2 block">Energy</span>
+<h4 class="text-on-surface font-bold text-xl mb-3 leading-snug group-hover:text-primary transition-colors">Smart Grids &amp; Edge Computing Integration</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-3">The intersection of AI at the edge and sustainable power distribution for smart metropolitan areas.</p>
+</div>
+</div>
+<div class="mt-16 flex justify-center">
+<button class="px-12 py-4 border border-primary/30 rounded-xl font-bold text-primary hover:bg-primary/5 transition-all">View All 120+ Reports</button>
+</div>
+</section>
+<!-- Section 5: Newsletter/CTA -->
+<section class="px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="relative rounded-3xl overflow-hidden bg-primary p-12 md:p-24 flex flex-col items-center text-center">
+<div class="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
+
+</div>
+<h2 class="font-display-xl text-display-xl-mobile md:text-display-xl text-on-primary mb-6 relative z-10">Stay at the frontier.</h2>
+<p class="font-body-lg text-body-lg text-on-primary/80 max-w-2xl mb-12 relative z-10">Get bi-weekly technical summaries and executive briefings delivered directly to your inbox.</p>
+<div class="w-full max-w-md relative z-10">
+<form class="flex flex-col md:flex-row gap-4">
+<input class="flex-grow px-6 py-4 rounded-xl bg-on-primary/10 border border-on-primary/20 text-on-primary placeholder:text-on-primary/50 focus:outline-none focus:ring-2 focus:ring-on-primary/30" placeholder="executive@company.com" type="email"/>
+<button class="bg-on-primary text-primary font-bold px-8 py-4 rounded-xl hover:bg-on-primary/90 transition-all shadow-xl">Subscribe</button>
+</form>
+<p class="mt-4 text-label-sm font-label-sm text-on-primary/60">No spam. Only deep technical insights. Opt-out anytime.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full rounded-t-xl border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-xl max-w-container-max mx-auto text-on-surface dark:text-on-surface">
+<div class="col-span-1 md:col-span-1">
+<div class="font-display-xl-mobile text-display-xl-mobile font-black text-primary mb-6">VislyBluq</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Empowering enterprises through technical sophistication and innovative intelligence.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-primary/10 transition-colors" href="#"><span class="material-symbols-outlined text-on-surface-variant">terminal</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-primary/10 transition-colors" href="#"><span class="material-symbols-outlined text-on-surface-variant">public</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-primary/10 transition-colors" href="#"><span class="material-symbols-outlined text-on-surface-variant">share</span></a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-bold text-on-surface mb-2">Company</h5>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Insights</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Case Studies</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-bold text-on-surface mb-2">Support</h5>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Contact</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Documentation</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-bold text-on-surface mb-2">Contact</h5>
+<p class="text-on-surface-variant font-label-sm text-label-sm">1101 Innovation Way<br/>San Francisco, CA 94103</p>
+<p class="text-on-surface-variant font-label-sm text-label-sm">hello@vislybluq.ai</p>
+<p class="text-on-surface-variant font-label-sm text-label-sm">+1 (888) VISLY-AI</p>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop py-8 border-t border-outline-variant/10 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 VislyBluq Enterprise Technology Consulting. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions and atmospheric scroll effects
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+
+        // Parallax effect for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xPercent = (x / rect.width - 0.5) * 10;
+                const yPercent = (y / rect.height - 0.5) * 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${-yPercent}deg) rotateY(${xPercent}deg) translateY(-4px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+    </script>
+</body></html>

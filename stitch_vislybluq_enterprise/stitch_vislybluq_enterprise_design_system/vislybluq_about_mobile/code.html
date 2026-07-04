@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About | VislyBluq Enterprise Technology Consulting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#18284e",
+                    "on-tertiary-fixed": "#08193f",
+                    "inverse-surface": "#d7e3f9",
+                    "background": "#050914",
+                    "secondary-container": "#04bff0",
+                    "on-secondary": "#003545",
+                    "inverse-primary": "#005ac2",
+                    "surface-container": "#142030",
+                    "secondary-fixed-dim": "#60d4ff",
+                    "tertiary-container": "#8190bc",
+                    "surface-container-highest": "#2a3546",
+                    "surface-container-low": "#101c2c",
+                    "on-surface-variant": "#c2c6d6",
+                    "on-error": "#690005",
+                    "secondary-fixed": "#bbe9ff",
+                    "on-secondary-container": "#004a5e",
+                    "on-secondary-fixed-variant": "#004d63",
+                    "outline": "#8c90a0",
+                    "secondary": "#77d8ff",
+                    "surface-dim": "#071423",
+                    "surface-tint": "#adc6ff",
+                    "outline-variant": "#414754",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed": "#dae2ff",
+                    "surface": "#071423",
+                    "primary": "#adc6ff",
+                    "on-surface": "#d7e3f9",
+                    "on-primary-fixed": "#001a41",
+                    "surface-container-high": "#1f2b3b",
+                    "on-tertiary-fixed-variant": "#37466d",
+                    "on-background": "#d7e3f9",
+                    "on-primary-container": "#00285d",
+                    "surface-container-lowest": "#030f1e",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-tertiary": "#202f55",
+                    "error-container": "#93000a",
+                    "on-primary-fixed-variant": "#004494",
+                    "inverse-on-surface": "#253142",
+                    "primary-container": "#4d8eff",
+                    "on-secondary-fixed": "#001f29",
+                    "on-primary": "#002e69",
+                    "tertiary-fixed-dim": "#b7c5f5",
+                    "surface-bright": "#2e3a4b",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#b7c5f5",
+                    "surface-variant": "#2a3546",
+                    "primary-fixed": "#d8e2ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-xl": "120px",
+                    "stack-lg": "80px",
+                    "margin-mobile": "24px",
+                    "margin-desktop": "64px",
+                    "container-max": "1280px",
+                    "gutter": "32px",
+                    "stack-md": "48px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "body-md": ["Inter"],
+                    "display-xl": ["Inter"],
+                    "display-xl-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-2xl": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-2xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #050914;
+            color: #d7e3f9;
+        }
+        .glass-card {
+            background: rgba(20, 32, 48, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(173, 198, 255, 0.3);
+        }
+        .accent-glow {
+            box-shadow: 0 0 40px rgba(46, 126, 247, 0.15);
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, #adc6ff 0%, #2E7EF7 50%, rgba(46, 126, 247, 0) 100%);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface/70 backdrop-blur-xl border-b border-white/10 shadow-[0_0_40px_rgba(46,126,247,0.1)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-container-max mx-auto md:px-margin-desktop">
+<div class="font-display-xl-mobile text-display-xl-mobile font-bold text-primary tracking-tighter md:font-display-xl md:text-display-xl">
+                VislyBluq
+            </div>
+<!-- Mobile Menu Trigger -->
+<button aria-label="Menu" class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined text-[32px]">menu</span>
+</button>
+<!-- Desktop Nav (Hidden on Mobile per Instructions) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Insights</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Projects</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Team</a>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-sm text-label-sm hover:bg-primary/10 hover:shadow-lg transition-all duration-300 active:scale-90">
+                    Get Started
+                </button>
+</nav>
+</div>
+</header>
+<main class="relative">
+<!-- Hero Section -->
+<section class="relative min-h-[618px] flex flex-col justify-center items-start px-6 pt-stack-md pb-stack-lg overflow-hidden">
+<!-- Atmospheric Background -->
+<div class="absolute inset-0 z-0">
+
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#050914]/80 to-[#050914]"></div>
+</div>
+<div class="relative z-10 max-w-xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-6">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">About Us</span>
+</div>
+<h1 class="font-display-xl-mobile text-display-xl-mobile font-extrabold text-on-surface mb-6 leading-[1.1] tracking-tight">
+                    Architecting the <span class="text-primary text-glow">Future</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                    We bridge the gap between radical technological ambition and enterprise-grade execution. Founded at the intersection of intelligence and design.
+                </p>
+</div>
+</section>
+<!-- Mission & Vision Section (Stacked for Mobile) -->
+<section class="px-6 py-stack-lg relative z-10 space-y-gutter">
+<div class="glass-card p-8 rounded-xl accent-glow flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-[40px]" data-weight="fill">rocket_launch</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Our Mission</h2>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+                    To empower global enterprises through precision engineering and avant-garde digital strategy, ensuring every system is a catalyst for monumental growth.
+                </p>
+</div>
+<div class="glass-card p-8 rounded-xl accent-glow flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-[40px]" data-weight="fill">visibility</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Our Vision</h2>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+                    Becoming the silent engine behind the world's most sophisticated technical infrastructures, where complexity is distilled into elegant, high-performance clarity.
+                </p>
+</div>
+</section>
+<!-- Timeline Section -->
+<section class="px-6 py-stack-lg bg-surface-container-lowest/50">
+<div class="mb-12">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">A Decade of Disruption</h2>
+<div class="h-1 w-12 bg-primary rounded-full"></div>
+</div>
+<div class="relative pl-8 border-l border-white/5 space-y-12">
+<!-- Timeline Items -->
+<div class="relative">
+<div class="absolute -left-[37px] top-0 w-4 h-4 rounded-full bg-[#050914] border-2 border-primary shadow-[0_0_10px_rgba(173,198,255,0.8)]"></div>
+<span class="font-label-sm text-label-sm text-primary mb-2 block font-bold">2014 • THE GENESIS</span>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold mb-2">VislyBluq Founded</h3>
+<p class="font-body-md text-body-md text-on-surface-variant/70">Launched in Silicon Valley as a niche consultancy for high-frequency trading architectures.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[37px] top-0 w-4 h-4 rounded-full bg-[#050914] border-2 border-primary"></div>
+<span class="font-label-sm text-label-sm text-primary mb-2 block font-bold">2018 • THE PIVOT</span>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold mb-2">Enterprise Expansion</h3>
+<p class="font-body-md text-body-md text-on-surface-variant/70">Broadened operations to include AI integration and global cloud migration for Fortune 500s.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[37px] top-0 w-4 h-4 rounded-full bg-[#050914] border-2 border-primary"></div>
+<span class="font-label-sm text-label-sm text-primary mb-2 block font-bold">2024 • THE HORIZON</span>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold mb-2">Intelligence First</h3>
+<p class="font-body-md text-body-md text-on-surface-variant/70">Rebranding to focus on the fusion of generative intelligence and human-centric design systems.</p>
+</div>
+</div>
+</section>
+<!-- Culture of Clarity Section -->
+<section class="px-6 py-stack-lg overflow-hidden">
+<div class="text-center mb-12">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">The Culture of Clarity</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mx-auto">Our team is a collective of polymaths, engineers, and visionaries obsessed with refinement.</p>
+</div>
+<!-- Asymmetric Bento Grid for Mobile -->
+<div class="grid grid-cols-2 gap-4 h-[600px]">
+<div class="col-span-2 relative rounded-xl overflow-hidden glass-card group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A candid, high-resolution cinematic shot of a diverse team of tech professionals collaborating in a high-tech, glass-walled boardroom. The lighting is moody and dramatic with cool blue and cyan accents, reflecting a sophisticated dark-mode aesthetic. The atmosphere is intense, focused, and professional, capturing a moment of breakthrough innovation." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6o0l42lGneLu6Azi9lVgCDUv-U_jnE9c4vi77xT2KEKuAIiJA0NWS0_DgsCq-DIAeAo2qwmg0c0yckJHwGHsE67oJFtEwfQWK-YICe5n404vjX5Mv8dV70UEwcSPyD_qP8ickmeEQW_yptn_0ViMlSoHmbhj-aQyh-K6zJ1AIvurtIluD5dunYHgGBtQNXesyLXLHhLeeHIR8lNw6JFFnMPaO8wvVfg0ePccGM4i3NOoEtPczgvSODN-BYdpouesD83Jt7axJzZo')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="font-label-sm text-label-sm text-primary uppercase">The Architects</p>
+<p class="font-body-md text-body-md text-on-surface font-bold">Strategy &amp; Design</p>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden glass-card group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A close-up artistic portrait of a focused software engineer working at night. The glow from multiple high-end monitors illuminates their face in vibrant primary blue and deep navy tones. The style is sharp, clean, and futuristic, emphasizing technical precision and the elite dark aesthetic of the brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIRJHiOZtvUhuLp_fpZ98yZPMcBCZPUheHAB9NyKZ6NHzJQ59INguXr0gkx7y3n2MuDCvzRu_MvY5RmhsLo4QCyprDmGzRx1p4L44IGD_yVBFEr0MGLms2JuuAF6IQzFSrHXrALySs8YO8-CloKHFzikniZUF5Lk58g1ist5KT0LUJkkEdYI8saKPquAY0KW3-mWbSCalZBNUPUi6mfOPgov9yOLQqdsvNpnWpSdFm3bgifBEip-KdWZCcIgQGOuF_hj3P5Up93K0')">
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden glass-card group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="An abstract high-tech laboratory setting with sleek metallic surfaces and glowing light strips in shades of cyan and electric blue. The shot captures a sense of ultra-modern research and development, reflecting a premium, high-performance engineering environment that feels both tactile and ethereal." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6Ep5bR1s2aCfF2CI7PLc7yg5z2cH60kZeT2m_4nFJYe9L1hGNbmJ_jNmtV2KSzQ0Q7kGI3ix8SMvSeIJd-6JBPNP26uYl3uvdSPTB1k112ulRl4ob1nt1DTxMJmEUSLDVN7rHoWCWb8srQ-WUnMUKn3NIJwcYqWk5tHf8D3FKdreH5SfALYVj11NF57yIbopClBwI5zQFCS8X--fnkNPoZgqdJfv2xSYmz8pKC7zZuT0yfCHZxQNgUJE0n_8qp41096T6vU1P3As')">
+</div>
+</div>
+</div>
+<div class="mt-stack-md text-center">
+<button class="w-full bg-surface-container-high border border-white/10 text-on-surface py-4 rounded-xl font-label-sm text-label-sm uppercase tracking-widest hover:bg-primary/5 transition-all">
+                    Explore Careers
+                </button>
+</div>
+</section>
+<!-- Final CTA / Bridge Section -->
+<section class="px-6 py-stack-xl relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] h-full bg-[radial-gradient(circle_at_center,rgba(46,126,247,0.08)_0%,transparent_70%)] pointer-events-none"></div>
+<div class="text-center">
+<h2 class="font-display-xl-mobile text-display-xl-mobile font-bold text-on-surface mb-8">Ready to evolve?</h2>
+<a class="inline-flex items-center gap-3 text-primary font-bold group" href="#">
+<span class="text-xl">Contact our Strategy Team</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container-lowest border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-6 py-stack-lg max-w-container-max mx-auto md:px-margin-desktop">
+<div class="col-span-1 md:col-span-1">
+<div class="font-display-xl-mobile text-display-xl-mobile font-black text-primary mb-6">VislyBluq</div>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-xs mb-8">
+                    Defining the standard for enterprise technology consulting in an age of intelligence.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:col-span-3">
+<div class="flex flex-col gap-4">
+<h4 class="text-on-surface font-bold uppercase tracking-widest text-[10px]">Ecosystem</h4>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Insights</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Case Studies</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-on-surface font-bold uppercase tracking-widest text-[10px]">Company</h4>
+<a class="text-primary underline transition-colors font-label-sm text-label-sm" href="#">Team</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Careers</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Privacy Policy</a>
+</div>
+</div>
+<div class="col-span-1 md:col-span-4 mt-stack-md pt-8 border-t border-white/5">
+<p class="text-on-surface-variant font-label-sm text-label-sm opacity-60">
+                    © 2024 VislyBluq Enterprise Technology Consulting. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll reveal observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'ease-out', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+
+        // Sticky Nav Blur on Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-2xl', 'bg-surface/90');
+            } else {
+                header.classList.remove('shadow-2xl', 'bg-surface/90');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=390, initial-scale=1.0" name="viewport"/>
+<title>VislyBluq | Premium Technology Consulting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#b7c5f5",
+                    "surface-container-highest": "#2a3546",
+                    "on-surface": "#d7e3f9",
+                    "surface-variant": "#2a3546",
+                    "secondary-fixed": "#bbe9ff",
+                    "on-primary-fixed": "#001a41",
+                    "primary-fixed": "#d8e2ff",
+                    "tertiary-container": "#8190bc",
+                    "primary": "#adc6ff",
+                    "inverse-primary": "#005ac2",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-secondary-fixed": "#001f29",
+                    "inverse-on-surface": "#253142",
+                    "secondary-container": "#04bff0",
+                    "on-secondary-container": "#004a5e",
+                    "tertiary-fixed-dim": "#b7c5f5",
+                    "on-primary": "#002e69",
+                    "on-background": "#d7e3f9",
+                    "secondary-fixed-dim": "#60d4ff",
+                    "on-primary-container": "#00285d",
+                    "surface-container-lowest": "#030f1e",
+                    "surface": "#071423",
+                    "on-secondary-fixed-variant": "#004d63",
+                    "background": "#071423",
+                    "on-tertiary-fixed-variant": "#37466d",
+                    "on-error": "#690005",
+                    "primary-container": "#4d8eff",
+                    "inverse-surface": "#d7e3f9",
+                    "surface-container-high": "#1f2b3b",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#2e3a4b",
+                    "surface-tint": "#adc6ff",
+                    "on-tertiary-container": "#18284e",
+                    "on-primary-fixed-variant": "#004494",
+                    "error-container": "#93000a",
+                    "on-surface-variant": "#c2c6d6",
+                    "secondary": "#77d8ff",
+                    "on-tertiary": "#202f55",
+                    "surface-container-low": "#101c2c",
+                    "outline-variant": "#414754",
+                    "tertiary-fixed": "#dae2ff",
+                    "surface-dim": "#071423",
+                    "outline": "#8c90a0",
+                    "on-secondary": "#003545",
+                    "surface-container": "#142030",
+                    "on-tertiary-fixed": "#08193f",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "80px",
+                    "margin-desktop": "64px",
+                    "stack-md": "48px",
+                    "stack-xl": "120px",
+                    "container-max": "1280px",
+                    "gutter": "32px",
+                    "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                    "display-xl": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "display-2xl": ["Inter"],
+                    "display-xl-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-2xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #071423;
+            color: #d7e3f9;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            width: 390px;
+            margin: 0 auto;
+        }
+        
+        .glass-card {
+            background: rgba(20, 36, 74, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .luminous-glow {
+            box-shadow: 0 0 40px rgba(46, 126, 247, 0.15);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="selection:bg-primary/30 selection:text-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 z-[100] bg-surface/70 backdrop-blur-xl border-b border-white/10 px-margin-mobile py-4 flex justify-between items-center w-[390px] mx-auto">
+<div class="font-display-xl-mobile text-display-xl-mobile font-bold text-primary tracking-tighter">
+            VislyBluq
+        </div>
+<button class="p-2 text-primary active:scale-90 transition-transform" id="menu-toggle">
+<span class="material-symbols-outlined text-[32px]">menu</span>
+</button>
+</nav>
+<!-- Mobile Menu Overlay (Hidden by default) -->
+<div class="fixed inset-0 z-[110] bg-background/95 backdrop-blur-2xl flex-col items-center justify-center gap-8 hidden transition-all duration-300" id="mobile-menu">
+<button class="absolute top-6 right-6 p-2 text-on-surface" id="menu-close">
+<span class="material-symbols-outlined text-[32px]">close</span>
+</button>
+<a class="font-display-xl-mobile text-display-xl-mobile text-primary font-bold" href="#">Services</a>
+<a class="font-display-xl-mobile text-display-xl-mobile text-on-surface-variant" href="#">Insights</a>
+<a class="font-display-xl-mobile text-display-xl-mobile text-on-surface-variant" href="#">Projects</a>
+<a class="font-display-xl-mobile text-display-xl-mobile text-on-surface-variant" href="#">Team</a>
+<button class="mt-8 px-10 py-4 bg-primary text-on-primary font-bold rounded-full text-body-lg shadow-[0_0_20px_rgba(173,198,255,0.4)]">
+            Get Started
+        </button>
+</div>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-margin-mobile py-stack-md overflow-hidden">
+<!-- Background Shader Animation -->
+<div class="absolute inset-0 -z-10 opacity-40">
+
+</div>
+<div class="space-y-6">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary">
+<span class="material-symbols-outlined text-[14px] mr-2" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Enterprise Future</span>
+</div>
+<h1 class="font-display-xl-mobile text-display-xl-mobile text-on-surface leading-[1.1] font-extrabold">
+                    Architecting <span class="text-primary">Intelligence</span> for Scale.
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    We bridge the gap between complex engineering and human-centric design, delivering high-performance tech stacks for global leaders.
+                </p>
+<div class="flex flex-col gap-4 pt-4">
+<button class="w-full py-4 bg-primary text-on-primary font-bold rounded-xl text-body-md flex items-center justify-center gap-2 luminous-glow active:scale-95 transition-transform">
+                        Launch Project
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-full py-4 glass-card text-on-surface font-bold rounded-xl text-body-md border border-outline-variant/30 active:scale-95 transition-transform">
+                        View Ecosystem
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats Section (Mobile Horizontal Scroll) -->
+<section class="px-margin-mobile py-stack-md">
+<div class="flex overflow-x-auto pb-4 gap-4 snap-x snap-mandatory no-scrollbar">
+<div class="flex-shrink-0 w-[240px] glass-card p-6 rounded-2xl snap-center border-l-2 border-primary">
+<div class="text-[32px] font-bold text-primary mb-1">240%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Efficiency Gain</div>
+</div>
+<div class="flex-shrink-0 w-[240px] glass-card p-6 rounded-2xl snap-center">
+<div class="text-[32px] font-bold text-secondary mb-1">$1.2B</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Assets Optimized</div>
+</div>
+<div class="flex-shrink-0 w-[240px] glass-card p-6 rounded-2xl snap-center border-l-2 border-tertiary">
+<div class="text-[32px] font-bold text-tertiary mb-1">0.8ms</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Avg. Latency</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Services (Mobile Optimized Stack) -->
+<section class="px-margin-mobile py-stack-md space-y-6">
+<div class="space-y-2">
+<h2 class="font-headline-lg text-headline-lg-mobile text-on-surface">Core Disciplines</h2>
+<div class="w-12 h-1 bg-primary rounded-full"></div>
+</div>
+<!-- Bento Card 1: Cloud Architecture -->
+<div class="glass-card rounded-3xl overflow-hidden relative group">
+<div class="h-48 w-full bg-cover bg-center" data-alt="A sophisticated dark tech-focused visual representing cloud architecture with glowing blue interconnecting nodes and ethereal data streams. The aesthetic is high-end enterprise with deep blues and crisp cyan accents, evoking a sense of massive scale and absolute reliability. Minimalist glass textures and soft atmospheric lighting define the premium mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2fYiBfmyp3LJfFypHqik6fk1Hxa7rn7JbNueMFzIltq4Hf2uw2MF0m8ulKI_UuS2rBe9tHw99aeU1ll_cDLtTUx5vdLaclwP_kowJyWsa23iFjqcY5N8VuRde0RjRh3mrrZOfjeOl66jZ1vo0KEB3TReSfhXbS2KChYByqo7ORw9-r1wJrrseYyr9yG8rf2RwIi-IZWTNr7qg_pE1UQaEngAHPt55f3tF8yzm__8v4276hS1if8wnHylHkZ4j8RWFvGIWuyPPGo4')"></div>
+<div class="p-6 space-y-3">
+<span class="material-symbols-outlined text-primary text-[32px]">cloud_done</span>
+<h3 class="font-headline-lg text-[24px] text-on-surface">Cloud Scale</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Infrastructure that breathes with your traffic, optimized for global redundancy.</p>
+</div>
+</div>
+<!-- Bento Card 2: AI Integration -->
+<div class="glass-card rounded-3xl p-6 border-t border-primary/20 bg-gradient-to-br from-surface-container-low to-surface">
+<div class="flex items-start justify-between mb-4">
+<span class="material-symbols-outlined text-secondary text-[40px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-label-sm font-bold">ALPHA</span>
+</div>
+<h3 class="font-headline-lg text-[24px] text-on-surface">Predictive Ops</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Proprietary ML models that anticipate bottlenecks before they impact the bottom line.</p>
+</div>
+<!-- Bento Card 3: Cyber Security -->
+<div class="glass-card rounded-3xl overflow-hidden relative">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+
+</div>
+<div class="p-6 relative">
+<h3 class="font-headline-lg text-[24px] text-on-surface mb-2">Zero Trust</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Military-grade encryption layers for sensitive enterprise data streams.</p>
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-primary/20 flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[18px]">verified_user</span></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-primary/20 flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[18px]">fingerprint</span></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-primary/20 flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[18px]">key</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Premium Showcase Card -->
+<section class="px-margin-mobile py-stack-md">
+<div class="relative rounded-[2rem] bg-on-primary-container p-8 overflow-hidden group">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-secondary/20 rounded-full blur-[80px]"></div>
+<div class="relative z-10 space-y-6">
+<h2 class="font-display-xl-mobile text-[32px] text-white font-bold leading-tight">Ready to evolve your stack?</h2>
+<p class="text-white/70 font-body-md">Schedule a consultation with our Principal Architects to review your roadmap.</p>
+<button class="bg-white text-on-primary-container px-8 py-4 rounded-xl font-bold font-body-md shadow-xl active:scale-95 transition-transform">
+                        Book Strategy Call
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="mt-stack-md bg-surface-container-lowest border-t border-outline-variant/20 rounded-t-[2rem] w-[390px] mx-auto">
+<div class="px-margin-mobile py-12 space-y-10">
+<div class="space-y-4">
+<div class="font-display-xl-mobile text-display-xl-mobile font-black text-primary">VislyBluq</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Leading the next generation of technical innovation and digital excellence.</p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<h4 class="font-label-sm text-label-sm text-on-surface uppercase tracking-widest font-bold">Company</h4>
+<nav class="flex flex-col gap-3">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Insights</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-sm text-label-sm text-on-surface uppercase tracking-widest font-bold">Legal</h4>
+<nav class="flex flex-col gap-3">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</nav>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col gap-6">
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">alternate_email</span>
+</a>
+</div>
+<div class="font-label-sm text-[10px] text-on-surface-variant leading-relaxed opacity-60">
+                    © 2024 VislyBluq Enterprise Technology Consulting. All rights reserved.
+                </div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList</script></body></html>

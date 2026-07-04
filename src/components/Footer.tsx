@@ -1,43 +1,45 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AppWindow, Linkedin, Twitter, Github, ArrowRight, CheckCircle } from 'lucide-react';
+import { AppWindow, ArrowRight, CheckCircle, Github, Linkedin, Twitter } from 'lucide-react';
 import { services } from '../data/services';
+import { useRecaptcha } from '../hooks/useRecaptcha';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [newsEmail, setNewsEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [isSubscribing, setIsSubscribing] = useState(false);
+  const { getRecaptchaToken } = useRecaptcha();
 
-  const handleSubscribe = async (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!newsEmail) return;
-    
-    // Check honeypot field
-    const formElement = e.target as HTMLFormElement;
-    const honeypot = formElement.elements.namedItem('website') as HTMLInputElement;
-    if (honeypot && honeypot.value) {
-      // Likely a bot, silently fail
-      return;
-    }
+
+    const formElement = e.currentTarget;
+    const honeypot = formElement.elements.namedItem('website') as HTMLInputElement | null;
+    if (honeypot?.value) return;
 
     setIsSubscribing(true);
     try {
-      const response = await fetch('https://formsubmit.co/ajax/info@vislybluq.com', {
+      const recaptchaToken = await getRecaptchaToken('newsletter_subscription');
+      const response = await fetch('/api/submit-form', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: newsEmail,
-          _subject: 'New VislyBluq Newsletter Subscription',
-          message: `New newsletter subscription from: ${newsEmail}`,
-          source: 'Footer',
+          formType: 'newsletter',
+          recaptchaToken,
+          data: {
+            email: newsEmail,
+            source: 'Footer',
+            _subject: 'New VislyBluq Newsletter Subscription',
+          },
         }),
       });
-      if (response.ok) {
-        setSubscribed(true);
-        setNewsEmail('');
-        setTimeout(() => setSubscribed(false), 5000);
-      }
+
+      if (!response.ok) throw new Error('Newsletter subscription failed');
+      setSubscribed(true);
+      setNewsEmail('');
+      setTimeout(() => setSubscribed(false), 5000);
     } catch (error) {
       console.error('Newsletter error:', error);
     } finally {
@@ -46,76 +48,73 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-visly-dark text-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-        <div className="mb-12">
-          <div className="bg-gradient-to-r from-visly-navy to-visly-blue rounded-2xl p-6 lg:p-8">
-            <div className="grid lg:grid-cols-2 gap-6 items-center">
-              <div>
-                <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">
-                  Subscribe to our newsletter
-                </h3>
-                <p className="text-white/80 text-sm">
-                  Insights on technology, strategy, and sustainable growth.
-                </p>
-              </div>
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-                {/* Honeypot field for spam protection */}
-                <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  style={{ position: 'absolute', left: '-9999px' }}
-                  aria-hidden="true"
-                />
+    <footer className="border-t border-white/5 bg-[#071423] text-white">
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-16 lg:py-24">
+        <div className="mb-16 rounded-3xl border border-visly-cyan/10 bg-visly-surface/45 p-8 backdrop-blur-xl lg:p-10">
+          <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-visly-cyan">
+                Technical signals
+              </p>
+              <h3 className="mt-3 text-3xl font-bold text-white">Receive enterprise build notes.</h3>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-white/60">
+                Strategy, AI, architecture, and product engineering insights from the VislyBluq team.
+              </p>
+            </div>
+            <form onSubmit={handleSubscribe} className="space-y-3">
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+              />
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <input
                   type="email"
                   value={newsEmail}
                   onChange={(e) => setNewsEmail(e.target.value)}
-                  placeholder="Your email address"
-                  className="flex-1 px-4 py-2.5 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-visly-cyan"
+                  placeholder="Email address"
+                  className="min-h-12 flex-1 rounded-xl border border-white/10 bg-[#0B1633]/75 px-4 text-sm text-white outline-none placeholder:text-white/35 focus:border-visly-cyan focus:ring-2 focus:ring-visly-cyan/20"
                   required
                 />
                 <button
                   type="submit"
                   disabled={isSubscribing}
-                  className="bg-visly-cyan text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-visly-teal transition-colors disabled:opacity-50 inline-flex items-center justify-center"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-visly-cyan px-5 text-sm font-bold text-[#071423] transition hover:bg-white disabled:opacity-60"
                 >
-                  {isSubscribing ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
-                  ) : (
-                    <ArrowRight className="h-4 w-4" />
-                  )}
+                  {isSubscribing ? 'Joining...' : 'Join'}
+                  {!isSubscribing && <ArrowRight className="h-4 w-4" />}
                 </button>
-              </form>
+              </div>
               {subscribed && (
-                <p className="lg:col-span-2 text-visly-cyan text-sm font-medium flex items-center">
-                  <CheckCircle className="h-4 w-4 mr-2" />
-                  You&apos;re subscribed. Thank you!
+                <p className="flex items-center gap-2 text-sm font-medium text-visly-cyan">
+                  <CheckCircle className="h-4 w-4" /> You are subscribed. Thank you.
                 </p>
               )}
-            </div>
+            </form>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-9 h-9 bg-gradient-to-br from-visly-navy to-visly-blue rounded-lg flex items-center justify-center">
-                <AppWindow className="h-5 w-5 text-white" />
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <Link to="/" className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-visly-cyan/20 bg-visly-surface/70 text-visly-cyan">
+                <AppWindow className="h-5 w-5" />
               </div>
-              <span className="text-lg font-bold text-white">VislyBluq</span>
+              <span className="text-xl font-extrabold tracking-tight text-white">VislyBluq</span>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Expert technology consultation and hands-on product development for startups, businesses, and enterprises.
+            <p className="mt-5 max-w-xs text-sm leading-6 text-white/55">
+              High-performance technology consulting and product engineering for the next generation of industry leaders.
             </p>
-            <div className="flex gap-3">
-              {[Linkedin, Twitter, Github].map((Icon, i) => (
+            <div className="mt-6 flex gap-3">
+              {[Linkedin, Twitter, Github].map((Icon, index) => (
                 <a
-                  key={i}
+                  key={index}
                   href="#"
-                  className="w-9 h-9 bg-white/5 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-visly-blue transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/55 hover:border-visly-cyan/40 hover:text-visly-cyan"
+                  aria-label="Social link"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -124,69 +123,67 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h4 className="mb-5 text-sm font-bold text-white">Company</h4>
+            <ul className="space-y-3 text-sm text-white/55">
               {[
-                { to: '/about', label: 'About' },
+                { to: '/team', label: 'Team' },
                 { to: '/services', label: 'Services' },
-                { to: '/case-studies', label: 'Case Studies' },
-                { to: '/contact', label: 'Contact' },
-              ].map((link) => (
-                <li key={link.to}>
-                  <Link to={link.to} className="text-sm text-gray-400 hover:text-visly-cyan">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Services</h3>
-            <ul className="space-y-2">
-              {services.map((s) => (
-                <li key={s.id}>
-                  <Link
-                    to={`/services?service=${s.id}`}
-                    className="text-sm text-gray-400 hover:text-visly-cyan"
-                  >
-                    {s.shortTitle}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Support</h3>
-            <ul className="space-y-2 mb-6">
-              {[
-                { to: '/faq', label: "FAQ's" },
-                { to: '/privacy', label: 'Privacy Policy' },
-                { to: '/terms', label: 'Terms of Service' },
+                { to: '/projects', label: 'Projects' },
+                { to: '/insights', label: 'Insights' },
                 { to: '/careers', label: 'Careers' },
               ].map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="text-sm text-gray-400 hover:text-visly-cyan">
+                  <Link to={link.to} className="hover:text-visly-cyan">
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-gray-500 mb-1">11 Apaola Street, Ketu Ikosi, Lagos</p>
-            <a
-              href="mailto:info@vislybluq.com"
-              className="text-sm text-white font-medium hover:text-visly-cyan"
-            >
-              info@vislybluq.com
-            </a>
+          </div>
+
+          <div>
+            <h4 className="mb-5 text-sm font-bold text-white">Capabilities</h4>
+            <ul className="space-y-3 text-sm text-white/55">
+              {services.slice(0, 5).map((service) => (
+                <li key={service.id}>
+                  <Link to={`/services?service=${service.id}#${service.id}`} className="hover:text-visly-cyan">
+                    {service.shortTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-5 text-sm font-bold text-white">Contact</h4>
+            <ul className="space-y-3 text-sm text-white/55">
+              <li>11 Apaola Street, Ketu Ikosi, Lagos</li>
+              <li>
+                <a href="mailto:info@vislybluq.com" className="hover:text-visly-cyan">
+                  info@vislybluq.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+2347015055319" className="hover:text-visly-cyan">
+                  +234 701 505 5319
+                </a>
+              </li>
+              <li>
+                <Link to="/privacy" className="hover:text-visly-cyan">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="hover:text-visly-cyan">
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-xs">
-            Â© {currentYear} VislyBluq Digital Product Company. All rights reserved.
-          </p>
+        <div className="mt-12 border-t border-white/10 pt-7 text-xs text-white/38">
+          © {currentYear} VislyBluq Enterprise Technology Consulting. All rights reserved.
         </div>
       </div>
     </footer>
@@ -194,3 +191,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

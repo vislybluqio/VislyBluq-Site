@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VislyBluq | Premium Technology Consulting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#2E7EF7", /* Brand Blue */
+                    "secondary": "#20C6F7", /* Accent Cyan */
+                    "background": "#0B1633", /* Deep Navy */
+                    "surface": "#14244A", /* Elevated Navy */
+                    "on-surface": "#FFFFFF",
+                    "on-background": "#FFFFFF",
+                    "surface-container-highest": "#1C2E5A",
+                    "surface-variant": "#14244A",
+                    "outline": "#20C6F7",
+                    "outline-variant": "rgba(32, 198, 247, 0.2)",
+                    "primary-container": "#2E7EF7",
+                    "on-primary-container": "#FFFFFF"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "80px",
+                    "margin-desktop": "64px",
+                    "stack-md": "48px",
+                    "stack-xl": "120px",
+                    "container-max": "1280px",
+                    "gutter": "32px",
+                    "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                    "display-xl": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "display-2xl": ["Inter"],
+                    "display-xl-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-2xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0B1633;
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(20, 36, 74, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(32, 198, 247, 0.1);
+            box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.05);
+        }
+        .primary-gradient-btn {
+            background: #2E7EF7;
+            color: #FFFFFF;
+        }
+        .primary-gradient-btn:hover {
+            background: #3B8AFF;
+            box-shadow: 0 0 25px rgba(46, 126, 247, 0.4);
+            transform: translateY(-2px);
+        }
+        .luminous-glow {
+            background: radial-gradient(circle, rgba(46, 126, 247, 0.08) 0%, rgba(11, 22, 51, 0) 70%);
+        }
+        .cyan-accent-text {
+            color: #20C6F7;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1633;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #14244A;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary selection:text-white">
+<!-- Top Navigation Bar -->
+<nav class="bg-background/80 backdrop-blur-xl fixed w-full top-0 z-50 border-b border-white/5">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-display-xl text-display-xl font-bold text-white tracking-tighter">VislyBluq</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-white/70 hover:text-primary transition-colors font-body-md" href="#">Services</a>
+<a class="text-white/70 hover:text-primary transition-colors font-body-md" href="#">Insights</a>
+<a class="text-white/70 hover:text-primary transition-colors font-body-md" href="#">Projects</a>
+<a class="text-white/70 hover:text-primary transition-colors font-body-md" href="#">Team</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-white/70 hover:text-primary transition-colors" data-icon="search">search</button>
+<button class="primary-gradient-btn px-6 py-2.5 rounded-full font-bold transition-all duration-300">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[80vh] flex flex-col justify-center px-margin-desktop py-stack-xl max-w-container-max mx-auto overflow-hidden">
+<!-- Radial Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full luminous-glow -z-10"></div>
+<div class="max-w-[1000px] z-10">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card mb-8 border-secondary/30">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Next-Gen Tech Consulting</span>
+</div>
+<h1 class="font-display-2xl text-display-2xl mb-8 leading-[1.05] text-white">
+                We <span class="text-primary italic">consult</span>, design &amp; build world-class digital products.
+            </h1>
+<p class="font-body-lg text-body-lg text-white/70 max-w-2xl mb-12">
+                Transforming enterprise challenges into high-performance engineering. We specialize in strategic technology consultation, scalable roadmaps, custom application development, and industrial-grade AI integration.
+            </p>
+<div class="flex flex-wrap gap-6">
+<button class="primary-gradient-btn px-10 py-5 rounded-xl font-bold text-lg flex items-center gap-3 transition-all">
+                    Launch Your Project
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="glass-card px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/5 transition-all text-white border-white/10">
+                    View Our Work
+                </button>
+</div>
+</div>
+</section>
+<!-- Product Showcase (Bento Grid) -->
+<section class="px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 group overflow-hidden glass-card rounded-3xl p-8 relative min-h-[500px] flex flex-col justify-end">
+<div class="absolute inset-0 -z-10 bg-gradient-to-t from-background to-transparent opacity-80"></div>
+<img class="absolute inset-0 w-full h-full object-cover -z-20 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5q7Dqn61ZRkxEnZIPtrgrHxnEEPwmNqHqTQYfSwIZv5DNa0OVPabco_Y1AqGj8lJyNXTwykrb45nxDp-KIuauHoSo-L2xKLXWVYkRajDfZ6HlUQ7vcNOYqpwV34wS1BFmWHzw7UMsftu0YGYfXT8CIOqswLjh7LyQ4C-mHLnrfLyVME7F6AndCGoaJXFSniTerLoeqJalwNxtf8E2mzH-_1M5o4D4JkPiGK57xqgYr9xu4CDPMzc9vJloq76b9zKnzQdpC6hofXo"/>
+<div>
+<span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full font-label-sm text-label-sm mb-4 inline-block">FinTech</span>
+<h3 class="font-headline-lg text-headline-lg mb-2 text-white">NexGen Asset Manager</h3>
+<p class="text-white/70 max-w-md">Institutional-grade portfolio tracking with real-time risk simulation.</p>
+</div>
+</div>
+<div class="md:col-span-4 glass-card rounded-3xl p-8 flex flex-col justify-between group overflow-hidden border-secondary/20">
+<div class="h-48 w-full bg-surface-container-highest rounded-xl mb-6 relative overflow-hidden">
+<div class="absolute inset-0 luminous-glow opacity-30"></div>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg mb-2 text-white">AI Workflow Core</h3>
+<p class="text-white/70">Automating complex enterprise logistics with custom LLM architectures.</p>
+</div>
+</div>
+<div class="md:col-span-4 glass-card rounded-3xl p-8 hover:border-secondary/30 transition-all">
+<span class="material-symbols-outlined text-secondary text-4xl mb-6" data-icon="monitoring">monitoring</span>
+<h3 class="font-headline-lg text-headline-lg mb-2 text-white">Data Integrity</h3>
+<p class="text-white/70">Clean, verified, and actionable data streams for high-stakes decision making.</p>
+</div>
+<div class="md:col-span-8 group overflow-hidden glass-card rounded-3xl p-8 relative min-h-[400px] flex flex-col justify-center items-center text-center">
+<div class="absolute inset-0 luminous-glow opacity-20"></div>
+<h2 class="font-display-xl text-display-xl max-w-xl mb-6 text-white">Built for the future, ready for today.</h2>
+<button class="px-8 py-3 bg-white text-background rounded-full font-bold hover:scale-105 transition-transform">Explore Ecosystem</button>
+</div>
+</div>
+</section>
+<!-- Trust Indicators -->
+<section class="bg-surface py-24 border-y border-white/5">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<p class="text-center font-label-sm text-label-sm uppercase tracking-[0.3em] text-secondary/60 mb-16">Trusted by Innovative Industry Leaders</p>
+<div class="flex flex-wrap justify-center items-center gap-16 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<span class="font-display-xl text-4xl font-black text-white italic">LOGOS</span>
+<span class="font-display-xl text-4xl font-black text-white italic">QUANTUM</span>
+<span class="font-display-xl text-4xl font-black text-white italic">VELOCITY</span>
+<span class="font-display-xl text-4xl font-black text-white italic">AETHER</span>
+<span class="font-display-xl text-4xl font-black text-white italic">VERTEX</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter mt-24">
+<div class="text-center">
+<div class="font-display-xl text-primary mb-2">150+</div>
+<div class="font-label-sm text-white/60">Projects Delivered</div>
+</div>
+<div class="text-center">
+<div class="font-display-xl text-primary mb-2">$2B+</div>
+<div class="font-label-sm text-white/60">Capital Raised by Clients</div>
+</div>
+<div class="text-center">
+<div class="font-display-xl text-primary mb-2">12ms</div>
+<div class="font-label-sm text-white/60">Avg. Backend Latency</div>
+</div>
+<div class="text-center">
+<div class="font-display-xl text-primary mb-2">98%</div>
+<div class="font-label-sm text-white/60">Client Retention Rate</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<span class="text-secondary font-label-sm uppercase tracking-widest block mb-4">Capabilities</span>
+<h2 class="font-display-xl text-display-xl text-white">End-to-end technical excellence for ambitious founders.</h2>
+</div>
+<a class="text-secondary font-bold flex items-center gap-2 group" href="#">
+                Explore all services 
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- AI & Machine Learning -->
+<div class="glass-card p-10 rounded-3xl hover:border-secondary/50 transition-colors group">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center mb-8 group-hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="psychology">psychology</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4 text-white">AI &amp; Intelligence</h3>
+<p class="text-white/70 mb-8 leading-relaxed">We architect custom neural networks and LLM pipelines that turn raw enterprise data into predictive competitive advantages.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-white"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Custom LLM Training</li>
+<li class="flex items-center gap-3 text-white"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Computer Vision</li>
+<li class="flex items-center gap-3 text-white"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Predictive Analysis</li>
+</ul>
+</div>
+<!-- Software Engineering -->
+<div class="glass-card p-10 rounded-3xl hover:border-primary/50 transition-colors group">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="terminal">terminal</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4 text-white">Digital Products</h3>
+<p class="text-white/70 mb-8 leading-relaxed">High-performance web and mobile applications built with the most modern stack for infinite scalability and zero downtime.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-white"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Cloud-Native Apps</li>
+<li class="flex items-center gap-3 text-white"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>FinTech Solutions</li>
+<li class="flex items-center gap-3 text-white"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>E-Commerce Platforms</li>
+</ul>
+</div>
+<!-- Strategic Consulting -->
+<div class="glass-card p-10 rounded-3xl hover:border-secondary/50 transition-colors group">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center mb-8 group-hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="architecture">architecture</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4 text-white">Tech Roadmap</h3>
+<p class="text-white/70 mb-8 leading-relaxed">Strategic guidance for digital transformation, including infrastructure audits, stack selection, and talent scaling strategies.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-white"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Infrastructure Audit</li>
+<li class="flex items-center gap-3 text-white"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Security Compliance</li>
+<li class="flex items-center gap-3 text-white"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Fractional CTO</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="bg-surface py-stack-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-display-xl text-display-xl mb-4 text-white">The word on the street.</h2>
+<p class="text-white/70">Hear from the founders we've helped scale.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="glass-card p-12 rounded-[2rem] relative border-primary/20">
+<span class="material-symbols-outlined text-primary/10 text-8xl absolute top-8 right-8" data-icon="format_quote">format_quote</span>
+<p class="text-2xl font-medium leading-relaxed mb-10 relative z-10 italic text-white">"VislyBluq didn't just build our app; they helped us redefine our entire technical architecture. Their insight into AI workflows saved us months of development time and millions in overhead."</p>
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container-highest border border-secondary/30">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa0KMwoDyOpLbx321YwKkIYQbhhGEljnMwZ8KOPYamQgg5Tx9QMsD9fFpMuVwHgq7Kinp9qqOVjwoCt6RjgyHr7AHgJjoEiT0s3hSQoqVoVSJzsvnAp7IX0WaQISOLOGbquVDuGn7PcdW9aIVCTx_hx3pw0GbN5zhx0mtQuomNYAvsw85uvsSpAVPER6xA7vNB-EUEI41YX-SgPl_Za_XkKwOn1vnQ7djnRI4dZCX8QTFtDVWrcKJsr9VdPB1e3tf0gK9LGxGqCtY"/>
+</div>
+<div>
+<div class="font-bold text-white">Sarah J. Miller</div>
+<div class="text-white/60 text-sm">CTO, QuantumVentures</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-12 rounded-[2rem] relative border-primary/20">
+<span class="material-symbols-outlined text-primary/10 text-8xl absolute top-8 right-8" data-icon="format_quote">format_quote</span>
+<p class="text-2xl font-medium leading-relaxed mb-10 relative z-10 italic text-white">"The level of sophistication VislyBluq brings to the table is unmatched. From the initial design phase to the final cloud deployment, their team felt like an extension of our own core engineering group."</p>
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container-highest border border-secondary/30">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSIOK8jcNweJ50jEkKA2a8xaWcR33AGL6EG4XeYeFhrI2E5HwFm5_cdQwII_Ksz94SNDjempCaHfJ7YSsTy09Ue9Kv9WP_S8_S6czhZNEniN2dei9KX8xoBKqvQyR7CHMXowkb1iDsR6rbgMUMiZcihWZRPM0RfBnifP0DuCiGjXQDQCn7daShb2l_G2MxglIIMzBitrC-znAKoHg-EWlILJFJgKgZPD8ENihWq7ZLpQB7ZQDwWdRMtKOqFdXVllAG_ZEkVzSKJag"/>
+</div>
+<div>
+<div class="font-bold text-white">Marcus Thorne</div>
+<div class="text-white/60 text-sm">Founder, Aether Logic</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="glass-card rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden border-secondary/20">
+<div class="absolute inset-0 luminous-glow opacity-20 -z-10"></div>
+<h2 class="font-display-2xl text-display-2xl mb-8 text-white">Ready to build the future?</h2>
+<p class="text-body-lg text-white/70 max-w-xl mx-auto mb-12">
+                Whether you're a funded startup or a Fortune 500 enterprise, we have the technical chops to bring your most ambitious ideas to life.
+            </p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="primary-gradient-btn px-12 py-5 rounded-xl font-bold text-xl">Start a Consultation</button>
+<button class="px-12 py-5 rounded-xl font-bold text-xl border border-secondary/30 text-white hover:bg-white/5 transition-all">Download Portfolio</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background w-full border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<div class="font-display-xl-mobile text-display-xl-mobile font-black text-white mb-6">VislyBluq</div>
+<p class="text-white/60 text-sm leading-relaxed mb-8">
+                High-performance technology consulting and product engineering for the next generation of industry leaders.
+            </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-secondary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="public">public</span></a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-secondary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="group">group</span></a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-secondary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="terminal">terminal</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-white">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-white/60 hover:text-secondary transition-colors" href="#">Services</a></li>
+<li><a class="text-white/60 hover:text-secondary transition-colors" href="#">Insights</a></li>
+<li><a class="text-white/60 hover:text-secondary transition-colors" href="#">Case Studies</a></li>
+<li><a class="text-white/60 hover:text-secondary transition-colors" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-white">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-white/60 hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-white/60 hover:text-secondary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-white/60 hover:text-secondary transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-white">Newsletter</h4>
+<p class="text-white/60 text-sm mb-6">Stay updated with our latest technical insights.</p>
+<div class="flex gap-2">
+<input class="bg-surface/50 px-4 py-2 rounded-lg border border-white/10 focus:ring-1 focus:ring-secondary w-full text-sm text-white" placeholder="Email address" type="email"/>
+<button class="bg-secondary text-background px-4 py-2 rounded-lg font-bold transition-transform active:scale-95">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop py-8 border-t border-white/5 text-center md:text-left">
+<p class="text-white/40 font-label-sm text-label-sm">
+            © 2024 VislyBluq Enterprise Technology Consulting. All rights reserved.
+        </p>
+</div>
+</footer>
+<!-- AI Agent Panel -->
+<div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4" id="ai-agent-container">
+<div class="hidden w-[400px] h-[600px] glass-card rounded-3xl border border-secondary/20 shadow-2xl flex flex-col overflow-hidden backdrop-blur-3xl" id="ai-agent-panel">
+<!-- Header -->
+<div class="p-4 border-b border-white/10 flex items-center justify-between bg-surface/80">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-secondary/50">
+<img alt="AI Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLsSjjgEfaEr4UK1GP12W3GS9mRvMsWLsqSXSroEtP3D16wGnuL4x6NFDpCPqRlBmFGslG5P7xQ8gNMICmZIhvlURAj7PKIucudiPE20S8sjU5SPiJuQsAGCtRYbpF95mK-lPQ8eTuNxkK3P8gSLvNrbY71Q4uLCJMAIQOCfmUent3fS43CvleaJP2GR9N9NEDLIv7m1H2UEeUyhd7UU4v26Krv1qex_yQowJ5AkLnsgQO2usZ-ClJoGeXw"/>
+</div>
+<div>
+<div class="font-bold text-white text-sm">Visly Intelligence</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-[10px] text-white/60 uppercase tracking-wider">Online</span>
+</div>
+</div>
+</div>
+<button class="material-symbols-outlined text-white/50 hover:text-white transition-colors" onclick="document.getElementById('ai-agent-panel').classList.add('hidden')">close</button>
+</div>
+<!-- Language Selector -->
+<div class="px-4 py-2 border-b border-white/5 flex gap-2 overflow-x-auto no-scrollbar bg-surface/40">
+<button class="px-3 py-1 rounded-full bg-primary text-white text-[10px] font-bold">EN</button>
+<button class="px-3 py-1 rounded-full bg-white/5 text-white/60 text-[10px] hover:bg-white/10">ZH</button>
+<button class="px-3 py-1 rounded-full bg-white/5 text-white/60 text-[10px] hover:bg-white/10">ES</button>
+</div>
+<!-- Chat History -->
+<div class="flex-1 overflow-y-auto p-4 space-y-4 bg-background/20">
+<div class="flex justify-start">
+<div class="max-w-[80%] p-3 rounded-2xl rounded-tl-none bg-surface border border-white/5 text-white text-sm">
+                    Hello! I'm Visly Intelligence. How can I assist with your digital transformation today?
+                </div>
+</div>
+<div class="flex justify-end">
+<div class="max-w-[80%] p-3 rounded-2xl rounded-tr-none bg-primary text-white text-sm shadow-lg shadow-primary/20">
+                    Tell me about your AI workflow solutions.
+                </div>
+</div>
+</div>
+<!-- Interaction Controls -->
+<div class="px-4 py-2 flex items-center justify-center gap-6 border-t border-white/5 bg-surface/80">
+<button class="material-symbols-outlined text-white/60 hover:text-secondary transition-colors" title="Speech to Text">mic</button>
+<button class="material-symbols-outlined text-white/60 hover:text-secondary transition-colors" title="Text to Speech">volume_up</button>
+<button class="material-symbols-outlined text-red-400 hover:scale-110 transition-transform" title="Stop">stop_circle</button>
+<button class="material-symbols-outlined text-white/60 hover:text-secondary transition-colors" title="Edit Query">edit_note</button>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-surface">
+<div class="relative flex items-center">
+<input class="w-full bg-background/50 border border-secondary/20 rounded-xl px-4 py-3 text-sm text-white focus:ring-1 focus:ring-secondary outline-none pr-12 placeholder:text-white/30" placeholder="Ask anything..." type="text"/>
+<button class="absolute right-2 p-2 text-secondary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Floating Launcher -->
+<button class="group relative w-16 h-16 rounded-full overflow-hidden border-2 border-secondary/50 shadow-[0_0_30px_rgba(32,198,247,0.3)] hover:scale-110 transition-all duration-300 active:scale-95 bg-background" onclick="document.getElementById('ai-agent-panel').classList.toggle('hidden')">
+<div class="absolute inset-0 bg-secondary/10 animate-pulse"></div>
+<img alt="AI Agent" class="w-full h-full object-cover relative z-10" src="https://lh3.googleusercontent.com/aida/AP1WRLsSjjgEfaEr4UK1GP12W3GS9mRvMsWLsqSXSroEtP3D16wGnuL4x6NFDpCPqRlBmFGslG5P7xQ8gNMICmZIhvlURAj7PKIucudiPE20S8sjU5SPiJuQsAGCtRYbpF95mK-lPQ8eTuNxkK3P8gSLvNrbY71Q4uLCJMAIQOCfmUent3fS43CvleaJP2GR9N9NEDLIv7m1H2UEeUyhd7UU4v26Krv1qex_yQowJ5AkLnsgQO2usZ-ClJoGeXw"/>
+</button>
+</div>
+<script>
+    // Simple scroll reveal
+    const observerOptions = {
+        threshold: 0.1
+    };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100');
+                entry.target.classList.remove('translate-y-4');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.glass-card').forEach(el => {
+        el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+        observer.observe(el);
+    });
+
+    // Hover tilt effect
+    document.querySelectorAll('.glass-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 30;
+            const rotateY = (centerX - x) / 30;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+        });
+    });
+</script>
+</body></html>

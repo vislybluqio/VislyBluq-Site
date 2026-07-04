@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#dae2ff",
+                    "on-tertiary-fixed-variant": "#37466d",
+                    "surface-container-high": "#1f2b3b",
+                    "on-background": "#d7e3f9",
+                    "surface": "#071423",
+                    "secondary-container": "#04bff0",
+                    "on-tertiary-container": "#18284e",
+                    "on-surface-variant": "#c2c6d6",
+                    "on-error-container": "#ffdad6",
+                    "secondary": "#77d8ff",
+                    "outline": "#8c90a0",
+                    "primary": "#adc6ff",
+                    "on-tertiary": "#202f55",
+                    "on-secondary-container": "#004a5e",
+                    "surface-container-low": "#101c2c",
+                    "on-primary-fixed-variant": "#004494",
+                    "on-error": "#690005",
+                    "surface-container": "#142030",
+                    "outline-variant": "#414754",
+                    "inverse-on-surface": "#253142",
+                    "surface-variant": "#2a3546",
+                    "surface-container-lowest": "#030f1e",
+                    "on-secondary": "#003545",
+                    "on-primary-container": "#00285d",
+                    "tertiary-container": "#8190bc",
+                    "on-secondary-fixed": "#001f29",
+                    "on-primary-fixed": "#001a41",
+                    "on-tertiary-fixed": "#08193f",
+                    "on-primary": "#002e69",
+                    "secondary-fixed-dim": "#60d4ff",
+                    "on-surface": "#d7e3f9",
+                    "surface-dim": "#071423",
+                    "on-secondary-fixed-variant": "#004d63",
+                    "primary-fixed": "#d8e2ff",
+                    "error": "#ffb4ab",
+                    "surface-bright": "#2e3a4b",
+                    "inverse-surface": "#d7e3f9",
+                    "error-container": "#93000a",
+                    "tertiary-fixed-dim": "#b7c5f5",
+                    "secondary-fixed": "#bbe9ff",
+                    "inverse-primary": "#005ac2",
+                    "primary-container": "#4d8eff",
+                    "background": "#071423",
+                    "tertiary": "#b7c5f5",
+                    "surface-container-highest": "#2a3546",
+                    "surface-tint": "#adc6ff",
+                    "primary-fixed-dim": "#adc6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "48px",
+                    "stack-lg": "80px",
+                    "margin-mobile": "24px",
+                    "gutter": "32px",
+                    "margin-desktop": "64px",
+                    "stack-xl": "120px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "display-xl-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "display-2xl": ["Inter"],
+                    "display-xl": ["Inter"]
+            },
+            "fontSize": {
+                    "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-2xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #071423;
+            color: #d7e3f9;
+            scroll-behavior: smooth;
+        }
+        .glass-panel {
+            background: rgba(20, 36, 74, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .legal-content h2 {
+            scroll-margin-top: 100px;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030f1e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #414754;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #adc6ff;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="bg-surface/70 dark:bg-surface/60 backdrop-blur-xl border-b border-white/10 backdrop-blur-2xl shadow-[0_0_40px_rgba(46,126,247,0.1)] docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-display-xl text-display-xl font-bold text-primary tracking-tighter">VislyBluq</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Services</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Insights</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Projects</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Team</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-primary hover:bg-primary/10 p-2 rounded-full transition-all">search</button>
+<button class="px-6 py-2 bg-primary text-on-primary font-bold rounded-lg scale-95 active:scale-90 transition-transform hover:shadow-lg hover:shadow-primary/20">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Hero / Header Section -->
+<header class="pt-stack-xl pb-stack-lg px-margin-desktop max-w-container-max mx-auto border-b border-outline-variant/10 relative overflow-hidden">
+
+<div class="relative z-10 max-w-3xl">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full inline-block mb-6">Legal Framework</span>
+<h1 class="font-display-xl text-display-xl-mobile md:text-display-xl text-on-surface mb-4">Privacy Policy</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                At VislyBluq, we are committed to safeguarding your enterprise data with technical precision and absolute transparency. This document outlines our data processing standards.
+            </p>
+<div class="mt-8 flex items-center gap-4 text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Last Updated: November 14, 2024</span>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="px-margin-desktop py-stack-lg max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Sidebar Navigation (Sticky) -->
+<aside class="hidden lg:block lg:col-span-3">
+<div class="sticky top-28 space-y-2">
+<p class="font-label-sm text-label-sm text-outline mb-6 px-4">ON THIS PAGE</p>
+<nav class="flex flex-col">
+<a class="group flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-variant/50 transition-all border-l-2 border-transparent hover:border-primary" href="#section-1">
+<span class="font-label-sm text-label-sm text-primary">01</span>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary">Introduction</span>
+</a>
+<a class="group flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-variant/50 transition-all border-l-2 border-transparent hover:border-primary" href="#section-2">
+<span class="font-label-sm text-label-sm text-primary">02</span>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary">Data Collection</span>
+</a>
+<a class="group flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-variant/50 transition-all border-l-2 border-transparent hover:border-primary" href="#section-3">
+<span class="font-label-sm text-label-sm text-primary">03</span>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary">Usage &amp; Processing</span>
+</a>
+<a class="group flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-variant/50 transition-all border-l-2 border-transparent hover:border-primary" href="#section-4">
+<span class="font-label-sm text-label-sm text-primary">04</span>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary">Security Protocols</span>
+</a>
+<a class="group flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-variant/50 transition-all border-l-2 border-transparent hover:border-primary" href="#section-5">
+<span class="font-label-sm text-label-sm text-primary">05</span>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary">Third-Party Access</span>
+</a>
+<a class="group flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-variant/50 transition-all border-l-2 border-transparent hover:border-primary" href="#section-6">
+<span class="font-label-sm text-label-sm text-primary">06</span>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary">Your Rights</span>
+</a>
+</nav>
+<div class="mt-stack-md glass-panel p-6 rounded-2xl">
+<p class="font-label-sm text-label-sm text-primary mb-2">NEED HELP?</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Have questions about your data?</p>
+<a class="font-body-md text-body-md text-on-surface font-bold hover:text-primary transition-colors flex items-center gap-2" href="mailto:privacy@vislybluq.com">
+                        Contact Support
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Legal Content Canvas -->
+<article class="lg:col-span-9 space-y-stack-md legal-content leading-relaxed">
+<section id="section-1">
+<div class="flex items-baseline gap-4 mb-6">
+<span class="font-display-xl text-display-xl text-primary/20 select-none">01</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Introduction</h2>
+</div>
+<div class="space-y-4 text-on-surface-variant font-body-lg">
+<p>VislyBluq Enterprise Technology Consulting ("we", "our", "us") operates the website and various enterprise consulting platforms. We value the privacy of our clients and partners above all else.</p>
+<p>This Privacy Policy describes our practices regarding the collection, use, and disclosure of information that you provide to us when you visit our website, use our software, or engage our consulting services. By accessing our platform, you agree to the terms outlined herein.</p>
+</div>
+</section>
+<div class="h-px w-full bg-gradient-to-r from-outline-variant/30 to-transparent"></div>
+<section id="section-2">
+<div class="flex items-baseline gap-4 mb-6">
+<span class="font-display-xl text-display-xl text-primary/20 select-none">02</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Data Collection</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-8">
+<div class="glass-panel p-8 rounded-2xl border-l-4 border-primary">
+<h3 class="font-headline-lg text-[20px] text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person</span>
+                            Personal Information
+                        </h3>
+<p class="text-on-surface-variant">We collect identifiable information such as names, email addresses, job titles, and company affiliations when you voluntarily submit them through contact forms or service registrations.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl border-l-4 border-secondary">
+<h3 class="font-headline-lg text-[20px] text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+                            Usage Telemetry
+                        </h3>
+<p class="text-on-surface-variant">Our systems automatically collect technical data including IP addresses, browser types, interaction heatmaps, and session durations to improve our platform performance.</p>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-lg">We do not collect sensitive biological, political, or religious data unless explicitly required for specific government-vetted projects and with separate, verified consent.</p>
+</section>
+<div class="h-px w-full bg-gradient-to-r from-outline-variant/30 to-transparent"></div>
+<section id="section-3">
+<div class="flex items-baseline gap-4 mb-6">
+<span class="font-display-xl text-display-xl text-primary/20 select-none">03</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Usage &amp; Processing</h2>
+</div>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<div>
+<strong class="text-on-surface block mb-1">Service Delivery</strong>
+<p class="text-on-surface-variant">To provide enterprise consulting insights, project management dashboards, and customized technology roadmaps.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<div>
+<strong class="text-on-surface block mb-1">Advanced Personalization</strong>
+<p class="text-on-surface-variant">Leveraging internal AI models to curate "Insights" and "Case Studies" relevant to your specific industry vertical.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<div>
+<strong class="text-on-surface block mb-1">Security Auditing</strong>
+<p class="text-on-surface-variant">Monitoring for fraudulent activities or unauthorized access attempts to protect the VislyBluq ecosystem.</p>
+</div>
+</li>
+</ul>
+</section>
+<div class="h-px w-full bg-gradient-to-r from-outline-variant/30 to-transparent"></div>
+<section id="section-4">
+<div class="flex items-baseline gap-4 mb-6">
+<span class="font-display-xl text-display-xl text-primary/20 select-none">04</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Security Protocols</h2>
+</div>
+<div class="relative rounded-3xl overflow-hidden border border-white/5 bg-surface-container-low p-10">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px]"></div>
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div>
+<h4 class="font-label-sm text-label-sm text-primary mb-4 uppercase tracking-widest">Encryption</h4>
+<p class="text-on-surface-variant">End-to-end AES-256 encryption for all data at rest and TLS 1.3 for data in transit.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary mb-4 uppercase tracking-widest">Access Control</h4>
+<p class="text-on-surface-variant">Multi-factor authentication (MFA) and Role-Based Access Control (RBAC) enforced across all layers.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary mb-4 uppercase tracking-widest">Compliance</h4>
+<p class="text-on-surface-variant">SOC2 Type II and GDPR compliant infrastructure hosted on tier-1 data centers.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-5">
+<div class="flex items-baseline gap-4 mb-6">
+<span class="font-display-xl text-display-xl text-primary/20 select-none">05</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Third-Party Access</h2>
+</div>
+<p class="text-on-surface-variant font-body-lg mb-6">VislyBluq does not sell, rent, or trade your data to third parties. We may share information with trusted partners only in the following scenarios:</p>
+<div class="space-y-4">
+<div class="p-4 rounded-xl border border-outline-variant/20 flex items-center justify-between group hover:bg-surface-variant/20 transition-all">
+<span class="text-on-surface">Cloud Infrastructure Providers (AWS/Azure)</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary">verified</span>
+</div>
+<div class="p-4 rounded-xl border border-outline-variant/20 flex items-center justify-between group hover:bg-surface-variant/20 transition-all">
+<span class="text-on-surface">Analytics Engines (Privacy-Focused)</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary">verified</span>
+</div>
+<div class="p-4 rounded-xl border border-outline-variant/20 flex items-center justify-between group hover:bg-surface-variant/20 transition-all">
+<span class="text-on-surface">Legal Obligations &amp; Compliance Enforcement</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary">gavel</span>
+</div>
+</div>
+</section>
+<section class="pb-20" id="section-6">
+<div class="flex items-baseline gap-4 mb-6">
+<span class="font-display-xl text-display-xl text-primary/20 select-none">06</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Your Rights</h2>
+</div>
+<p class="text-on-surface-variant font-body-lg mb-8">Depending on your jurisdiction, you have significant rights regarding your personal information, including:</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-start gap-4 p-6 rounded-2xl bg-surface-container">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">visibility</span>
+<div>
+<h5 class="text-on-surface font-bold mb-1">Right to Access</h5>
+<p class="text-on-surface-variant text-sm">Request a copy of the personal data we hold about you.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 rounded-2xl bg-surface-container">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">edit_note</span>
+<div>
+<h5 class="text-on-surface font-bold mb-1">Right to Rectify</h5>
+<p class="text-on-surface-variant text-sm">Correct any inaccurate or incomplete data.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 rounded-2xl bg-surface-container">
+<span class="material-symbols-outlined text-error bg-error/10 p-2 rounded-lg">delete_forever</span>
+<div>
+<h5 class="text-on-surface font-bold mb-1">Right to Erasure</h5>
+<p class="text-on-surface-variant text-sm">Request the deletion of your data from our systems.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 rounded-2xl bg-surface-container">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">file_download</span>
+<div>
+<h5 class="text-on-surface font-bold mb-1">Data Portability</h5>
+<p class="text-on-surface-variant text-sm">Receive your data in a structured, machine-readable format.</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full rounded-t-xl border-t border-outline-variant/20 no shadows">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<div class="font-display-xl-mobile text-display-xl-mobile font-black text-primary mb-6">VislyBluq</div>
+<p class="text-on-surface-variant font-body-md text-body-md opacity-80 hover:opacity-100 transition-opacity max-w-xs">
+                    Pioneering the future of enterprise intelligence through sophisticated technology consulting.
+                </p>
+</div>
+<div class="md:col-span-1">
+<h6 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-widest">Solutions</h6>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:text-secondary transition-colors duration-200" href="#">Services</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:text-secondary transition-colors duration-200" href="#">Insights</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:text-secondary transition-colors duration-200" href="#">Case Studies</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h6 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-widest">Company</h6>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:text-secondary transition-colors duration-200" href="#">Careers</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:text-secondary transition-colors duration-200" href="#">Team</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:text-secondary transition-colors duration-200" href="#">Partners</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h6 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-widest">Legal</h6>
+<ul class="space-y-3">
+<li><a class="text-primary dark:text-primary underline hover:text-secondary transition-colors duration-200" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:text-secondary transition-colors duration-200" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:text-secondary transition-colors duration-200" href="#">Compliance</a></li>
+</ul>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-white/5 max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant font-label-sm text-label-sm opacity-60">© 2024 VislyBluq Enterprise Technology Consulting. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" href="#">language</a>
+<a class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" href="#">share</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll spy to highlight sidebar
+        const sections = document.querySelectorAll('.legal-content section');
+        const navLinks = document.querySelectorAll('aside nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-surface-variant/50', 'border-primary');
+                link.querySelector('span:last-child').classList.remove('text-primary');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('bg-surface-variant/50', 'border-primary');
+                    link.querySelector('span:last-child').classList.add('text-primary');
+                }
+            });
+        });
+
+        // Interactive hover effect for glass cards
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

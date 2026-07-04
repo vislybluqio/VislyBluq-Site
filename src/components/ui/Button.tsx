@@ -11,7 +11,7 @@ interface ButtonBaseProps {
   className?: string;
 }
 
-interface ButtonAsButton extends ButtonBaseProps, ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonAsButton extends ButtonBaseProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
   to?: never;
 }
 
@@ -67,3 +67,4 @@ const Button = ({
 };
 
 export default Button;
+

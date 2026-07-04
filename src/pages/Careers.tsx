@@ -1,129 +1,26 @@
-import { Briefcase, ArrowRight, MapPin, Clock, Code } from 'lucide-react';
-import PageHero from '../components/ui/PageHero';
-import Section from '../components/ui/Section';
-import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
+import { Link } from 'react-router-dom';
+import { PlaneTakeoff, HeartPulse, MapPin, BadgeDollarSign, Brain, Rocket, GraduationCap, Search, Clock, Terminal } from 'lucide-react';
+import { GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
 
-const Careers = () => {
-  const positions = [
-    {
-      title: 'Senior Full Stack Engineer',
-      type: 'Full-time',
-      location: 'Remote',
-      team: 'Engineering',
-      description:
-        'Lead development of enterprise-grade web applications (React/Node.js) for our clients.',
-      tags: ['React', 'Node.js', 'TypeScript', 'AWS'],
-    },
-    {
-      title: 'Data Engineer',
-      type: 'Full-time',
-      location: 'Remote',
-      team: 'Data',
-      description:
-        'Build scalable ETL pipelines and data warehouses using modern cloud technologies.',
-      tags: ['Python', 'SQL', 'Airflow', 'Snowflake'],
-    },
-    {
-      title: 'UI/UX Designer',
-      type: 'Contract / Full-time',
-      location: 'Remote',
-      team: 'Design',
-      description:
-        'Create intuitive, beautiful interfaces for web and mobile projects.',
-      tags: ['Figma', 'UI/UX', 'Prototyping', 'Design Systems'],
-    },
-  ];
+const roles = [
+  ['Staff AI Architect', 'Remote / San Francisco', '$280k - $350k', ['PyTorch', 'NLP', 'MLOps']],
+  ['Senior Systems Engineer', 'Remote / London', '$180k - $240k', ['Rust', 'Kernel', 'Distributed']],
+  ['Principal Cloud Architect', 'Zurich / Hybrid', '$220k - $300k', ['AWS', 'Terraform', 'Scale']],
+];
+const benefits = [[HeartPulse,'Holistic Wellness','Premium global health coverage including mental health and fitness stipends.'],[BadgeDollarSign,'Equity & Growth','Competitive base pay plus significant equity in a high-growth consulting firm.'],[PlaneTakeoff,'Remote Freedom','Work from anywhere with a $5,000 home office setup allowance.'],[GraduationCap,'Infinite Learning','Unlimited budget for conferences, certifications, and high-end hardware.']];
 
-  const culture = [
-    { icon: Code, title: 'Modern stack', desc: 'Latest tools and frameworks.' },
-    { icon: MapPin, title: 'Remote-first', desc: 'Work from where you thrive.' },
-    { icon: Briefcase, title: 'Growth budget', desc: 'Courses, books, and conferences.' },
-  ];
-
-  return (
-    <div className="pt-16 bg-white">
-      <PageHero
-        eyebrow="Join the team"
-        title={
-          <>
-            Build the future <span className="text-visly-cyan">with VislyBluq</span>
-          </>
-        }
-        subtitle="Work on challenging projects that make a real difference."
-      />
-
-      <Section bg="white" className="!py-12 border-b border-gray-100">
-        <div className="grid md:grid-cols-3 gap-6">
-          {culture.map((item) => (
-            <div key={item.title} className="text-center">
-              <div className="w-10 h-10 bg-visly-gray rounded-lg flex items-center justify-center mx-auto mb-3">
-                <item.icon className="h-5 w-5 text-visly-blue" />
-              </div>
-              <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
-              <p className="text-gray-600 text-xs">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section bg="gray">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl font-semibold text-visly-dark mb-2">Open positions</h2>
-          <p className="text-sm text-gray-600">
-            Don&apos;t see a fit?{' '}
-            <a href="mailto:vislybluq5@gmail.com" className="text-visly-blue font-medium hover:underline">
-              Email us anyway
-            </a>
-            .
-          </p>
-        </div>
-        <div className="space-y-4 max-w-3xl mx-auto">
-          {positions.map((job) => (
-            <Card key={job.title} hover>
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className="text-[10px] font-semibold uppercase text-visly-blue bg-blue-50 px-2 py-0.5 rounded">
-                      {job.team}
-                    </span>
-                    <span className="flex items-center text-gray-500 text-xs">
-                      <MapPin className="h-3 w-3 mr-1" />
-                      {job.location}
-                    </span>
-                    <span className="flex items-center text-gray-500 text-xs">
-                      <Clock className="h-3 w-3 mr-1" />
-                      {job.type}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-visly-dark mb-2">{job.title}</h3>
-                  <p className="text-sm text-gray-600 mb-3">{job.description}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {job.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-[10px] font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <Button
-                  to={`/apply?job=${encodeURIComponent(job.title)}`}
-                  size="sm"
-                  className="shrink-0 self-start md:self-center"
-                >
-                  Apply
-                  <ArrowRight className="ml-1 h-3 w-3" />
-                </Button>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </Section>
-    </div>
-  );
-};
+const Careers = () => (
+  <div>
+    <PageIntro eyebrow="Talent Network" title={<>Build Meaningful Technology With Us</>} description="Join a practical, ambitious team working across consulting, product engineering, data, automation, and AI implementation.">
+      <div className="flex flex-col gap-4 sm:flex-row"><PrimaryLink to="#open-roles">View Open Roles</PrimaryLink><Link to="#culture" className="rounded-xl border border-white/10 px-7 py-4 text-sm font-bold text-[#d7e3f9]">Explore Our Culture</Link></div>
+    </PageIntro>
+    <Section id="culture" className="pt-0"><div className="grid gap-6 lg:grid-cols-3"><GlassCard className="p-8 lg:col-span-2"><h2 className="text-4xl font-bold text-[#d7e3f9]">Engineering Excellence</h2><p className="mt-4 text-[#c2c6d6]">Our culture is defined by meticulous attention to detail and a shared passion for high-performance engineering.</p><div className="mt-8 rounded-2xl bg-white/5 p-6"><h3 className="text-2xl font-bold">Deep Spatial Depth</h3><p className="mt-3 text-sm text-[#c2c6d6]">Our workspaces are designed for focus and collaboration, blending physical comfort with ethereal digital interfaces.</p></div></GlassCard><GlassCard className="p-8"><Terminal className="mb-5 h-9 w-9 text-[#adc6ff]"/><h3 className="text-2xl font-bold">Technical Sophistication</h3><p className="mt-3 text-sm text-[#c2c6d6]">We maintain a standard of code clarity and architectural purity that exceeds industry norms.</p><div className="mt-6 flex flex-wrap gap-2">{['RUST','KUBERNETES','LLM'].map(t=><span className="rounded-full bg-white/5 px-3 py-1 text-xs" key={t}>{t}</span>)}</div></GlassCard><GlassCard className="p-8"><Brain className="mb-5 h-9 w-9 text-[#adc6ff]"/><h3 className="text-2xl font-bold">Autonomy</h3><p className="mt-3 text-sm text-[#c2c6d6]">Empowered to lead, engineers here define the roadmap of global tech.</p></GlassCard><GlassCard className="p-8 lg:col-span-2"><Rocket className="mb-5 h-9 w-9 text-[#adc6ff]"/><h3 className="text-2xl font-bold">Impact</h3><p className="mt-3 text-sm text-[#c2c6d6]">Your work scales to millions of users across the enterprise ecosystem.</p></GlassCard></div></Section>
+    <Section className="bg-[#030f1e]/45"><h2 className="text-4xl font-bold text-[#d7e3f9]">Benefits & Working Style</h2><p className="mt-3 text-[#c2c6d6]">We are building a thoughtful work environment and keep benefits realistic, transparent, and tied to role, stage, and business priorities.</p><div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">{benefits.map(([Icon,title,text])=><GlassCard key={title as string} className="p-7"><Icon className="mb-5 h-8 w-8 text-[#adc6ff]"/><h3 className="text-xl font-bold">{title as string}</h3><p className="mt-3 text-sm text-[#c2c6d6]">{text as string}</p></GlassCard>)}</div></Section>
+    <Section id="open-roles"><div className="mb-8 flex flex-wrap items-center justify-between gap-4"><div><h2 className="text-4xl font-bold text-[#d7e3f9]">Open Positions</h2><p className="mt-2 text-[#c2c6d6]">Shape the future of enterprise technology with us.</p></div><div className="flex gap-2"><button className="rounded-full bg-[#adc6ff] px-4 py-2 text-sm font-bold text-[#002e69]">All Roles</button><button className="rounded-full border border-white/10 px-4 py-2 text-sm">Engineering</button><button className="rounded-full border border-white/10 px-4 py-2 text-sm">Architecture</button><button className="rounded-full border border-white/10 px-4 py-2 text-sm">Product</button><Search className="h-8 w-8 text-[#adc6ff]"/></div></div><div className="space-y-5">{roles.map(([title,location,salary,tags])=><GlassCard key={title as string} className="grid gap-5 p-6 md:grid-cols-[1fr_auto] md:items-center"><div><p className="text-xs font-bold uppercase text-[#77d8ff]">Open</p><h3 className="mt-2 text-2xl font-bold">{title as string}</h3><div className="mt-3 flex flex-wrap gap-4 text-sm text-[#c2c6d6]"><span className="flex items-center gap-1"><MapPin className="h-4 w-4"/>{location as string}</span><span className="flex items-center gap-1"><Clock className="h-4 w-4"/>Full-time</span><span>{salary as string}</span></div><div className="mt-4 flex flex-wrap gap-2">{(tags as string[]).map(tag=><span className="rounded-full bg-white/5 px-3 py-1 text-xs" key={tag}>{tag}</span>)}</div></div><Link to={`/apply?job=${encodeURIComponent(title as string)}`} className="rounded-xl bg-[#adc6ff] px-6 py-3 text-center text-sm font-bold text-[#002e69]">Apply Now</Link></GlassCard>)}</div><GlassCard className="mt-8 p-7 text-center"><p className="text-[#c2c6d6]">Don't see the right fit? We're always looking for exceptional talent.</p><Link to="/apply" className="mt-4 inline-flex text-sm font-bold text-[#adc6ff]">Submit a General Application ?</Link></GlassCard></Section>
+    <Section className="pt-0"><GlassCard className="p-10 text-center"><h2 className="text-5xl font-bold">Your Best Work Starts Here.</h2><p className="mt-4 text-[#c2c6d6]">Join a legacy of high-performance engineering.</p></GlassCard></Section>
+  </div>
+);
 
 export default Careers;
+
+

@@ -8,11 +8,11 @@
   }
 
   body {
-    @apply font-sans text-gray-700 bg-white;
+    @apply font-sans text-white bg-visly-navy;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply text-visly-dark;
+    @apply text-white;
   }
 
   a {
@@ -23,5 +23,12 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .enterprise-bg {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(46, 126, 247, 0.18), transparent 32rem),
+      radial-gradient(circle at 90% 12%, rgba(32, 198, 247, 0.08), transparent 28rem),
+      #0B1633;
   }
 }

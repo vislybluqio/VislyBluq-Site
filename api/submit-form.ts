@@ -9,7 +9,7 @@ interface RecaptchaVerifyResponse {
 interface FormSubmission {
   formType: 'contact' | 'application' | 'newsletter';
   recaptchaToken?: string;
-  data: Record<string, any>;
+  data: Record<string, unknown>;
 }
 
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
@@ -93,7 +93,7 @@ async function verifyRecaptcha(
 
 async function submitToFormSubmit(
   email: string,
-  data: Record<string, any>
+  data: Record<string, unknown>
 ): Promise<boolean> {
   try {
     const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
@@ -112,7 +112,7 @@ async function submitToFormSubmit(
   }
 }
 
-function getAutoResponse(formType: string, data: Record<string, any>): string {
+function getAutoResponse(formType: string, data: Record<string, unknown>): string {
   const whatsapp = '+234 701 505 5319';
 
   switch (formType) {
@@ -229,3 +229,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     message: 'Form submitted successfully',
   });
 }
+

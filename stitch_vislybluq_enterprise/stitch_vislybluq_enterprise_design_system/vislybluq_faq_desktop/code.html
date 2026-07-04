@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FAQ | VislyBluq Enterprise Technology Consulting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#dae2ff",
+                    "on-tertiary-fixed-variant": "#37466d",
+                    "surface-container-high": "#1f2b3b",
+                    "on-background": "#d7e3f9",
+                    "surface": "#071423",
+                    "secondary-container": "#04bff0",
+                    "on-tertiary-container": "#18284e",
+                    "on-surface-variant": "#c2c6d6",
+                    "on-error-container": "#ffdad6",
+                    "secondary": "#77d8ff",
+                    "outline": "#8c90a0",
+                    "primary": "#adc6ff",
+                    "on-tertiary": "#202f55",
+                    "on-secondary-container": "#004a5e",
+                    "surface-container-low": "#101c2c",
+                    "on-primary-fixed-variant": "#004494",
+                    "on-error": "#690005",
+                    "surface-container": "#142030",
+                    "outline-variant": "#414754",
+                    "inverse-on-surface": "#253142",
+                    "surface-variant": "#2a3546",
+                    "surface-container-lowest": "#030f1e",
+                    "on-secondary": "#003545",
+                    "on-primary-container": "#00285d",
+                    "tertiary-container": "#8190bc",
+                    "on-secondary-fixed": "#001f29",
+                    "on-primary-fixed": "#001a41",
+                    "on-tertiary-fixed": "#08193f",
+                    "on-primary": "#002e69",
+                    "secondary-fixed-dim": "#60d4ff",
+                    "on-surface": "#d7e3f9",
+                    "surface-dim": "#071423",
+                    "on-secondary-fixed-variant": "#004d63",
+                    "primary-fixed": "#d8e2ff",
+                    "error": "#ffb4ab",
+                    "surface-bright": "#2e3a4b",
+                    "inverse-surface": "#d7e3f9",
+                    "error-container": "#93000a",
+                    "tertiary-fixed-dim": "#b7c5f5",
+                    "secondary-fixed": "#bbe9ff",
+                    "inverse-primary": "#005ac2",
+                    "primary-container": "#4d8eff",
+                    "background": "#071423",
+                    "tertiary": "#b7c5f5",
+                    "surface-container-highest": "#2a3546",
+                    "surface-tint": "#adc6ff",
+                    "primary-fixed-dim": "#adc6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "48px",
+                    "stack-lg": "80px",
+                    "margin-mobile": "24px",
+                    "gutter": "32px",
+                    "margin-desktop": "64px",
+                    "stack-xl": "120px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "display-xl-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "display-2xl": ["Inter"],
+                    "display-xl": ["Inter"]
+            },
+            "fontSize": {
+                    "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-2xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(20, 32, 48, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 1rem;
+        }
+        .accordion-item.active .icon-rotate {
+            transform: rotate(180deg);
+        }
+        .bg-glow {
+            box-shadow: 0 0 60px rgba(46, 126, 247, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30 selection:text-primary">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface/70 dark:bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_40px_rgba(46,126,247,0.1)]">
+<nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-display-xl text-display-xl font-bold text-primary tracking-tighter">
+                VislyBluq
+            </div>
+<div class="hidden md:flex items-center space-x-gutter">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Insights</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Projects</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Team</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-primary/10 rounded-full transition-all">search</button>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-primary/20 scale-95 active:scale-90 transition-all">
+                    Get Started
+                </button>
+</div>
+</nav>
+</header>
+<main class="min-h-screen relative overflow-hidden">
+<!-- Ambient Background Animation -->
+
+<!-- Hero Section -->
+<section class="relative pt-stack-xl pb-stack-lg px-margin-desktop max-w-container-max mx-auto text-center">
+<div class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fade-in">
+<span class="material-symbols-outlined text-[16px] text-primary">info</span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Support Intelligence</span>
+</div>
+<h1 class="font-display-xl text-display-xl md:text-display-2xl md:font-display-2xl text-on-surface mb-6 tracking-tight leading-none">
+                Frequently Asked <br class="hidden md:block"/> <span class="text-primary">Questions.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Comprehensive insights into our enterprise consulting methodology, technical safeguards, and strategic partnership models.
+            </p>
+</section>
+<!-- FAQ Content Grid -->
+<section class="px-margin-desktop max-w-container-max mx-auto pb-stack-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Category Sidebar -->
+<aside class="lg:col-span-3">
+<div class="sticky top-32 space-y-4">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-6 px-4">Categories</h3>
+<nav class="flex flex-col space-y-1">
+<button class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-primary/10 text-primary border border-primary/20 text-left transition-all">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-label-sm text-label-sm font-bold">General</span>
+</button>
+<button class="flex items-center space-x-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-all text-left">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="font-label-sm text-label-sm">Technical</span>
+</button>
+<button class="flex items-center space-x-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-all text-left">
+<span class="material-symbols-outlined text-[20px]">encrypted</span>
+<span class="font-label-sm text-label-sm">Security</span>
+</button>
+<button class="flex items-center space-x-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-all text-left">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span class="font-label-sm text-label-sm">Partnership</span>
+</button>
+</nav>
+</div>
+</aside>
+<!-- Accordion Section -->
+<div class="lg:col-span-9 space-y-stack-md">
+<!-- General -->
+<div class="space-y-4" id="general">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8 flex items-center space-x-4">
+<span class="w-8 h-[2px] bg-primary"></span>
+<span>General Operations</span>
+</h2>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<div class="accordion-item group glass-panel rounded-2xl p-6 transition-all hover:bg-glow cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center">
+<h4 class="font-body-lg text-body-lg font-semibold text-on-surface group-hover:text-primary transition-colors">What is the VislyBluq engagement lifecycle?</h4>
+<span class="material-symbols-outlined icon-rotate text-primary transition-transform duration-300">expand_more</span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                        Our engagement typically begins with a 4-week Technical Discovery phase, followed by Strategy Calibration and a tiered implementation roadmap. We prioritize incremental value delivery through our proprietary VislyBluq Agile Framework, ensuring enterprise goals are met with precision and speed.
+                                    </p>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="accordion-item group glass-panel rounded-2xl p-6 transition-all hover:bg-glow cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center">
+<h4 class="font-body-lg text-body-lg font-semibold text-on-surface group-hover:text-primary transition-colors">How do you handle cross-platform integration?</h4>
+<span class="material-symbols-outlined icon-rotate text-primary transition-transform duration-300">expand_more</span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                        We utilize industry-standard API abstractions and middleware solutions to bridge legacy infrastructure with modern cloud-native ecosystems. Our engineers specialize in low-latency data synchronicity across heterogeneous environments.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical -->
+<div class="space-y-4" id="technical">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8 pt-8 flex items-center space-x-4">
+<span class="w-8 h-[2px] bg-primary"></span>
+<span>Technical Excellence</span>
+</h2>
+<div class="space-y-4">
+<div class="accordion-item group glass-panel rounded-2xl p-6 transition-all hover:bg-glow cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center">
+<h4 class="font-body-lg text-body-lg font-semibold text-on-surface group-hover:text-primary transition-colors">What stack do you recommend for high-scale enterprise applications?</h4>
+<span class="material-symbols-outlined icon-rotate text-primary transition-transform duration-300">expand_more</span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                        While we remain technology-agnostic, our "Gold Standard" involves a micro-frontend architecture powered by Next.js, backed by Rust or Go-based microservices, and orchestrated via Kubernetes on multi-cloud environments.
+                                    </p>
+</div>
+</div>
+<div class="accordion-item group glass-panel rounded-2xl p-6 transition-all hover:bg-glow cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center">
+<h4 class="font-body-lg text-body-lg font-semibold text-on-surface group-hover:text-primary transition-colors">Do you provide ongoing technical debt remediation?</h4>
+<span class="material-symbols-outlined icon-rotate text-primary transition-transform duration-300">expand_more</span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                        Absolutely. Technical debt management is integrated into our Managed Evolution service, where we continuously refactor and optimize performance bottlenecks as your platform scales.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Security -->
+<div class="space-y-4" id="security">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8 pt-8 flex items-center space-x-4">
+<span class="w-8 h-[2px] bg-primary"></span>
+<span>Security &amp; Compliance</span>
+</h2>
+<div class="space-y-4">
+<div class="accordion-item group glass-panel rounded-2xl p-6 transition-all hover:bg-glow cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center">
+<h4 class="font-body-lg text-body-lg font-semibold text-on-surface group-hover:text-primary transition-colors">How is data privacy handled during the consulting phase?</h4>
+<span class="material-symbols-outlined icon-rotate text-primary transition-transform duration-300">expand_more</span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                        All VislyBluq consultants operate within high-security VPCs. We employ zero-trust access protocols and strict data masking for all sandbox environments. Compliance with SOC2, GDPR, and HIPAA is non-negotiable.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Still have questions CTA -->
+<section class="px-margin-desktop py-stack-xl max-w-container-max mx-auto relative">
+<div class="glass-panel rounded-3xl p-12 md:p-20 text-center relative overflow-hidden bg-glow">
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/20 blur-[100px] rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+<h2 class="font-display-xl text-display-xl text-on-surface mb-6 tracking-tight">Still have questions?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mb-10">
+                    Can't find the answer you're looking for? Reach out to our executive support team for a tailored deep-dive into our services.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+<button class="w-full sm:w-auto bg-primary text-on-primary font-label-sm text-label-sm px-10 py-4 rounded-full font-bold hover:shadow-xl hover:shadow-primary/30 transition-all hover:-translate-y-1">
+                        Contact Sales
+                    </button>
+<button class="w-full sm:w-auto border border-outline-variant text-on-surface font-label-sm text-label-sm px-10 py-4 rounded-full font-bold hover:bg-white/5 transition-all">
+                        Documentation
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20 py-stack-xl px-margin-desktop">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1">
+<div class="font-display-xl-mobile text-display-xl-mobile font-black text-primary mb-6">
+                    VislyBluq
+                </div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Architecting the future of enterprise technology with uncompromising precision and creative intelligence.
+                </p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm font-bold text-on-surface mb-6 uppercase tracking-widest">Solutions</h4>
+<ul class="space-y-4">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Digital Transformation</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Cloud Architecture</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Data Engineering</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">AI Consulting</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm font-bold text-on-surface mb-6 uppercase tracking-widest">Company</h4>
+<ul class="space-y-4">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Insights</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-sm text-label-sm font-bold text-on-surface mb-6 uppercase tracking-widest">Newsletter</h4>
+<div class="relative">
+<input class="w-full bg-surface-variant border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary" placeholder="Email address" type="email"/>
+<button class="absolute right-2 top-1.5 material-symbols-outlined bg-primary text-on-primary p-1.5 rounded-lg">arrow_forward</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-stack-lg pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+                © 2024 VislyBluq Enterprise Technology Consulting. All rights reserved.
+            </div>
+<div class="flex space-x-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scrolling for category navigation
+        document.querySelectorAll('aside nav button').forEach(button => {
+            button.addEventListener('click', () => {
+                const text = button.querySelector('span:last-child').innerText.toLowerCase();
+                const element = document.getElementById(text);
+                if (element) {
+                    window.scrollTo({
+                        top: element.offsetTop - 120,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state
+                    document.querySelectorAll('aside nav button').forEach(b => {
+                        b.classList.remove('bg-primary/10', 'text-primary', 'border-primary/20');
+                        b.querySelector('span:last-child').classList.remove('font-bold');
+                    });
+                    button.classList.add('bg-primary/10', 'text-primary', 'border-primary/20');
+                    button.querySelector('span:last-child').classList.add('font-bold');
+                }
+            });
+        });
+
+        // Initialize first accordion
+        document.querySelector('.accordion-item').classList.add('active');
+    </script>
+</body></html>

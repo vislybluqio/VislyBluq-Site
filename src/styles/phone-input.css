@@ -129,3 +129,39 @@
     width: 1.25rem;
   }
 }
+
+/* Dark contact form variant */
+.dark-phone-input .PhoneInputInput {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(11, 22, 51, 0.75);
+  color: #ffffff;
+}
+
+.dark-phone-input .PhoneInputInput::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.dark-phone-input .PhoneInputCountryIcon {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(11, 22, 51, 0.9);
+}
+
+.dark-phone-input .PhoneInputCountryIcon:hover {
+  border-color: #20c6f7;
+  background-color: rgba(20, 36, 74, 0.95);
+}
+
+.dark-phone-input .PhoneInputCountrySelectArrow {
+  border-top-color: #d7e3f9;
+}
+
+.PhoneInputCountrySelect option,
+.PhoneInputCountrySelect {
+  color: #071423;
+  background-color: #ffffff;
+}
+
+select.PhoneInputCountrySelect option {
+  color: #071423 !important;
+  background-color: #ffffff !important;
+}

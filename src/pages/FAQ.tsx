@@ -1,108 +1,19 @@
-import { useState } from 'react';
-import { ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
-import PageHero from '../components/ui/PageHero';
-import Section from '../components/ui/Section';
-import Button from '../components/ui/Button';
+import { ChevronDown, Handshake, LayoutDashboard, LockKeyhole, Terminal } from 'lucide-react';
+import { CTASection, GlassCard, PageIntro, Section } from '../components/site/Enterprise';
 
-const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+const groups = [
+  ['General Operations', [['What is the VislyBluq engagement lifecycle?', 'Our engagement typically begins with a 4-week Technical Discovery phase, followed by Strategy Calibration and a tiered implementation roadmap. We prioritize incremental value delivery through our proprietary VislyBluq Agile Framework, ensuring enterprise goals are met with precision and speed.'], ['How do you handle cross-platform integration?', 'We utilize industry-standard API abstractions and middleware solutions to bridge legacy infrastructure with modern cloud-native ecosystems. Our engineers specialize in low-latency data synchronicity across heterogeneous environments.']]],
+  ['Technical Excellence', [['What stack do you recommend for high-scale enterprise applications?', 'While we remain technology-agnostic, our Gold Standard involves a micro-frontend architecture powered by Next.js, backed by Rust or Go-based microservices, and orchestrated via Kubernetes on multi-cloud environments.'], ['Do you provide ongoing technical debt remediation?', 'Absolutely. Technical debt management is integrated into our Managed Evolution service, where we continuously refactor and optimize performance bottlenecks as your platform scales.']]],
+  ['Security & Compliance', [['How is data privacy handled during the consulting phase?', 'All VislyBluq consultants operate within high-security VPCs. We employ zero-trust access protocols and strict data masking for all sandbox environments. Compliance with SOC2, GDPR, and HIPAA is non-negotiable.']]],
+];
 
-  const faqs = [
-    {
-      question: 'What industries do you specialize in?',
-      answer:
-        'Healthcare, e-commerce, manufacturing, and fintech — though our core technologies are industry-agnostic.',
-    },
-    {
-      question: 'Do you offer consulting without a build?',
-      answer:
-        'Yes. Many clients start with technology consulting — discovery, audits, roadmaps, or fractional leadership — before committing to development. We can advise only, or stay on as your build partner.',
-    },
-    {
-      question: 'Do you build mobile and web applications?',
-      answer:
-        'Yes. After consultation and planning, we build web apps (React, Next.js), mobile apps (iOS, Android, React Native), and the backends that power them.',
-    },
-    {
-      question: 'How does your engagement model work?',
-      answer:
-        'Fixed-price projects, time & materials, or dedicated teams — tailored to your scope and timeline.',
-    },
-    {
-      question: 'What is your typical project timeline?',
-      answer:
-        'MVPs often take 3–4 months; enterprise data platforms or AI integrations may take 6–12 months.',
-    },
-    {
-      question: 'How do you handle data security?',
-      answer:
-        'Encryption at rest and in transit, strict access controls, and NDAs available before any discussion.',
-    },
-    {
-      question: 'Do you offer post-launch support?',
-      answer:
-        'Yes — maintenance packages, SLA-backed support, and managed services after launch.',
-    },
-  ];
+const FaqPage = () => (
+  <div>
+    <PageIntro eyebrow="Support Intelligence" title={<>Frequently Asked Questions.</>} description="Comprehensive insights into our enterprise consulting methodology, technical safeguards, and strategic partnership models." />
+    <Section className="pt-0"><div className="mb-10 flex flex-wrap gap-3">{[['General', LayoutDashboard], ['Technical', Terminal], ['Security', LockKeyhole], ['Partnership', Handshake]].map(([label, Icon])=><GlassCard key={label as string} className="flex items-center gap-2 rounded-full px-4 py-2 text-sm"><Icon className="h-4 w-4 text-[#adc6ff]"/>{label as string}</GlassCard>)}</div><div className="mx-auto max-w-4xl space-y-8">{groups.map(([group, items])=><div key={group as string}><h2 className="mb-4 text-2xl font-bold text-[#d7e3f9]">{group as string}</h2><div className="space-y-4">{(items as string[][]).map(([q,a])=><GlassCard key={q} className="p-6"><div className="flex items-start justify-between gap-4"><h3 className="text-lg font-bold text-[#d7e3f9]">{q}</h3><ChevronDown className="h-5 w-5 text-[#adc6ff]"/></div><p className="mt-4 text-sm leading-7 text-[#c2c6d6]">{a}</p></GlassCard>)}</div></div>)}</div></Section>
+    <CTASection title="Still have questions?" description="Can't find the answer you're looking for? Reach out to our executive support team for a tailored deep-dive into our services." />
+  </div>
+);
 
-  return (
-    <div className="pt-16 bg-white">
-      <PageHero
-        eyebrow="Support"
-        title="Frequently asked questions"
-        subtitle="Everything you need to know about our services and process."
-        compact
-      />
+export default FaqPage;
 
-      <Section bg="white" narrow>
-        <div className="space-y-3">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className={`border rounded-xl transition-colors ${
-                openIndex === index ? 'border-visly-blue bg-blue-50/30' : 'border-gray-200'
-              }`}
-            >
-              <button
-                type="button"
-                className="w-full flex items-center justify-between p-4 text-left"
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              >
-                <span
-                  className={`text-sm font-semibold pr-4 ${
-                    openIndex === index ? 'text-visly-dark' : 'text-gray-700'
-                  }`}
-                >
-                  {faq.question}
-                </span>
-                {openIndex === index ? (
-                  <ChevronUp className="h-4 w-4 text-visly-blue shrink-0" />
-                ) : (
-                  <ChevronDown className="h-4 w-4 text-gray-400 shrink-0" />
-                )}
-              </button>
-              {openIndex === index && (
-                <div className="px-4 pb-4">
-                  <p className="text-sm text-gray-600 leading-relaxed">{faq.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10 bg-visly-navy rounded-2xl p-8 text-center text-white">
-          <MessageCircle className="h-8 w-8 text-visly-cyan mx-auto mb-3" />
-          <h2 className="text-lg font-semibold text-white mb-2">Still have questions?</h2>
-          <p className="text-sm text-blue-100 mb-5 max-w-md mx-auto">
-            Contact our team — we&apos;re happy to help.
-          </p>
-          <Button to="/contact" variant="white" size="sm">
-            Get in touch
-          </Button>
-        </div>
-      </Section>
-    </div>
-  );
-};
-
-export default FAQ;
