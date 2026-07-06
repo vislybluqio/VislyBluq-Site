@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { AppWindow, ChevronDown, Menu, Search, X } from 'lucide-react';
+import { ChevronDown, Menu, Search, X } from 'lucide-react';
 import { servicePillars } from '../data/enterpriseServices';
+import BrandLogo from './BrandLogo';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -42,16 +43,8 @@ const Header = () => {
       }`}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-16">
-        <Link to="/" className="group flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-visly-cyan/20 bg-visly-surface/70 text-visly-cyan shadow-[0_0_24px_rgba(32,198,247,0.16)]">
-            <AppWindow className="h-5 w-5" />
-          </div>
-          <div>
-            <div className="text-xl font-extrabold tracking-tight text-white">VislyBluq</div>
-            <div className="text-[10px] font-semibold uppercase tracking-[0.28em] text-visly-cyan/75">
-              Enterprise Tech
-            </div>
-          </div>
+        <Link to="/" className="group flex items-center" aria-label="VislyBluq home">
+          <BrandLogo imageClassName="h-12 w-auto max-w-[190px] transition duration-300 group-hover:scale-[1.02] sm:h-14" />
         </Link>
 
         <nav className="hidden items-center gap-5 lg:gap-7 md:flex">
@@ -150,6 +143,7 @@ const Header = () => {
 };
 
 export default Header;
+
 
 
 
