@@ -185,7 +185,6 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
       rememberExchange(trimmed, reply);
       setMessages((current) => [...current, { role: 'assistant', content: reply }]);
       if (data.shouldEscalate) setShowEscalation(true);
-      if (speechSupported) speak(reply, langConfig.speech);
     } catch {
       setError(ui.error);
     } finally {
