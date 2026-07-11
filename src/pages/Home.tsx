@@ -33,7 +33,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[430px] animate-[videoFrameFlowIn_1.05s_cubic-bezier(0.16,1,0.3,1)_0.15s_both] lg:mx-0 lg:ml-auto lg:pl-4">
+          <div className="relative mx-auto w-full max-w-[430px] animate-[videoFrameFlowIn_1.05s_cubic-bezier(0.16,1,0.3,1)_0.15s_both] lg:mx-0 lg:ml-auto lg:-mt-16 lg:pl-4 xl:-mt-20">
             <StoryVideoCard />
           </div>
         </div>
