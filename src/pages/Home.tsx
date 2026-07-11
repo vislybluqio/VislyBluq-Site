@@ -2,14 +2,13 @@ import { ArrowRight, Brain, Database, MonitorDot, ShieldCheck, Sparkles, Termina
 import { Link } from 'react-router-dom';
 import { CTASection, Eyebrow, GlassCard, MetricStrip, PrimaryLink, SecondaryLink, Section, pageMax, pagePad } from '../components/site/Enterprise';
 import { services } from '../data/services';
-
-const showcaseImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5q7Dqn61ZRkxEnZIPtrgrHxnEEPwmNqHqTQYfSwIZv5DNa0OVPabco_Y1AqGj8lJyNXTwykrb45nxDp-KIuauHoSo-L2xKLXWVYkRajDfZ6HlUQ7vcNOYqpwV34wS1BFmWHzw7UMsftu0YGYfXT8CIOqswLjh7LyQ4C-mHLnrfLyVME7F6AndCGoaJXFSniTerLoeqJalwNxtf8E2mzH-_1M5o4D4JkPiGK57xqgYr9xu4CDPMzc9vJloq76b9zKnzQdpC6hofXo';
+import StoryVideoCard from '../components/StoryVideoCard';
 
 const metrics = [
-  { value: '150+', label: 'Projects delivered' },
-  { value: '50+', label: 'Clients served' },
-  { value: '24h', label: 'Response SLA' },
-  { value: '98%', label: 'Client satisfaction' },
+  { value: '5+', label: 'Builds & prototypes' },
+  { value: '10+', label: 'Strategy sessions' },
+  { value: '24h', label: 'Typical first response' },
+  { value: '3', label: 'Core delivery tracks' },
 ];
 
 const capabilities = [Brain, Terminal, Database];
@@ -34,19 +33,9 @@ const Home = () => {
             </div>
           </div>
 
-          <GlassCard className="relative min-h-[520px] overflow-hidden p-6">
-            <img src={showcaseImage} alt="Enterprise product interface" className="absolute inset-0 h-full w-full object-cover opacity-60" />
-            <div className="absolute inset-0 bg-gradient-to-t from-visly-navy via-visly-navy/40 to-transparent" />
-            <div className="relative flex h-full min-h-[468px] flex-col justify-end">
-              <span className="mb-4 w-fit rounded-full bg-visly-cyan/15 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-visly-cyan">
-                FinTech
-              </span>
-              <h2 className="text-3xl font-bold text-white">NexGen Asset Manager</h2>
-              <p className="mt-3 max-w-md text-sm leading-6 text-white/65">
-                Institutional-grade portfolio tracking with real-time risk simulation and clean decision dashboards.
-              </p>
-            </div>
-          </GlassCard>
+          <div className="relative animate-[slideInRight_0.9s_ease-out_both] lg:pl-6">
+            <StoryVideoCard />
+          </div>
         </div>
       </section>
 
@@ -79,10 +68,10 @@ const Home = () => {
       <section className="border-y border-white/5 bg-visly-surface/50 px-6 py-20 sm:px-8 lg:px-16">
         <div className={pageMax}>
           <p className="mb-12 text-center text-xs font-bold uppercase tracking-[0.32em] text-visly-cyan/60">
-            Trusted by innovative industry leaders
+            Building with focused founders and growing teams
           </p>
           <div className="mb-16 flex flex-wrap items-center justify-center gap-8 text-2xl font-black italic text-white/35 md:gap-14 md:text-4xl">
-            <span>LOGOS</span><span>QUANTUM</span><span>VELOCITY</span><span>AETHER</span><span>VERTEX</span>
+            <span>STARTUPS</span><span>SMES</span><span>FOUNDERS</span><span>TEAMS</span><span>PARTNERS</span>
           </div>
           <MetricStrip metrics={metrics} />
         </div>

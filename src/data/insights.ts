@@ -12,7 +12,7 @@ export const insights: InsightArticle[] = [
   {
     slug: 'generative-singularity-autonomous-enterprise-systems',
     category: 'AI Strategy',
-    title: 'The Generative Singularity: Architecting Autonomous Enterprise Systems',
+    title: 'Practical AI Systems for Growing Businesses',
     summary: 'How teams can introduce LLM-driven workflows into existing operations without losing control, trust, or measurement.',
     readTime: '12 min read',
     body: [

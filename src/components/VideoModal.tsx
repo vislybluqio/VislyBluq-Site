@@ -1,11 +1,17 @@
 import { useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
+import { Play, X } from 'lucide-react';
 import { VISLYBLUQ_STORY_YOUTUBE_ID } from '../config/siteVideo';
 
 interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+const storyPoints = [
+  'We help founders and growing businesses choose the right technology path before they build.',
+  'We design websites, web apps, dashboards, portals, automation workflows, and AI-powered tools.',
+  'Our work combines consultation, product thinking, engineering, data, and practical AI implementation.',
+];
 
 const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -48,12 +54,12 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
         aria-label="Close video"
         onClick={onClose}
       />
-      <div className="relative z-10 w-full max-w-4xl">
+      <div className="relative z-10 w-full max-w-4xl animate-[slideInRight_0.45s_ease-out_both]">
         <button
           ref={closeButtonRef}
           type="button"
           onClick={onClose}
-          className="absolute -top-12 right-0 sm:-right-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+          className="absolute -top-12 right-0 sm:-right-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
           aria-label="Close"
         >
           <X className="h-5 w-5" />
@@ -70,13 +76,36 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
             />
           </div>
         ) : (
-          <div className="aspect-video w-full rounded-2xl bg-visly-navy border border-white/10 flex flex-col items-center justify-center p-8 text-center shadow-2xl">
-            <h2 id="video-modal-title" className="text-xl font-semibold text-white mb-2">
-              Video coming soon
-            </h2>
-            <p className="text-gray-300 text-sm max-w-md">
-              Our story video is on the way. Check back soon to hear directly from the VislyBluq team.
-            </p>
+          <div className="aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-[#071423] shadow-2xl">
+            <div className="relative flex h-full flex-col justify-between bg-[radial-gradient(circle_at_18%_20%,rgba(119,216,255,0.22),transparent_26%),linear-gradient(135deg,#071423,#10265c_55%,#071423)] p-6 text-white sm:p-8">
+              <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.08)_1px,transparent_1px)] [background-size:42px_42px]" />
+              <div className="relative flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#77d8ff]">Company Story</p>
+                  <h2 id="video-modal-title" className="mt-3 max-w-xl text-3xl font-black leading-tight sm:text-5xl">
+                    Meet VislyBluq
+                  </h2>
+                  <p className="mt-3 max-w-xl text-sm leading-6 text-white/70">
+                    A short story-style preview of who we are and what we help businesses build.
+                  </p>
+                </div>
+                <div className="hidden h-28 w-28 items-center justify-center rounded-full border border-[#77d8ff]/30 bg-[#77d8ff]/10 shadow-[0_0_40px_rgba(119,216,255,0.3)] sm:flex">
+                  <Play className="ml-1 h-12 w-12 fill-current text-[#adc6ff]" />
+                </div>
+              </div>
+              <div className="relative grid gap-3 md:grid-cols-3">
+                {storyPoints.map((point, index) => (
+                  <div key={point} className="rounded-2xl border border-white/10 bg-white/8 p-4 backdrop-blur">
+                    <p className="text-xs font-bold text-[#77d8ff]">0{index + 1}</p>
+                    <p className="mt-2 text-sm leading-6 text-white/78">{point}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="relative flex items-center gap-3 text-xs text-white/50">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-[#77d8ff]" />
+                Presenter video slot ready. Add a YouTube ID in siteVideo.ts when the recorded company video is available.
+              </div>
+            </div>
           </div>
         )}
       </div>

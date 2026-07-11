@@ -15,16 +15,21 @@ const ChatWidget = () => {
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="group relative h-16 w-16 overflow-hidden rounded-full border-2 border-[#adc6ff]/50 bg-[#071423] shadow-[0_0_30px_rgba(173,198,255,0.34)] transition-all duration-300 hover:scale-110 active:scale-95"
+        className="group relative flex min-h-16 items-center gap-3 rounded-full border-2 border-[#77d8ff] bg-[#adc6ff] px-3 py-2 pr-5 text-[#002e69] shadow-[0_0_38px_rgba(119,216,255,0.65)] transition-all duration-300 hover:scale-105 hover:bg-white active:scale-95"
         aria-label={isOpen ? ui.closeChat : ui.openChat}
         aria-expanded={isOpen}
       >
-        <div className="absolute inset-0 animate-pulse bg-[#adc6ff]/20" />
-        {isOpen ? (
-          <X className="relative z-10 mx-auto h-7 w-7 text-[#d7e3f9]" />
-        ) : (
-          <img alt="AI Agent" className="relative z-10 h-full w-full object-cover" src={agentAvatar} />
-        )}
+        <span className="absolute -inset-1 -z-10 animate-pulse rounded-full bg-[#77d8ff]/40 blur-md" />
+        <span className="relative flex h-12 w-12 overflow-hidden rounded-full border border-[#002e69]/20 bg-[#071423]">
+          {isOpen ? (
+            <X className="m-auto h-7 w-7 text-white" />
+          ) : (
+            <img alt="AI Agent" className="h-full w-full object-cover" src={agentAvatar} />
+          )}
+        </span>
+        <span className="hidden text-left text-xs font-black leading-tight sm:block">
+          Chat with<br />our AI
+        </span>
       </button>
     </div>
   );

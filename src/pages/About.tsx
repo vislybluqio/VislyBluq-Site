@@ -12,7 +12,7 @@ const About = () => (
   <div>
     <PageIntro
       eyebrow="Global Engineering Lead"
-      title={<>Architecting the Future.</>}
+      title={<>Building the Future.</>}
       description="At VislyBluq, we don't just build technology. We engineer the foundational intelligence that powers the world's most ambitious enterprise ecosystems."
     >
       <div className="flex flex-col gap-4 sm:flex-row">

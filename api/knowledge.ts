@@ -8,6 +8,14 @@ VislyBluq is a technology consultancy and build partner for startups, SMEs, and 
 Tagline: BUILD & CONSULT.
 We combine expert technology consultation with hands-on delivery: strategy, roadmaps, websites, web apps, mobile apps, AI systems, automation, business intelligence, and intelligent data platforms.
 
+## What VislyBluq does in simple terms
+- We help people and businesses understand the right technology path before they spend money building.
+- We design and build websites, company platforms, dashboards, portals, mobile apps, and internal tools.
+- We add AI where it is useful: chat assistants, document workflows, automation, recommendations, summaries, data extraction, and decision-support tools.
+- We organize business data into reports, dashboards, and cleaner systems so teams can make better decisions.
+- We support early-stage founders with MVP planning, product design, technical roadmaps, launch support, and ongoing improvements.
+- We help existing businesses improve old systems, connect tools with APIs, automate repeated work, and make operations easier to manage.
+
 ## Mission
 Provide expert technology consultation and high-quality product development that helps startups and SMEs make smart decisions, solve real problems, and scale sustainably.
 
@@ -23,10 +31,10 @@ Be the bedrock of digital transformation globally, where every product we build 
 ## Leadership team
 These are public leadership profiles. The leadership group is supported by a wider network of engineers, AI/data specialists, product specialists, designers, and delivery partners depending on project needs.
 - Odelola Solomon O.: General Managing Director, Co-founder & Head of Engineering.
-- Ibekwe Kyngsley: CTO, Co-founder & Senior Software Engineer.
-- Funmi: Co-founder and Head of AI and Data Engineering.
-- Ibrahim Modupe: Co-founder, Product and Operations Lead.
-- Festus Moses: Co-founder, Head of Legal & Corporate Affairs.
+- Ibekwe Kingsley: CEO, Co-founder & Senior Software Engineer.
+- Oluwatifunmilayo Ude: Co-founder and Head of AI and Data Engineering.
+- Ibrahim Modupe: Product and Operations Lead.
+- Festus Moses: Head of Legal & Corporate Affairs.
 
 ## Website pages and what they contain
 - Home (/): overview of VislyBluq's consulting, product engineering, AI, data, project showcase, services, testimonials, and AI assistant.
@@ -87,14 +95,14 @@ These are public selected builds/case studies presented on the site. Do not clai
 - Cognitive Core Ops: AI operations workflow layer for request triage, AI summaries, human escalation, and workflow analytics.
 
 ## Insights and articles
-- The Generative Singularity: Architecting Autonomous Enterprise Systems. Topic: AI strategy, LLM workflows, governance, human review, workflow automation.
+- Practical AI Systems for Growing Businesses. Topic: AI strategy, LLM workflows, governance, human review, workflow automation.
 - The Future of Decentralized Banking Hubs. Topic: community finance, cooperative platforms, records, onboarding, trust and transparency.
 - Precision Medicine & Neural Diagnostics. Topic: healthcare AI as decision support, consent-aware workflows, audit logs.
 - Autonomous Supply Chain Orchestration. Topic: logistics visibility, predictive operations, exceptions, coordination.
 - Smart Grids & Edge Computing Integration. Topic: energy systems, edge processing, resilience, operator clarity.
 
 ## Careers
-VislyBluq is building a practical, ambitious team across consulting, product engineering, data, automation, and AI implementation. Open role examples include AI & Automation Engineer, Full-Stack Product Engineer, and Product Designer. Compensation and benefits are realistic and discussed based on role, contribution, company stage, project needs, and business priorities.
+VislyBluq is building a practical, ambitious team across consulting, product engineering, data, automation, and AI implementation. Current open role examples include Digital Marketer, SEO Content Writer, Product Manager, UI/UX Designer, Frontend Developer, and Community & Partnerships Associate. These are volunteer-based startup contributor roles for now; paid opportunities may be discussed later when the business can support them.
 
 ## Contact
 Location: 11 Apaola Street, Ketu Ikosi, Lagos, Nigeria.
