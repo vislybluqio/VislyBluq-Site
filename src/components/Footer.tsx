@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Github, Linkedin, Twitter } from 'lucide-react';
 import { services } from '../data/services';
@@ -101,7 +101,7 @@ const Footer = () => {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link to="/" className="inline-flex items-center" aria-label="VislyBluq home">
-              <BrandLogo imageClassName="h-14 w-auto max-w-[210px]" />
+              <BrandLogo imageClassName="h-12 w-12" />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-6 text-white/55">
               High-performance technology consulting and product engineering for the next generation of industry leaders.
@@ -181,7 +181,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-7 text-xs text-white/38">
-          © {currentYear} VislyBluq Enterprise Technology Consulting. All rights reserved.
+          Â© {currentYear} VislyBluq Enterprise Technology Consulting. All rights reserved.
         </div>
       </div>
     </footer>
@@ -189,5 +189,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 

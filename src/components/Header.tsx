@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, Search, X } from 'lucide-react';
 import { servicePillars } from '../data/enterpriseServices';
@@ -44,7 +44,7 @@ const Header = () => {
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-16">
         <Link to="/" className="group flex items-center" aria-label="VislyBluq home">
-          <BrandLogo imageClassName="h-12 w-auto max-w-[190px] transition duration-300 group-hover:scale-[1.02] sm:h-14" />
+          <BrandLogo imageClassName="h-11 w-11 transition duration-300 group-hover:scale-[1.04] sm:h-12 sm:w-12" />
         </Link>
 
         <nav className="hidden items-center gap-5 lg:gap-7 md:flex">
@@ -143,6 +143,7 @@ const Header = () => {
 };
 
 export default Header;
+
 
 
 
