@@ -96,8 +96,14 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
   }
 
   useEffect(() => {
+    stopSpeaking();
+    return () => stopSpeaking();
+  }, [stopSpeaking]);
+
+  useEffect(() => {
     sessionStorage.setItem(STORAGE_LANG, language);
-  }, [language]);
+    stopSpeaking();
+  }, [language, stopSpeaking]);
 
   useEffect(() => {
     setMessages((current) =>
@@ -153,6 +159,7 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
       return;
     }
 
+    stopSpeaking();
     setError(null);
     const userMsg: Message = { role: 'user', content: trimmed };
     const nextMessages = [...messages, userMsg];
@@ -182,10 +189,12 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
       if (!response.ok) throw new Error(data.error || ui.error);
 
       const reply = data.reply || ui.error;
+      stopSpeaking();
       rememberExchange(trimmed, reply);
       setMessages((current) => [...current, { role: 'assistant', content: reply }]);
       if (data.shouldEscalate) setShowEscalation(true);
     } catch {
+      stopSpeaking();
       setError(ui.error);
     } finally {
       setIsLoading(false);
