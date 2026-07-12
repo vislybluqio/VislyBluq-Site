@@ -31,6 +31,18 @@ const STORAGE_LANG = 'vislybluq-chat-lang';
 const STORAGE_SESSION = 'vislybluq-chat-session';
 const STORAGE_MEMORY = 'vislybluq-chat-memory';
 const MAX_MEMORY_EXCHANGES = 10;
+const formatAssistantText = (text: string) =>
+  text
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/^\s*[-*]\s+/gm, '\u2022 ')
+    .replace(/\s\*\s/g, ' \u2022 ')
+    .trim();
+
+const speechText = (text: string) =>
+  formatAssistantText(text)
+    .replace(/^\u2022\s*/gm, '')
+    .replace(/\u2022/g, ', ');
+
 const agentAvatar = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5zGYFRLZiS9CGukcB2ceA_Le6ecX0pFHNsBnGrum3MtVGmQzCdIWnUYXd_ApQqzJFWTmy6dk0NxnHWC0GGd6VSSuuft3cTaI1iHMt0tNvpgY5R555km4X4H3AmkbydJXByJC07V3Bdi92ti7mAENgJXdTPnf0OlVEiffCssDKvM3d0F0GjTQfIUO7kYm_9wWuvQFMJ_P56HLOL3BxNtENTdcvWdRSk8Pwbfb8vRLYJUtodVjIbps_ZF-kIuAhAKp--iKYlXfyggk';
 
 const readMemory = (): MemoryExchange[] => {
@@ -188,7 +200,7 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
       };
       if (!response.ok) throw new Error(data.error || ui.error);
 
-      const reply = data.reply || ui.error;
+      const reply = formatAssistantText(data.reply || ui.error);
       stopSpeaking();
       rememberExchange(trimmed, reply);
       setMessages((current) => [...current, { role: 'assistant', content: reply }]);
@@ -251,7 +263,7 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
               role={message.role}
               content={message.content}
               speakLabel={ui.speakReply}
-              onSpeak={message.role === 'assistant' && speechSupported ? () => speak(message.content, langConfig.speech) : undefined}
+              onSpeak={message.role === 'assistant' && speechSupported ? () => speak(speechText(message.content), langConfig.speech) : undefined}
               onFeedback={message.role === 'assistant' ? (rating) => sendFeedback(index, rating) : undefined}
               feedbackValue={feedbackByMessage[feedbackKey] || null}
             />
@@ -265,7 +277,7 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
 
       <div className="flex items-center justify-center gap-6 border-t border-white/5 bg-[#030f1e]/45 px-4 py-2">
         {speechSupported && <button type="button" onClick={toggleMic} title={isListening ? ui.listening : ui.micStart} className="text-[#c2c6d6] hover:text-[#77d8ff]">{isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}</button>}
-        {speechSupported && <button type="button" onClick={() => messages.at(-1)?.role === 'assistant' && speak(messages.at(-1)!.content, langConfig.speech)} title={ui.speakReply} className="text-[#c2c6d6] hover:text-[#77d8ff]"><Volume2 className="h-5 w-5" /></button>}
+        {speechSupported && <button type="button" onClick={() => messages.at(-1)?.role === 'assistant' && speak(speechText(messages.at(-1)!.content), langConfig.speech)} title={ui.speakReply} className="text-[#c2c6d6] hover:text-[#77d8ff]"><Volume2 className="h-5 w-5" /></button>}
         <button type="button" onClick={stopSpeaking} title="Stop" className="text-red-300 hover:scale-110"><Square className="h-5 w-5" fill="currentColor" /></button>
         <button type="button" onClick={() => setInput(messages.filter((message) => message.role === 'user').at(-1)?.content || '')} title="Edit Query" className="text-[#c2c6d6] hover:text-[#77d8ff]"><Edit3 className="h-5 w-5" /></button>
       </div>
