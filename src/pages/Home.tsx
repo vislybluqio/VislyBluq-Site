@@ -9,6 +9,7 @@ import { services } from '../data/services';
 import { homeMetrics } from '../data/metrics';
 import { industries } from '../data/industries';
 import { hasStoryVideo } from '../config/siteVideo';
+import { focusPage, focusPagePath } from '../config/focus';
 import StoryVideoCard from '../components/StoryVideoCard';
 
 const capabilities = [Brain, Terminal, Database];
@@ -31,6 +32,9 @@ const Home = () => {
               <PrimaryLink to="/contact">Launch your project</PrimaryLink>
               <SecondaryLink to="/case-studies">View our work</SecondaryLink>
             </div>
+            <Link to={focusPagePath} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-visly-cyan hover:text-white">
+              {focusPage.navLabel} <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
           </div>
 
           {hasStoryVideo && (

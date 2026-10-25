@@ -17,6 +17,12 @@ Every placeholder on the site is listed here. In code, each one has a `// TODO(c
 | `src/data/industries.ts` | 24 | Short description for **SMBs and Retail** (shown on `/industries/smbs-retail`). Also confirm the linked services and projects. |
 | `src/data/projects.ts` | 17 | Real product screenshots for each project (`image` field). The home page "Selected work" strip (Sentinel Fraud Engine, Lighthill Cooperative, Cognitive Core Ops) shows a plain gradient placeholder until then. Also confirm these are the three projects you want featured (`featuredProjectIds`). |
 | `src/components/home/SelectedWork.tsx` | 33 | Dev marker inside each placeholder image. It disappears automatically once a project has an `image`. |
+| `src/config/focus.ts` | 32 | Focus page (`/focus/ai-for-fintech`) intro paragraph. |
+| `src/config/focus.ts` | 35 | Focus page stats: 3–4 real value + label pairs. The stat row is hidden in production until at least one is filled in. |
+| `src/config/focus.ts` | 19
+41 | Focus page full-bleed band image and alt text. The band is hidden in production until set. |
+| `src/config/focus.ts` | 44 | Focus page "The problem" paragraph. |
+| `src/config/focus.ts` | 46 | Focus page "How we approach it" paragraph. The two-column section is hidden in production while both paragraphs are empty. |
 | `src/config/siteVideo.ts` | 2 | YouTube ID for the "Watch our story" video. The hero video card is hidden while this is empty. |
 
 ## Technical follow-ups

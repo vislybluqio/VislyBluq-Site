@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, Search, X } from 'lucide-react';
 import { servicePillars } from '../data/enterpriseServices';
 import { industries } from '../data/industries';
+import { focusPage, focusPagePath } from '../config/focus';
 import BrandLogo from './BrandLogo';
 
 type Dropdown = 'services' | 'industries';
@@ -45,11 +46,17 @@ const DropdownPanel = ({ dropdown }: { dropdown: Dropdown }) => (
           ))}
         </>
       ) : (
-        industries.map((industry) => (
-          <Link key={industry.id} to={`/industries/${industry.id}`} className={dropdownLinkClass}>
-            {industry.title}
+        <>
+          {industries.map((industry) => (
+            <Link key={industry.id} to={`/industries/${industry.id}`} className={dropdownLinkClass}>
+              {industry.title}
+            </Link>
+          ))}
+          <div className="my-2 h-px bg-white/10" />
+          <Link to={focusPagePath} className="block rounded-xl bg-white/5 px-4 py-3 text-sm font-bold text-white hover:bg-white/10">
+            {focusPage.navLabel}
           </Link>
-        ))
+        </>
       )}
     </div>
   </div>
@@ -88,7 +95,7 @@ const Header = () => {
 
         <nav className="hidden items-center gap-6 xl:flex">
           {navItems.map((item) => {
-            const isActive = item.dropdown === 'industries' ? location.pathname.startsWith('/industries') : location.pathname === item.path;
+            const isActive = item.dropdown === 'industries' ? location.pathname.startsWith('/industries') || location.pathname.startsWith('/focus') : location.pathname === item.path;
             const linkClass = `inline-flex items-center gap-1 text-sm font-medium transition ${isActive ? 'text-visly-cyan' : 'text-white/68 hover:text-white'}`;
             return (
               <div
@@ -177,6 +184,12 @@ const Header = () => {
                     {industry.title}
                   </Link>
                 ))}
+                <Link
+                  to={focusPagePath}
+                  className={`block rounded-xl py-3 pl-3 text-sm font-semibold ${location.pathname === focusPagePath ? 'text-visly-cyan' : 'text-white/72 hover:text-white'}`}
+                >
+                  {focusPage.navLabel}
+                </Link>
               </div>
             ) : (
               <Link

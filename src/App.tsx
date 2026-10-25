@@ -18,6 +18,7 @@ import Terms from './pages/Terms';
 import FAQ from './pages/FAQ';
 import Apply from './pages/Apply';
 import IndustryDetail from './pages/IndustryDetail';
+import FocusPage from './pages/FocusPage';
 import ChatWidget from './components/chat/ChatWidget';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/industries/:industryId" element={<IndustryDetail />} />
+            <Route path="/focus/:slug" element={<FocusPage />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/projects" element={<CaseStudies />} />
             <Route path="/projects/:projectId" element={<ProjectDetail />} />
