@@ -63,7 +63,7 @@ function ScrollToTop() {
   React.useEffect(() => {
     if (hash) {
       const element = document.getElementById(hash.slice(1));
-      if (element) setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100);
+      if (element) setTimeout(() => element.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }), 100);
     } else {
       window.scrollTo(0, 0);
     }

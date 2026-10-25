@@ -2,6 +2,8 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
 import { getServicePillar } from '../data/enterpriseServices';
+import { RelatedInsights, RelatedProjects } from '../components/site/Related';
+import { insightsForServiceIds, projectsForServiceIds } from '../data/related';
 
 const ServiceDetail = () => {
   const { serviceId = '' } = useParams();
@@ -19,6 +21,8 @@ const ServiceDetail = () => {
   }
 
   const Icon = service.icon;
+  const relatedInsights = insightsForServiceIds(service.serviceIds, 2);
+  const relatedProjects = projectsForServiceIds(service.serviceIds, 2);
 
   return (
     <div>
@@ -40,6 +44,8 @@ const ServiceDetail = () => {
           </div>
         </div>
       </Section>
+      <RelatedProjects projects={relatedProjects} className="pt-0" />
+      <RelatedInsights insights={relatedInsights} className="pt-0" />
       <Section className="pt-0"><GlassCard className="p-10 text-center"><h2 className="text-3xl font-bold">Want this capability in your business?</h2><p className="mx-auto mt-3 max-w-2xl text-[#c2c6d6]">Tell us what you are trying to build and we will recommend the best technical path.</p><div className="mt-8"><PrimaryLink to={`/contact?service=${service.id}`}>Request a focused consultation</PrimaryLink></div></GlassCard></Section>
     </div>
   );

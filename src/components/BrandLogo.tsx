@@ -23,4 +23,9 @@ const BrandLogo = ({ className = '', imageClassName = '', textClassName = '' }: 
   </span>
 );
 
+/** The V-Cube mark on its own, for decorative use. */
+export const BrandMark = ({ className = '' }: { className?: string }) => (
+  <img src={logoUrl} alt="" aria-hidden="true" className={`block object-contain ${className}`} />
+);
+
 export default BrandLogo;

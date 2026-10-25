@@ -11,15 +11,16 @@ import { industries } from '../data/industries';
 import { hasStoryVideo } from '../config/siteVideo';
 import { focusPage, focusPagePath } from '../config/focus';
 import StoryVideoCard from '../components/StoryVideoCard';
+import { BrandMark } from '../components/BrandLogo';
 
 const capabilities = [Brain, Terminal, Database];
 
 const Home = () => {
   return (
-    <div className="overflow-hidden">
-      <section className={`${pagePad} relative pt-32 lg:pt-40 ${hasStoryVideo ? 'min-h-[86vh]' : 'pb-8 lg:pb-12'}`}>
+    <div className="overflow-x-clip">
+      <section className={`hero-scroll-timeline ${pagePad} relative pt-32 lg:pt-40 ${hasStoryVideo ? 'min-h-[86vh]' : 'pb-8 lg:pb-12'}`}>
         <div className="absolute left-1/2 top-24 -z-10 h-[680px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(46,126,247,0.2),transparent_62%)]" />
-        <div className={`${pageMax} grid gap-12 ${hasStoryVideo ? 'lg:grid-cols-[1.05fr_0.95fr]' : ''} lg:items-center`}>
+        <div className={`${pageMax} grid gap-12 ${hasStoryVideo ? 'lg:grid-cols-[1.05fr_0.95fr]' : 'lg:grid-cols-[1fr_auto]'} lg:items-center`}>
           <div>
             <Eyebrow>Next-gen tech consulting</Eyebrow>
             <h1 className="max-w-5xl text-5xl font-extrabold leading-[1.04] text-white sm:text-6xl lg:text-7xl">
@@ -37,9 +38,14 @@ const Home = () => {
             </Link>
           </div>
 
-          {hasStoryVideo && (
+          {hasStoryVideo ? (
             <div className="relative mx-auto w-full max-w-[430px] animate-[videoFrameFlowIn_1.05s_cubic-bezier(0.16,1,0.3,1)_0.15s_both] lg:mx-0 lg:ml-auto lg:-mt-16 lg:pl-4 xl:-mt-20">
               <StoryVideoCard />
+            </div>
+          ) : (
+            <div className="relative hidden lg:block lg:pr-4 xl:pr-12">
+              <div className="absolute inset-0 -z-10 rounded-full bg-visly-cyan/15 blur-3xl" />
+              <BrandMark className="hero-cube h-56 w-56 drop-shadow-[0_24px_60px_rgba(46,126,247,0.45)] xl:h-64 xl:w-64" />
             </div>
           )}
         </div>

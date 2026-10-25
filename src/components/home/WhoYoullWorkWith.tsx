@@ -2,14 +2,16 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { founders } from '../../data/team';
 import { Section } from '../site/Enterprise';
+import { revealDelay, useInView } from '../../hooks/useInView';
 
 const WhoYoullWorkWith = () => {
+  const [ref, inView] = useInView<HTMLDivElement>();
   if (founders.length === 0) return null;
 
   return (
     <Section className="bg-visly-light text-visly-navy">
-      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-        <div>
+      <div ref={ref} className={`reveal grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center ${inView ? 'is-visible' : ''}`}>
+        <div className="reveal-item">
           <p className="text-xs font-bold uppercase tracking-[0.24em] text-visly-blue">Who you'll work with</p>
           <h2 className="mt-4 text-4xl font-bold leading-tight text-visly-navy md:text-5xl">Meet the founders.</h2>
           <Link to="/team" className="mt-8 inline-flex items-center gap-2 font-bold text-visly-blue hover:text-visly-navy">
@@ -17,8 +19,8 @@ const WhoYoullWorkWith = () => {
           </Link>
         </div>
         <ul className="grid grid-cols-3 gap-3 sm:gap-6">
-          {founders.map((person) => (
-            <li key={person.name}>
+          {founders.map((person, index) => (
+            <li key={person.name} className="reveal-item" style={revealDelay(index + 1)}>
               <Link to="/team" className="group block">
                 <img
                   src={person.image}

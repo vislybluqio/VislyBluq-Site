@@ -55,3 +55,66 @@
     filter: blur(0);
   }
 }
+
+/* Staggered fade-up for home sections (see src/hooks/useInView.ts). Set --reveal-delay per item. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal .reveal-item {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal.is-visible .reveal-item {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/*
+ * Hero cube: scales down and settles as the hero scrolls out. Driven by a view timeline on the
+ * hero section, so it is tied to scroll position without any JS listeners. Browsers without
+ * scroll-driven animations, and anyone with reduced motion, get the static cube.
+ */
+.hero-scroll-timeline {
+  view-timeline-name: --hero;
+  view-timeline-axis: block;
+}
+
+@keyframes heroCubeSettle {
+  from {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(35%) scale(0.6) rotate(-12deg);
+    opacity: 0.25;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-cube {
+      animation: heroCubeSettle linear both;
+      animation-timeline: --hero;
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+/* Safety net: neutralise every other animation and transition when the user asks for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
