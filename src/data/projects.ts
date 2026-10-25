@@ -8,6 +8,8 @@ export interface ProjectCaseStudy {
   overview: string[];
   highlights: string[];
   outcomes: string[];
+  /** Service IDs from src/data/services.ts. */
+  tags: string[];
 }
 
 export const projects: ProjectCaseStudy[] = [
@@ -25,6 +27,7 @@ export const projects: ProjectCaseStudy[] = [
     ],
     highlights: ['Live threat feed', 'Identity and biometric analysis views', 'Threat distribution monitoring', 'Engine status cards'],
     outcomes: ['Faster fraud triage', 'Clear operational dashboards', 'Reusable security design system'],
+    tags: ['digital-product-development', 'business-intelligence'],
   },
   {
     id: 'lighthill-cooperative-platform',
@@ -40,6 +43,7 @@ export const projects: ProjectCaseStudy[] = [
     ],
     highlights: ['Member-first landing page', 'Savings and loan metrics', 'Product education sections', 'Trust-led visual identity'],
     outcomes: ['Clearer member onboarding', 'Better product communication', 'Scalable cooperative web foundation'],
+    tags: ['digital-product-development'],
   },
   {
     id: 'visly-analytics-hub',
@@ -54,6 +58,7 @@ export const projects: ProjectCaseStudy[] = [
     ],
     highlights: ['KPI architecture', 'Department views', 'Alert-ready metrics', 'Executive reporting'],
     outcomes: ['Better decision speed', 'Less reporting friction', 'Reusable analytics components'],
+    tags: ['business-intelligence', 'data-strategy'],
   },
   {
     id: 'cognitive-core-ops',
@@ -68,6 +73,7 @@ export const projects: ProjectCaseStudy[] = [
     ],
     highlights: ['Request triage', 'AI summaries', 'Human escalation', 'Workflow analytics'],
     outcomes: ['Faster response cycles', 'Clearer team handoffs', 'Measured automation quality'],
+    tags: ['ml-ai'],
   },
 ];
 

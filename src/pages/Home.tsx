@@ -4,6 +4,7 @@ import { CTASection, ContentTodo, Eyebrow, GlassCard, MetricStrip, PrimaryLink, 
 import Testimonials from '../components/site/Testimonials';
 import { services } from '../data/services';
 import { homeMetrics } from '../data/metrics';
+import { industries } from '../data/industries';
 import { hasStoryVideo } from '../config/siteVideo';
 import StoryVideoCard from '../components/StoryVideoCard';
 
@@ -65,11 +66,20 @@ const Home = () => {
 
       <section className="border-y border-white/5 bg-visly-surface/50 px-6 py-20 sm:px-8 lg:px-16">
         <div className={pageMax}>
-          <p className="mb-12 text-center text-xs font-bold uppercase tracking-[0.32em] text-visly-cyan/60">
-            Building with focused founders and growing teams
+          <p className="mb-10 text-center text-xs font-bold uppercase tracking-[0.32em] text-visly-cyan/60">
+            Industries we work in
           </p>
-          <div className="mb-16 flex flex-wrap items-center justify-center gap-8 text-2xl font-black italic text-white/35 md:gap-14 md:text-4xl">
-            <span>STARTUPS</span><span>SMES</span><span>FOUNDERS</span><span>TEAMS</span><span>PARTNERS</span>
+          <div className="mb-16 flex flex-col items-center justify-center gap-6 md:flex-row md:gap-16">
+            {industries.map((industry) => (
+              <Link
+                key={industry.id}
+                to={`/industries/${industry.id}`}
+                className="group inline-flex items-center gap-3 text-center text-3xl font-bold text-white/80 transition hover:text-visly-cyan md:text-4xl"
+              >
+                {industry.title}
+                <ArrowRight className="h-6 w-6 shrink-0 transition group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" aria-hidden />
+              </Link>
+            ))}
           </div>
           {/* TODO(content): confirm the metric values in src/data/metrics.ts */}
           <ContentTodo note="confirm metrics" className="mb-4" />

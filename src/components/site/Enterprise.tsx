@@ -54,7 +54,7 @@ export const PageIntro = ({ eyebrow, title, description, children }: { eyebrow: 
       <h1 className="max-w-5xl text-4xl font-extrabold leading-tight text-[#d7e3f9] sm:text-5xl lg:text-7xl">
         {title}
       </h1>
-      <p className="mt-7 max-w-3xl text-lg leading-8 text-[#c2c6d6]">{description}</p>
+      {description && <p className="mt-7 max-w-3xl text-lg leading-8 text-[#c2c6d6]">{description}</p>}
       {children && <div className="mt-10">{children}</div>}
     </div>
   </section>

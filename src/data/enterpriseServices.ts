@@ -8,6 +8,8 @@ export interface ServicePillar {
   summary: string;
   value: string;
   tags: string[];
+  /** Service IDs from src/data/services.ts this pillar covers; used to cross-link insights, projects and industries. */
+  serviceIds: string[];
   action: string;
   detailTitle: string;
   detail: string[];
@@ -23,6 +25,7 @@ export const servicePillars: ServicePillar[] = [
     summary: 'Operationalize generative AI and machine learning at scale. We help teams move from experiments to production-ready workflows.',
     value: 'Clear automation opportunities and measurable operating leverage',
     tags: ['LLMOps', 'Model Evaluation', 'Workflow AI'],
+    serviceIds: ['ml-ai', 'technology-consulting'],
     action: 'View Core Pillars',
     detailTitle: 'Core pillars for practical enterprise AI',
     detail: [
@@ -40,6 +43,7 @@ export const servicePillars: ServicePillar[] = [
     summary: 'Transform legacy or fragmented systems into fast, maintainable web platforms built for modern teams and customers.',
     value: 'Faster interfaces, cleaner architecture, and easier feature delivery',
     tags: ['React', 'Next.js', 'APIs', 'Edge Runtimes'],
+    serviceIds: ['digital-product-development'],
     action: 'Explore Case Studies',
     detailTitle: 'Modern product engineering without losing business continuity',
     detail: [
@@ -57,6 +61,7 @@ export const servicePillars: ServicePillar[] = [
     summary: 'Unify scattered business data into reliable pipelines, warehouses, dashboards, and operational intelligence layers.',
     value: 'Cleaner reporting and faster decisions from trusted data',
     tags: ['Warehousing', 'ETL/ELT', 'Streaming', 'Governance'],
+    serviceIds: ['data-strategy', 'data-engineering', 'business-intelligence'],
     action: 'View Technical Specs',
     detailTitle: 'A practical foundation for trusted business data',
     detail: [
@@ -74,6 +79,7 @@ export const servicePillars: ServicePillar[] = [
     summary: 'Move infrastructure toward scalable, observable, cost-aware cloud environments across AWS, Azure, GCP, or hybrid setups.',
     value: 'More reliable deployments and stronger operational visibility',
     tags: ['Terraform', 'Kubernetes', 'CI/CD', 'FinOps'],
+    serviceIds: ['technology-consulting', 'data-engineering'],
     action: 'Request Assessment',
     detailTitle: 'Cloud migration with cost and reliability in view',
     detail: [
@@ -91,6 +97,7 @@ export const servicePillars: ServicePillar[] = [
     summary: 'Replace repetitive manual operations with connected workflows, internal tools, and AI-assisted task automation.',
     value: 'Time reclaimed from manual coordination and repeated back-office work',
     tags: ['Workflow Design', 'RPA', 'Integrations', 'Internal Tools'],
+    serviceIds: ['ml-ai'],
     action: 'Start Free Audit',
     detailTitle: 'Automation that fits how your team already works',
     detail: [
@@ -108,6 +115,7 @@ export const servicePillars: ServicePillar[] = [
     summary: 'Design systems and user experiences for dashboards, internal tools, customer platforms, and complex workflows.',
     value: 'Cleaner user journeys and higher adoption across product surfaces',
     tags: ['UX Research', 'Design Systems', 'React UI', 'Prototyping'],
+    serviceIds: ['digital-product-development'],
     action: 'View Design Philosophy',
     detailTitle: 'Design for complex products people can actually use',
     detail: [

@@ -1,4 +1,4 @@
-﻿import logoUrl from '../assets/vislybluq-vcube-logo.png';
+import logoUrl from '../assets/vislybluq-vcube-logo.png';
 
 interface BrandLogoProps {
   className?: string;

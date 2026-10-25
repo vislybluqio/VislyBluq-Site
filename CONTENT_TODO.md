@@ -12,7 +12,9 @@ Every placeholder on the site is listed here. In code, each one has a `// TODO(c
 | `src/data/insights.ts` | 29 | Insight post slot 1 of 3: real article (title, summary, body, takeaways, `tags` matching service IDs). |
 | `src/data/insights.ts` | 29 | Insight post slot 2 of 3. |
 | `src/data/insights.ts` | 29 | Insight post slot 3 of 3. |
-| `src/data/insights.ts` | 13 | Confirm that the one remaining post, "Practical AI Systems for Growing Businesses", is content you're happy to publish. It was kept because it's on-topic and coherent, but it's short and general. |
+| `src/data/insights.ts` | 14 | Confirm that the one remaining post, "Practical AI Systems for Growing Businesses", is content you're happy to publish. It was kept because it's on-topic and coherent, but it's short and general. |
+| `src/data/industries.ts` | 16 | Short description for **Fintech and Cooperatives** (shown on `/industries/fintech-cooperatives`). Also confirm the linked services and projects. |
+| `src/data/industries.ts` | 24 | Short description for **SMBs and Retail** (shown on `/industries/smbs-retail`). Also confirm the linked services and projects. |
 | `src/config/siteVideo.ts` | 2 | YouTube ID for the "Watch our story" video. The hero video card is hidden while this is empty. |
 
 ## Technical follow-ups
