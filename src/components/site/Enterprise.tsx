@@ -72,8 +72,8 @@ export const MetricStrip = ({ metrics }: { metrics: Array<{ label: string; value
 );
 
 export const CTASection = ({
-  title = 'Ready to Engineer the Impossible?',
-  description = 'Connect with our solution architects today for a customized technical roadmap and enterprise feasibility study.',
+  title = 'Have a product or data problem to solve?',
+  description = "Tell us what you're building. We'll reply with practical next steps, usually within one working day.",
 }: {
   title?: string;
   description?: string;

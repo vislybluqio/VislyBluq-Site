@@ -57,7 +57,7 @@ const Footer = () => {
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-visly-cyan">
                 Technical signals
               </p>
-              <h3 className="mt-3 text-3xl font-bold text-white">Receive enterprise build notes.</h3>
+              <h3 className="mt-3 text-3xl font-bold text-white">Get our build notes.</h3>
               <p className="mt-3 max-w-xl text-sm leading-6 text-white/60">
                 Strategy, AI, architecture, and product engineering insights from the VislyBluq team.
               </p>
@@ -104,7 +104,7 @@ const Footer = () => {
               <BrandLogo imageClassName="h-12 w-12" />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-6 text-white/55">
-              High-performance technology consulting and product engineering for the next generation of industry leaders.
+              Technology consulting and product engineering from Lagos, Nigeria.
             </p>
             <div className="mt-6 flex gap-3">
               {[Linkedin, Twitter, Github].map((Icon, index) => (

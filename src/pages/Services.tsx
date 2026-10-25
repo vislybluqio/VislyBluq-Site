@@ -10,9 +10,9 @@ const Services = () => {
   return (
     <div>
       <PageIntro
-        eyebrow="Enterprise Solutions"
+        eyebrow="What we do"
         title={<>Building the Digital <span className="text-[#adc6ff]">Future</span>.</>}
-        description="We provide mission-critical technology consulting for growing teams, bridging the gap between business reliability and future innovation."
+        description="We help startups and growing businesses plan, design and build software, data systems and practical AI tools."
       >
         <PrimaryLink to="/contact">Book a Consultation</PrimaryLink>
       </PageIntro>

@@ -1,12 +1,12 @@
 import type { ComponentType } from 'react';
-import { Sparkles, Eye, ChevronsDown, Brain, Rocket, FlaskConical, ShieldCheck, Network } from 'lucide-react';
+import { Sparkles, Eye, ChevronsDown, Brain, Rocket } from 'lucide-react';
 import { Eyebrow, GlassCard, MetricStrip, PageIntro, PrimaryLink, SecondaryLink, Section } from '../components/site/Enterprise';
 
-const timeline: Array<[string, string, ComponentType<{ className?: string }>, string]> = [
-  ['2024', 'Expansion into Neural Edge Computing and autonomous infrastructure.', Network, 'Global Launch'],
-  ['2022', 'Revolutionized distributed ledger technology for Fortune 500 fintech.', ShieldCheck, 'ShieldCheck Milestone'],
-  ['2020', 'VislyBluq founding team completes first quantum-ready architecture.', FlaskConical, 'Genesis'],
-];
+// TODO(content): real company milestones as [year, description, icon, label]. The section is hidden while empty.
+const timeline: Array<[string, string, ComponentType<{ className?: string }>, string]> = [];
+
+// TODO(content): real, verifiable company metrics. The strip is hidden while empty.
+const aboutMetrics: Array<{ value: string; label: string }> = [];
 
 const About = () => (
   <div>
@@ -36,21 +36,22 @@ const About = () => (
           <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#77d8ff]">Our Mission</p>
           <h2 className="mt-4 text-3xl font-bold text-[#d7e3f9]">Bridge complex engineering and elegant business solutions.</h2>
           <p className="mt-5 text-sm leading-7 text-[#c2c6d6]">VislyBluq delivers elite technology consulting that empowers organizations to transcend traditional constraints through data-driven architectural mastery.</p>
-          <div className="mt-7 grid grid-cols-2 gap-4"><GlassCard className="p-4"><p className="text-2xl font-bold text-[#adc6ff]">0.1ms</p><p className="text-xs text-[#c2c6d6]">Avg Latency</p></GlassCard><GlassCard className="p-4"><p className="text-2xl font-bold text-[#adc6ff]">99.99%</p><p className="text-xs text-[#c2c6d6]">Uptime Promise</p></GlassCard></div>
-        </GlassCard>
+                  </GlassCard>
       </div>
     </Section>
 
-    <Section className="bg-[#030f1e]/45">
-      <div className="mb-12"><p className="text-xs font-bold uppercase tracking-[0.24em] text-[#77d8ff]">A Decade of Disruption</p><h2 className="mt-4 text-4xl font-bold text-[#d7e3f9]">Milestones in enterprise intelligence.</h2></div>
-      <div className="space-y-5">
-        {timeline.map(([year, text, Icon, label]) => (
-          <GlassCard key={year as string} className="grid gap-6 p-6 md:grid-cols-[120px_1fr_220px] md:items-center">
-            <div className="text-3xl font-black text-[#adc6ff]">{year}</div><p className="text-[#c2c6d6]">{text as string}</p><div className="flex items-center gap-3 text-[#d7e3f9]"><Icon className="h-5 w-5 text-[#77d8ff]" />{label as string}</div>
-          </GlassCard>
-        ))}
-      </div>
-    </Section>
+    {timeline.length > 0 && (
+      <Section className="bg-[#030f1e]/45">
+        <div className="mb-12"><p className="text-xs font-bold uppercase tracking-[0.24em] text-[#77d8ff]">Milestones</p><h2 className="mt-4 text-4xl font-bold text-[#d7e3f9]">Our story so far.</h2></div>
+        <div className="space-y-5">
+          {timeline.map(([year, text, Icon, label]) => (
+            <GlassCard key={year as string} className="grid gap-6 p-6 md:grid-cols-[120px_1fr_220px] md:items-center">
+              <div className="text-3xl font-black text-[#adc6ff]">{year}</div><p className="text-[#c2c6d6]">{text as string}</p><div className="flex items-center gap-3 text-[#d7e3f9]"><Icon className="h-5 w-5 text-[#77d8ff]" />{label as string}</div>
+            </GlassCard>
+          ))}
+        </div>
+      </Section>
+    )}
 
     <Section>
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -59,7 +60,7 @@ const About = () => (
       </div>
     </Section>
 
-    <Section className="pt-0"><MetricStrip metrics={[{ value: '120+', label: 'Enterprise systems' }, { value: 'Top 1%', label: 'Engineering bar' }, { value: '0.1ms', label: 'Latency obsession' }, { value: 'Global', label: 'Collaboration' }]} /></Section>
+    {aboutMetrics.length > 0 && <Section className="pt-0"><MetricStrip metrics={aboutMetrics} /></Section>}
   </div>
 );
 

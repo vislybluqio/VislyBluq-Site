@@ -17,7 +17,7 @@ const BrandLogo = ({ className = '', imageClassName = '', textClassName = '' }: 
     <span className={`leading-none ${textClassName}`}>
       <span className="block text-xl font-extrabold tracking-tight text-white">VislyBluq</span>
       <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.28em] text-visly-cyan/75">
-        Enterprise Tech
+        Tech Consulting
       </span>
     </span>
   </span>

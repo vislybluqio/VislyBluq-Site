@@ -24,10 +24,10 @@ const Home = () => {
           <div>
             <Eyebrow>Next-gen tech consulting</Eyebrow>
             <h1 className="max-w-5xl text-5xl font-extrabold leading-[1.04] text-white sm:text-6xl lg:text-7xl">
-              We <span className="italic text-visly-blue">consult</span>, design and build world-class digital products.
+              We <span className="italic text-visly-blue">consult</span>, design and build digital products.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-white/68">
-              Transforming enterprise challenges into high-performance engineering through strategy, scalable roadmaps, custom application development, and practical AI integration.
+              Technology consulting, web and mobile apps, data engineering and practical AI, for startups and growing businesses.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <PrimaryLink to="/contact">Launch your project</PrimaryLink>
@@ -58,7 +58,7 @@ const Home = () => {
           <div className="max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-visly-cyan">Capabilities</p>
             <h2 className="mt-4 text-4xl font-bold leading-tight text-white md:text-5xl">
-              End-to-end technical excellence for ambitious founders.
+              From first roadmap to shipped product.
             </h2>
           </div>
           <Link to="/services" className="inline-flex items-center gap-2 font-bold text-visly-cyan hover:text-white">
