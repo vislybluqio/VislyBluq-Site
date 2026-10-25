@@ -10,8 +10,11 @@ export interface ProjectCaseStudy {
   outcomes: string[];
   /** Service IDs from src/data/services.ts. */
   tags: string[];
+  /** Real screenshot of the shipped product. Leave undefined until one exists; a placeholder is shown instead. */
+  image?: string;
 }
 
+// TODO(content): add real product screenshots via the `image` field (import them from src/images).
 export const projects: ProjectCaseStudy[] = [
   {
     id: 'sentinel-fraud-engine',
@@ -76,5 +79,8 @@ export const projects: ProjectCaseStudy[] = [
     tags: ['ml-ai'],
   },
 ];
+
+/** Shown in the home page "Selected work" strip, in this order. */
+export const featuredProjectIds = ['sentinel-fraud-engine', 'lighthill-cooperative-platform', 'cognitive-core-ops'];
 
 export const getProject = (id: string) => projects.find((project) => project.id === id);

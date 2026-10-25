@@ -1,7 +1,10 @@
-import { ArrowRight, Brain, Database, MonitorDot, ShieldCheck, Sparkles, Terminal } from 'lucide-react';
+import { ArrowRight, Brain, Database, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CTASection, ContentTodo, Eyebrow, GlassCard, MetricStrip, PrimaryLink, SecondaryLink, Section, pageMax, pagePad } from '../components/site/Enterprise';
 import Testimonials from '../components/site/Testimonials';
+import SelectedWork from '../components/home/SelectedWork';
+import WhoYoullWorkWith from '../components/home/WhoYoullWorkWith';
+import LatestInsights from '../components/home/LatestInsights';
 import { services } from '../data/services';
 import { homeMetrics } from '../data/metrics';
 import { industries } from '../data/industries';
@@ -13,7 +16,7 @@ const capabilities = [Brain, Terminal, Database];
 const Home = () => {
   return (
     <div className="overflow-hidden">
-      <section className={`${pagePad} relative min-h-[86vh] pt-32 lg:pt-40`}>
+      <section className={`${pagePad} relative pt-32 lg:pt-40 ${hasStoryVideo ? 'min-h-[86vh]' : 'pb-8 lg:pb-12'}`}>
         <div className="absolute left-1/2 top-24 -z-10 h-[680px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(46,126,247,0.2),transparent_62%)]" />
         <div className={`${pageMax} grid gap-12 ${hasStoryVideo ? 'lg:grid-cols-[1.05fr_0.95fr]' : ''} lg:items-center`}>
           <div>
@@ -38,54 +41,7 @@ const Home = () => {
         </div>
       </section>
 
-      <Section>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <GlassCard className="p-8 md:col-span-4">
-            <MonitorDot className="mb-6 h-10 w-10 text-visly-cyan" />
-            <h3 className="text-2xl font-bold text-white">AI Workflow Core</h3>
-            <p className="mt-4 text-sm leading-6 text-white/62">
-              Custom LLM and automation systems for complex operating environments.
-            </p>
-          </GlassCard>
-          <GlassCard className="p-8 md:col-span-4">
-            <ShieldCheck className="mb-6 h-10 w-10 text-visly-cyan" />
-            <h3 className="text-2xl font-bold text-white">Data Integrity</h3>
-            <p className="mt-4 text-sm leading-6 text-white/62">
-              Clean, verified, and actionable data streams for high-stakes decision making.
-            </p>
-          </GlassCard>
-          <GlassCard className="p-8 md:col-span-4">
-            <Sparkles className="mb-6 h-10 w-10 text-visly-cyan" />
-            <h3 className="text-2xl font-bold text-white">Product Velocity</h3>
-            <p className="mt-4 text-sm leading-6 text-white/62">
-              Roadmaps, prototypes, and production systems built as one continuous path.
-            </p>
-          </GlassCard>
-        </div>
-      </Section>
-
-      <section className="border-y border-white/5 bg-visly-surface/50 px-6 py-20 sm:px-8 lg:px-16">
-        <div className={pageMax}>
-          <p className="mb-10 text-center text-xs font-bold uppercase tracking-[0.32em] text-visly-cyan/60">
-            Industries we work in
-          </p>
-          <div className="mb-16 flex flex-col items-center justify-center gap-6 md:flex-row md:gap-16">
-            {industries.map((industry) => (
-              <Link
-                key={industry.id}
-                to={`/industries/${industry.id}`}
-                className="group inline-flex items-center gap-3 text-center text-3xl font-bold text-white/80 transition hover:text-visly-cyan md:text-4xl"
-              >
-                {industry.title}
-                <ArrowRight className="h-6 w-6 shrink-0 transition group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" aria-hidden />
-              </Link>
-            ))}
-          </div>
-          {/* TODO(content): confirm the metric values in src/data/metrics.ts */}
-          <ContentTodo note="confirm metrics" className="mb-4" />
-          <MetricStrip metrics={homeMetrics} />
-        </div>
-      </section>
+      <SelectedWork />
 
       <Section>
         <div className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
@@ -122,7 +78,34 @@ const Home = () => {
         </div>
       </Section>
 
+      <section className="border-y border-white/5 bg-visly-surface/50 px-6 py-20 sm:px-8 lg:px-16">
+        <div className={pageMax}>
+          <p className="mb-10 text-center text-xs font-bold uppercase tracking-[0.32em] text-visly-cyan/60">
+            Industries we work in
+          </p>
+          <div className="mb-16 flex flex-col items-center justify-center gap-6 md:flex-row md:gap-16">
+            {industries.map((industry) => (
+              <Link
+                key={industry.id}
+                to={`/industries/${industry.id}`}
+                className="group inline-flex items-center gap-3 text-center text-2xl font-bold text-white/80 transition hover:text-visly-cyan sm:text-3xl md:text-4xl"
+              >
+                {industry.title}
+                <ArrowRight className="h-6 w-6 shrink-0 transition group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" aria-hidden />
+              </Link>
+            ))}
+          </div>
+          {/* TODO(content): confirm the metric values in src/data/metrics.ts */}
+          <ContentTodo note="confirm metrics" className="mb-4" />
+          <MetricStrip metrics={homeMetrics} />
+        </div>
+      </section>
+
+      <WhoYoullWorkWith />
+
       <Testimonials className="bg-visly-surface/35" />
+
+      <LatestInsights />
 
       <CTASection />
     </div>

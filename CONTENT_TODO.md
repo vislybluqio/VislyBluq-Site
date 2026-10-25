@@ -8,13 +8,15 @@ Every placeholder on the site is listed here. In code, each one has a `// TODO(c
 | --- | --- | --- |
 | `src/data/testimonials.ts` | 8 | Real testimonials that clients have approved (quote, name, role, company). The home page section stays hidden until at least one exists. |
 | `src/data/metrics.ts` | 6 | Confirm each home page metric is accurate: `5+` builds & prototypes, `10+` strategy sessions, `24h` typical first response, `3` core delivery tracks. |
-| `src/pages/Home.tsx` | 74 | Dev marker above the metrics strip. Remove it once the metrics are confirmed. |
+| `src/pages/Home.tsx` | 98 | Dev marker above the metrics strip. Remove it once the metrics are confirmed. |
 | `src/data/insights.ts` | 29 | Insight post slot 1 of 3: real article (title, summary, body, takeaways, `tags` matching service IDs). |
 | `src/data/insights.ts` | 29 | Insight post slot 2 of 3. |
 | `src/data/insights.ts` | 29 | Insight post slot 3 of 3. |
 | `src/data/insights.ts` | 14 | Confirm that the one remaining post, "Practical AI Systems for Growing Businesses", is content you're happy to publish. It was kept because it's on-topic and coherent, but it's short and general. |
 | `src/data/industries.ts` | 16 | Short description for **Fintech and Cooperatives** (shown on `/industries/fintech-cooperatives`). Also confirm the linked services and projects. |
 | `src/data/industries.ts` | 24 | Short description for **SMBs and Retail** (shown on `/industries/smbs-retail`). Also confirm the linked services and projects. |
+| `src/data/projects.ts` | 17 | Real product screenshots for each project (`image` field). The home page "Selected work" strip (Sentinel Fraud Engine, Lighthill Cooperative, Cognitive Core Ops) shows a plain gradient placeholder until then. Also confirm these are the three projects you want featured (`featuredProjectIds`). |
+| `src/components/home/SelectedWork.tsx` | 33 | Dev marker inside each placeholder image. It disappears automatically once a project has an `image`. |
 | `src/config/siteVideo.ts` | 2 | YouTube ID for the "Watch our story" video. The hero video card is hidden while this is empty. |
 
 ## Technical follow-ups

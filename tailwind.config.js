@@ -13,6 +13,8 @@ export default {
           surface: '#14244A',
           elevated: '#1C2E5A',
           gray: '#F3F4F6',
+          // Light surface for contrast sections; pair with visly-navy text.
+          light: '#EAF1FC',
         }
       },
       fontFamily: {
