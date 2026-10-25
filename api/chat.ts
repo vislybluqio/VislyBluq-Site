@@ -1,13 +1,17 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { COMPANY_KNOWLEDGE, LANGUAGE_NAMES } from './knowledge.js';
 
-const GROQ_MODEL = 'llama-3.3-70b-versatile';
+// TODO: verify this fallback against Groq's current model list (see CONTENT_TODO.md).
+const GROQ_MODEL = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
 const MAX_MESSAGE_LEN = 2000;
 const MAX_MESSAGES = 20;
 const MAX_MEMORY_ITEMS = 10;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 const RATE_LIMIT_MAX = 30;
 
+// This map lives in one serverless instance's memory. Vercel runs many instances and recycles
+// them, so counts are per-instance and reset on cold start; it is not a real global rate limit.
+// TODO: move to a shared store (e.g. Upstash Redis / Vercel KV) if abuse becomes a concern.
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
 const BLOCKED_PATTERNS = [

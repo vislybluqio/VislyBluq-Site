@@ -90,3 +90,11 @@ export const CTASection = ({
     </GlassCard>
   </Section>
 );
+
+/** Visible only in dev builds, so missing content is obvious while working and invisible in production. */
+export const ContentTodo = ({ note, className = '' }: { note?: string; className?: string }) =>
+  import.meta.env.DEV ? (
+    <span className={`inline-block rounded-md border border-dashed border-amber-400/70 bg-amber-400/10 px-2 py-1 font-mono text-[11px] font-semibold text-amber-300 ${className}`}>
+      TODO: real content{note ? ` (${note})` : ''}
+    </span>
+  ) : null;

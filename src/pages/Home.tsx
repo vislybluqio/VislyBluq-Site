@@ -1,15 +1,11 @@
 import { ArrowRight, Brain, Database, MonitorDot, ShieldCheck, Sparkles, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { CTASection, Eyebrow, GlassCard, MetricStrip, PrimaryLink, SecondaryLink, Section, pageMax, pagePad } from '../components/site/Enterprise';
+import { CTASection, ContentTodo, Eyebrow, GlassCard, MetricStrip, PrimaryLink, SecondaryLink, Section, pageMax, pagePad } from '../components/site/Enterprise';
+import Testimonials from '../components/site/Testimonials';
 import { services } from '../data/services';
+import { homeMetrics } from '../data/metrics';
+import { hasStoryVideo } from '../config/siteVideo';
 import StoryVideoCard from '../components/StoryVideoCard';
-
-const metrics = [
-  { value: '5+', label: 'Builds & prototypes' },
-  { value: '10+', label: 'Strategy sessions' },
-  { value: '24h', label: 'Typical first response' },
-  { value: '3', label: 'Core delivery tracks' },
-];
 
 const capabilities = [Brain, Terminal, Database];
 
@@ -18,7 +14,7 @@ const Home = () => {
     <div className="overflow-hidden">
       <section className={`${pagePad} relative min-h-[86vh] pt-32 lg:pt-40`}>
         <div className="absolute left-1/2 top-24 -z-10 h-[680px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(46,126,247,0.2),transparent_62%)]" />
-        <div className={`${pageMax} grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center`}>
+        <div className={`${pageMax} grid gap-12 ${hasStoryVideo ? 'lg:grid-cols-[1.05fr_0.95fr]' : ''} lg:items-center`}>
           <div>
             <Eyebrow>Next-gen tech consulting</Eyebrow>
             <h1 className="max-w-5xl text-5xl font-extrabold leading-[1.04] text-white sm:text-6xl lg:text-7xl">
@@ -33,9 +29,11 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[430px] animate-[videoFrameFlowIn_1.05s_cubic-bezier(0.16,1,0.3,1)_0.15s_both] lg:mx-0 lg:ml-auto lg:-mt-16 lg:pl-4 xl:-mt-20">
-            <StoryVideoCard />
-          </div>
+          {hasStoryVideo && (
+            <div className="relative mx-auto w-full max-w-[430px] animate-[videoFrameFlowIn_1.05s_cubic-bezier(0.16,1,0.3,1)_0.15s_both] lg:mx-0 lg:ml-auto lg:-mt-16 lg:pl-4 xl:-mt-20">
+              <StoryVideoCard />
+            </div>
+          )}
         </div>
       </section>
 
@@ -73,7 +71,9 @@ const Home = () => {
           <div className="mb-16 flex flex-wrap items-center justify-center gap-8 text-2xl font-black italic text-white/35 md:gap-14 md:text-4xl">
             <span>STARTUPS</span><span>SMES</span><span>FOUNDERS</span><span>TEAMS</span><span>PARTNERS</span>
           </div>
-          <MetricStrip metrics={metrics} />
+          {/* TODO(content): confirm the metric values in src/data/metrics.ts */}
+          <ContentTodo note="confirm metrics" className="mb-4" />
+          <MetricStrip metrics={homeMetrics} />
         </div>
       </section>
 
@@ -112,26 +112,7 @@ const Home = () => {
         </div>
       </Section>
 
-      <Section className="bg-visly-surface/35">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-white md:text-5xl">The word on the street.</h2>
-          <p className="mt-4 text-white/60">Hear from founders and teams we have helped scale.</p>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {[
-            ['VislyBluq helped us redefine our entire technical architecture. Their AI workflow insight saved months of development time.', 'Sarah J. Miller', 'CTO, QuantumVentures'],
-            ['From design to cloud deployment, their team felt like an extension of our core engineering group.', 'Marcus Thorne', 'Founder, Aether Logic'],
-          ].map(([quote, name, title]) => (
-            <GlassCard key={name} className="p-8 md:p-10">
-              <p className="text-xl font-medium italic leading-8 text-white">"{quote}"</p>
-              <div className="mt-8">
-                <div className="font-bold text-white">{name}</div>
-                <div className="text-sm text-white/50">{title}</div>
-              </div>
-            </GlassCard>
-          ))}
-        </div>
-      </Section>
+      <Testimonials className="bg-visly-surface/35" />
 
       <CTASection />
     </div>

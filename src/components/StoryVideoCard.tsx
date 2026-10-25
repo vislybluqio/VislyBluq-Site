@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { Play } from 'lucide-react';
 import VideoModal from './VideoModal';
 import {
+  hasStoryVideo,
   VISLYBLUQ_STORY_LABEL,
   VISLYBLUQ_STORY_SUBTITLE,
 } from '../config/siteVideo';
 
 const StoryVideoCard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  if (!hasStoryVideo) return null;
 
   return (
     <>

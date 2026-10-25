@@ -96,10 +96,6 @@ These are public selected builds/case studies presented on the site. Do not clai
 
 ## Insights and articles
 - Practical AI Systems for Growing Businesses. Topic: AI strategy, LLM workflows, governance, human review, workflow automation.
-- The Future of Decentralized Banking Hubs. Topic: community finance, cooperative platforms, records, onboarding, trust and transparency.
-- Precision Medicine & Neural Diagnostics. Topic: healthcare AI as decision support, consent-aware workflows, audit logs.
-- Autonomous Supply Chain Orchestration. Topic: logistics visibility, predictive operations, exceptions, coordination.
-- Smart Grids & Edge Computing Integration. Topic: energy systems, edge processing, resilience, operator clarity.
 
 ## Careers
 VislyBluq is building a practical, ambitious team across consulting, product engineering, data, automation, and AI implementation. Current open role examples include Digital Marketer, SEO Content Writer, Product Manager, UI/UX Designer, Frontend Developer, and Community & Partnerships Associate. These are volunteer-based startup contributor roles for now; paid opportunities may be discussed later when the business can support them.

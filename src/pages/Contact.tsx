@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import PhoneInput, { parsePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import '../styles/phone-input.css';
-import { AlertCircle, CheckCircle, Clock, Mail, MessageCircle, Phone, Send } from 'lucide-react';
+import { AlertCircle, ArrowRight, CheckCircle, Clock, Mail, MessageCircle, Phone, Send } from 'lucide-react';
 import { GlassCard, PageIntro, Section } from '../components/site/Enterprise';
 import { services } from '../data/services';
 import { useRecaptcha } from '../hooks/useRecaptcha';
@@ -91,7 +91,7 @@ const Contact = () => {
       <PageIntro eyebrow="Connect with Us" title={<>Let&apos;s Build What Matters.</>} description="Tell us about your product, data, automation, AI, or digital transformation goals. We are available online and respond as quickly as possible." />
       <Section className="pt-0">
         <div className="mb-10 grid gap-6 lg:grid-cols-3">
-          <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Office</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">Lagos, Nigeria</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">{officeAddress}</p><button onClick={openDirections} className="mt-5 inline-flex text-sm font-bold text-[#adc6ff]">Get Directions ?</button></GlassCard>
+          <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Office</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">Lagos, Nigeria</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">{officeAddress}</p><button onClick={openDirections} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#adc6ff]">Get Directions <ArrowRight className="h-4 w-4" aria-hidden /></button></GlassCard>
           <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Availability</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">Online-first support</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">We are mostly available online and reachable for enquiries 24/7. Scheduled calls are arranged based on project needs.</p></GlassCard>
           <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Quick Response</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">WhatsApp or call</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">Use either +234 814 269 5808 or +234 701 505 5319 for direct communication.</p></GlassCard>
         </div>
@@ -111,7 +111,7 @@ const Contact = () => {
           <div className="space-y-5">
             <GlassCard className="p-7"><h2 className="text-2xl font-bold text-white">Support Channels</h2><div className="mt-6 space-y-4"><ContactLink icon={<Mail className="h-5 w-5" />} label="Email" value="hello@vislybluq.com" href="mailto:hello@vislybluq.com" /><ContactLink icon={<Phone className="h-5 w-5" />} label="Call" value="+234 814 269 5808" href="tel:+2348142695808" /><ContactLink icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value="+234 701 505 5319" href="https://wa.me/2347015055319?text=Hi%20VislyBluq,%20I'm%20interested%20in%20your%20services" /></div></GlassCard>
             <GlassCard className="p-7"><Clock className="mb-4 h-8 w-8 text-visly-cyan" /><h3 className="text-xl font-bold text-white">Direct Connection</h3><p className="mt-3 text-sm leading-6 text-white/60">Reach us online first. We can schedule discovery calls, technical reviews, and project scoping sessions around your availability.</p></GlassCard>
-            <GlassCard className="overflow-hidden p-0"><iframe title="VislyBluq Lagos location" src={`https://www.google.com/maps?q=${destination}&output=embed`} className="h-72 w-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><div className="p-5"><button onClick={openDirections} className="text-sm font-bold text-[#adc6ff]">Open directions from my location ?</button></div></GlassCard>
+            <GlassCard className="overflow-hidden p-0"><iframe title="VislyBluq Lagos location" src={`https://www.google.com/maps?q=${destination}&output=embed`} className="h-72 w-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><div className="p-5"><button onClick={openDirections} className="inline-flex items-center gap-2 text-sm font-bold text-[#adc6ff]">Open directions from my location <ArrowRight className="h-4 w-4" aria-hidden /></button></div></GlassCard>
           </div>
         </div>
       </Section>

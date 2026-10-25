@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Github, Linkedin, Twitter } from 'lucide-react';
 import { services } from '../data/services';
@@ -181,7 +181,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-7 text-xs text-white/38">
-          Â© {currentYear} VislyBluq Enterprise Technology Consulting. All rights reserved.
+          © {currentYear} VislyBluq Enterprise Technology Consulting. All rights reserved.
         </div>
       </div>
     </footer>
