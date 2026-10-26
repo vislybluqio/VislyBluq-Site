@@ -33,29 +33,6 @@
   }
 }
 
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(56px) scale(0.98); }
-  to { opacity: 1; transform: translateX(0) scale(1); }
-}
-
-@keyframes videoFrameFlowIn {
-  0% {
-    opacity: 0;
-    transform: translateX(160px) translateY(18px) scale(0.92);
-    filter: blur(10px);
-  }
-  60% {
-    opacity: 1;
-    transform: translateX(-8px) translateY(0) scale(1.01);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
 /* Staggered fade-up for home sections (see src/hooks/useInView.ts). Set --reveal-delay per item. */
 @media (prefers-reduced-motion: no-preference) {
   .reveal .reveal-item {
@@ -94,6 +71,19 @@
   }
 }
 
+/* Hero text drifts behind the scroll at different rates (set --drift per element) while its column fades. */
+@keyframes heroDrift {
+  to {
+    translate: 0 var(--drift, 80px);
+  }
+}
+
+@keyframes heroFade {
+  to {
+    opacity: 0.1;
+  }
+}
+
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .hero-cube {
@@ -101,6 +91,84 @@
       animation-timeline: --hero;
       animation-range: exit 0% exit 100%;
     }
+
+    .hero-drift {
+      animation: heroDrift linear both;
+      animation-timeline: --hero;
+      animation-range: exit 0% exit 100%;
+    }
+
+    .hero-fade {
+      animation: heroFade linear both;
+      animation-timeline: --hero;
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+/* Hero text entrance on load. Kept on inner elements so it doesn't fight the scroll drift. */
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Globe (src/components/home/HeroGlobe.tsx). Static under reduced motion. */
+@keyframes globeSpin {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes globePulse {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes globeDash {
+  to {
+    stroke-dashoffset: -64;
+  }
+}
+
+.globe-meridian,
+.globe-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-enter {
+    animation: heroEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
+  .globe-meridian {
+    animation: globeSpin var(--globe-spin, 18s) ease-in-out infinite alternate;
+    animation-delay: var(--globe-delay, 0s);
+  }
+
+  .globe-pulse {
+    animation: globePulse 3.2s ease-out infinite;
+  }
+
+  .globe-arc {
+    stroke-dasharray: 10 22;
+    animation: globeDash 2.6s linear infinite;
   }
 }
 

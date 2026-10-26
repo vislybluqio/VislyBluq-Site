@@ -1,16 +1,16 @@
+import type { CSSProperties } from 'react';
 import { ArrowRight, Brain, Database, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { CTASection, ContentTodo, Eyebrow, GlassCard, MetricStrip, PrimaryLink, SecondaryLink, Section, pageMax, pagePad } from '../components/site/Enterprise';
+import { CTASection, ContentTodo, GlassCard, MetricStrip, PrimaryLink, SecondaryLink, Section, pageMax, pagePad } from '../components/site/Enterprise';
 import Testimonials from '../components/site/Testimonials';
 import SelectedWork from '../components/home/SelectedWork';
-import WhoYoullWorkWith from '../components/home/WhoYoullWorkWith';
+import StoryVideoSection from '../components/home/StoryVideoSection';
+import HeroGlobe from '../components/home/HeroGlobe';
 import LatestInsights from '../components/home/LatestInsights';
 import { services } from '../data/services';
 import { homeMetrics } from '../data/metrics';
 import { industries } from '../data/industries';
-import { hasStoryVideo } from '../config/siteVideo';
-import { focusPage, focusPagePath } from '../config/focus';
-import StoryVideoCard from '../components/StoryVideoCard';
+import { revealDelay } from '../hooks/useInView';
 import { BrandMark } from '../components/BrandLogo';
 
 const capabilities = [Brain, Terminal, Database];
@@ -18,38 +18,44 @@ const capabilities = [Brain, Terminal, Database];
 const Home = () => {
   return (
     <div className="overflow-x-clip">
-      <section className={`hero-scroll-timeline ${pagePad} relative pt-32 lg:pt-40 ${hasStoryVideo ? 'min-h-[86vh]' : 'pb-8 lg:pb-12'}`}>
+      <section className={`hero-scroll-timeline ${pagePad} relative isolate pt-32 pb-16 lg:min-h-[80vh] lg:pt-48 lg:pb-24`}>
         <div className="absolute left-1/2 top-24 -z-10 h-[680px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(46,126,247,0.2),transparent_62%)]" />
-        <div className={`${pageMax} grid gap-12 ${hasStoryVideo ? 'lg:grid-cols-[1.05fr_0.95fr]' : 'lg:grid-cols-[1fr_auto]'} lg:items-center`}>
-          <div>
-            <Eyebrow>Next-gen tech consulting</Eyebrow>
-            <h1 className="max-w-5xl text-5xl font-extrabold leading-[1.04] text-white sm:text-6xl lg:text-7xl">
-              We <span className="italic text-visly-blue">consult</span>, design and build digital products.
-            </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-white/68">
-              Technology consulting, web and mobile apps, data engineering and practical AI, for startups and growing businesses.
-            </p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <PrimaryLink to="/contact">Launch your project</PrimaryLink>
-              <SecondaryLink to="/case-studies">View our work</SecondaryLink>
+        {/* Mobile and tablet: globe sits faintly behind the text. */}
+        <div className="pointer-events-none absolute -right-36 top-20 -z-10 w-[440px] opacity-35 sm:-right-20 sm:w-[520px] lg:hidden">
+          <HeroGlobe className="h-auto w-full" />
+        </div>
+
+        <div className={`${pageMax} grid gap-12 lg:grid-cols-[1fr_auto] lg:items-center`}>
+          <div className="hero-fade">
+            <div className="hero-drift" style={{ '--drift': '140px' } as CSSProperties}>
+              <h1 className="hero-enter max-w-5xl text-5xl font-extrabold leading-[1.04] text-white sm:text-6xl lg:text-7xl">
+                We <span className="italic text-visly-blue">consult</span>, design and build digital products.
+              </h1>
             </div>
-            <Link to={focusPagePath} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-visly-cyan hover:text-white">
-              {focusPage.navLabel} <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
+            <div className="hero-drift" style={{ '--drift': '90px' } as CSSProperties}>
+              <p className="hero-enter mt-8 max-w-2xl text-lg leading-8 text-white/68" style={revealDelay(1, 140)}>
+                Technology consulting, web and mobile apps, data engineering and practical AI, for startups and growing businesses.
+              </p>
+            </div>
+            <div className="hero-drift" style={{ '--drift': '50px' } as CSSProperties}>
+              <div className="hero-enter mt-10 flex flex-col gap-4 sm:flex-row" style={revealDelay(2, 140)}>
+                <PrimaryLink to="/contact">Launch your project</PrimaryLink>
+                <SecondaryLink to="/case-studies">View our work</SecondaryLink>
+              </div>
+            </div>
           </div>
 
-          {hasStoryVideo ? (
-            <div className="relative mx-auto w-full max-w-[430px] animate-[videoFrameFlowIn_1.05s_cubic-bezier(0.16,1,0.3,1)_0.15s_both] lg:mx-0 lg:ml-auto lg:-mt-16 lg:pl-4 xl:-mt-20">
-              <StoryVideoCard />
+          {/* Desktop: the V-Cube sits in front of the globe. */}
+          <div className="relative hidden lg:block lg:pr-4 xl:pr-12">
+            <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[460px] -translate-x-1/2 -translate-y-1/2 xl:w-[520px]">
+              <HeroGlobe className="h-auto w-full" />
             </div>
-          ) : (
-            <div className="relative hidden lg:block lg:pr-4 xl:pr-12">
-              <div className="absolute inset-0 -z-10 rounded-full bg-visly-cyan/15 blur-3xl" />
-              <BrandMark className="hero-cube h-56 w-56 drop-shadow-[0_24px_60px_rgba(46,126,247,0.45)] xl:h-64 xl:w-64" />
-            </div>
-          )}
+            <BrandMark className="hero-cube h-56 w-56 drop-shadow-[0_24px_60px_rgba(46,126,247,0.45)] xl:h-64 xl:w-64" />
+          </div>
         </div>
       </section>
+
+      <StoryVideoSection />
 
       <SelectedWork />
 
@@ -110,8 +116,6 @@ const Home = () => {
           <MetricStrip metrics={homeMetrics} />
         </div>
       </section>
-
-      <WhoYoullWorkWith />
 
       <Testimonials className="bg-visly-surface/35" />
 

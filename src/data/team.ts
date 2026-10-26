@@ -20,5 +20,3 @@ export const leaders: Leader[] = [
   { name: 'Ibrahim Modupe', role: 'Product and Operations Lead', image: ibrahimPhoto, email: 'modupe@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluq', founder: false },
   { name: 'Festus Moses', role: 'Head of Legal & Corporate Affairs', image: mosesPhoto, email: 'moses@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluq', founder: false },
 ];
-
-export const founders = leaders.filter((leader) => leader.founder);
