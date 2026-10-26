@@ -22,7 +22,7 @@ const DeepPage = ({ page }: { page: FocusPageConfig }) => {
 
   return (
     <div className="overflow-hidden">
-      <section className={`${pagePad} relative pt-32 pb-16 lg:pt-40 lg:pb-20`}>
+      <section className={`${pagePad} relative pt-28 pb-10 lg:pt-36 lg:pb-12`}>
         <div className="absolute right-0 top-20 -z-10 h-[460px] w-[460px] rounded-full bg-[#adc6ff]/10 blur-[100px]" />
         <div className={`${pageMax} max-w-5xl`}>
           <Eyebrow>Focus</Eyebrow>

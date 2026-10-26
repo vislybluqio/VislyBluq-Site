@@ -18,7 +18,7 @@ const capabilities = [Brain, Terminal, Database];
 const Home = () => {
   return (
     <div className="overflow-x-clip">
-      <section className={`hero-scroll-timeline ${pagePad} relative isolate pt-32 pb-16 lg:min-h-[80vh] lg:pt-48 lg:pb-24`}>
+      <section className={`hero-scroll-timeline ${pagePad} relative isolate pt-28 pb-12 lg:pt-44 lg:pb-16`}>
         <div className="absolute left-1/2 top-24 -z-10 h-[680px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(46,126,247,0.2),transparent_62%)]" />
         {/* Mobile and tablet: globe sits faintly behind the text. */}
         <div className="pointer-events-none absolute -right-36 top-20 -z-10 w-[440px] opacity-35 sm:-right-20 sm:w-[520px] lg:hidden">
@@ -33,12 +33,12 @@ const Home = () => {
               </h1>
             </div>
             <div className="hero-drift" style={{ '--drift': '90px' } as CSSProperties}>
-              <p className="hero-enter mt-8 max-w-2xl text-lg leading-8 text-white/68" style={revealDelay(1, 140)}>
+              <p className="hero-enter mt-6 max-w-2xl text-base leading-7 text-white/68 sm:mt-8 sm:text-lg sm:leading-8" style={revealDelay(1, 140)}>
                 Technology consulting, web and mobile apps, data engineering and practical AI, for startups and growing businesses.
               </p>
             </div>
             <div className="hero-drift" style={{ '--drift': '50px' } as CSSProperties}>
-              <div className="hero-enter mt-10 flex flex-col gap-4 sm:flex-row" style={revealDelay(2, 140)}>
+              <div className="hero-enter mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4" style={revealDelay(2, 140)}>
                 <PrimaryLink to="/contact">Launch your project</PrimaryLink>
                 <SecondaryLink to="/case-studies">View our work</SecondaryLink>
               </div>
@@ -60,7 +60,7 @@ const Home = () => {
       <SelectedWork />
 
       <Section>
-        <div className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+        <div className="mb-10 flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-visly-cyan">Capabilities</p>
             <h2 className="mt-4 text-4xl font-bold leading-tight text-white md:text-5xl">
@@ -94,12 +94,12 @@ const Home = () => {
         </div>
       </Section>
 
-      <section className="border-y border-white/5 bg-visly-surface/50 px-6 py-20 sm:px-8 lg:px-16">
+      <section className="border-y border-white/5 bg-visly-surface/50 px-6 py-12 sm:px-8 lg:px-16 lg:py-16">
         <div className={pageMax}>
-          <p className="mb-10 text-center text-xs font-bold uppercase tracking-[0.32em] text-visly-cyan/60">
+          <p className="mb-8 text-center text-xs font-bold uppercase tracking-[0.32em] text-visly-cyan/60">
             Industries we work in
           </p>
-          <div className="mb-16 flex flex-col items-center justify-center gap-6 md:flex-row md:gap-16">
+          <div className="mb-10 flex flex-col items-center justify-center gap-6 md:flex-row md:gap-16">
             {industries.map((industry) => (
               <Link
                 key={industry.id}

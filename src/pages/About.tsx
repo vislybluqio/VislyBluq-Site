@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import { Sparkles, Eye, ChevronsDown, Brain, Rocket } from 'lucide-react';
+import { Sparkles, Eye, Brain, Rocket } from 'lucide-react';
 import { Eyebrow, GlassCard, MetricStrip, PageIntro, PrimaryLink, SecondaryLink, Section } from '../components/site/Enterprise';
 
 // TODO(content): real company milestones as [year, description, icon, label]. The section is hidden while empty.
@@ -19,7 +19,6 @@ const About = () => (
         <PrimaryLink to="/services">Explore Our Expertise</PrimaryLink>
         <SecondaryLink to="/projects">View Portfolio</SecondaryLink>
       </div>
-      <ChevronsDown className="mt-14 h-8 w-8 animate-bounce text-[#adc6ff]" />
     </PageIntro>
 
     <Section>
