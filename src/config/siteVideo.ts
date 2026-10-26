@@ -1,5 +1,5 @@
 /** YouTube video ID only, e.g. "abc123xyz" from youtube.com/watch?v=abc123xyz */
-// TODO(content): add the company video's YouTube ID. The home page video section shows a TODO in dev and is hidden in production while this is empty.
+// TODO(content): add the company video's YouTube ID. Until then the home page video section shows a "Video coming soon" frame.
 export const VISLYBLUQ_STORY_YOUTUBE_ID = '';
 
 export const hasStoryVideo = VISLYBLUQ_STORY_YOUTUBE_ID.trim().length > 0;

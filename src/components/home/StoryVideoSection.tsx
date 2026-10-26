@@ -10,13 +10,17 @@ import {
 import { revealDelay, useInView } from '../../hooks/useInView';
 import { ContentTodo, Section } from '../site/Enterprise';
 
-/** Company video, loaded only when the visitor presses play so the page doesn't pull in YouTube up front. */
+const frameClass =
+  'absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_20%_20%,rgba(119,216,255,0.28),transparent_35%),linear-gradient(135deg,#071423_0%,#10265c_55%,#071423_100%)]';
+
+/**
+ * Company video, loaded only when the visitor presses play so the page doesn't pull in YouTube up front.
+ * Until a video ID is set, the frame shows "Video coming soon" instead of a play button.
+ */
 const StoryVideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [ref, inView] = useInView<HTMLDivElement>();
-  if (!hasStoryVideo && !import.meta.env.DEV) return null;
-
-  const videoId = VISLYBLUQ_STORY_YOUTUBE_ID.trim();
+  const videoId = hasStoryVideo ? VISLYBLUQ_STORY_YOUTUBE_ID.trim() : '';
 
   return (
     <Section className="bg-visly-light text-visly-navy">
@@ -44,27 +48,32 @@ const StoryVideoSection = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
-            ) : (
+            ) : videoId ? (
               <button
                 type="button"
-                onClick={() => videoId && setIsPlaying(true)}
-                disabled={!videoId}
-                className="group absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_20%_20%,rgba(119,216,255,0.28),transparent_35%),linear-gradient(135deg,#071423_0%,#10265c_55%,#071423_100%)] focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-visly-cyan disabled:cursor-default"
+                onClick={() => setIsPlaying(true)}
+                className={`group ${frameClass} focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-visly-cyan`}
                 aria-label={`${VISLYBLUQ_STORY_LABEL}: play video`}
               >
-                {videoId && (
-                  <img
-                    src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover opacity-60"
-                    loading="lazy"
-                  />
-                )}
+                <img
+                  src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover opacity-60"
+                  loading="lazy"
+                />
                 <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white text-visly-navy shadow-xl transition group-hover:scale-105 motion-reduce:transition-none sm:h-20 sm:w-20">
                   <Play className="ml-1 h-7 w-7 fill-current sm:h-8 sm:w-8" aria-hidden />
                 </span>
-                {!videoId && <ContentTodo note="video ID in src/config/siteVideo.ts" className="absolute bottom-4 left-4" />}
               </button>
+            ) : (
+              // No video yet: a non-interactive frame, so nobody presses a play button that does nothing.
+              <div className={`${frameClass} flex-col gap-4`}>
+                <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white/80 sm:h-20 sm:w-20">
+                  <Play className="ml-1 h-7 w-7 sm:h-8 sm:w-8" aria-hidden />
+                </span>
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/75">Video coming soon</p>
+                <ContentTodo note="video ID in src/config/siteVideo.ts" className="absolute bottom-4 left-4" />
+              </div>
             )}
           </div>
         </div>

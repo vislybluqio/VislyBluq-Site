@@ -24,7 +24,7 @@ Every placeholder on the site is listed here. In code, each one has a `// TODO(c
 | `src/config/focus.ts` | 46 | Focus page "How we approach it" paragraph. The two-column section is hidden in production while both paragraphs are empty. |
 | `src/pages/About.tsx` | 5 | Real company milestones (year, description, label). The fabricated timeline ("Fortune 500 fintech", "quantum-ready architecture", "A Decade of Disruption") was removed; the section is hidden until this is filled. |
 | `src/pages/About.tsx` | 8 | Real, verifiable company metrics. The unsupported strip ("120+ Enterprise systems", "Top 1%", "0.1ms") and the "0.1ms Avg Latency / 99.99% Uptime Promise" cards were removed. |
-| `src/config/siteVideo.ts` | 2 | YouTube ID for the company video in the home page "Watch our story" section (between the hero and Selected work). The section shows a TODO in dev and is hidden in production until this is set. |
+| `src/config/siteVideo.ts` | 2 | YouTube ID for the company video in the home page "Watch our story" section. Until it is set, the live site shows the section with a "Video coming soon" frame (no play button). |
 
 ## Technical follow-ups
 
