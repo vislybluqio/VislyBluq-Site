@@ -186,3 +186,35 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Selected work marquee (src/components/home/SelectedWork.tsx). The track is two identical halves. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee 60s linear infinite;
+  }
+
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track,
+  .marquee[data-paused='true'] .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Reduced motion: no movement, just the real cards in a swipeable row. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .marquee-duplicate,
+  .marquee-toggle {
+    display: none;
+  }
+}
