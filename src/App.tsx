@@ -7,8 +7,6 @@ import About from './pages/About';
 import Team from './pages/Team';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
-import Blog from './pages/Blog';
-import InsightDetail from './pages/InsightDetail';
 import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Privacy from './pages/Privacy';
@@ -37,9 +35,9 @@ function App() {
             {/* The projects pages were removed; keep old links and search results working. */}
             <Route path="/case-studies" element={<Navigate to="/services" replace />} />
             <Route path="/projects/*" element={<Navigate to="/services" replace />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/insights" element={<Blog />} />
-            <Route path="/insights/:slug" element={<InsightDetail />} />
+            {/* The blog was removed; keep old links and search results working. */}
+            <Route path="/blog" element={<Navigate to="/" replace />} />
+            <Route path="/insights/*" element={<Navigate to="/" replace />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy" element={<Privacy />} />

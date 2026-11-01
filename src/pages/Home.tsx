@@ -5,7 +5,6 @@ import { CTASection, ContentTodo, GlassCard, MetricStrip, PrimaryLink, Secondary
 import Testimonials from '../components/site/Testimonials';
 import StoryVideoSection from '../components/home/StoryVideoSection';
 import HeroGlobe from '../components/home/HeroGlobe';
-import LatestInsights from '../components/home/LatestInsights';
 import { services } from '../data/services';
 import { homeMetrics } from '../data/metrics';
 import { industries } from '../data/industries';
@@ -115,8 +114,6 @@ const Home = () => {
       </section>
 
       <Testimonials className="bg-visly-surface/35" />
-
-      <LatestInsights />
 
       <CTASection />
     </div>

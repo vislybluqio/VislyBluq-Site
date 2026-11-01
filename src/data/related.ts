@@ -1,8 +1,4 @@
-import { servicePillars } from './enterpriseServices';
 import { services } from './services';
-import { insights } from './insights';
-
-const overlaps = (a: string[], b: string[]) => a.some((id) => b.includes(id));
 
 /**
  * services.ts IDs are the tagging vocabulary, but the detail pages under /services/:id are the
@@ -33,11 +29,3 @@ export const serviceLinksForIds = (serviceIds: string[]): ServiceLink[] =>
     .map((id) => services.find((service) => service.id === id))
     .filter((service) => service !== undefined)
     .map((service) => ({ id: service.id, title: service.title, summary: service.description, icon: service.icon, href: serviceHref(service.id) }));
-
-/** Service IDs covered by a pillar page, for finding content related to that page. */
-export const serviceIdsForPillar = (pillarId: string) =>
-  servicePillars.find((pillar) => pillar.id === pillarId)?.serviceIds ?? [];
-
-export const insightsForServiceIds = (serviceIds: string[], limit?: number) =>
-  insights.filter((insight) => overlaps(insight.tags, serviceIds)).slice(0, limit);
-

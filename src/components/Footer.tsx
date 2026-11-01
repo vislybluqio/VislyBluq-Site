@@ -53,7 +53,6 @@ const Footer = () => {
               {[
                 { to: '/team', label: 'Team' },
                 { to: '/services', label: 'Services' },
-                { to: '/insights', label: 'Insights' },
                 { to: '/careers', label: 'Careers' },
               ].map((link) => (
                 <li key={link.to}>

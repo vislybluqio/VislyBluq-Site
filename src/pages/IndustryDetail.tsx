@@ -1,8 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 import { CTASection, ContentTodo, GlassCard, PageIntro, Section } from '../components/site/Enterprise';
-import { RelatedInsights, RelatedServices } from '../components/site/Related';
+import { RelatedServices } from '../components/site/Related';
 import { getIndustry } from '../data/industries';
-import { insightsForServiceIds, serviceLinksForIds } from '../data/related';
+import { serviceLinksForIds } from '../data/related';
 
 const IndustryDetail = () => {
   const { industryId = '' } = useParams();
@@ -25,7 +25,6 @@ const IndustryDetail = () => {
         {!industry.description && import.meta.env.DEV ? <ContentTodo note="industry description" /> : undefined}
       </PageIntro>
       <RelatedServices services={serviceLinksForIds(industry.serviceIds)} className="pt-0" />
-      <RelatedInsights insights={insightsForServiceIds(industry.serviceIds, 3)} />
       <CTASection />
     </div>
   );

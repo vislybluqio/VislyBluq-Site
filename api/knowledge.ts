@@ -42,9 +42,7 @@ These are public leadership profiles. The leadership group is supported by a wid
 - Team (/team): leadership profiles and note that a wider engineering/delivery network supports projects.
 - Services (/services): service pillars and additional services.
 - Service detail pages (/services/:serviceId): deeper explanations of each service, expected outputs, and engagement flow.
-- Insights (/insights): practical articles and technical notes, readable directly on the website.
-- Insight detail pages (/insights/:slug): full article content and takeaways.
-- Newsletter: visitors can subscribe by email in the site footer or on the Insights page. They tick a box to opt in, confirm through an emailed link, and can unsubscribe at any time.
+- Newsletter: visitors can subscribe by email in the site footer. They tick a box to opt in, confirm through an emailed link, and can unsubscribe at any time.
 - Careers (/careers): talent network, culture, realistic working style, open roles, and general application link.
 - Apply (/apply): application form for roles or general applications.
 - Contact (/contact): contact form, Lagos location, map/directions, online-first support, phone/WhatsApp/email channels.
@@ -85,9 +83,6 @@ Process: stakeholder/user discovery, flow design, prototype iteration, developer
 
 ## Additional services
 Security Architecture, API & Integration Strategy, Business Intelligence, Mobile Product Delivery, MVP Launch Support, Technical Due Diligence, Managed Evolution, Fractional CTO Support.
-
-## Insights and articles
-- Practical AI Systems for Growing Businesses. Topic: AI strategy, LLM workflows, governance, human review, workflow automation.
 
 ## Careers
 VislyBluq is building a practical, ambitious team across consulting, product engineering, data, automation, and AI implementation. Current open role examples include Digital Marketer, SEO Content Writer, Product Manager, UI/UX Designer, Frontend Developer, and Community & Partnerships Associate. These are volunteer-based startup contributor roles for now; paid opportunities may be discussed later when the business can support them.
