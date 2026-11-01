@@ -14,7 +14,6 @@ const navItems: Array<{ name: string; path: string; dropdown?: Dropdown }> = [
   { name: 'Services', path: '/services', dropdown: 'services' },
   { name: 'Industries', path: '/industries', dropdown: 'industries' },
   { name: 'Insights', path: '/insights' },
-  { name: 'Projects', path: '/projects' },
   { name: 'Team', path: '/team' },
   { name: 'Careers', path: '/careers' },
   { name: 'Contact', path: '/contact' },
@@ -22,7 +21,6 @@ const navItems: Array<{ name: string; path: string; dropdown?: Dropdown }> = [
 ];
 
 const quickLinks = [
-  { name: 'Case studies', path: '/case-studies' },
   { name: 'Insights', path: '/insights' },
   { name: 'Careers', path: '/careers' },
   { name: 'Contact', path: '/contact' },

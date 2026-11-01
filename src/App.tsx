@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -7,8 +7,6 @@ import About from './pages/About';
 import Team from './pages/Team';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
-import CaseStudies from './pages/CaseStudies';
-import ProjectDetail from './pages/ProjectDetail';
 import Blog from './pages/Blog';
 import InsightDetail from './pages/InsightDetail';
 import Contact from './pages/Contact';
@@ -36,9 +34,9 @@ function App() {
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/industries/:industryId" element={<IndustryDetail />} />
             <Route path="/focus/:slug" element={<FocusPage />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
-            <Route path="/projects" element={<CaseStudies />} />
-            <Route path="/projects/:projectId" element={<ProjectDetail />} />
+            {/* The projects pages were removed; keep old links and search results working. */}
+            <Route path="/case-studies" element={<Navigate to="/services" replace />} />
+            <Route path="/projects/*" element={<Navigate to="/services" replace />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/insights" element={<Blog />} />
             <Route path="/insights/:slug" element={<InsightDetail />} />

@@ -1,16 +1,16 @@
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { FocusPageConfig } from '../../config/focus';
-import { insightsForServiceIds, projectsForServiceIds, serviceLinksForIds } from '../../data/related';
+import { insightsForServiceIds, serviceLinksForIds } from '../../data/related';
 import { services } from '../../data/services';
 import { CTASection, ContentTodo, Eyebrow, GlassCard, PrimaryLink, Section, pageMax, pagePad } from './Enterprise';
-import { RelatedInsights, RelatedProjects } from './Related';
+import { RelatedInsights } from './Related';
 
 const isDev = import.meta.env.DEV;
 
 /**
  * Long-form topic page: hero, stats, full-bleed band, problem/approach, capability accordion,
- * related work and insights, CTA. Sections whose content is still placeholder render with TODO
+ * related insights, CTA. Sections whose content is still placeholder render with TODO
  * markers in dev and are hidden in production.
  */
 const DeepPage = ({ page }: { page: FocusPageConfig }) => {
@@ -124,8 +124,7 @@ const DeepPage = ({ page }: { page: FocusPageConfig }) => {
         </Section>
       )}
 
-      <RelatedProjects projects={projectsForServiceIds(page.serviceIds)} />
-      <RelatedInsights insights={insightsForServiceIds(page.serviceIds, 3)} className="bg-[#030f1e]/45" />
+      <RelatedInsights insights={insightsForServiceIds(page.serviceIds, 3)} />
       <CTASection />
     </div>
   );

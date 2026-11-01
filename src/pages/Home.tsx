@@ -3,7 +3,6 @@ import { ArrowRight, Brain, Database, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CTASection, ContentTodo, GlassCard, MetricStrip, PrimaryLink, SecondaryLink, Section, pageMax, pagePad } from '../components/site/Enterprise';
 import Testimonials from '../components/site/Testimonials';
-import SelectedWork from '../components/home/SelectedWork';
 import StoryVideoSection from '../components/home/StoryVideoSection';
 import HeroGlobe from '../components/home/HeroGlobe';
 import LatestInsights from '../components/home/LatestInsights';
@@ -40,7 +39,7 @@ const Home = () => {
             <div className="hero-drift" style={{ '--drift': '50px' } as CSSProperties}>
               <div className="hero-enter mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4" style={revealDelay(2, 140)}>
                 <PrimaryLink to="/contact">Launch your project</PrimaryLink>
-                <SecondaryLink to="/case-studies">View our work</SecondaryLink>
+                <SecondaryLink to="/services">Explore our services</SecondaryLink>
               </div>
             </div>
           </div>
@@ -56,8 +55,6 @@ const Home = () => {
       </section>
 
       <StoryVideoSection />
-
-      <SelectedWork />
 
       <Section>
         <div className="mb-10 flex flex-col justify-between gap-8 md:flex-row md:items-end">

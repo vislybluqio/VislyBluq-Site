@@ -17,7 +17,7 @@ const About = () => (
     >
       <div className="flex flex-col gap-4 sm:flex-row">
         <PrimaryLink to="/services">Explore Our Expertise</PrimaryLink>
-        <SecondaryLink to="/projects">View Portfolio</SecondaryLink>
+        <SecondaryLink to="/team">Meet the Team</SecondaryLink>
       </div>
     </PageIntro>
 

@@ -37,15 +37,14 @@ These are public leadership profiles. The leadership group is supported by a wid
 - Festus Moses: Head of Legal & Corporate Affairs.
 
 ## Website pages and what they contain
-- Home (/): overview of VislyBluq's consulting, product engineering, AI, data, project showcase, services, testimonials, and AI assistant.
+- Home (/): overview of VislyBluq's consulting, product engineering, AI, data, company video, services, and AI assistant.
 - About (/about): mission, vision, engineering culture, technical clarity, and company values.
 - Team (/team): leadership profiles and note that a wider engineering/delivery network supports projects.
 - Services (/services): service pillars and additional services.
 - Service detail pages (/services/:serviceId): deeper explanations of each service, expected outputs, and engagement flow.
-- Projects (/projects): selected VislyBluq builds/case-study style presentations, including Sentinel Fraud Engine, Lighthill Cooperative Society Platform, Visly Analytics Hub, and Cognitive Core Ops.
-- Project detail pages (/projects/:projectId): project overview, highlights, outcomes, and presentation details.
 - Insights (/insights): practical articles and technical notes, readable directly on the website.
 - Insight detail pages (/insights/:slug): full article content and takeaways.
+- Newsletter: visitors can subscribe by email in the site footer or on the Insights page. They tick a box to opt in, confirm through an emailed link, and can unsubscribe at any time.
 - Careers (/careers): talent network, culture, realistic working style, open roles, and general application link.
 - Apply (/apply): application form for roles or general applications.
 - Contact (/contact): contact form, Lagos location, map/directions, online-first support, phone/WhatsApp/email channels.
@@ -86,13 +85,6 @@ Process: stakeholder/user discovery, flow design, prototype iteration, developer
 
 ## Additional services
 Security Architecture, API & Integration Strategy, Business Intelligence, Mobile Product Delivery, MVP Launch Support, Technical Due Diligence, Managed Evolution, Fractional CTO Support.
-
-## Project presentations
-These are public selected builds/case studies presented on the site. Do not claim private client details beyond what is listed publicly.
-- Sentinel Fraud Engine: security intelligence interface for fraud monitoring, identity analysis, active sessions, detected threats, latency, live threat feed, and engine status. Stack: React / TypeScript / Risk Analytics.
-- Lighthill Cooperative Society Platform: financial community/cooperative web platform focused on member trust, savings visibility, product education, loans, land investment, and digital onboarding. Stack: React / Member Portal / Financial UX.
-- Visly Analytics Hub: business intelligence dashboard framework for operational metrics, alerts, KPI clarity, department views, and executive reporting.
-- Cognitive Core Ops: AI operations workflow layer for request triage, AI summaries, human escalation, and workflow analytics.
 
 ## Insights and articles
 - Practical AI Systems for Growing Businesses. Topic: AI strategy, LLM workflows, governance, human review, workflow automation.

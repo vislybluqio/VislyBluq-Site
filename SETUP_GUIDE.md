@@ -67,7 +67,7 @@ Email automation is configured via FormSubmit's `_autoresponse` feature.
 
 ✅ **Contact Form** → Sends auto-reply from `sales@vislybluq.com`
 ✅ **Job Applications** → Sends auto-reply from `hr@vislybluq.com`  
-✅ **Newsletter** → Goes to `info@vislybluq.com`
+✅ **Newsletter** → Goes to Mailchimp through `api/newsletter.ts`, not FormSubmit (set `MAILCHIMP_API_KEY` and `MAILCHIMP_AUDIENCE_ID`)
 
 **Important:** You need to verify these email addresses with FormSubmit:
 

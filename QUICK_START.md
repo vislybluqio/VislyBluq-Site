@@ -52,7 +52,6 @@ The first time someone submits to each email, FormSubmit will send a verificatio
 Do this for:
 - sales@vislybluq.com (Contact form)
 - hr@vislybluq.com (Job applications)
-- info@vislybluq.com (Newsletter)
 
 ---
 
@@ -61,7 +60,7 @@ Do this for:
 ### Forms with Auto-Response:
 - ✅ Contact Form → auto-reply from sales@vislybluq.com
 - ✅ Job Applications → auto-reply from hr@vislybluq.com (with resume link)
-- ✅ Newsletter → confirmation to info@vislybluq.com
+- ✅ Newsletter → Mailchimp sends the confirmation email (`MAILCHIMP_API_KEY`, `MAILCHIMP_AUDIENCE_ID`)
 
 ### Spam Protection:
 - ✅ Honeypot fields (invisible to users, catches bots)

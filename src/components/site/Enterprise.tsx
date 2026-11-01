@@ -85,7 +85,7 @@ export const CTASection = ({
       <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-[#c2c6d6]">{description}</p>
       <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
         <PrimaryLink to="/contact">Book a Consultation</PrimaryLink>
-        <SecondaryLink to="/projects">View Our Work</SecondaryLink>
+        <SecondaryLink to="/services">Explore Our Services</SecondaryLink>
       </div>
     </GlassCard>
   </Section>

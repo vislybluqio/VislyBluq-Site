@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import type { InsightArticle } from '../../data/insights';
-import type { ProjectCaseStudy } from '../../data/projects';
 import type { ServiceLink } from '../../data/related';
 import { GlassCard, Section } from './Enterprise';
 
@@ -33,29 +32,6 @@ export const RelatedServices = ({ services, title = 'Services we bring', classNa
             </Link>
           );
         })}
-      </div>
-    </Section>
-  );
-};
-
-export const RelatedProjects = ({ projects, title = 'Related work', className = '' }: { projects: ProjectCaseStudy[]; title?: string; className?: string }) => {
-  if (projects.length === 0) return null;
-  return (
-    <Section className={className}>
-      <SectionHeading eyebrow="Projects" title={title} />
-      <div className="grid gap-5 md:grid-cols-2">
-        {projects.map((project) => (
-          <Link key={project.id} to={`/projects/${project.id}`} className="group block">
-            <GlassCard className="h-full p-7 transition group-hover:border-visly-cyan/40">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#77d8ff]">{project.category}</span>
-              <h3 className="mt-3 text-2xl font-bold text-[#d7e3f9]">{project.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-[#c2c6d6]">{project.summary}</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#adc6ff] group-hover:text-white">
-                View project <ArrowRight className="h-4 w-4" aria-hidden />
-              </span>
-            </GlassCard>
-          </Link>
-        ))}
       </div>
     </Section>
   );

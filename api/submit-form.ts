@@ -7,7 +7,7 @@ interface RecaptchaVerifyResponse {
 }
 
 interface FormSubmission {
-  formType: 'contact' | 'application' | 'newsletter';
+  formType: 'contact' | 'application';
   recaptchaToken?: string;
   data: Record<string, unknown>;
 }
@@ -19,7 +19,6 @@ const SCORE_THRESHOLD = 0.5;
 const EMAIL_ENDPOINTS = {
   contact: 'sales@vislybluq.com',
   application: 'hr@vislybluq.com',
-  newsletter: 'info@vislybluq.com',
 };
 
 // Rate limiting
@@ -128,9 +127,6 @@ function getAutoResponse(formType: string, data: Record<string, unknown>): strin
         data.resume_url ? `Your resume: ${data.resume_url}` : ''
       } If you have any questions, feel free to WhatsApp us at ${whatsapp}.`;
 
-    case 'newsletter':
-      return `Thank you for subscribing to VislyBluq's newsletter! You'll receive weekly insights on technology, AI, and digital transformation. You can unsubscribe at any time.`;
-
     default:
       return 'Thank you for your submission!';
   }
@@ -169,7 +165,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const actionMap: Record<string, string> = {
       contact: 'contact_form',
       application: 'job_application',
-      newsletter: 'newsletter_subscription',
     };
 
     const expectedAction = actionMap[submission.formType];

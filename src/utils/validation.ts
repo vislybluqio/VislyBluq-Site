@@ -108,6 +108,7 @@ export const newsletterSchema = z.object({
     .min(1, 'Email is required')
     .email('Please enter a valid email address')
     .toLowerCase(),
+  consent: z.boolean().refine((value) => value, 'Please tick the box to confirm you want the newsletter'),
 });
 
 // Type exports for TypeScript

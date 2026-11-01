@@ -1,52 +1,11 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Linkedin, Twitter } from 'lucide-react';
 import { services } from '../data/services';
-import { useRecaptcha } from '../hooks/useRecaptcha';
 import BrandLogo from './BrandLogo';
+import NewsletterSignup from './site/NewsletterSignup';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [newsEmail, setNewsEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-  const [isSubscribing, setIsSubscribing] = useState(false);
-  const { getRecaptchaToken } = useRecaptcha();
-
-  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!newsEmail) return;
-
-    const formElement = e.currentTarget;
-    const honeypot = formElement.elements.namedItem('website') as HTMLInputElement | null;
-    if (honeypot?.value) return;
-
-    setIsSubscribing(true);
-    try {
-      const recaptchaToken = await getRecaptchaToken('newsletter_subscription');
-      const response = await fetch('/api/submit-form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          formType: 'newsletter',
-          recaptchaToken,
-          data: {
-            email: newsEmail,
-            source: 'Footer',
-            _subject: 'New VislyBluq Newsletter Subscription',
-          },
-        }),
-      });
-
-      if (!response.ok) throw new Error('Newsletter subscription failed');
-      setSubscribed(true);
-      setNewsEmail('');
-      setTimeout(() => setSubscribed(false), 5000);
-    } catch (error) {
-      console.error('Newsletter error:', error);
-    } finally {
-      setIsSubscribing(false);
-    }
-  };
 
   return (
     <footer className="border-t border-white/5 bg-[#071423] text-white">
@@ -62,39 +21,7 @@ const Footer = () => {
                 Strategy, AI, architecture, and product engineering insights from the VislyBluq team.
               </p>
             </div>
-            <form onSubmit={handleSubscribe} className="space-y-3">
-              <input
-                type="text"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                className="hidden"
-                aria-hidden="true"
-              />
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <input
-                  type="email"
-                  value={newsEmail}
-                  onChange={(e) => setNewsEmail(e.target.value)}
-                  placeholder="Email address"
-                  className="min-h-12 flex-1 rounded-xl border border-white/10 bg-[#0B1633]/75 px-4 text-sm text-white outline-none placeholder:text-white/35 focus:border-visly-cyan focus:ring-2 focus:ring-visly-cyan/20"
-                  required
-                />
-                <button
-                  type="submit"
-                  disabled={isSubscribing}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-visly-cyan px-5 text-sm font-bold text-[#071423] transition hover:bg-white disabled:opacity-60"
-                >
-                  {isSubscribing ? 'Joining...' : 'Join'}
-                  {!isSubscribing && <ArrowRight className="h-4 w-4" />}
-                </button>
-              </div>
-              {subscribed && (
-                <p className="flex items-center gap-2 text-sm font-medium text-visly-cyan">
-                  <CheckCircle className="h-4 w-4" /> You are subscribed. Thank you.
-                </p>
-              )}
-            </form>
+            <NewsletterSignup />
           </div>
         </div>
 
@@ -126,7 +53,6 @@ const Footer = () => {
               {[
                 { to: '/team', label: 'Team' },
                 { to: '/services', label: 'Services' },
-                { to: '/projects', label: 'Projects' },
                 { to: '/insights', label: 'Insights' },
                 { to: '/careers', label: 'Careers' },
               ].map((link) => (

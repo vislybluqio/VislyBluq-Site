@@ -8,7 +8,7 @@ export interface ServicePillar {
   summary: string;
   value: string;
   tags: string[];
-  /** Service IDs from src/data/services.ts this pillar covers; used to cross-link insights, projects and industries. */
+  /** Service IDs from src/data/services.ts this pillar covers; used to cross-link insights and industries. */
   serviceIds: string[];
   action: string;
   detailTitle: string;
@@ -44,7 +44,7 @@ export const servicePillars: ServicePillar[] = [
     value: 'Faster interfaces, cleaner architecture, and easier feature delivery',
     tags: ['React', 'Next.js', 'APIs', 'Edge Runtimes'],
     serviceIds: ['digital-product-development'],
-    action: 'Explore Case Studies',
+    action: 'View Details',
     detailTitle: 'Modern product engineering without losing business continuity',
     detail: [
       'We assess the current application surface, data flow, hosting model, and user experience before recommending a migration path.',

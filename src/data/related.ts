@@ -1,7 +1,6 @@
 import { servicePillars } from './enterpriseServices';
 import { services } from './services';
 import { insights } from './insights';
-import { projects } from './projects';
 
 const overlaps = (a: string[], b: string[]) => a.some((id) => b.includes(id));
 
@@ -42,8 +41,3 @@ export const serviceIdsForPillar = (pillarId: string) =>
 export const insightsForServiceIds = (serviceIds: string[], limit?: number) =>
   insights.filter((insight) => overlaps(insight.tags, serviceIds)).slice(0, limit);
 
-export const projectsForServiceIds = (serviceIds: string[], limit?: number) =>
-  projects.filter((project) => overlaps(project.tags, serviceIds)).slice(0, limit);
-
-export const projectsByIds = (ids: string[]) =>
-  ids.map((id) => projects.find((project) => project.id === id)).filter((project) => project !== undefined);
