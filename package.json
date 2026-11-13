@@ -4,15 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "react-router dev",
+    "build": "react-router build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "dev:api": "vercel dev --yes"
+    "preview": "node scripts/preview.mjs",
+    "dev:api": "vercel dev --yes",
+    "typecheck": "react-router typegen && tsc -p tsconfig.app.json --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
+    "@react-router/node": "^7.18.5",
     "country-flag-icons": "^1.6.17",
+    "isbot": "^5.2.3",
     "libphonenumber-js": "^1.13.6",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
@@ -20,15 +23,16 @@
     "react-google-recaptcha-v3": "^1.11.0",
     "react-hook-form": "^7.78.0",
     "react-phone-number-input": "^3.4.17",
-    "react-router-dom": "^7.6.3",
+    "react-router": "^7.18.5",
+    "react-router-dom": "^7.18.5",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "@react-router/dev": "^7.18.5",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vercel/node": "^5.8.4",
-    "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.18",
     "eslint": "^9.9.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",

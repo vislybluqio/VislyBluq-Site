@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, GraduationCap, HeartPulse, MapPin, Rocket, Search, Sparkles, Target, Terminal, Users } from 'lucide-react';
 import { GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'Careers', description: 'Open volunteer roles at VislyBluq in marketing, content, product, design, engineering and partnerships.', path: '/careers' });
 
 const roles = [
   ['Digital Marketer', 'Remote / Lagos-friendly', 'Volunteer / growth contributor', ['Campaigns', 'Social Media', 'Analytics']],

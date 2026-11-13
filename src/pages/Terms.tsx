@@ -1,6 +1,9 @@
 import type { ReactNode } from 'react';
 import { CheckCircle, CloudCog, Download, ShieldCheck } from 'lucide-react';
 import { GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'Terms of Service', description: "The terms that govern use of VislyBluq's website and services.", path: '/terms' });
 
 const termsPdfText = `VislyBluq Terms of Service\n\nLast updated: October 24, 2023\n\n1. Acceptance of Terms\nBy accessing or using VislyBluq services, you agree to these Terms of Service.\n\n2. Service Provisioning\nVislyBluq provides technology consulting, product engineering, data, AI, and related implementation services subject to agreed project terms.\n\n3. Regulatory Compliance\nClients are responsible for ensuring their use of technology solutions complies with applicable laws and industry requirements.\n\n4. Intellectual Property\nProject ownership, licenses, deliverables, and usage rights are defined in the relevant project agreement.\n\n5. Limitation of Liability\nTo the maximum extent permitted by law, VislyBluq is not liable for indirect or consequential damages.\n\n6. Contact\nFor questions, contact VislyBluq through the contact page.`;
 

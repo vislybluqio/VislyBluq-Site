@@ -7,7 +7,7 @@ import { useRecaptcha } from '../../hooks/useRecaptcha';
 import { newsletterSchema } from '../../utils/validation';
 import type { NewsletterData } from '../../utils/validation';
 
-const NewsletterSignup = ({ className = '' }: { className?: string }) => {
+const NewsletterSignup = ({ className = '', onSubscribed }: { className?: string; onSubscribed?: () => void }) => {
   const id = useId();
   const { getRecaptchaToken } = useRecaptcha();
   const [isConfirming, setIsConfirming] = useState(false);
@@ -29,6 +29,7 @@ const NewsletterSignup = ({ className = '' }: { className?: string }) => {
       });
       if (response.ok) {
         setIsConfirming(true);
+        onSubscribed?.();
         return;
       }
       const result = (await response.json().catch(() => ({}))) as { error?: string };

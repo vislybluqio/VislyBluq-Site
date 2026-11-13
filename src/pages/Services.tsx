@@ -3,6 +3,9 @@ import { ArrowRight, Sparkles, CheckCircle, Cloud, ChevronDown, Layers, Brain, P
 import { CTASection, GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
 import { additionalServices, servicePillars } from '../data/enterpriseServices';
 import { useState } from 'react';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'Services', description: 'We help startups and growing businesses plan, design and build software, data systems and practical AI tools.', path: '/services' });
 
 const Services = () => {
   const [showMore, setShowMore] = useState(false);

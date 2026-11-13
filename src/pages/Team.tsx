@@ -1,6 +1,9 @@
 import { Linkedin, Mail } from 'lucide-react';
 import { GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
 import { leaders } from '../data/team';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'Team', description: 'Meet the leadership team guiding VislyBluq.', path: '/team' });
 
 const Team = () => (
   <div>

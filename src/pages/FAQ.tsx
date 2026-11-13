@@ -1,5 +1,8 @@
 import { ChevronDown, Handshake, LayoutDashboard, LockKeyhole, Terminal } from 'lucide-react';
 import { CTASection, GlassCard, PageIntro, Section } from '../components/site/Enterprise';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'FAQ', description: 'Answers to common questions about working with VislyBluq.', path: '/faq' });
 
 const groups = [
   ['General Operations', [['What is the VislyBluq engagement lifecycle?', 'Our engagement typically begins with a 4-week Technical Discovery phase, followed by Strategy Calibration and a tiered implementation roadmap. We prioritize incremental value delivery through our proprietary VislyBluq Agile Framework, ensuring enterprise goals are met with precision and speed.'], ['How do you handle cross-platform integration?', 'We utilize industry-standard API abstractions and middleware solutions to bridge legacy infrastructure with modern cloud-native ecosystems. Our engineers specialize in low-latency data synchronicity across heterogeneous environments.']]],

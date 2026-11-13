@@ -22,6 +22,9 @@ Every placeholder on the site is listed here. In code, each one has a `// TODO(c
 | `api/newsletter.ts` | — | **Required before newsletter signups work:** create a Mailchimp audience, then set `MAILCHIMP_API_KEY` and `MAILCHIMP_AUDIENCE_ID` in Vercel env vars. Until then the form shows "temporarily unavailable". Test one real signup afterwards, including re-subscribing after an unsubscribe. |
 | `src/components/Footer.tsx` | 73 | Footer service links go to `/services?service=<id>#<id>`, but nothing on the Services page reads that parameter or has those anchors, so they land at the top of /services. This was already the case before the redesign. |
 | `src/assets/vislybluq-vcube-logo.png` | — | The logo is 288×288 but the hero cube shows it at up to 256px, so it's slightly soft on retina screens. A 600px+ PNG or an SVG would fix that. |
+| `vercel.json` | — | **Before merging the `prerender` branch:** open its Vercel preview deployment and check the home page, a service page, the contact form, the newsletter and the chat. `vercel.json` now sets the build output to `build/client`; if the Vercel project's settings override the build or output directory, clear those overrides. |
+| `public/sitemap.xml` | — | After the prerendered site is live, submit `https://www.vislybluq.com/sitemap.xml` in Google Search Console. Add new pages to the sitemap by hand when you create them. |
+| `public/og-image.png` | — | The share-preview image was generated from the logo and tagline. Replace it with a designed 1200×630 image if you have one. |
 
 ## Claims to verify or rewrite
 

@@ -33,9 +33,10 @@
   }
 }
 
-/* Staggered fade-up for home sections (see src/hooks/useInView.ts). Set --reveal-delay per item. */
+/* Staggered fade-up for home sections (see src/hooks/useInView.ts). Set --reveal-delay per item.
+   Scoped to .js (set in src/root.tsx) so the prerendered page stays readable without JavaScript. */
 @media (prefers-reduced-motion: no-preference) {
-  .reveal .reveal-item {
+  .js .reveal .reveal-item {
     opacity: 0;
     transform: translateY(18px);
     transition:
@@ -44,7 +45,7 @@
     transition-delay: var(--reveal-delay, 0ms);
   }
 
-  .reveal.is-visible .reveal-item {
+  .js .reveal.is-visible .reveal-item {
     opacity: 1;
     transform: none;
   }
@@ -103,6 +104,18 @@
       animation-timeline: --hero;
       animation-range: exit 0% exit 100%;
     }
+  }
+}
+
+/* Newsletter pop-up entrance (src/components/site/NewsletterPopup.tsx). */
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 

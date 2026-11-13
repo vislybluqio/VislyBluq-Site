@@ -1,6 +1,9 @@
 import type { ComponentType } from 'react';
 import { Sparkles, Eye, Brain, Rocket } from 'lucide-react';
 import { Eyebrow, GlassCard, MetricStrip, PageIntro, PrimaryLink, SecondaryLink, Section } from '../components/site/Enterprise';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'About', description: 'Who VislyBluq is: our vision, mission and how we work.', path: '/about' });
 
 // TODO(content): real company milestones as [year, description, icon, label]. The section is hidden while empty.
 const timeline: Array<[string, string, ComponentType<{ className?: string }>, string]> = [];
