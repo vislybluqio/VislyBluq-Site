@@ -6,7 +6,7 @@ Every placeholder on the site is listed here. In code, each one has a `// TODO(c
 
 | File | Line | What's needed |
 | --- | --- | --- |
-| `src/data/testimonials.ts` | 8 | Real testimonials that clients have approved (quote, name, role, company). The home page section stays hidden until at least one exists. |
+| `src/data/testimonials.ts` | 8 | Real testimonials that clients have approved (quote, name, role, company). The section is commented out in `src/pages/Home.tsx` for now; uncomment it there once there are real quotes. |
 | `src/data/metrics.ts` | 6 | Confirm each home page metric is accurate: `5+` builds & prototypes, `10+` strategy sessions, `24h` typical first response, `3` core delivery tracks. |
 | `src/pages/Home.tsx` | 105 | Dev marker above the metrics strip. Remove it once the metrics are confirmed. |
 | `src/pages/About.tsx` | 5 | Real company milestones (year, description, label). The fabricated timeline ("Fortune 500 fintech", "quantum-ready architecture", "A Decade of Disruption") was removed; the section is hidden until this is filled. |

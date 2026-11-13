@@ -2,7 +2,8 @@ import type { CSSProperties } from 'react';
 import { ArrowRight, Brain, Database, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CTASection, ContentTodo, GlassCard, MetricStrip, PrimaryLink, SecondaryLink, Section, pageMax, pagePad } from '../components/site/Enterprise';
-import Testimonials from '../components/site/Testimonials';
+// Testimonials are switched off for now; restore this import and the section below to bring them back.
+// import Testimonials from '../components/site/Testimonials';
 import StoryVideoSection from '../components/home/StoryVideoSection';
 import HeroGlobe from '../components/home/HeroGlobe';
 import { services } from '../data/services';
@@ -108,7 +109,7 @@ const Home = () => {
         </div>
       </section>
 
-      <Testimonials className="bg-visly-surface/35" />
+      {/* <Testimonials className="bg-visly-surface/35" /> */}
 
       <CTASection />
     </div>
