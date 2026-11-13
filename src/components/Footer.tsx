@@ -31,7 +31,7 @@ const Footer = () => {
               <BrandLogo imageClassName="h-12 w-12" />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-6 text-white/55">
-              Technology consulting and product engineering from Lagos, Nigeria.
+              Technology consulting and product engineering.
             </p>
             <div className="mt-6 flex gap-3">
               {[Linkedin, Twitter, Github].map((Icon, index) => (
@@ -87,8 +87,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="tel:+2347015055319" className="hover:text-visly-cyan">
-                  +234 701 505 5319
+                <a href="tel:+2348142695808" className="hover:text-visly-cyan">
+                  +234 814 269 5808
                 </a>
               </li>
               <li>
