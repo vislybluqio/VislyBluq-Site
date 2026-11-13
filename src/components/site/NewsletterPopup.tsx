@@ -3,7 +3,7 @@ import { useLocation } from 'react-router';
 import { X } from 'lucide-react';
 import NewsletterSignup from './NewsletterSignup';
 
-const DELAY_MS = 5000;
+const DELAY_MS = 60_000;
 const STORAGE_KEY = 'visly-newsletter-popup';
 const SNOOZE_DAYS = 30;
 // Pages where a pop-up would interrupt someone filling in a form or reading legal text.
@@ -34,7 +34,7 @@ const shouldShow = () => {
 };
 
 /**
- * Newsletter invitation that opens a few seconds into a visit. Shown at most once every 30 days
+ * Newsletter invitation that opens a minute into a visit. Shown at most once every 30 days
  * after it's closed, never again after subscribing, and not on form or legal pages.
  */
 const NewsletterPopup = () => {

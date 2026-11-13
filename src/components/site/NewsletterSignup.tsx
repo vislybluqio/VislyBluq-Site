@@ -45,7 +45,7 @@ const NewsletterSignup = ({ className = '', onSubscribed }: { className?: string
       <div role="status" className={`flex gap-3 text-left text-sm leading-6 text-white/80 ${className}`}>
         <MailCheck className="mt-0.5 h-5 w-5 shrink-0 text-visly-cyan" aria-hidden />
         <p>
-          <span className="font-bold text-white">Almost done.</span> Check your inbox and click the link to confirm your subscription. If you're already subscribed, there's nothing more to do.
+          <span className="font-bold text-white">Almost done.</span> Check your inbox and click the link to confirm your subscription. If you can't find the email, check your spam or junk folder. If you're already subscribed, there's nothing more to do.
         </p>
       </div>
     );
