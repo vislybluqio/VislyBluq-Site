@@ -17,8 +17,12 @@ const SCORE_THRESHOLD = 0.5;
 
 // Email configuration
 const EMAIL_ENDPOINTS = {
-  contact: 'sales@vislybluq.com',
-  application: 'hr@vislybluq.com',
+  contact:
+    process.env.FORMSUBMIT_CONTACT_EMAIL ||
+    'hello@vislybluq.com',
+  application:
+    process.env.FORMSUBMIT_APPLICATION_EMAIL ||
+    'hello@vislybluq.com',
 };
 
 // Rate limiting
@@ -93,7 +97,7 @@ async function verifyRecaptcha(
 async function submitToFormSubmit(
   email: string,
   data: Record<string, unknown>
-): Promise<boolean> {
+): Promise<{ success: boolean; error?: string }> {
   try {
     const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
       method: 'POST',
@@ -104,10 +108,14 @@ async function submitToFormSubmit(
       body: JSON.stringify(data),
     });
 
-    return response.ok;
+    if (response.ok) return { success: true };
+
+    const responseBody = await response.text();
+    console.error('FormSubmit rejected submission:', response.status, responseBody);
+    return { success: false, error: `FormSubmit returned ${response.status}` };
   } catch (error) {
     console.error('FormSubmit error:', error);
-    return false;
+    return { success: false, error: 'Unable to reach the email service' };
   }
 }
 

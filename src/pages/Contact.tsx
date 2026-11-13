@@ -17,11 +17,21 @@ const errorInputClass = 'w-full rounded-xl border border-red-400/60 bg-red-950/3
 const officeAddress = '11 Apaola Street, Ketu Ikosi, Lagos, Nigeria';
 const destination = encodeURIComponent(officeAddress);
 
+const whatsappContacts = [
+  { label: 'Primary WhatsApp', number: '2348142695808' },
+  { label: 'WhatsApp backup 1', number: '2348110738140' },
+  { label: 'WhatsApp backup 2', number: '2348078782833' },
+  { label: 'WhatsApp backup 3', number: '2348108844745' },
+  { label: 'WhatsApp backup 4', number: '2347015055319' },
+];
+
 const Contact = () => {
   const [searchParams] = useSearchParams();
   const { getRecaptchaToken } = useRecaptcha();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [whatsAppMessage, setWhatsAppMessage] = useState('');
 
   const { register, handleSubmit: handleFormSubmit, control, setValue, reset, watch, formState: { errors } } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -30,6 +40,18 @@ const Contact = () => {
   });
 
   const selectedService = watch('service');
+
+  const createWhatsAppMessage = (data: ContactFormData, service: string, phone: string) =>
+    [
+      'Hello VislyBluq team, I would like to make an inquiry.',
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      `Company: ${data.company || 'Not provided'}`,
+      `Phone: ${phone || 'Not provided'}`,
+      `Project type: ${service}`,
+      '',
+      `Message: ${data.message}`,
+    ].join('\n');
 
   useEffect(() => {
     const serviceId = searchParams.get('service');
@@ -54,6 +76,7 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSending(true);
+    setSubmitError(null);
     try {
       const recaptchaToken = await getRecaptchaToken('contact_form');
       const serviceLabel = services.find((service) => service.id === data.service)?.title || data.service || 'Digital Transformation Inquiry';
@@ -66,6 +89,7 @@ const Contact = () => {
           phoneMetadata = `Country: ${phoneNumber.country}, National: ${phoneNumber.nationalNumber}, Format: E.164`;
         }
       }
+      setWhatsAppMessage(createWhatsAppMessage(data, serviceLabel, phoneE164));
       const response = await fetch('/api/submit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -75,12 +99,17 @@ const Contact = () => {
           data: { name: data.name, email: data.email, company: data.company || 'Not provided', phone: phoneE164, phone_metadata: phoneMetadata, service: serviceLabel, message: data.message, _subject: `New VislyBluq Contact: ${data.name}` },
         }),
       });
-      if (!response.ok) throw new Error('Submission failed');
+      const result = (await response.json().catch(() => ({}))) as { error?: string };
+      if (!response.ok) throw new Error(result.error || 'We could not send your message right now.');
       reset();
       setIsSubmitted(true);
       setTimeout(() => setIsSubmitted(false), 6000);
-    } catch {
-      alert('Something went wrong. Please email hello@vislybluq.com directly or WhatsApp us at +234 701 505 5319.');
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : 'We could not send your message right now. Please use WhatsApp or email us directly.'
+      );
     } finally {
       setIsSending(false);
     }
@@ -93,7 +122,7 @@ const Contact = () => {
         <div className="mb-10 grid gap-6 lg:grid-cols-3">
           <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Office</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">Lagos, Nigeria</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">{officeAddress}</p><button onClick={openDirections} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#adc6ff]">Get Directions <ArrowRight className="h-4 w-4" aria-hidden /></button></GlassCard>
           <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Availability</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">Online-first support</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">We are mostly available online and reachable for enquiries 24/7. Scheduled calls are arranged based on project needs.</p></GlassCard>
-          <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Quick Response</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">WhatsApp or call</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">Use either +234 814 269 5808 or +234 701 505 5319 for direct communication.</p></GlassCard>
+          <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Quick Response</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">WhatsApp or call</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">Send your inquiry to our primary WhatsApp line, with four additional team lines available as backups.</p></GlassCard>
         </div>
         <div className="grid gap-8 lg:grid-cols-[1.45fr_0.85fr]">
           <GlassCard className="p-6 md:p-8 lg:p-10">
@@ -104,6 +133,8 @@ const Contact = () => {
               <div><label className="mb-3 block text-sm font-semibold text-white">Project type</label><div className="grid grid-cols-2 gap-3 md:grid-cols-3"><button type="button" onClick={() => setValue('service', '', { shouldValidate: true })} className={`rounded-xl border px-4 py-3 text-sm font-bold transition ${!selectedService ? 'border-visly-cyan bg-visly-cyan text-[#071423]' : 'border-white/10 bg-white/5 text-white/65 hover:text-white'}`}>Digital Transformation</button>{services.map((service) => <button key={service.id} type="button" onClick={() => setValue('service', service.id, { shouldValidate: true })} className={`rounded-xl border px-4 py-3 text-sm font-bold transition ${selectedService === service.id ? 'border-visly-cyan bg-visly-cyan text-[#071423]' : 'border-white/10 bg-white/5 text-white/65 hover:text-white'}`}>{service.shortTitle}</button>)}</div></div>
               <Field label="Message" error={errors.message?.message}><textarea id="message" {...register('message')} rows={7} className={`${errors.message ? errorInputClass : inputClass} resize-none`} placeholder="Tell us what you want to build, improve, automate, or understand." /></Field>
               {isSubmitted && <div className="flex gap-3 rounded-2xl border border-emerald-300/20 bg-emerald-400/10 p-4 text-emerald-200"><CheckCircle className="h-5 w-5 shrink-0" /><p className="text-sm">Message sent successfully. We will respond as soon as possible.</p></div>}
+              {submitError && <div className="flex gap-3 rounded-2xl border border-red-300/20 bg-red-400/10 p-4 text-red-100"><AlertCircle className="h-5 w-5 shrink-0" /><p className="text-sm">{submitError}</p></div>}
+              {whatsAppMessage && <WhatsAppHandoff message={whatsAppMessage} />}
               <button type="submit" disabled={isSending} className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-visly-blue px-7 py-4 text-sm font-bold text-white shadow-[0_0_28px_rgba(46,126,247,0.28)] transition hover:bg-[#3B8AFF] disabled:opacity-60">{isSending ? 'Sending...' : 'Send Inquiry'}<Send className="h-4 w-4" /></button>
               <p className="text-center text-xs text-white/45">By submitting, you agree to our <Link to="/privacy" className="text-visly-cyan hover:text-white">Privacy Policy</Link>.</p>
             </form>
@@ -119,6 +150,24 @@ const Contact = () => {
   );
 };
 
+const WhatsAppHandoff = ({ message }: { message: string }) => (
+  <div className="rounded-2xl border border-[#25D366]/35 bg-[#25D366]/10 p-5">
+    <div className="flex gap-3">
+      <MessageCircle className="h-5 w-5 shrink-0 text-[#46e57f]" />
+      <div>
+        <p className="text-sm font-bold text-white">Make sure the team receives your inquiry</p>
+        <p className="mt-1 text-xs leading-5 text-white/70">WhatsApp will open with your completed inquiry. Please tap Send in WhatsApp to deliver it directly.</p>
+      </div>
+    </div>
+    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+      {whatsappContacts.map((contact, index) => (
+        <a key={contact.number} href={`https://wa.me/${contact.number}?text=${encodeURIComponent(message)}`} target="_blank" rel="noreferrer" className={`rounded-xl px-4 py-3 text-center text-sm font-bold transition ${index === 0 ? 'bg-[#25D366] text-[#071423] hover:bg-[#46e57f]' : 'border border-white/15 bg-white/5 text-white hover:border-[#25D366]/60 hover:text-[#46e57f]'}`}>
+          {index === 0 ? 'Send on WhatsApp' : contact.label}
+        </a>
+      ))}
+    </div>
+  </div>
+);
 const Field = ({ label, error, children }: { label: string; error?: string; children: ReactNode }) => <div><label className="mb-2 block text-sm font-semibold text-white">{label}</label>{children}{error && <p className="mt-2 flex items-center gap-1 text-xs text-red-300"><AlertCircle className="h-3.5 w-3.5" /> {error}</p>}</div>;
 const ContactLink = ({ icon, label, value, href }: { icon: ReactNode; label: string; value: string; href: string }) => <a href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 hover:border-visly-cyan/30"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-visly-cyan/10 text-visly-cyan">{icon}</span><span><span className="block text-xs uppercase tracking-[0.18em] text-white/40">{label}</span><span className="mt-1 block text-sm font-bold text-white">{value}</span></span></a>;
 

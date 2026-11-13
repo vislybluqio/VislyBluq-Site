@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { COMPANY_KNOWLEDGE, LANGUAGE_NAMES } from './knowledge.js';
 
-// TODO: verify this fallback against Groq's current model list (see CONTENT_TODO.md).
-const GROQ_MODEL = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash-lite';
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'openrouter/free';
 const MAX_MESSAGE_LEN = 2000;
 const MAX_MESSAGES = 20;
 const MAX_MEMORY_ITEMS = 10;
@@ -122,6 +122,73 @@ function cleanReply(reply: string): string {
     .trim();
 }
 
+async function requestGemini(
+  apiKey: string,
+  systemPrompt: string,
+  messages: ChatMessage[]
+): Promise<string | null> {
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${encodeURIComponent(apiKey)}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        contents: messages.map((message) => ({
+          role: message.role === 'assistant' ? 'model' : 'user',
+          parts: [{ text: message.content }],
+        })),
+        generationConfig: { temperature: 0.6, maxOutputTokens: 1024 },
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    console.error('Gemini error:', response.status, await response.text());
+    return null;
+  }
+
+  const data = (await response.json()) as {
+    candidates?: { content?: { parts?: { text?: string }[] } }[];
+  };
+  return data.candidates?.[0]?.content?.parts
+    ?.map((part) => part.text || '')
+    .join('')
+    .trim() || null;
+}
+
+async function requestOpenRouter(
+  apiKey: string,
+  systemPrompt: string,
+  messages: ChatMessage[]
+): Promise<string | null> {
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      'HTTP-Referer': 'https://vislybluq.com',
+      'X-Title': 'VislyBluq Website Assistant',
+    },
+    body: JSON.stringify({
+      model: OPENROUTER_MODEL,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        ...messages.map((message) => ({ role: message.role, content: message.content })),
+      ],
+      temperature: 0.6,
+      max_tokens: 1024,
+    }),
+  });
+
+  if (!response.ok) {
+    console.error('OpenRouter error:', response.status, await response.text());
+    return null;
+  }
+
+  const data = (await response.json()) as { choices?: { message?: { content?: string } }[] };
+  return data.choices?.[0]?.message?.content?.trim() || null;
+}
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -130,8 +197,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const apiKey = process.env.GROQ_API_KEY;
-  if (!apiKey) return res.status(500).json({ error: 'Chat is not configured. Missing GROQ_API_KEY.' });
+  const geminiApiKey = process.env.GEMINI_API_KEY;
+  const openRouterApiKey = process.env.OPENROUTER_API_KEY;
+  if (!geminiApiKey && !openRouterApiKey) {
+    return res.status(500).json({ error: 'Chat is not configured. Missing GEMINI_API_KEY.' });
+  }
 
   const ip = getClientIp(req);
   if (!checkRateLimit(ip)) return res.status(429).json({ error: 'Too many requests. Please try again later.' });
@@ -172,37 +242,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const groqMessages = [
-      { role: 'system' as const, content: buildSystemPrompt(language, memory) },
-      ...messages.map((message) => ({
-        role: message.role as 'user' | 'assistant',
-        content: message.content,
-      })),
-    ];
+    const systemPrompt = buildSystemPrompt(language, memory);
+    const geminiReply = geminiApiKey
+      ? await requestGemini(geminiApiKey, systemPrompt, messages)
+      : null;
+    const rawReply = geminiReply || (openRouterApiKey
+      ? await requestOpenRouter(openRouterApiKey, systemPrompt, messages)
+      : null);
 
-    const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: GROQ_MODEL,
-        messages: groqMessages,
-        temperature: 0.6,
-        max_tokens: 1024,
-      }),
-    });
-
-    if (!groqRes.ok) {
-      const errText = await groqRes.text();
-      console.error('Groq error:', groqRes.status, errText);
-      return res.status(502).json({ error: 'AI service unavailable' });
-    }
-
-    const data = (await groqRes.json()) as { choices?: { message?: { content?: string } }[] };
-    const rawReply = data.choices?.[0]?.message?.content?.trim();
-    if (!rawReply) return res.status(502).json({ error: 'Empty response from AI' });
+    if (!rawReply) return res.status(502).json({ error: 'AI service unavailable' });
 
     const shouldEscalate = detectEscalationFromReply(rawReply);
     const reply = cleanReply(rawReply);
@@ -211,8 +259,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       reply,
       shouldEscalate,
       escalationReason: shouldEscalate ? 'ai_escalation' : undefined,
-    });
-  } catch (err) {
+    });  } catch (err) {
     console.error('Chat handler error:', err);
     return res.status(500).json({ error: 'Internal server error' });
   }
@@ -224,7 +271,7 @@ function getEscalationReply(language: LanguageCode): string {
     fr: "Je vais vous mettre en relation avec notre equipe. Remplissez le formulaire ci-dessous; reponse sous 24 h.",
     es: 'Le conectare con nuestro equipo. Complete el formulario; respondemos en 24 horas.',
     de: 'Ich verbinde Sie mit unserem Team. Bitte fuellen Sie das Formular aus; Antwort innerhalb von 24 Stunden.',
-    zh: '我会帮您联系团队。请填写下面的表单，我们会在 24 小时内回复。',
+    zh: 'æˆ‘ä¼šå¸®æ‚¨è”ç³»å›¢é˜Ÿã€‚è¯·å¡«å†™ä¸‹é¢çš„è¡¨å•ï¼Œæˆ‘ä»¬ä¼šåœ¨ 24 å°æ—¶å†…å›žå¤ã€‚',
   };
   return replies[language] || replies.en;
 }
