@@ -91,7 +91,7 @@ VislyBluq is building a practical, ambitious team across consulting, product eng
 Location: 11 Apaola Street, Ketu Ikosi, Lagos, Nigeria.
 Availability: online-first; reachable for enquiries 24/7; scheduled calls arranged based on project needs.
 Phone: +234 814 269 5808.
-WhatsApp: +234 701 505 5319.
+WhatsApp: +234 814 269 5808.
 Email: hello@vislybluq.com.
 Contact page: /contact.
 

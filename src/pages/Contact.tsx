@@ -10,6 +10,7 @@ import { AlertCircle, ArrowRight, CheckCircle, Clock, Mail, MessageCircle, Phone
 import { GlassCard, PageIntro, Section } from '../components/site/Enterprise';
 import { services } from '../data/services';
 import { useRecaptcha } from '../hooks/useRecaptcha';
+import { CONTACT_EMAIL, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_DISPLAY, whatsappLink } from '../config/contact';
 import { contactFormSchema, type ContactFormData } from '../utils/validation';
 
 const inputClass = 'w-full rounded-xl border border-white/10 bg-[#0B1633]/75 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 focus:border-visly-cyan focus:ring-2 focus:ring-visly-cyan/20';
@@ -17,13 +18,6 @@ const errorInputClass = 'w-full rounded-xl border border-red-400/60 bg-red-950/3
 const officeAddress = '11 Apaola Street, Ketu Ikosi, Lagos, Nigeria';
 const destination = encodeURIComponent(officeAddress);
 
-const whatsappContacts = [
-  { label: 'Primary WhatsApp', number: '2348142695808' },
-  { label: 'WhatsApp backup 1', number: '2348110738140' },
-  { label: 'WhatsApp backup 2', number: '2348078782833' },
-  { label: 'WhatsApp backup 3', number: '2348108844745' },
-  { label: 'WhatsApp backup 4', number: '2347015055319' },
-];
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
@@ -122,7 +116,7 @@ const Contact = () => {
         <div className="mb-10 grid gap-6 lg:grid-cols-3">
           <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Office</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">Lagos, Nigeria</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">{officeAddress}</p><button onClick={openDirections} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#adc6ff]">Get Directions <ArrowRight className="h-4 w-4" aria-hidden /></button></GlassCard>
           <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Availability</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">Online-first support</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">We are mostly available online and reachable for enquiries 24/7. Scheduled calls are arranged based on project needs.</p></GlassCard>
-          <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Quick Response</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">WhatsApp or call</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">Send your inquiry to our primary WhatsApp line, with four additional team lines available as backups.</p></GlassCard>
+          <GlassCard className="p-7"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Quick Response</p><h2 className="mt-4 text-2xl font-bold text-[#d7e3f9]">WhatsApp or call</h2><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">Send your inquiry on WhatsApp or call us directly.</p></GlassCard>
         </div>
         <div className="grid gap-8 lg:grid-cols-[1.45fr_0.85fr]">
           <GlassCard className="p-6 md:p-8 lg:p-10">
@@ -140,7 +134,7 @@ const Contact = () => {
             </form>
           </GlassCard>
           <div className="space-y-5">
-            <GlassCard className="p-7"><h2 className="text-2xl font-bold text-white">Support Channels</h2><div className="mt-6 space-y-4"><ContactLink icon={<Mail className="h-5 w-5" />} label="Email" value="hello@vislybluq.com" href="mailto:hello@vislybluq.com" /><ContactLink icon={<Phone className="h-5 w-5" />} label="Call" value="+234 814 269 5808" href="tel:+2348142695808" /><ContactLink icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value="+234 701 505 5319" href="https://wa.me/2347015055319?text=Hi%20VislyBluq,%20I'm%20interested%20in%20your%20services" /></div></GlassCard>
+            <GlassCard className="p-7"><h2 className="text-2xl font-bold text-white">Support Channels</h2><div className="mt-6 space-y-4"><ContactLink icon={<Mail className="h-5 w-5" />} label="Email" value={CONTACT_EMAIL} href={`mailto:${CONTACT_EMAIL}`} /><ContactLink icon={<Phone className="h-5 w-5" />} label="Call" value={PHONE_DISPLAY} href={PHONE_HREF} /><ContactLink icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value={WHATSAPP_DISPLAY} href={whatsappLink("Hi VislyBluq, I'm interested in your services")} /></div></GlassCard>
             <GlassCard className="p-7"><Clock className="mb-4 h-8 w-8 text-visly-cyan" /><h3 className="text-xl font-bold text-white">Direct Connection</h3><p className="mt-3 text-sm leading-6 text-white/60">Reach us online first. We can schedule discovery calls, technical reviews, and project scoping sessions around your availability.</p></GlassCard>
             <GlassCard className="overflow-hidden p-0"><iframe title="VislyBluq Lagos location" src={`https://www.google.com/maps?q=${destination}&output=embed`} className="h-72 w-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><div className="p-5"><button onClick={openDirections} className="inline-flex items-center gap-2 text-sm font-bold text-[#adc6ff]">Open directions from my location <ArrowRight className="h-4 w-4" aria-hidden /></button></div></GlassCard>
           </div>
@@ -159,13 +153,9 @@ const WhatsAppHandoff = ({ message }: { message: string }) => (
         <p className="mt-1 text-xs leading-5 text-white/70">WhatsApp will open with your completed inquiry. Please tap Send in WhatsApp to deliver it directly.</p>
       </div>
     </div>
-    <div className="mt-4 grid gap-2 sm:grid-cols-2">
-      {whatsappContacts.map((contact, index) => (
-        <a key={contact.number} href={`https://wa.me/${contact.number}?text=${encodeURIComponent(message)}`} target="_blank" rel="noreferrer" className={`rounded-xl px-4 py-3 text-center text-sm font-bold transition ${index === 0 ? 'bg-[#25D366] text-[#071423] hover:bg-[#46e57f]' : 'border border-white/15 bg-white/5 text-white hover:border-[#25D366]/60 hover:text-[#46e57f]'}`}>
-          {index === 0 ? 'Send on WhatsApp' : contact.label}
-        </a>
-      ))}
-    </div>
+    <a href={whatsappLink(message)} target="_blank" rel="noreferrer" className="mt-4 block rounded-xl bg-[#25D366] px-4 py-3 text-center text-sm font-bold text-[#071423] transition hover:bg-[#46e57f]">
+      Send on WhatsApp
+    </a>
   </div>
 );
 const Field = ({ label, error, children }: { label: string; error?: string; children: ReactNode }) => <div><label className="mb-2 block text-sm font-semibold text-white">{label}</label>{children}{error && <p className="mt-2 flex items-center gap-1 text-xs text-red-300"><AlertCircle className="h-3.5 w-3.5" /> {error}</p>}</div>;

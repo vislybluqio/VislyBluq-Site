@@ -58,7 +58,7 @@ export const CHAT_UI: Record<
     welcome:
       "Hello! I'm the VislyBluq AI assistant. Ask about our consulting, development, data, or AI services — or say if you'd like to reach our team.",
     typing: 'Thinking…',
-    error: 'Something went wrong. Please try again or contact us directly.',
+    error: "The assistant can't reply right now. Email us or message us on WhatsApp.",
     escalateTitle: 'Connect with our team',
     escalateDesc: "We'll follow up within 24 hours.",
     escalateName: 'Your name',
@@ -83,7 +83,7 @@ export const CHAT_UI: Record<
     welcome:
       "Bonjour ! Je suis l'assistant IA VislyBluq. Posez vos questions sur nos services ou demandez à parler à l'équipe.",
     typing: 'Réflexion…',
-    error: 'Erreur. Réessayez ou contactez-nous.',
+    error: "L'assistant ne peut pas répondre pour le moment. Écrivez-nous par e-mail ou sur WhatsApp.",
     escalateTitle: 'Contacter notre équipe',
     escalateDesc: 'Réponse sous 24 h.',
     escalateName: 'Nom',
@@ -108,7 +108,7 @@ export const CHAT_UI: Record<
     welcome:
       '¡Hola! Soy el asistente de IA de VislyBluq. Pregunta sobre nuestros servicios o pide hablar con el equipo.',
     typing: 'Pensando…',
-    error: 'Error. Inténtalo de nuevo o contáctanos.',
+    error: 'El asistente no puede responder ahora. Escríbenos por correo o por WhatsApp.',
     escalateTitle: 'Hablar con el equipo',
     escalateDesc: 'Respondemos en 24 horas.',
     escalateName: 'Nombre',
@@ -133,7 +133,7 @@ export const CHAT_UI: Record<
     welcome:
       'Hallo! Ich bin der VislyBluq KI-Assistent. Fragen Sie zu unseren Services oder zum Teamkontakt.',
     typing: 'Denke nach…',
-    error: 'Fehler. Bitte erneut versuchen oder kontaktieren Sie uns.',
+    error: 'Der Assistent kann gerade nicht antworten. Schreiben Sie uns per E-Mail oder WhatsApp.',
     escalateTitle: 'Team kontaktieren',
     escalateDesc: 'Antwort innerhalb von 24 Stunden.',
     escalateName: 'Name',
@@ -157,7 +157,7 @@ export const CHAT_UI: Record<
     listening: '正在听…',
     welcome: '您好！我是 VislyBluq AI 助手。可咨询我们的服务或联系团队。',
     typing: '思考中…',
-    error: '出错了，请重试或直接联系我们。',
+    error: '助手暂时无法回复。请通过电子邮件或 WhatsApp 联系我们。',
     escalateTitle: '联系团队',
     escalateDesc: '24 小时内回复。',
     escalateName: '姓名',

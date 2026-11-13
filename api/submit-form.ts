@@ -120,7 +120,7 @@ async function submitToFormSubmit(
 }
 
 function getAutoResponse(formType: string, data: Record<string, unknown>): string {
-  const whatsapp = '+234 701 505 5319';
+  const whatsapp = '+234 814 269 5808';
 
   switch (formType) {
     case 'contact':

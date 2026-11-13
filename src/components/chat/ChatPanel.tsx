@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Edit3, Loader2, Mic, MicOff, Send, Square, Volume2, X } from 'lucide-react';
 import ChatMessage from './ChatMessage';
 import EscalationForm from './EscalationForm';
+import ContactFallback from './ContactFallback';
 import { useSpeech } from '../../hooks/useSpeech';
 import {
   CHAT_API,
@@ -270,7 +271,7 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
           );
         })}
         {isLoading && <div className="flex items-center gap-2 text-sm text-[#c2c6d6]"><Loader2 className="h-4 w-4 animate-spin" />{ui.typing}</div>}
-        {error && <p className="text-sm text-red-300">{error}</p>}
+        {error && <ContactFallback message={error} />}
         {showEscalation && <EscalationForm language={language} transcript={buildTranscript()} />}
         <div ref={messagesEndRef} />
       </div>
