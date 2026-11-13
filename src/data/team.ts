@@ -14,9 +14,9 @@ export interface Leader {
 }
 
 export const leaders: Leader[] = [
-  { name: 'Odelola Solomon O.', role: 'General Managing Director, Co-founder & Head of Engineering', image: solomonPhoto, email: 'solomon@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluq', founder: true },
-  { name: 'Ibekwe Kingsley', role: 'CEO, Co-founder & Senior Software Engineer', image: kingsleyPhoto, email: 'kingsley@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluq', founder: true },
-  { name: 'Oluwatifunmilayo Ude', role: 'Co-founder and Head of AI and Data Engineering', image: funmiPhoto, email: 'hello@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluq', founder: true },
-  { name: 'Ibrahim Modupe', role: 'Product and Operations Lead', image: ibrahimPhoto, email: 'modupe@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluq', founder: false },
-  { name: 'Festus Moses', role: 'Head of Legal & Corporate Affairs', image: mosesPhoto, email: 'moses@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluq', founder: false },
+  { name: 'Odelola Solomon O.', role: 'General Managing Director, Co-founder & Head of Engineering', image: solomonPhoto, email: 'solomon@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluqq/', founder: true },
+  { name: 'Ibekwe Kingsley', role: 'CEO, Co-founder & Senior Software Engineer', image: kingsleyPhoto, email: 'kingsley@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluqq/', founder: true },
+  { name: 'Oluwatifunmilayo Ude', role: 'Co-founder and Head of AI and Data Engineering', image: funmiPhoto, email: 'hello@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluqq/', founder: true },
+  { name: 'Ibrahim Modupe', role: 'Product and Operations Lead', image: ibrahimPhoto, email: 'modupe@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluqq/', founder: false },
+  { name: 'Festus Moses', role: 'Head of Legal & Corporate Affairs', image: mosesPhoto, email: 'moses@vislybluq.com', linkedin: 'https://www.linkedin.com/company/vislybluqq/', founder: false },
 ];
