@@ -13,7 +13,6 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import FAQ from './pages/FAQ';
 import Apply from './pages/Apply';
-import IndustryDetail from './pages/IndustryDetail';
 import ChatWidget from './components/chat/ChatWidget';
 
 function App() {
@@ -29,7 +28,8 @@ function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
-            <Route path="/industries/:industryId" element={<IndustryDetail />} />
+            {/* Industry pages were removed; keep old links working. */}
+            <Route path="/industries/*" element={<Navigate to="/" replace />} />
             {/* The focus page was removed; keep old links working. */}
             <Route path="/focus/*" element={<Navigate to="/" replace />} />
             {/* The projects pages were removed; keep old links and search results working. */}

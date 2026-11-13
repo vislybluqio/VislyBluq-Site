@@ -42,11 +42,13 @@ const DropdownPanel = ({ dropdown }: { dropdown: Dropdown }) => (
           ))}
         </>
       ) : (
-        industries.map((industry) => (
-          <Link key={industry.id} to={`/industries/${industry.id}`} className={dropdownLinkClass}>
-            {industry.title}
-          </Link>
-        ))
+        <ul>
+          {industries.map((industry) => (
+            <li key={industry.id} className="px-4 py-2.5 text-sm text-white/70">
+              {industry.title}
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   </div>
@@ -85,7 +87,7 @@ const Header = () => {
 
         <nav className="hidden items-center gap-6 xl:flex">
           {navItems.map((item) => {
-            const isActive = item.dropdown === 'industries' ? location.pathname.startsWith('/industries') : location.pathname === item.path;
+            const isActive = location.pathname === item.path;
             const linkClass = `inline-flex items-center gap-1 text-sm font-medium transition ${isActive ? 'text-visly-cyan' : 'text-white/68 hover:text-white'}`;
             return (
               <div
@@ -165,15 +167,13 @@ const Header = () => {
             {navItems.map((item) => item.dropdown === 'industries' ? (
               <div key={item.name} className="px-4 pt-3">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/45">{item.name}</p>
-                {industries.map((industry) => (
-                  <Link
-                    key={industry.id}
-                    to={`/industries/${industry.id}`}
-                    className={`block rounded-xl py-3 pl-3 text-sm font-semibold ${location.pathname === `/industries/${industry.id}` ? 'text-visly-cyan' : 'text-white/72 hover:text-white'}`}
-                  >
-                    {industry.title}
-                  </Link>
-                ))}
+                <ul>
+                  {industries.map((industry) => (
+                    <li key={industry.id} className="py-2.5 pl-3 text-sm font-semibold text-white/72">
+                      {industry.title}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ) : (
               <Link

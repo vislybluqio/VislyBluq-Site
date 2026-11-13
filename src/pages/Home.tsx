@@ -97,14 +97,8 @@ const Home = () => {
           </p>
           <ul className="mb-10 grid gap-x-10 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry) => (
-              <li key={industry.id}>
-                <Link
-                  to={`/industries/${industry.id}`}
-                  className="group flex items-center justify-between gap-3 border-b border-white/10 py-4 text-xl font-bold text-white/80 transition hover:border-visly-cyan/50 hover:text-visly-cyan md:text-2xl"
-                >
-                  {industry.title}
-                  <ArrowRight className="h-5 w-5 shrink-0 transition group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" aria-hidden />
-                </Link>
+              <li key={industry.id} className="border-b border-white/10 py-4 text-xl font-bold text-white/80 md:text-2xl">
+                {industry.title}
               </li>
             ))}
           </ul>
