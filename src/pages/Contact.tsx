@@ -12,6 +12,9 @@ import { services } from '../data/services';
 import { useRecaptcha } from '../hooks/useRecaptcha';
 import { CONTACT_EMAIL, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_DISPLAY, whatsappLink } from '../config/contact';
 import { contactFormSchema, type ContactFormData } from '../utils/validation';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'Contact', description: 'Contact VislyBluq by form, email, phone or WhatsApp. Office: 11 Apaola Street, Ketu Ikosi, Lagos, Nigeria.', path: '/contact' });
 
 const inputClass = 'w-full rounded-xl border border-white/10 bg-[#0B1633]/75 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 focus:border-visly-cyan focus:ring-2 focus:ring-visly-cyan/20';
 const errorInputClass = 'w-full rounded-xl border border-red-400/60 bg-red-950/30 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 focus:border-red-300 focus:ring-2 focus:ring-red-500/20';

@@ -2,6 +2,15 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
 import { getServicePillar } from '../data/enterpriseServices';
+import type { MetaArgs } from 'react-router';
+import { pageMeta } from '../config/seo';
+
+export const meta = ({ params }: MetaArgs) => {
+  const service = getServicePillar(params.serviceId ?? '');
+  return service
+    ? pageMeta({ title: service.title, description: service.summary, path: `/services/${service.id}` })
+    : [{ title: 'Service not found | VislyBluq' }, { name: 'robots', content: 'noindex' }];
+};
 
 const ServiceDetail = () => {
   const { serviceId = '' } = useParams();

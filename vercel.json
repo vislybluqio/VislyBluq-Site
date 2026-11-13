@@ -1,5 +1,18 @@
 {
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "build/client",
+  "redirects": [
+    { "source": "/projects", "destination": "/services", "permanent": true },
+    { "source": "/projects/:path*", "destination": "/services", "permanent": true },
+    { "source": "/case-studies", "destination": "/services", "permanent": true },
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/insights", "destination": "/", "permanent": true },
+    { "source": "/insights/:path*", "destination": "/", "permanent": true },
+    { "source": "/industries/:path*", "destination": "/", "permanent": true },
+    { "source": "/focus/:path*", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/((?!api/).*)", "destination": "/__spa-fallback.html" }
   ]
 }

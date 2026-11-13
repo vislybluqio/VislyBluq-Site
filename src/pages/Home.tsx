@@ -11,6 +11,9 @@ import { homeMetrics } from '../data/metrics';
 import { industries } from '../data/industries';
 import { revealDelay } from '../hooks/useInView';
 import { BrandMark } from '../components/BrandLogo';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'VislyBluq — Technology Consulting, Apps, Data & AI Solutions', description: 'Technology consulting, web and mobile apps, data engineering and practical AI, for startups and growing businesses.', path: '/' });
 
 const capabilities = [Brain, Terminal, Database];
 

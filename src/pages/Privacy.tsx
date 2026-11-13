@@ -2,6 +2,9 @@ import type { ReactNode } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Analytics, CheckCircle, Delete, Download, EditNote, History, Person, Security, Visibility } from '../components/site/LegalIcons';
 import { GlassCard, PageIntro, Section } from '../components/site/Enterprise';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'Privacy Policy', description: 'How VislyBluq collects, uses and protects personal information.', path: '/privacy' });
 
 const Privacy = () => (
   <div>

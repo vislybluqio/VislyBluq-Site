@@ -11,6 +11,9 @@ import { GlassCard, PageIntro, Section } from '../components/site/Enterprise';
 import { useRecaptcha } from '../hooks/useRecaptcha';
 import { uploadToCloudinary, validateFile } from '../utils/fileUpload';
 import { jobApplicationSchema, type JobApplicationData } from '../utils/validation';
+import { pageMeta } from '../config/seo';
+
+export const meta = () => pageMeta({ title: 'Apply', description: 'Apply for a volunteer role at VislyBluq.', path: '/apply' });
 
 const inputClass = 'w-full rounded-xl border border-white/10 bg-[#0B1633]/75 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 focus:border-visly-cyan focus:ring-2 focus:ring-visly-cyan/20';
 const errorInputClass = 'w-full rounded-xl border border-red-400/60 bg-red-950/30 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 focus:border-red-300 focus:ring-2 focus:ring-red-500/20';
