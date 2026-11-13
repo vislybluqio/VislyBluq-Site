@@ -8,3 +8,10 @@ export const WHATSAPP_DISPLAY = '+234 814 269 5808';
 
 export const whatsappLink = (message?: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+
+// Tracking parameters from the share links (?s=, ?rpxt=) are left off on purpose.
+export const SOCIAL_LINKS = {
+  linkedin: 'https://www.linkedin.com/company/vislybluqq/',
+  x: 'https://x.com/vislybluqq',
+  instagram: 'https://www.instagram.com/vislybluqtech/',
+};

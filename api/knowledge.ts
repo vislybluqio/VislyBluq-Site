@@ -92,6 +92,9 @@ Location: 11 Apaola Street, Ketu Ikosi, Lagos, Nigeria.
 Availability: online-first; reachable for enquiries 24/7; scheduled calls arranged based on project needs.
 Phone: +234 814 269 5808.
 WhatsApp: +234 814 269 5808.
+LinkedIn: https://www.linkedin.com/company/vislybluqq/
+X (Twitter): https://x.com/vislybluqq
+Instagram: https://www.instagram.com/vislybluqtech/
 Email: hello@vislybluq.com.
 Contact page: /contact.
 

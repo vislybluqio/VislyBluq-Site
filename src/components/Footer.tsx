@@ -1,8 +1,22 @@
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Instagram, Linkedin } from 'lucide-react';
 import { services } from '../data/services';
 import BrandLogo from './BrandLogo';
+import { SOCIAL_LINKS } from '../config/contact';
 import NewsletterSignup from './site/NewsletterSignup';
+
+// lucide's Twitter icon is the old bird, so X gets its own mark.
+const XIcon = ({ className = '' }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
+const socials = [
+  { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin, Icon: Linkedin },
+  { label: 'X', href: SOCIAL_LINKS.x, Icon: XIcon },
+  { label: 'Instagram', href: SOCIAL_LINKS.instagram, Icon: Instagram },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -34,12 +48,14 @@ const Footer = () => {
               Technology consulting and product engineering.
             </p>
             <div className="mt-6 flex gap-3">
-              {[Linkedin, Twitter, Github].map((Icon, index) => (
+              {socials.map(({ label, href, Icon }) => (
                 <a
-                  key={index}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/55 hover:border-visly-cyan/40 hover:text-visly-cyan"
-                  aria-label="Social link"
+                  aria-label={`VislyBluq on ${label}`}
                 >
                   <Icon className="h-4 w-4" />
                 </a>
