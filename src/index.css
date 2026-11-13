@@ -107,6 +107,18 @@
   }
 }
 
+/* Newsletter pop-up entrance (src/components/site/NewsletterPopup.tsx). */
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Hero text entrance on load. Kept on inner elements so it doesn't fight the scroll drift. */
 @keyframes heroEnter {
   from {

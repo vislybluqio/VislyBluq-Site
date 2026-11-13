@@ -80,12 +80,12 @@ const Header = () => {
           : 'border-white/5 bg-visly-navy/72 backdrop-blur-xl'
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-16">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8 xl:px-16">
         <Link to="/" className="group flex items-center" aria-label="VislyBluq home">
           <BrandLogo imageClassName="h-11 w-11 transition duration-300 group-hover:scale-[1.04] sm:h-12 sm:w-12" />
         </Link>
 
-        <nav className="hidden items-center gap-6 xl:flex">
+        <nav className="hidden items-center gap-4 lg:flex xl:gap-6">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
             const linkClass = `inline-flex items-center gap-1 text-sm font-medium transition ${isActive ? 'text-visly-cyan' : 'text-white/68 hover:text-white'}`;
@@ -123,10 +123,10 @@ const Header = () => {
           })}
         </nav>
 
-        <div className="ml-auto mr-4 hidden items-center gap-4 md:flex xl:ml-0 xl:mr-0">
+        <div className="ml-auto mr-4 hidden items-center gap-4 md:flex lg:ml-0 lg:mr-0">
           <button
             type="button"
-            className="rounded-full p-2 text-white/55 transition hover:bg-white/5 hover:text-visly-cyan"
+            className="hidden rounded-full p-2 text-white/55 transition hover:bg-white/5 hover:text-visly-cyan xl:block"
             aria-label="Search"
           >
             <Search className="h-5 w-5" />
@@ -141,7 +141,7 @@ const Header = () => {
 
         <button
           type="button"
-          className="rounded-xl border border-white/10 bg-white/5 p-2 text-white xl:hidden"
+          className="rounded-xl border border-white/10 bg-white/5 p-2 text-white lg:hidden"
           onClick={() => setIsMenuOpen((open) => !open)}
           aria-label="Toggle menu"
         >
@@ -162,7 +162,7 @@ const Header = () => {
       )}
 
       {isMenuOpen && (
-        <div className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10 bg-visly-navy/98 px-6 py-5 backdrop-blur-2xl xl:hidden">
+        <div className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10 bg-visly-navy/98 px-6 py-5 backdrop-blur-2xl lg:hidden">
           <div className="space-y-2">
             {navItems.map((item) => item.dropdown === 'industries' ? (
               <div key={item.name} className="px-4 pt-3">

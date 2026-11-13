@@ -3,6 +3,7 @@ import { Link, Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResp
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ChatWidget from './components/chat/ChatWidget';
+import NewsletterPopup from './components/site/NewsletterPopup';
 import RecaptchaProvider from './context/RecaptchaProvider';
 import { GlassCard, Section } from './components/site/Enterprise';
 import './index.css';
@@ -40,6 +41,7 @@ const Shell = ({ children }: { children: ReactNode }) => (
       <main>{children}</main>
       <Footer />
       <ChatWidget />
+      <NewsletterPopup />
     </div>
   </RecaptchaProvider>
 );
