@@ -104,15 +104,29 @@ async function submitToFormSubmit(
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
+        Referer: 'https://vislybluq.com',
+        Origin: 'https://vislybluq.com',
       },
       body: JSON.stringify(data),
     });
 
-    if (response.ok) return { success: true };
+    const responseText = await response.text();
+    let result: { success?: string | boolean; message?: string } = {};
+    try {
+      result = JSON.parse(responseText);
+    } catch {
+      // response might not be JSON
+    }
 
-    const responseBody = await response.text();
-    console.error('FormSubmit rejected submission:', response.status, responseBody);
-    return { success: false, error: `FormSubmit returned ${response.status}` };
+    if (response.ok && result.success !== 'false' && result.success !== false) {
+      return { success: true };
+    }
+
+    console.error('FormSubmit rejected submission:', response.status, responseText);
+    return {
+      success: false,
+      error: result.message || `FormSubmit returned ${response.status}`,
+    };
   } catch (error) {
     console.error('FormSubmit error:', error);
     return { success: false, error: 'Unable to reach the email service' };
