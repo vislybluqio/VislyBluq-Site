@@ -19,10 +19,10 @@ const SCORE_THRESHOLD = 0.5;
 const EMAIL_ENDPOINTS = {
   contact:
     process.env.FORMSUBMIT_CONTACT_EMAIL ||
-    'hello@vislybluq.com',
+    'sales@vislybluq.com',
   application:
     process.env.FORMSUBMIT_APPLICATION_EMAIL ||
-    'hello@vislybluq.com',
+    'sales@vislybluq.com',
 };
 
 // Rate limiting
