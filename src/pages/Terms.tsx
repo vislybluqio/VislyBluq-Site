@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react';
-import { CheckCircle, CloudCog, Download, ShieldCheck } from 'lucide-react';
-import { GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
+import { Download } from 'lucide-react';
+import { LegalBlock, PageIntro, Section } from '../components/site/Enterprise';
 import { pageMeta } from '../config/seo';
 
 export const meta = () => pageMeta({ title: 'Terms of Service', description: "The terms that govern use of VislyBluq's website and services.", path: '/terms' });
@@ -32,12 +31,36 @@ const downloadTermsPdf = () => {
 
 const Terms = () => (
   <div>
-    <PageIntro eyebrow="Legal Framework" title={<>Terms of Service</>} description="Last updated: October 24, 2023. These terms govern your use of VislyBluq's enterprise technology consulting platforms and services.">
-      <button onClick={downloadTermsPdf} className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-6 py-3 text-sm font-bold text-[#d7e3f9]"><Download className="h-4 w-4" /> Download PDF</button>
+    <PageIntro label="Legal · Last updated October 24, 2023" title="Terms of Service" description="The terms that govern your use of VislyBluq’s website and services.">
+      <button type="button" onClick={downloadTermsPdf} className="inline-flex h-12 items-center gap-2 rounded-full border border-ink-line px-6 text-sm font-medium text-ink-text hover:border-white/40">
+        <Download className="h-4 w-4" aria-hidden /> Download PDF
+      </button>
     </PageIntro>
-    <Section className="pt-0"><div className="grid gap-8 lg:grid-cols-[260px_1fr]"><aside><GlassCard className="sticky top-28 p-5"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">Sections</p>{['1. Acceptance','2. Service Terms','3. Compliance','4. Intellectual Property','5. Limitation of Liability','6. Termination','7. Contact Support'].map(x=><p key={x} className="mt-3 text-sm text-[#c2c6d6]">{x}</p>)}<div className="mt-6 rounded-2xl bg-white/5 p-4"><p className="font-bold">Need a PDF version?</p><button onClick={downloadTermsPdf} className="mt-3 flex items-center gap-2 text-sm text-[#adc6ff]"><Download className="h-4 w-4" />Download PDF</button></div></GlassCard></aside><article className="space-y-6"><Legal title="01 Acceptance of Terms">By accessing or using the services provided by VislyBluq Enterprise Technology Consulting, you agree to be bound by these Terms of Service. If you do not agree to all terms, do not use our services.</Legal><GlassCard className="p-7"><h2 className="text-2xl font-bold">02 Service Provisioning</h2><div className="mt-5 grid gap-4 md:grid-cols-2"><Mini icon={<CloudCog />} title="Availability" text="We aim to keep public digital surfaces available and responsive, subject to maintenance, hosting providers, and agreed client terms."/><Mini icon={<ShieldCheck />} title="Account Security" text="Users are responsible for maintaining confidentiality of credentials and access granted to their organization."/></div></GlassCard><Legal title="03 Regulatory Compliance">Clients are responsible for ensuring that their use of technology solutions complies with laws and industry obligations applicable to their business and jurisdiction.</Legal><GlassCard className="p-7 border-[#adc6ff]/20"><p className="text-xl italic leading-8 text-[#d7e3f9]">We take data integrity and ethical engineering seriously, and we align implementation practices with the compliance needs agreed for each engagement.</p></GlassCard><GlassCard className="p-7"><h2 className="text-2xl font-bold">04 Intellectual Property</h2><p className="mt-4 text-sm leading-7 text-[#c2c6d6]">Ownership, licensing, deliverables, and reuse rights are defined in the relevant project agreement for each engagement.</p>{['Limited usage rights may be granted for internal business use.','Unauthorized redistribution or reverse engineering is prohibited unless explicitly agreed.'].map(x=><p key={x} className="mt-4 flex gap-3 text-sm text-[#c2c6d6]"><CheckCircle className="h-5 w-5 text-[#adc6ff]" />{x}</p>)}</GlassCard><Legal title="05 Limitation of Liability">To the maximum extent permitted by law, VislyBluq shall not be liable for indirect, incidental, special, consequential, or punitive damages arising from website use or services.</Legal><GlassCard className="p-10 text-center"><h2 className="text-3xl font-bold">Have Questions?</h2><p className="mx-auto mt-4 max-w-2xl text-[#c2c6d6]">Our team can discuss specific enterprise requirements or clarifications regarding these terms.</p><div className="mt-8 flex justify-center gap-4"><PrimaryLink to="/contact">Contact Legal Team</PrimaryLink></div></GlassCard></article></div></Section>
+    <Section>
+      <article className="mx-auto max-w-prose">
+        <LegalBlock title="1. Acceptance of Terms"><p>By accessing or using the services provided by VislyBluq Enterprise Technology Consulting, you agree to be bound by these Terms of Service. If you do not agree to all terms, do not use our services.</p></LegalBlock>
+        <LegalBlock title="2. Service Provisioning">
+          <p><strong className="font-medium text-body">Availability:</strong> we aim to keep public digital surfaces available and responsive, subject to maintenance, hosting providers, and agreed client terms.</p>
+          <p><strong className="font-medium text-body">Account security:</strong> users are responsible for maintaining confidentiality of credentials and access granted to their organization.</p>
+        </LegalBlock>
+        <LegalBlock title="3. Regulatory Compliance">
+          <p>Clients are responsible for ensuring that their use of technology solutions complies with laws and industry obligations applicable to their business and jurisdiction.</p>
+          <p>We take data integrity and ethical engineering seriously, and we align implementation practices with the compliance needs agreed for each engagement.</p>
+        </LegalBlock>
+        <LegalBlock title="4. Intellectual Property">
+          <p>Ownership, licensing, deliverables, and reuse rights are defined in the relevant project agreement for each engagement.</p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>Limited usage rights may be granted for internal business use.</li>
+            <li>Unauthorized redistribution or reverse engineering is prohibited unless explicitly agreed.</li>
+          </ul>
+        </LegalBlock>
+        <LegalBlock title="5. Limitation of Liability"><p>To the maximum extent permitted by law, VislyBluq shall not be liable for indirect, incidental, special, consequential, or punitive damages arising from website use or services.</p></LegalBlock>
+        <p className="mt-12 text-base text-body-muted">
+          Questions about these terms? <a href="/contact" className="text-body underline underline-offset-4 hover:text-brand">Contact us</a>.
+        </p>
+      </article>
+    </Section>
   </div>
 );
-const Legal=({title,children}:{title:string;children:string})=><GlassCard className="p-7"><h2 className="text-2xl font-bold">{title}</h2><p className="mt-4 text-sm leading-7 text-[#c2c6d6]">{children}</p></GlassCard>;
-const Mini=({icon,title,text}:{icon: ReactNode;title:string;text:string})=><div className="rounded-2xl bg-white/5 p-4"><div className="mb-3 text-[#adc6ff]">{icon}</div><h3 className="font-bold">{title}</h3><p className="mt-2 text-sm text-[#c2c6d6]">{text}</p></div>;
+
 export default Terms;

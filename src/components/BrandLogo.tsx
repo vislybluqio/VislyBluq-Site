@@ -6,20 +6,10 @@ interface BrandLogoProps {
   textClassName?: string;
 }
 
-const BrandLogo = ({ className = '', imageClassName = '', textClassName = '' }: BrandLogoProps) => (
-  <span className={`inline-flex items-center gap-3 ${className}`} aria-label="VislyBluq">
-    <img
-      src={logoUrl}
-      alt="VislyBluq V-Cube logo mark"
-      className={`block shrink-0 object-contain ${imageClassName}`}
-      loading="eager"
-    />
-    <span className={`leading-none ${textClassName}`}>
-      <span className="block text-xl font-extrabold tracking-tight text-white">VislyBluq</span>
-      <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.28em] text-visly-cyan/75">
-        Tech Consulting
-      </span>
-    </span>
+const BrandLogo = ({ className = '', imageClassName = 'h-8 w-8', textClassName = 'text-ink-text' }: BrandLogoProps) => (
+  <span className={`inline-flex items-center gap-2.5 ${className}`}>
+    <img src={logoUrl} alt="" aria-hidden="true" className={`block shrink-0 object-contain ${imageClassName}`} loading="eager" />
+    <span className={`text-[17px] font-semibold tracking-[-0.02em] ${textClassName}`}>VislyBluq</span>
   </span>
 );
 

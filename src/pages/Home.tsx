@@ -1,122 +1,58 @@
-import type { CSSProperties } from 'react';
-import { ArrowRight, Brain, Database, Terminal } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { CTASection, ContentTodo, GlassCard, MetricStrip, PrimaryLink, SecondaryLink, Section, pageMax, pagePad } from '../components/site/Enterprise';
-// Testimonials are switched off for now; restore this import and the section below to bring them back.
-// import Testimonials from '../components/site/Testimonials';
-import StoryVideoSection from '../components/home/StoryVideoSection';
-import HeroGlobe from '../components/home/HeroGlobe';
-import { services } from '../data/services';
-import { homeMetrics } from '../data/metrics';
-import { industries } from '../data/industries';
+import { ButtonLink, Em, pageMax, pagePad } from '../components/site/Enterprise';
+import HomeSections from '../components/home/HomeSections';
+import { LagosClock, RotatingPhrase } from '../components/home/HeroDetails';
+import CubeField from '../components/home/CubeField';
 import { revealDelay } from '../hooks/useInView';
-import { BrandMark } from '../components/BrandLogo';
 import { pageMeta } from '../config/seo';
 
 export const meta = () => pageMeta({ title: 'VislyBluq — Technology Consulting, Apps, Data & AI Solutions', description: 'Technology consulting, web and mobile apps, data engineering and practical AI, for startups and growing businesses.', path: '/' });
 
-const capabilities = [Brain, Terminal, Database];
+// The italic phrase in the hero cycles through these. Keep each one true to the services offered.
+const heroPhrases = ['digital products.', 'data platforms.', 'AI tools.', 'internal systems.'];
 
-const Home = () => {
-  return (
-    <div className="overflow-x-clip">
-      <section className={`hero-scroll-timeline ${pagePad} relative isolate pt-28 pb-12 lg:pt-44 lg:pb-16`}>
-        <div className="absolute left-1/2 top-24 -z-10 h-[680px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(46,126,247,0.2),transparent_62%)]" />
-        {/* Mobile and tablet: globe sits faintly behind the text. */}
-        <div className="pointer-events-none absolute -right-36 top-20 -z-10 w-[440px] opacity-35 sm:-right-20 sm:w-[520px] lg:hidden">
-          <HeroGlobe className="h-auto w-full" />
-        </div>
-
-        <div className={`${pageMax} grid gap-12 lg:grid-cols-[1fr_auto] lg:items-center`}>
-          <div className="hero-fade">
-            <div className="hero-drift" style={{ '--drift': '140px' } as CSSProperties}>
-              <h1 className="hero-enter max-w-5xl text-5xl font-extrabold leading-[1.04] text-white sm:text-6xl lg:text-7xl">
-                We <span className="italic text-visly-blue">consult</span>, design and build digital products.
-              </h1>
-            </div>
-            <div className="hero-drift" style={{ '--drift': '90px' } as CSSProperties}>
-              <p className="hero-enter mt-6 max-w-2xl text-base leading-7 text-white/68 sm:mt-8 sm:text-lg sm:leading-8" style={revealDelay(1, 140)}>
-                Technology consulting, web and mobile apps, data engineering and practical AI, for startups and growing businesses.
-              </p>
-            </div>
-            <div className="hero-drift" style={{ '--drift': '50px' } as CSSProperties}>
-              <div className="hero-enter mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4" style={revealDelay(2, 140)}>
-                <PrimaryLink to="/contact">Launch your project</PrimaryLink>
-                <SecondaryLink to="/services">Explore our services</SecondaryLink>
-              </div>
-            </div>
-          </div>
-
-          {/* Desktop: the V-Cube sits in front of the globe. */}
-          <div className="relative hidden lg:block lg:pr-4 xl:pr-12">
-            <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[460px] -translate-x-1/2 -translate-y-1/2 xl:w-[520px]">
-              <HeroGlobe className="h-auto w-full" />
-            </div>
-            <BrandMark className="hero-cube h-56 w-56 drop-shadow-[0_24px_60px_rgba(46,126,247,0.45)] xl:h-64 xl:w-64" />
-          </div>
-        </div>
-      </section>
-
-      <StoryVideoSection />
-
-      <Section>
-        <div className="mb-10 flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-visly-cyan">Capabilities</p>
-            <h2 className="mt-4 text-4xl font-bold leading-tight text-white md:text-5xl">
-              From first roadmap to shipped product.
-            </h2>
-          </div>
-          <Link to="/services" className="inline-flex items-center gap-2 font-bold text-visly-cyan hover:text-white">
-            Explore all services <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {services.slice(0, 3).map((service, index) => {
-            const Icon = capabilities[index];
-            return (
-              <GlassCard key={service.id} className="p-8 transition hover:border-visly-cyan/40">
-                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-visly-cyan/10 text-visly-cyan">
-                  <Icon className="h-8 w-8" />
-                </div>
-                <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                <p className="mt-4 text-sm leading-6 text-white/62">{service.description}</p>
-                <ul className="mt-7 space-y-3">
-                  {service.features.slice(0, 3).map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-sm text-white/82">
-                      <span className="h-1.5 w-1.5 rounded-full bg-visly-cyan" /> {feature}
-                    </li>
-                  ))}
-                </ul>
-              </GlassCard>
-            );
-          })}
-        </div>
-      </Section>
-
-      <section className="border-y border-white/5 bg-visly-surface/50 px-6 py-12 sm:px-8 lg:px-16 lg:py-16">
-        <div className={pageMax}>
-          <p className="mb-8 text-center text-xs font-bold uppercase tracking-[0.32em] text-visly-cyan/60">
-            Industries we work in
-          </p>
-          <ul className="mb-10 grid gap-x-10 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">
-            {industries.map((industry) => (
-              <li key={industry.id} className="border-b border-white/10 py-4 text-xl font-bold text-white/80 md:text-2xl">
-                {industry.title}
-              </li>
-            ))}
-          </ul>
-          {/* TODO(content): confirm the metric values in src/data/metrics.ts */}
-          <ContentTodo note="confirm metrics" className="mb-4" />
-          <MetricStrip metrics={homeMetrics} />
-        </div>
-      </section>
-
-      {/* <Testimonials className="bg-visly-surface/35" /> */}
-
-      <CTASection />
-    </div>
-  );
+// A faint dot grid behind the hero, like notebook paper.
+const dotGrid = {
+  backgroundImage: 'radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1.3px)',
+  backgroundSize: '22px 22px',
 };
+
+const Home = () => (
+  <div>
+    {/* Hero: notebook-paper dots, the headline, and a small block field that is sketched, then built. */}
+    <section className={`grain relative ${pagePad} bg-ink pb-20 pt-36 text-ink-text lg:pb-28 lg:pt-48`}>
+      <div className="pointer-events-none absolute inset-0" style={dotGrid} aria-hidden />
+      <div className={`${pageMax} relative`}>
+        <div className="hero-enter mb-10 flex items-center justify-between gap-6 font-mono text-[11px] uppercase tracking-label text-ink-muted lg:mb-20">
+          <p>Technology consulting</p>
+          <LagosClock />
+        </div>
+
+        <div className="relative">
+          <h1 className="max-w-4xl text-5xl font-normal leading-[1.06] tracking-display sm:text-6xl lg:text-[5rem] lg:leading-[1.06]">
+            <span className="hero-enter inline" style={revealDelay(1, 100)}>We consult, design and build</span>{' '}
+            <span className="hero-enter inline-block" style={revealDelay(1, 400)}>
+              <Em><RotatingPhrase phrases={heroPhrases} /></Em>
+            </span>
+          </h1>
+          {/* Wide screens only, beside the headline, so the headline is never crowded. */}
+          <div className="absolute -top-24 right-0 hidden h-[300px] w-[320px] xl:block">
+            <CubeField sketch grid={6} ambient={false} hoverStrength={0} keystone />
+          </div>
+        </div>
+
+        <div className="hero-enter mt-14 flex flex-col gap-10 lg:mt-16 lg:flex-row lg:items-end lg:justify-between" style={revealDelay(1, 600)}>
+          <p className="max-w-xl text-lg leading-8 text-ink-muted">
+            Technology consulting, web and mobile apps, data engineering and practical AI, for startups and growing businesses.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <ButtonLink to="/contact" variant="onDark">Start a project</ButtonLink>
+            <ButtonLink to="/services" variant="outlineDark" arrow={false}>Our services</ButtonLink>
+          </div>
+        </div>
+      </div>
+    </section>
+    <HomeSections />
+  </div>
+);
 
 export default Home;

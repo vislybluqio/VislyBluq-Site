@@ -17,7 +17,6 @@ export const CHAT_LANGUAGES: ChatLanguage[] = [
 
 export const CHAT_API = '/api/chat';
 export const CHAT_FEEDBACK_API = '/api/chat-feedback';
-export const ESCALATION_EMAIL = 'vislybluq5@gmail.com';
 export const MAX_CLIENT_MESSAGES = 20;
 
 export const CHAT_UI: Record<

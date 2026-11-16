@@ -8,20 +8,19 @@
 .PhoneInputInput {
   flex: 1;
   width: 100%;
-  padding: 0.625rem 1rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #E4E4E1;
+  border-radius: 0.5rem;
   background-color: white;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: #111827;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #15181E;
   transition: all 0.2s;
 }
 
 .PhoneInputInput:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #15181E;
 }
 
 .PhoneInputInput::placeholder {
@@ -49,16 +48,15 @@
 }
 
 .PhoneInputCountrySelect:focus + .PhoneInputCountryIcon {
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  border-color: #3b82f6;
+  border-color: #15181E;
 }
 
 .PhoneInputCountryIcon {
   width: 4rem;
   height: 100%;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
+  border: 1px solid #E4E4E1;
+  border-radius: 0.5rem;
   background-color: white;
   display: flex;
   align-items: center;
@@ -70,8 +68,8 @@
 }
 
 .PhoneInputCountryIcon:hover {
-  border-color: #3b82f6;
-  background-color: #f9fafb;
+  border-color: #15181E;
+  background-color: #F4F2ED;
 }
 
 .PhoneInputCountryIcon--border {
@@ -105,8 +103,7 @@
 
 /* Error state */
 .PhoneInput--error .PhoneInputInput {
-  border-color: #ef4444;
-  background-color: #fef2f2;
+  border-color: #f87171;
 }
 
 .PhoneInput--error .PhoneInputInput:focus {
