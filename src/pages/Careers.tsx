@@ -1,35 +1,68 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clock, GraduationCap, HeartPulse, MapPin, Rocket, Search, Sparkles, Target, Terminal, Users } from 'lucide-react';
-import { GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
+import { ArrowUpRight } from 'lucide-react';
+import { ArrowLink, PageIntro, Reveal, Section, SectionHeading } from '../components/site/Enterprise';
 import { pageMeta } from '../config/seo';
 
 export const meta = () => pageMeta({ title: 'Careers', description: 'Open volunteer roles at VislyBluq in marketing, content, product, design, engineering and partnerships.', path: '/careers' });
 
 const roles = [
-  ['Digital Marketer', 'Remote / Lagos-friendly', 'Volunteer / growth contributor', ['Campaigns', 'Social Media', 'Analytics']],
-  ['SEO Content Writer', 'Remote', 'Volunteer / content contributor', ['SEO', 'Blog Writing', 'Research']],
-  ['Product Manager', 'Remote / Hybrid', 'Volunteer / product contributor', ['Roadmaps', 'User Stories', 'Coordination']],
-  ['UI/UX Designer', 'Remote', 'Volunteer / design contributor', ['Figma', 'Prototyping', 'User Flows']],
-  ['Frontend Developer', 'Remote', 'Volunteer / engineering contributor', ['React', 'TypeScript', 'Tailwind']],
-  ['Community & Partnerships Associate', 'Remote / Lagos-friendly', 'Volunteer / partnerships contributor', ['Outreach', 'CRM', 'Partnerships']],
+  { title: 'Digital Marketer', location: 'Remote or Lagos', skills: ['Campaigns', 'Social media', 'Analytics'] },
+  { title: 'SEO Content Writer', location: 'Remote', skills: ['SEO', 'Writing', 'Research'] },
+  { title: 'Product Manager', location: 'Remote or hybrid', skills: ['Roadmaps', 'User stories', 'Coordination'] },
+  { title: 'UI/UX Designer', location: 'Remote', skills: ['Figma', 'Prototyping', 'User flows'] },
+  { title: 'Frontend Developer', location: 'Remote', skills: ['React', 'TypeScript', 'Tailwind'] },
+  { title: 'Community & Partnerships Associate', location: 'Remote or Lagos', skills: ['Outreach', 'CRM', 'Partnerships'] },
 ];
 
-const benefits = [
-  [HeartPulse, 'Supportive Team', 'A practical environment where people learn, contribute, and grow with honest expectations.'],
-  [Users, 'Real Collaboration', 'Work closely with founders, product thinkers, engineers, and operators on visible startup work.'],
-  [GraduationCap, 'Learning & Portfolio', 'Build experience, references, and practical project contributions as the company grows.'],
-  [Rocket, 'Future Opportunity', 'Strong volunteer contributors may be considered first as paid roles become possible.'],
+const expectations = [
+  ['Real work', 'Contribute to client projects and the company itself, not practice exercises.'],
+  ['Close collaboration', 'Work directly with the founders, engineers and product team.'],
+  ['A portfolio and references', 'Build experience you can show, with people who can vouch for it.'],
+  ['First consideration', 'Strong contributors are considered first as paid roles open up.'],
 ];
 
 const Careers = () => (
   <div>
-    <PageIntro eyebrow="Talent Network" title={<>Build Meaningful Technology With Us</>} description="Join a practical startup team working across consulting, product delivery, content, marketing, operations, data, automation, and AI implementation.">
-      <div className="flex flex-col gap-4 sm:flex-row"><PrimaryLink to="#open-roles">View Open Roles</PrimaryLink><Link to="#culture" className="rounded-xl border border-white/10 px-7 py-4 text-sm font-bold text-[#d7e3f9]">Explore Our Culture</Link></div>
-    </PageIntro>
-    <Section id="culture" className="pt-0"><div className="grid gap-6 lg:grid-cols-3"><GlassCard className="p-8 lg:col-span-2"><h2 className="text-4xl font-bold text-[#d7e3f9]">Practical Startup Culture</h2><p className="mt-4 text-[#c2c6d6]">We value clear communication, useful work, fast learning, and dependable execution. Everyone is expected to contribute honestly and improve steadily.</p><div className="mt-8 rounded-2xl bg-white/5 p-6"><h3 className="text-2xl font-bold">Focused Work</h3><p className="mt-3 text-sm text-[#c2c6d6]">We are still growing, so we keep expectations realistic: useful projects, visible ownership, and thoughtful collaboration.</p></div></GlassCard><GlassCard className="p-8"><Terminal className="mb-5 h-9 w-9 text-[#adc6ff]"/><h3 className="text-2xl font-bold">Clear Delivery</h3><p className="mt-3 text-sm text-[#c2c6d6]">We prefer simple plans, clean execution, and work that helps clients and the company move forward.</p><div className="mt-6 flex flex-wrap gap-2">{['CONTENT','PRODUCT','GROWTH'].map(t=><span className="rounded-full bg-white/5 px-3 py-1 text-xs" key={t}>{t}</span>)}</div></GlassCard><GlassCard className="p-8"><Target className="mb-5 h-9 w-9 text-[#adc6ff]"/><h3 className="text-2xl font-bold">Ownership</h3><p className="mt-3 text-sm text-[#c2c6d6]">Contributors are trusted with defined tasks, feedback, and room to improve.</p></GlassCard><GlassCard className="p-8 lg:col-span-2"><Sparkles className="mb-5 h-9 w-9 text-[#adc6ff]"/><h3 className="text-2xl font-bold">Early Impact</h3><p className="mt-3 text-sm text-[#c2c6d6]">As an early contributor, your work can shape how VislyBluq grows, communicates, and serves clients.</p></GlassCard></div></Section>
-    <Section className="bg-[#030f1e]/45"><h2 className="text-4xl font-bold text-[#d7e3f9]">Benefits & Working Style</h2><p className="mt-3 text-[#c2c6d6]">These openings are volunteer-based for now. We are transparent about our stage and will discuss paid opportunities when the business can support them.</p><div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">{benefits.map(([Icon,title,text])=><GlassCard key={title as string} className="p-7"><Icon className="mb-5 h-8 w-8 text-[#adc6ff]"/><h3 className="text-xl font-bold">{title as string}</h3><p className="mt-3 text-sm text-[#c2c6d6]">{text as string}</p></GlassCard>)}</div></Section>
-    <Section id="open-roles"><div className="mb-8 flex flex-wrap items-center justify-between gap-4"><div><h2 className="text-4xl font-bold text-[#d7e3f9]">Open Positions</h2><p className="mt-2 text-[#c2c6d6]">Startup volunteer roles for people who want to help build VislyBluq from the ground up.</p></div><div className="flex flex-wrap gap-2"><button className="rounded-full bg-[#adc6ff] px-4 py-2 text-sm font-bold text-[#002e69]">All Roles</button><button className="rounded-full border border-white/10 px-4 py-2 text-sm">Marketing</button><button className="rounded-full border border-white/10 px-4 py-2 text-sm">Content</button><button className="rounded-full border border-white/10 px-4 py-2 text-sm">Product</button><Search className="h-8 w-8 text-[#adc6ff]"/></div></div><div className="space-y-5">{roles.map(([title,location,type,tags])=><GlassCard key={title as string} className="grid gap-5 p-6 md:grid-cols-[1fr_auto] md:items-center"><div><p className="text-xs font-bold uppercase text-[#77d8ff]">Open volunteer role</p><h3 className="mt-2 text-2xl font-bold">{title as string}</h3><div className="mt-3 flex flex-wrap gap-4 text-sm text-[#c2c6d6]"><span className="flex items-center gap-1"><MapPin className="h-4 w-4"/>{location as string}</span><span className="flex items-center gap-1"><Clock className="h-4 w-4"/>Flexible</span><span>{type as string}</span></div><div className="mt-4 flex flex-wrap gap-2">{(tags as string[]).map(tag=><span className="rounded-full bg-white/5 px-3 py-1 text-xs" key={tag}>{tag}</span>)}</div></div><Link to={`/apply?job=${encodeURIComponent(title as string)}`} className="rounded-xl bg-[#adc6ff] px-6 py-3 text-center text-sm font-bold text-[#002e69]">Apply Now</Link></GlassCard>)}</div><GlassCard className="mt-8 p-7 text-center"><p className="text-[#c2c6d6]">Do not see the right fit? You can still tell us how you want to contribute.</p><Link to="/apply" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#adc6ff]">Submit a General Application <ArrowRight className="h-4 w-4" aria-hidden /></Link></GlassCard></Section>
-    <Section className="pt-0"><GlassCard className="p-10 text-center"><h2 className="text-5xl font-bold">Grow With Us.</h2><p className="mt-4 text-[#c2c6d6]">Contribute, learn, and help us build useful technology for real businesses.</p></GlassCard></Section>
+    <PageIntro
+      title="Help build VislyBluq."
+      description="We’re an early-stage team, and we’re open about it: current openings are volunteer roles. They suit people who want real project experience and a say in how the company grows."
+    />
+
+    <Section>
+      <SectionHeading title="Current openings." />
+      <ul className="border-t border-paper-line">
+        {roles.map((role, index) => (
+          <Reveal as="li" key={role.title} delay={index * 60} className="border-b border-paper-line">
+            <Link to={`/apply?job=${encodeURIComponent(role.title)}`} className="group grid gap-3 py-8 md:grid-cols-[1.3fr_1fr_1fr_auto] md:items-center md:gap-8">
+              <h3 className="text-2xl font-normal tracking-[-0.02em] transition-all duration-300 group-hover:translate-x-2 group-hover:text-brand">{role.title}</h3>
+              <p className="text-sm text-body-muted">{role.location} · Volunteer</p>
+              <p className="font-mono text-xs text-body-faint">{role.skills.join(' · ')}</p>
+              <span className="inline-flex items-center gap-1.5 text-sm font-medium group-hover:text-brand">
+                Apply <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </span>
+            </Link>
+          </Reveal>
+        ))}
+      </ul>
+      <p className="mt-10 text-base text-body-muted">
+        Don’t see the right fit? <Link to="/apply" className="text-body underline underline-offset-4 hover:text-brand">Send a general application</Link>.
+      </p>
+    </Section>
+
+    <Section tone="tint">
+      <SectionHeading title="Honest about our stage, serious about the work." />
+      <dl className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        {expectations.map(([title, text], index) => (
+          <Reveal key={title} delay={index * 80} className="border-t border-body pt-6">
+            <dt className="text-base font-medium">{title}</dt>
+            <dd className="mt-2 text-sm leading-6 text-body-muted">{text}</dd>
+          </Reveal>
+        ))}
+      </dl>
+      <div className="mt-14">
+        <ArrowLink to="/apply">Apply now</ArrowLink>
+      </div>
+    </Section>
   </div>
 );
 

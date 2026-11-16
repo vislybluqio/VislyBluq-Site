@@ -1,22 +1,35 @@
-import { ChevronDown, Handshake, LayoutDashboard, LockKeyhole, Terminal } from 'lucide-react';
-import { CTASection, GlassCard, PageIntro, Section } from '../components/site/Enterprise';
+import { CTASection, PageIntro, Reveal, Section } from '../components/site/Enterprise';
 import { pageMeta } from '../config/seo';
 
 export const meta = () => pageMeta({ title: 'FAQ', description: 'Answers to common questions about working with VislyBluq.', path: '/faq' });
 
-const groups = [
-  ['General Operations', [['What is the VislyBluq engagement lifecycle?', 'Our engagement typically begins with a 4-week Technical Discovery phase, followed by Strategy Calibration and a tiered implementation roadmap. We prioritize incremental value delivery through our proprietary VislyBluq Agile Framework, ensuring enterprise goals are met with precision and speed.'], ['How do you handle cross-platform integration?', 'We utilize industry-standard API abstractions and middleware solutions to bridge legacy infrastructure with modern cloud-native ecosystems. Our engineers specialize in low-latency data synchronicity across heterogeneous environments.']]],
-  ['Technical Excellence', [['What stack do you recommend for high-scale enterprise applications?', 'While we remain technology-agnostic, our Gold Standard involves a micro-frontend architecture powered by Next.js, backed by Rust or Go-based microservices, and orchestrated via Kubernetes on multi-cloud environments.'], ['Do you provide ongoing technical debt remediation?', 'Absolutely. Technical debt management is integrated into our Managed Evolution service, where we continuously refactor and optimize performance bottlenecks as your platform scales.']]],
-  ['Security & Compliance', [['How is data privacy handled during the consulting phase?', 'All VislyBluq consultants operate within high-security VPCs. We employ zero-trust access protocols and strict data masking for all sandbox environments. Compliance with SOC2, GDPR, and HIPAA is non-negotiable.']]],
+// Answers stick to what the rest of the site states. Add specifics (timelines, compliance) only once they're confirmed.
+const faqs = [
+  ['How does a project start?', 'With a conversation about what you’re trying to achieve. We then run a short discovery to understand your systems, users and constraints, and come back with a recommended scope, approach and timeline.'],
+  ['Can you advise without building?', 'Yes. Some clients want a technology review, a roadmap or part-time technical leadership. Others want us to design and build the product. Many start with advice and move to a build once the plan is clear.'],
+  ['What technology do you use?', 'We choose per project. Our web work is usually React and Next.js, and we work across AWS, Azure and Google Cloud. We recommend the simplest setup that meets your reliability and growth needs.'],
+  ['Can you improve or take over an existing system?', 'Yes. We start by reviewing the current application, data and hosting, then recommend a phased path that keeps your business running while we rebuild only what needs it.'],
+  ['Do you support products after launch?', 'Yes. We offer ongoing improvements, monitoring and refactoring after launch, and we document everything so your own team can take over if you prefer.'],
+  ['How do you handle our data?', 'We only access the systems and data the work requires. Security and compliance requirements are agreed at the start of each engagement.'],
+  ['Where are you based?', 'Our office is in Ketu, Lagos. We work mostly online, so location rarely limits who we work with.'],
+  ['How quickly will you reply?', 'Usually within one working day. For anything urgent, call or message us on WhatsApp.'],
 ];
 
 const FaqPage = () => (
   <div>
-    <PageIntro eyebrow="Support Intelligence" title={<>Frequently Asked Questions.</>} description="Comprehensive insights into our enterprise consulting methodology, technical safeguards, and strategic partnership models." />
-    <Section className="pt-0"><div className="mb-10 flex flex-wrap gap-3">{[['General', LayoutDashboard], ['Technical', Terminal], ['Security', LockKeyhole], ['Partnership', Handshake]].map(([label, Icon])=><GlassCard key={label as string} className="flex items-center gap-2 rounded-full px-4 py-2 text-sm"><Icon className="h-4 w-4 text-[#adc6ff]"/>{label as string}</GlassCard>)}</div><div className="mx-auto max-w-4xl space-y-8">{groups.map(([group, items])=><div key={group as string}><h2 className="mb-4 text-2xl font-bold text-[#d7e3f9]">{group as string}</h2><div className="space-y-4">{(items as string[][]).map(([q,a])=><GlassCard key={q} className="p-6"><div className="flex items-start justify-between gap-4"><h3 className="text-lg font-bold text-[#d7e3f9]">{q}</h3><ChevronDown className="h-5 w-5 text-[#adc6ff]"/></div><p className="mt-4 text-sm leading-7 text-[#c2c6d6]">{a}</p></GlassCard>)}</div></div>)}</div></Section>
-    <CTASection title="Still have questions?" description="Can't find the answer you're looking for? Reach out to our executive support team for a tailored deep-dive into our services." />
+    <PageIntro title="Questions we’re often asked." description="If yours isn’t here, ask us directly. We’re happy to talk it through." />
+    <Section>
+      <dl className="border-t border-paper-line">
+        {faqs.map(([question, answer], index) => (
+          <Reveal key={question} delay={(index % 4) * 60} className="grid gap-3 border-b border-paper-line py-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
+            <dt className="text-xl font-normal tracking-[-0.015em]">{question}</dt>
+            <dd className="max-w-prose text-base leading-7 text-body-muted">{answer}</dd>
+          </Reveal>
+        ))}
+      </dl>
+    </Section>
+    <CTASection title="Still have a question?" description="Send us a message and we’ll get back to you, usually within one working day." />
   </div>
 );
 
 export default FaqPage;
-

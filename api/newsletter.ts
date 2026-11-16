@@ -104,7 +104,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       console.error('Mailchimp rejected newsletter signup:', upsert.status, detail.title);
       return res.status(upsert.status === 400 ? 400 : 502).json({
         error: upsert.status === 400
-          ? 'We could not subscribe this address. Please check it, or email us at info@vislybluq.com.'
+          ? 'We could not subscribe this address. Please check it, or email us at sales@vislybluq.com.'
           : 'Something went wrong. Please try again later.',
       });
     }

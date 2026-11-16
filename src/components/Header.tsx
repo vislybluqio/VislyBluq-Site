@@ -1,203 +1,93 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Menu, Search, X } from 'lucide-react';
-import { servicePillars } from '../data/enterpriseServices';
-import { industries } from '../data/industries';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import BrandLogo from './BrandLogo';
 
-type Dropdown = 'services' | 'industries';
-
-const navItems: Array<{ name: string; path: string; dropdown?: Dropdown }> = [
-  { name: 'Home', path: '/' },
+const navItems = [
+  { name: 'Services', path: '/services' },
   { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services', dropdown: 'services' },
-  { name: 'Industries', path: '/industries', dropdown: 'industries' },
   { name: 'Team', path: '/team' },
   { name: 'Careers', path: '/careers' },
-  { name: 'Contact', path: '/contact' },
   { name: 'FAQ', path: '/faq' },
 ];
 
-const quickLinks = [
-  { name: 'Services', path: '/services' },
-  { name: 'Careers', path: '/careers' },
-  { name: 'Contact', path: '/contact' },
-];
-
-const dropdownLinkClass = 'block rounded-xl px-4 py-3 text-sm text-white/65 hover:bg-white/5 hover:text-visly-cyan';
-
-const DropdownPanel = ({ dropdown }: { dropdown: Dropdown }) => (
-  <div className="absolute left-0 top-full w-80 pt-5">
-    <div className="rounded-2xl border border-white/10 bg-[#101f3f]/95 p-3 shadow-2xl backdrop-blur-2xl">
-      {dropdown === 'services' ? (
-        <>
-          <Link to="/services" className="block rounded-xl bg-white/5 px-4 py-3 text-sm font-bold text-white hover:bg-white/10">
-            View all capabilities
-          </Link>
-          <div className="my-2 h-px bg-white/10" />
-          {servicePillars.map((service) => (
-            <Link key={service.id} to={`/services/${service.id}`} className={dropdownLinkClass}>
-              {service.title}
-            </Link>
-          ))}
-        </>
-      ) : (
-        <ul>
-          {industries.map((industry) => (
-            <li key={industry.id} className="px-4 py-2.5 text-sm text-white/70">
-              {industry.title}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  </div>
-);
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<Dropdown | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 12);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    setIsMenuOpen(false);
-    setOpenDropdown(null);
-  }, [location.pathname]);
+  useEffect(() => setIsMenuOpen(false), [location.pathname]);
+
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `relative text-sm transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:bg-current after:transition-transform after:duration-300 ${
+      isActive ? 'text-ink-text after:scale-x-100' : 'text-ink-muted after:scale-x-0 hover:text-ink-text hover:after:scale-x-100'
+    }`;
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 w-full border-b transition-all duration-300 ${
-        isScrolled
-          ? 'border-white/10 bg-visly-navy/90 shadow-[0_12px_40px_rgba(0,0,0,0.22)] backdrop-blur-2xl'
-          : 'border-white/5 bg-visly-navy/72 backdrop-blur-xl'
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        isScrolled || isMenuOpen ? 'border-b border-ink-line bg-ink/90 backdrop-blur-md' : 'border-b border-transparent bg-ink'
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8 xl:px-16">
-        <Link to="/" className="group flex items-center" aria-label="VislyBluq home">
-          <BrandLogo imageClassName="h-11 w-11 transition duration-300 group-hover:scale-[1.04] sm:h-12 sm:w-12" />
-        </Link>
-
-        <nav className="hidden items-center gap-4 lg:flex xl:gap-6">
-          {navItems.map((item) => {
-            const isActive = location.pathname === item.path;
-            const linkClass = `inline-flex items-center gap-1 text-sm font-medium transition ${isActive ? 'text-visly-cyan' : 'text-white/68 hover:text-white'}`;
-            return (
-              <div
-                key={item.name}
-                className="relative"
-                onMouseEnter={() => item.dropdown && setOpenDropdown(item.dropdown)}
-                onMouseLeave={() => item.dropdown && setOpenDropdown(null)}
-                onBlur={(e) => {
-                  if (item.dropdown && !e.currentTarget.contains(e.relatedTarget as Node | null)) setOpenDropdown(null);
-                }}
-              >
-                {item.dropdown === 'industries' ? (
-                  <button
-                    type="button"
-                    className={linkClass}
-                    aria-expanded={openDropdown === 'industries'}
-                    aria-haspopup="true"
-                    onClick={() => setOpenDropdown((open) => (open === 'industries' ? null : 'industries'))}
-                  >
-                    {item.name}
-                    <ChevronDown className="h-4 w-4" />
-                  </button>
-                ) : (
-                  <Link to={item.path} className={linkClass} onFocus={() => item.dropdown && setOpenDropdown(item.dropdown)}>
-                    {item.name}
-                    {item.dropdown && <ChevronDown className="h-4 w-4" />}
-                  </Link>
-                )}
-
-                {item.dropdown && openDropdown === item.dropdown && <DropdownPanel dropdown={item.dropdown} />}
-              </div>
-            );
-          })}
-        </nav>
-
-        <div className="ml-auto mr-4 hidden items-center gap-4 md:flex lg:ml-0 lg:mr-0">
-          <button
-            type="button"
-            className="hidden rounded-full p-2 text-white/55 transition hover:bg-white/5 hover:text-visly-cyan xl:block"
-            aria-label="Search"
-          >
-            <Search className="h-5 w-5" />
-          </button>
-          <Link
-            to="/contact"
-            className="rounded-full bg-visly-blue px-6 py-3 text-sm font-bold text-white shadow-[0_0_24px_rgba(46,126,247,0.26)] transition hover:-translate-y-0.5 hover:bg-[#3B8AFF]"
-          >
-            Get Started
+      {/* Same padding and width as page sections, so the logo lines up with the content below. */}
+      <div className="px-5 sm:px-8 lg:px-12">
+        <div className="mx-auto flex h-16 max-w-page items-center justify-between lg:h-20">
+          <Link to="/" aria-label="VislyBluq, home">
+            <BrandLogo />
           </Link>
-        </div>
 
-        <button
-          type="button"
-          className="rounded-xl border border-white/10 bg-white/5 p-2 text-white lg:hidden"
-          onClick={() => setIsMenuOpen((open) => !open)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {location.pathname === '/' && (
-        <div className="hidden border-t border-white/5 xl:block">
-          <nav aria-label="Quick links" className="mx-auto flex h-10 max-w-7xl items-center justify-end gap-8 px-16">
-            {quickLinks.map((link) => (
-              <Link key={link.path} to={link.path} className="text-xs font-semibold uppercase tracking-[0.18em] text-white/55 transition hover:text-visly-cyan">
-                {link.name}
-              </Link>
+          <nav aria-label="Main" className="hidden items-center gap-9 lg:flex">
+            {navItems.map((item) => (
+              <NavLink key={item.path} to={item.path} className={linkClass}>
+                {item.name}
+              </NavLink>
             ))}
           </nav>
+
+          <Link
+            to="/contact"
+            className="hidden h-10 items-center rounded-full bg-white px-5 text-sm font-medium text-body transition-colors hover:bg-brand hover:text-white lg:inline-flex"
+          >
+            Contact us
+          </Link>
+
+          <button
+            type="button"
+            className="-mr-2 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
+          >
+            <span className={`h-px w-5 bg-ink-text transition-transform duration-200 ${isMenuOpen ? 'translate-y-[3.5px] rotate-45' : ''}`} />
+            <span className={`h-px w-5 bg-ink-text transition-transform duration-200 ${isMenuOpen ? '-translate-y-[3.5px] -rotate-45' : ''}`} />
+          </button>
         </div>
-      )}
+      </div>
 
       {isMenuOpen && (
-        <div className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10 bg-visly-navy/98 px-6 py-5 backdrop-blur-2xl lg:hidden">
-          <div className="space-y-2">
-            {navItems.map((item) => item.dropdown === 'industries' ? (
-              <div key={item.name} className="px-4 pt-3">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/45">{item.name}</p>
-                <ul>
-                  {industries.map((industry) => (
-                    <li key={industry.id} className="py-2.5 pl-3 text-sm font-semibold text-white/72">
-                      {industry.title}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`block rounded-xl px-4 py-3 text-sm font-semibold ${
-                  location.pathname === item.path
-                    ? 'bg-white/10 text-visly-cyan'
-                    : 'text-white/72 hover:bg-white/5 hover:text-white'
-                }`}
-              >
-                {item.name}
-              </Link>
+        <nav aria-label="Mobile" className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-ink-line bg-ink px-5 pb-10 pt-6 sm:px-8 lg:hidden">
+          <ul className="divide-y divide-ink-line">
+            {[...navItems, { name: 'Contact', path: '/contact' }].map((item) => (
+              <li key={item.path}>
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) => `block py-5 text-3xl font-normal tracking-display ${isActive ? 'text-ink-text' : 'text-ink-muted'}`}
+                >
+                  {item.name}
+                </NavLink>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </nav>
       )}
     </header>
   );
 };
 
 export default Header;
-
-
-
-
-

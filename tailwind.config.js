@@ -1,34 +1,51 @@
 /** @type {import('tailwindcss').Config} */
+// The whole palette. Pages use these names only; no hex codes in components.
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        visly: {
-          dark: '#071423',
-          navy: '#0B1633',
-          blue: '#2E7EF7',
-          cyan: '#20C6F7',
-          teal: '#14B8A6',
-          surface: '#14244A',
-          elevated: '#1C2E5A',
-          gray: '#F3F4F6',
-          // Light surface for contrast sections; pair with visly-navy text.
-          light: '#EAF1FC',
-        }
+        // Dark surfaces: page intros, closing call-to-action, footer.
+        // Charcoal-slate with only a hint of the logo's blue, so the logo stays the bluest thing on the page.
+        ink: {
+          DEFAULT: '#171C26',
+          raised: '#202633',
+          line: 'rgba(255,255,255,0.08)',
+          text: '#F4F4F2',
+          muted: '#A9ADB6',
+        },
+        // Light surfaces: a clean, slightly cool off-white for pages, and a warmer stone for alternate sections.
+        paper: {
+          DEFAULT: '#F9FAFB',
+          tint: '#F4F2ED',
+          line: '#E4E4E1',
+        },
+        // Text on light surfaces: graphite rather than pure black or navy.
+        body: {
+          DEFAULT: '#15181E',
+          muted: '#565B64',
+          faint: '#686D76',
+        },
+        // The logo's blue, used sparingly for actions and emphasis.
+        brand: {
+          DEFAULT: '#1F6FDD',
+          hover: '#1A5FC4',
+          deep: '#1A45A0',
+          light: '#7DB4F0',
+        },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Switzer', 'Helvetica Neue', 'Arial', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'Menlo', 'monospace'],
+        serif: ['Gambetta', 'Georgia', 'serif'],
       },
-      fontSize: {
-        display: ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
-        h1: ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '700' }],
-        h2: ['1.875rem', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
-        body: ['1rem', { lineHeight: '1.6', fontWeight: '400' }],
-        caption: ['0.875rem', { lineHeight: '1.5', fontWeight: '500' }],
+      letterSpacing: {
+        display: '-0.022em',
+        label: '0.14em',
       },
       maxWidth: {
-        prose: '42rem',
+        page: '76rem',
+        prose: '40rem',
       },
     },
   },

@@ -1,135 +1,84 @@
 import { Link } from 'react-router-dom';
-import { Instagram, Linkedin } from 'lucide-react';
-import { services } from '../data/services';
 import BrandLogo from './BrandLogo';
-import { SOCIAL_LINKS } from '../config/contact';
+import { CONTACT_EMAIL, PHONE_DISPLAY, PHONE_HREF, SOCIAL_LINKS } from '../config/contact';
+import { servicePillars } from '../data/enterpriseServices';
 import NewsletterSignup from './site/NewsletterSignup';
 
-// lucide's Twitter icon is the old bird, so X gets its own mark.
-const XIcon = ({ className = '' }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
-
-const socials = [
-  { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin, Icon: Linkedin },
-  { label: 'X', href: SOCIAL_LINKS.x, Icon: XIcon },
-  { label: 'Instagram', href: SOCIAL_LINKS.instagram, Icon: Instagram },
+const columns = [
+  {
+    title: 'Services',
+    links: servicePillars.slice(0, 4).map((service) => ({ to: `/services/${service.id}`, label: service.title })),
+  },
+  {
+    title: 'Company',
+    links: [
+      { to: '/about', label: 'About' },
+      { to: '/team', label: 'Team' },
+      { to: '/careers', label: 'Careers' },
+      { to: '/faq', label: 'FAQ' },
+    ],
+  },
 ];
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const socials = [
+  { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin },
+  { label: 'X', href: SOCIAL_LINKS.x },
+  { label: 'Instagram', href: SOCIAL_LINKS.instagram },
+];
 
-  return (
-    <footer className="border-t border-white/5 bg-[#071423] text-white">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-16 lg:py-24">
-        <div className="mb-16 rounded-3xl border border-visly-cyan/10 bg-visly-surface/45 p-8 backdrop-blur-xl lg:p-10">
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-visly-cyan">
-                Technical signals
-              </p>
-              <h3 className="mt-3 text-3xl font-bold text-white">Get our build notes.</h3>
-              <p className="mt-3 max-w-xl text-sm leading-6 text-white/60">
-                Strategy, AI, architecture, and product engineering insights from the VislyBluq team.
-              </p>
-            </div>
-            <NewsletterSignup />
-          </div>
-        </div>
+const linkClass = 'text-sm text-ink-muted transition-colors hover:text-ink-text';
 
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+const Footer = () => (
+  <footer className="border-t border-ink-line bg-ink text-ink-text">
+    <div className="px-5 pb-10 pt-20 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-page">
+        <div className="grid gap-14 lg:grid-cols-[1.3fr_1fr_1fr_1.3fr]">
           <div>
-            <Link to="/" className="inline-flex items-center" aria-label="VislyBluq home">
-              <BrandLogo imageClassName="h-12 w-12" />
+            <Link to="/" aria-label="VislyBluq, home">
+              <BrandLogo />
             </Link>
-            <p className="mt-5 max-w-xs text-sm leading-6 text-white/55">
-              Technology consulting and product engineering.
+            <p className="mt-5 max-w-xs text-sm leading-6 text-ink-muted">
+              Technology consulting and product engineering. 11 Apaola Street, Ketu Ikosi, Lagos.
             </p>
-            <div className="mt-6 flex gap-3">
-              {socials.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/55 hover:border-visly-cyan/40 hover:text-visly-cyan"
-                  aria-label={`VislyBluq on ${label}`}
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+            <div className="mt-6 space-y-1.5">
+              <a href={`mailto:${CONTACT_EMAIL}`} className={`block ${linkClass}`}>{CONTACT_EMAIL}</a>
+              <a href={PHONE_HREF} className={`block ${linkClass}`}>{PHONE_DISPLAY}</a>
             </div>
           </div>
 
-          <div>
-            <h4 className="mb-5 text-sm font-bold text-white">Company</h4>
-            <ul className="space-y-3 text-sm text-white/55">
-              {[
-                { to: '/team', label: 'Team' },
-                { to: '/services', label: 'Services' },
-                { to: '/careers', label: 'Careers' },
-              ].map((link) => (
-                <li key={link.to}>
-                  <Link to={link.to} className="hover:text-visly-cyan">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {columns.map((column) => (
+            <div key={column.title}>
+              <p className="mb-5 font-mono text-[11px] uppercase tracking-label text-ink-muted">{column.title}</p>
+              <ul className="space-y-3">
+                {column.links.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to} className={linkClass}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           <div>
-            <h4 className="mb-5 text-sm font-bold text-white">Capabilities</h4>
-            <ul className="space-y-3 text-sm text-white/55">
-              {services.slice(0, 5).map((service) => (
-                <li key={service.id}>
-                  <Link to={`/services?service=${service.id}#${service.id}`} className="hover:text-visly-cyan">
-                    {service.shortTitle}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-5 text-sm font-bold text-white">Contact</h4>
-            <ul className="space-y-3 text-sm text-white/55">
-              <li>11 Apaola Street, Ketu Ikosi, Lagos</li>
-              <li>
-                <a href="mailto:info@vislybluq.com" className="hover:text-visly-cyan">
-                  info@vislybluq.com
-                </a>
-              </li>
-              <li>
-                <a href="tel:+2348142695808" className="hover:text-visly-cyan">
-                  +234 814 269 5808
-                </a>
-              </li>
-              <li>
-                <Link to="/privacy" className="hover:text-visly-cyan">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="hover:text-visly-cyan">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-label text-ink-muted">Newsletter</p>
+            <p className="mb-5 text-sm leading-6 text-ink-muted">Occasional notes on product, data and AI from our team.</p>
+            <NewsletterSignup dark />
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-7 text-xs text-white/38">
-          © {currentYear} VislyBluq Enterprise Technology Consulting. All rights reserved.
+        <div className="mt-20 flex flex-col gap-4 border-t border-ink-line pt-8 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} VislyBluq</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {socials.map((social) => (
+              <a key={social.label} href={social.href} target="_blank" rel="noreferrer" className="hover:text-ink-text">{social.label}</a>
+            ))}
+            <Link to="/privacy" className="hover:text-ink-text">Privacy</Link>
+            <Link to="/terms" className="hover:text-ink-text">Terms</Link>
+          </div>
         </div>
       </div>
-    </footer>
-  );
-};
+    </div>
+  </footer>
+);
 
 export default Footer;
-
-
-

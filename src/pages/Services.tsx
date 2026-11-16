@@ -1,68 +1,70 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, CheckCircle, Cloud, ChevronDown, Layers, Brain, Palette, ShieldCheck, Gauge } from 'lucide-react';
-import { CTASection, GlassCard, PageIntro, PrimaryLink, Section } from '../components/site/Enterprise';
+import { ArrowUpRight } from 'lucide-react';
+import { ButtonLink, CTASection, PageIntro, Reveal, Section, SectionHeading } from '../components/site/Enterprise';
 import { additionalServices, servicePillars } from '../data/enterpriseServices';
-import { useState } from 'react';
 import { pageMeta } from '../config/seo';
 
 export const meta = () => pageMeta({ title: 'Services', description: 'We help startups and growing businesses plan, design and build software, data systems and practical AI tools.', path: '/services' });
 
-const Services = () => {
-  const [showMore, setShowMore] = useState(false);
+const workingStyle = [
+  ['Online-first or hybrid', 'We work remotely by default and meet in person when the project needs it.'],
+  ['Early, visible progress', 'We aim to show measurable results within the first phase of work.'],
+  ['Proven patterns', 'Templates and architecture patterns let us move quickly without cutting corners.'],
+  ['Built to maintain', 'We design for handover and long-term clarity, not just a good demo.'],
+];
 
-  return (
-    <div>
-      <PageIntro
-        eyebrow="What we do"
-        title={<>Building the Digital <span className="text-[#adc6ff]">Future</span>.</>}
-        description="We help startups and growing businesses plan, design and build software, data systems and practical AI tools."
-      >
-        <PrimaryLink to="/contact">Book a Consultation</PrimaryLink>
-      </PageIntro>
+const Services = () => (
+  <div>
+    <PageIntro
+      title="Strategy, engineering, data and AI."
+      description="We help startups and growing businesses plan, design and build software, data systems and practical AI tools."
+    >
+      <ButtonLink to="/contact" variant="onDark">Discuss a project</ButtonLink>
+    </PageIntro>
 
-      <Section className="pt-0">
-        <div className="mb-10 flex flex-wrap gap-3">
-          {[[ 'Service Pillars', Sparkles], ['Intelligence & AI', Brain], ['Infrastructure', Cloud], ['Engineering', Layers], ['Security', ShieldCheck], ['Design', Palette]].map(([label, Icon]) => (
-            <GlassCard key={label as string} className="flex items-center gap-2 rounded-full px-4 py-2 text-sm text-[#d7e3f9]"><Icon className="h-4 w-4 text-[#77d8ff]" />{label as string}</GlassCard>
-          ))}
-        </div>
-        <div className="grid gap-6 lg:grid-cols-2">
-          {servicePillars.map((service) => {
-            const Icon = service.icon;
-            return (
-              <GlassCard key={service.id} className="p-8 transition hover:border-[#adc6ff]/40">
-                <div className="flex items-start gap-5"><div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#adc6ff]/10"><Icon className="h-7 w-7 text-[#adc6ff]" /></div><div><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#77d8ff]">High Impact</p><h2 className="mt-2 text-3xl font-bold text-[#d7e3f9]">{service.title}</h2></div></div>
-                <p className="mt-6 text-sm leading-7 text-[#c2c6d6]">{service.summary}</p>
-                <p className="mt-5 flex items-center gap-2 text-sm font-bold text-[#d7e3f9]"><CheckCircle className="h-4 w-4 text-[#77d8ff]" /> Business Value: {service.value}</p>
-                <div className="mt-6 flex flex-wrap gap-2">{service.tags.map((tag) => <span key={tag} className="rounded-full bg-white/5 px-3 py-1 text-xs text-[#c2c6d6]">{tag}</span>)}</div>
-                <Link to={`/services/${service.id}`} className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#adc6ff] hover:text-white">{service.action} <ArrowRight className="h-4 w-4" aria-hidden /></Link>
-              </GlassCard>
-            );
-          })}
-        </div>
-        <button type="button" onClick={() => setShowMore((open) => !open)} className="mx-auto mt-10 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-bold text-[#d7e3f9]"><ChevronDown className={`h-4 w-4 transition ${showMore ? 'rotate-180' : ''}`} /> {showMore ? 'Hide additional services' : 'Show more services (8 remaining)'}</button>
-        {showMore && (
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {additionalServices.map(([title, text]) => <GlassCard key={title} className="p-5"><h3 className="font-bold text-[#d7e3f9]">{title}</h3><p className="mt-3 text-sm leading-6 text-[#c2c6d6]">{text}</p></GlassCard>)}
-          </div>
-        )}
-      </Section>
+    <Section>
+      <ul className="border-t border-paper-line">
+        {servicePillars.map((service, index) => (
+          <Reveal as="li" key={service.id} delay={index * 70} className="border-b border-paper-line">
+            <Link to={`/services/${service.id}`} className="group grid gap-4 py-10 lg:grid-cols-[1fr_1.3fr_auto] lg:gap-12 lg:py-14">
+              <h2 className="text-3xl font-normal tracking-[-0.025em] transition-all duration-300 group-hover:translate-x-2 group-hover:text-brand lg:text-4xl">{service.title}</h2>
+              <div>
+                <p className="max-w-prose text-base leading-7 text-body-muted">{service.summary}</p>
+                <p className="mt-5 font-mono text-xs text-body-faint">{service.tags.join(' · ')}</p>
+              </div>
+              <ArrowUpRight className="hidden h-6 w-6 text-body-faint transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand lg:block" aria-hidden />
+            </Link>
+          </Reveal>
+        ))}
+      </ul>
+    </Section>
 
-      <Section className="bg-[#030f1e]/45">
-        <div className="mb-12"><p className="text-xs font-bold uppercase tracking-[0.24em] text-[#77d8ff]">The VislyBluq Advantage</p><h2 className="mt-4 max-w-3xl text-4xl font-bold text-[#d7e3f9]">Our methodology combines tactical execution with long-term strategic vision.</h2></div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            ['Flexible Delivery', 'Engagements can run online-first or hybrid, based on client needs and project sensitivity.'],
-            ['90-Day Value Targets', 'We aim to define measurable early wins within the first project phase when scope allows.'],
-            ['Reusable Accelerators', 'Templates, architecture patterns, and delivery playbooks help us move faster without sacrificing quality.'],
-            ['Maintainable Systems', 'We build for scale, handover, and long-term clarity rather than quick visual demos only.'],
-          ].map(([title, text]) => <GlassCard key={title} className="p-7"><Gauge className="mb-5 h-8 w-8 text-[#adc6ff]" /><h3 className="text-2xl font-bold text-[#d7e3f9]">{title}</h3><p className="mt-4 text-sm leading-6 text-[#c2c6d6]">{text}</p></GlassCard>)}
-        </div>
-      </Section>
+    <Section tone="tint">
+      <SectionHeading title="We can also help with." />
+      <dl className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        {additionalServices.map(([title, text], index) => (
+          <Reveal key={title} delay={(index % 4) * 80} className="border-t border-paper-line pt-6">
+            <dt className="text-base font-medium">{title}</dt>
+            <dd className="mt-2 text-sm leading-6 text-body-muted">{text}</dd>
+          </Reveal>
+        ))}
+      </dl>
+    </Section>
 
-      <CTASection />
-    </div>
-  );
-};
+    <Section>
+      <SectionHeading title="What working with us is like." />
+      <dl className="grid border-t border-paper-line md:grid-cols-2">
+        {workingStyle.map(([title, text], index) => (
+          <Reveal key={title} delay={index * 80} className="grid gap-2 border-b border-paper-line py-8 md:odd:pr-12 md:even:border-l md:even:pl-12">
+            <dt className="text-xl font-normal tracking-[-0.015em]">{title}</dt>
+            <dd className="max-w-prose text-base leading-7 text-body-muted">{text}</dd>
+          </Reveal>
+        ))}
+      </dl>
+    </Section>
+
+    <CTASection />
+  </div>
+);
 
 export default Services;

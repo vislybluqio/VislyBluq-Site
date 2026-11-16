@@ -21,8 +21,8 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
-        // Route modules also export meta, Layout, HydrateFallback and ErrorBoundary.
-        { allowConstantExport: true, allowExportNames: ['meta', 'Layout', 'HydrateFallback', 'ErrorBoundary'] },
+        // Route modules also export meta, links, Layout, HydrateFallback and ErrorBoundary.
+        { allowConstantExport: true, allowExportNames: ['meta', 'links', 'Layout', 'HydrateFallback', 'ErrorBoundary'] },
       ],
     },
   }

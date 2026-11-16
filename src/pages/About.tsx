@@ -1,72 +1,73 @@
-import type { ComponentType } from 'react';
-import { Sparkles, Eye, Brain, Rocket } from 'lucide-react';
-import { Eyebrow, GlassCard, MetricStrip, PageIntro, PrimaryLink, SecondaryLink, Section } from '../components/site/Enterprise';
+import { ArrowLink, ButtonLink, CTASection, PageIntro, Reveal, Section, SectionHeading } from '../components/site/Enterprise';
+import { leaders } from '../data/team';
 import { pageMeta } from '../config/seo';
 
-export const meta = () => pageMeta({ title: 'About', description: 'Who VislyBluq is: our vision, mission and how we work.', path: '/about' });
+export const meta = () => pageMeta({ title: 'About', description: 'VislyBluq is a Lagos-based technology consultancy that helps founders and growing businesses choose, design and build the right technology.', path: '/about' });
 
-// TODO(content): real company milestones as [year, description, icon, label]. The section is hidden while empty.
-const timeline: Array<[string, string, ComponentType<{ className?: string }>, string]> = [];
-
-// TODO(content): real, verifiable company metrics. The strip is hidden while empty.
-const aboutMetrics: Array<{ value: string; label: string }> = [];
+const principles = [
+  ['Start with the problem', 'We choose technology after we understand the business, not before. Sometimes the right answer is to build less.'],
+  ['Keep it simple', 'Not every product needs a complex platform. We recommend the simplest system that meets your reliability and growth needs.'],
+  ['Build for handover', 'Clear code, documentation and training, so your team can own and extend what we build.'],
+  ['Explain it plainly', 'Decisions are yours to make, so we explain options, costs and trade-offs without jargon.'],
+];
 
 const About = () => (
   <div>
     <PageIntro
-      eyebrow="Global Engineering Lead"
-      title={<>Building the Future.</>}
-      description="At VislyBluq, we don't just build technology. We engineer the foundational intelligence that powers the world's most ambitious enterprise ecosystems."
+      title="Technology advice from the people who build it."
+      description="VislyBluq is a technology consultancy based in Lagos. We help founders and growing businesses choose the right technology, then design and build it with them."
     >
-      <div className="flex flex-col gap-4 sm:flex-row">
-        <PrimaryLink to="/services">Explore Our Expertise</PrimaryLink>
-        <SecondaryLink to="/team">Meet the Team</SecondaryLink>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <ButtonLink to="/services" variant="onDark">Our services</ButtonLink>
+        <ButtonLink to="/team" variant="outlineDark" arrow={false}>Meet the team</ButtonLink>
       </div>
     </PageIntro>
 
     <Section>
-      <div className="grid gap-6 lg:grid-cols-2">
-        <GlassCard className="p-8 lg:p-10">
-          <Eye className="mb-6 h-10 w-10 text-[#adc6ff]" />
-          <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#77d8ff]">Our Vision</p>
-          <h2 className="mt-4 text-3xl font-bold text-[#d7e3f9]">To be the invisible backbone of global digital transformation.</h2>
-          <p className="mt-5 text-sm leading-7 text-[#c2c6d6]">We set new benchmarks for technical sophistication and ethical innovation in enterprise software. We envision a world where high-performance engineering serves human potential.</p>
-          <ul className="mt-7 space-y-3 text-sm text-[#d7e3f9]"><li>Lead with technical excellence</li><li>Drive sustainable innovation</li><li>Foster global collaboration</li></ul>
-        </GlassCard>
-        <GlassCard className="p-8 lg:p-10">
-          <Rocket className="mb-6 h-10 w-10 text-[#adc6ff]" />
-          <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#77d8ff]">Our Mission</p>
-          <h2 className="mt-4 text-3xl font-bold text-[#d7e3f9]">Bridge complex engineering and elegant business solutions.</h2>
-          <p className="mt-5 text-sm leading-7 text-[#c2c6d6]">VislyBluq delivers elite technology consulting that empowers organizations to transcend traditional constraints through data-driven architectural mastery.</p>
-                  </GlassCard>
-      </div>
+      <Reveal className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-24">
+        <div>
+          <h2 className="text-3xl font-normal leading-[1.1] tracking-display sm:text-4xl">Consulting and engineering under one roof.</h2>
+        </div>
+        <div className="space-y-6 text-lg leading-8 text-body-muted">
+          <p>
+            Many businesses get advice from one firm and code from another, and something gets lost in between. We do both. The people who
+            recommend an approach are the same people who design and build it.
+          </p>
+          <p>
+            Our work covers technology strategy, web and mobile products, data engineering, cloud infrastructure and practical AI. We work
+            mostly online, with an office in Ketu, Lagos.
+          </p>
+        </div>
+      </Reveal>
     </Section>
 
-    {timeline.length > 0 && (
-      <Section className="bg-[#030f1e]/45">
-        <div className="mb-12"><p className="text-xs font-bold uppercase tracking-[0.24em] text-[#77d8ff]">Milestones</p><h2 className="mt-4 text-4xl font-bold text-[#d7e3f9]">Our story so far.</h2></div>
-        <div className="space-y-5">
-          {timeline.map(([year, text, Icon, label]) => (
-            <GlassCard key={year as string} className="grid gap-6 p-6 md:grid-cols-[120px_1fr_220px] md:items-center">
-              <div className="text-3xl font-black text-[#adc6ff]">{year}</div><p className="text-[#c2c6d6]">{text as string}</p><div className="flex items-center gap-3 text-[#d7e3f9]"><Icon className="h-5 w-5 text-[#77d8ff]" />{label as string}</div>
-            </GlassCard>
-          ))}
-        </div>
-      </Section>
-    )}
+    <Section tone="tint">
+      <SectionHeading title="How we think about the work." />
+      <div className="grid gap-px overflow-hidden rounded-2xl border border-paper-line bg-paper-line md:grid-cols-2">
+        {principles.map(([title, text], index) => (
+          <Reveal key={title} delay={index * 90} className="bg-paper p-8 transition-colors duration-300 hover:bg-paper-tint lg:p-12">
+            <h3 className="text-xl font-medium tracking-[-0.01em]">{title}</h3>
+            <p className="mt-3 max-w-md text-base leading-7 text-body-muted">{text}</p>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
 
     <Section>
-      <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div><Eyebrow>Human-Centric High Performance</Eyebrow><h2 className="text-5xl font-extrabold text-[#d7e3f9]">The Culture of Clarity.</h2><p className="mt-6 text-lg leading-8 text-[#c2c6d6]">We operate on extreme ownership and radical transparency. Our team consists of polymath engineers who crave complexity and deliver elegance.</p></div>
-        <div className="grid gap-6 md:grid-cols-2"><GlassCard className="p-8"><Brain className="mb-5 h-9 w-9 text-[#adc6ff]" /><h3 className="text-2xl font-bold">Intellectual Curiosity</h3><p className="mt-3 text-sm text-[#c2c6d6]">A culture that rewards the Why as much as the How.</p></GlassCard><GlassCard className="p-8"><Sparkles className="mb-5 h-9 w-9 text-[#adc6ff]" /><h3 className="text-2xl font-bold">Eternal Iteration</h3><p className="mt-3 text-sm text-[#c2c6d6]">We believe perfection is a horizon, not a destination.</p></GlassCard></div>
-      </div>
+      <SectionHeading title="The people you’ll work with." action={<ArrowLink to="/team">Full team</ArrowLink>} />
+      <ul className="grid gap-8 sm:grid-cols-3">
+        {leaders.filter((leader) => leader.founder).map((leader, index) => (
+          <Reveal as="li" key={leader.name} delay={index * 100}>
+            <img src={leader.image} alt={leader.name} loading="lazy" className="aspect-[4/5] w-full rounded-xl object-cover object-top grayscale transition duration-500 hover:grayscale-0" />
+            <p className="mt-5 text-lg font-medium">{leader.name}</p>
+            <p className="mt-1 text-sm leading-6 text-body-muted">{leader.role}</p>
+          </Reveal>
+        ))}
+      </ul>
     </Section>
 
-    {aboutMetrics.length > 0 && <Section className="pt-0"><MetricStrip metrics={aboutMetrics} /></Section>}
+    <CTASection />
   </div>
 );
 
 export default About;
-
-
-

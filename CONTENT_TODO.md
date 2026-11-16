@@ -24,7 +24,7 @@ Every placeholder on the site is listed here. In code, each one has a `// TODO(c
 | `src/assets/vislybluq-vcube-logo.png` | — | The logo is 288×288 but the hero cube shows it at up to 256px, so it's slightly soft on retina screens. A 600px+ PNG or an SVG would fix that. |
 | `vercel.json` | — | **Before merging the `prerender` branch:** open its Vercel preview deployment and check the home page, a service page, the contact form, the newsletter and the chat. `vercel.json` now sets the build output to `build/client`; if the Vercel project's settings override the build or output directory, clear those overrides. |
 | `public/sitemap.xml` | — | After the prerendered site is live, submit `https://www.vislybluq.com/sitemap.xml` in Google Search Console. Add new pages to the sitemap by hand when you create them. |
-| `public/og-image.png` | — | The share-preview image was generated from the logo and tagline. Replace it with a designed 1200×630 image if you have one. |
+| `public/og-image.png` | — | Redesigned to match the new site (November 2026). Source: dark background, headline, logo, service list. |
 
 ## Claims to verify or rewrite
 
@@ -38,3 +38,25 @@ These are existing statements the redesign didn't touch, but which may not be ac
 | `src/pages/Privacy.tsx` | 11 | "AES-256 at rest and TLS 1.3 in transit", "MFA and RBAC enforced across all layers", "SOC2 Type II and GDPR compliant infrastructure". A privacy policy must be accurate, so get these checked. |
 | `src/pages/About.tsx` | 13–37 | Tone: hero ("Global Engineering Lead", "Building the Future", "the world's most ambitious enterprise ecosystems"), plus "invisible backbone of global digital transformation", "elite technology consulting … data-driven architectural mastery", "polymath engineers". These need plain rewrites like the approved home page copy; send me the facts and I'll draft them. |
 
+
+## Redesign notes (November 2026)
+
+- **Design system:** all colors and fonts now live in `tailwind.config.js` (`ink`, `paper`, `body`, `brand`) and the shared components in `src/components/site/Enterprise.tsx`. Pages use those names, not hex codes.
+- **Home metrics strip removed.** `src/data/metrics.ts` is no longer shown. Bring it back only with confirmed numbers.
+- **FAQ rewritten** to match what the rest of the site says. The previous SOC2/HIPAA, "proprietary framework" and "Gold Standard stack" answers were removed, so the FAQ rows in "Claims to verify" above no longer apply.
+- **About page copy rewritten** in plain language (the "Global Engineering Lead" / "polymath engineers" copy is gone).
+- **Newsletter pop-up switched off** (removed from `src/root.tsx`). The footer sign-up remains. Re-add `<NewsletterPopup />` to turn it back on.
+- **Video section** on the home page now only appears once a YouTube ID is set in `src/config/siteVideo.ts`.
+- **Privacy and Terms** were restyled only; their wording is unchanged and still needs the review listed above.
+- **Contact form project types** now use the same six services as the Services page, and each service page's "Start a project" button pre-selects its service. `src/data/services.ts` is no longer used by any page.
+
+## Fixes (November 2026, second pass)
+
+- **Forms:** `api/submit-form.ts` now reports a failed send as an error (it used to show success), requires a valid reCAPTCHA token whenever `RECAPTCHA_SECRET_KEY` is set, forwards only known fields (no `_cc`/`_next` injection), checks the honeypot, and no longer emails visitors' IP addresses.
+- **Set both reCAPTCHA keys in Vercel, or neither.** If `RECAPTCHA_SECRET_KEY` is set but `VITE_RECAPTCHA_SITE_KEY` is not, every form submission will be rejected. The live site currently has no site key.
+- **Chat escalation** now goes through `/api/submit-form` (bot-checked, lands in the same inbox as the contact form) instead of posting straight to a Gmail address.
+- **One public email:** sales@vislybluq.com everywhere (Apply error message, newsletter error, chat). Personal emails on the Team page are unchanged.
+- **Security headers** added in `vercel.json`. A Content-Security-Policy is still to do; it needs testing against Google Fonts, Maps, reCAPTCHA, Cloudinary and YouTube.
+- **Unknown URLs now return a real 404.** The catch-all rewrite is gone from `vercel.json`; the build copies the app shell to `404.html`, which shows the "page not found" screen. Check on the Vercel preview that normal pages (e.g. /about, /services/cloud-native-migration) still load and a made-up URL shows the 404 page.
+- **Design mockups** moved from `public/` (where they were publicly downloadable) to `design-reference/`.
+- **Still needed from you:** individual LinkedIn URLs for the team (every version of the site has pointed all five to the company page), and case studies once you have them.

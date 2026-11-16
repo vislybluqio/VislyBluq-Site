@@ -1,5 +1,5 @@
 // Serves the prerendered build the way Vercel does (see vercel.json): real files first, then
-// <path>/index.html, then the redirects, then the SPA fallback for any other URL.
+// <path>/index.html, then the redirects, then 404.html (status 404) for any other URL.
 // `vite preview` can't do this, so it would show the home page for every route.
 import { createServer } from 'node:http';
 import { existsSync, readFileSync, statSync } from 'node:fs';
@@ -29,5 +29,7 @@ createServer((req, res) => {
     res.writeHead(308, { location: redirect.destination });
     return res.end();
   }
-  return send(join(root, '__spa-fallback.html'));
+  // Like Vercel: anything that isn't a file, a prerendered page or a redirect gets 404.html with a 404 status.
+  res.writeHead(404, { 'content-type': 'text/html' });
+  return res.end(readFileSync(join(root, '404.html')));
 }).listen(port, () => console.log(`Previewing ${root} at http://localhost:${port}`));

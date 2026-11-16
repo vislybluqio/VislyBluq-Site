@@ -44,7 +44,6 @@ const speechText = (text: string) =>
     .replace(/^\u2022\s*/gm, '')
     .replace(/\u2022/g, ', ');
 
-const agentAvatar = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5zGYFRLZiS9CGukcB2ceA_Le6ecX0pFHNsBnGrum3MtVGmQzCdIWnUYXd_ApQqzJFWTmy6dk0NxnHWC0GGd6VSSuuft3cTaI1iHMt0tNvpgY5R555km4X4H3AmkbydJXByJC07V3Bdi92ti7mAENgJXdTPnf0OlVEiffCssDKvM3d0F0GjTQfIUO7kYm_9wWuvQFMJ_P56HLOL3BxNtENTdcvWdRSk8Pwbfb8vRLYJUtodVjIbps_ZF-kIuAhAKp--iKYlXfyggk';
 
 const readMemory = (): MemoryExchange[] => {
   try {
@@ -228,28 +227,20 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
   };
 
   return (
-    <div className="flex h-[min(600px,calc(100vh-7rem))] w-[calc(100vw-2rem)] max-w-[400px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#142030]/80 shadow-2xl backdrop-blur-2xl" role="dialog" aria-label={ui.title}>
-      <header className="flex items-center justify-between border-b border-white/10 bg-[#101c2c] p-4">
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 overflow-hidden rounded-full border border-[#adc6ff]/30">
-            <img alt="AI Avatar" className="h-full w-full object-cover" src={agentAvatar} />
-          </div>
-          <div>
-            <h2 className="text-sm font-bold text-[#d7e3f9]">Visly Intelligence</h2>
-            <div className="flex items-center gap-1.5">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[#77d8ff]" />
-              <span className="text-[10px] uppercase tracking-wider text-[#c2c6d6]">Online</span>
-            </div>
-          </div>
+    <div className="flex h-[min(600px,calc(100dvh-7rem))] w-[calc(100vw-2.5rem)] max-w-[400px] flex-col overflow-hidden rounded-2xl border border-paper-line bg-paper text-body shadow-[0_24px_60px_rgba(15,19,27,0.18)]" role="dialog" aria-label={ui.title}>
+      <header className="flex items-center justify-between bg-ink px-5 py-4 text-ink-text">
+        <div>
+          <h2 className="text-sm font-medium">{ui.title}</h2>
+          <p className="mt-0.5 text-xs text-ink-muted">{ui.subtitle}</p>
         </div>
-        <button type="button" onClick={onClose} className="rounded-lg p-1.5 text-[#c2c6d6] hover:bg-white/5 hover:text-[#adc6ff]" aria-label={ui.closeChat}>
+        <button type="button" onClick={onClose} className="rounded-full p-1.5 text-ink-muted hover:bg-white/10 hover:text-ink-text" aria-label={ui.closeChat}>
           <X className="h-5 w-5" />
         </button>
       </header>
 
-      <div className="flex gap-2 overflow-x-auto border-b border-white/5 px-4 py-2">
+      <div className="flex gap-1 overflow-x-auto border-b border-paper-line px-4 py-2">
         {CHAT_LANGUAGES.map((lang) => (
-          <button key={lang.code} onClick={() => setLanguage(lang.code)} className={`rounded-full px-3 py-1 text-[10px] font-bold ${language === lang.code ? 'bg-[#adc6ff] text-[#002e69]' : 'bg-white/5 text-[#c2c6d6] hover:bg-white/10'}`}>
+          <button key={lang.code} onClick={() => setLanguage(lang.code)} className={`rounded-full px-2.5 py-1 font-mono text-[10px] ${language === lang.code ? 'bg-body text-white' : 'text-body-muted hover:bg-paper-tint'}`}>
             {lang.code.toUpperCase()}
           </button>
         ))}
@@ -270,25 +261,25 @@ const ChatPanel = ({ onClose }: ChatPanelProps) => {
             />
           );
         })}
-        {isLoading && <div className="flex items-center gap-2 text-sm text-[#c2c6d6]"><Loader2 className="h-4 w-4 animate-spin" />{ui.typing}</div>}
+        {isLoading && <div className="flex items-center gap-2 text-sm text-body-muted"><Loader2 className="h-4 w-4 animate-spin" />{ui.typing}</div>}
         {error && <ContactFallback message={error} />}
         {showEscalation && <EscalationForm language={language} transcript={buildTranscript()} />}
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="flex items-center justify-center gap-6 border-t border-white/5 bg-[#030f1e]/45 px-4 py-2">
-        {speechSupported && <button type="button" onClick={toggleMic} title={isListening ? ui.listening : ui.micStart} className="text-[#c2c6d6] hover:text-[#77d8ff]">{isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}</button>}
-        {speechSupported && <button type="button" onClick={() => messages.at(-1)?.role === 'assistant' && speak(speechText(messages.at(-1)!.content), langConfig.speech)} title={ui.speakReply} className="text-[#c2c6d6] hover:text-[#77d8ff]"><Volume2 className="h-5 w-5" /></button>}
-        <button type="button" onClick={stopSpeaking} title="Stop" className="text-red-300 hover:scale-110"><Square className="h-5 w-5" fill="currentColor" /></button>
-        <button type="button" onClick={() => setInput(messages.filter((message) => message.role === 'user').at(-1)?.content || '')} title="Edit Query" className="text-[#c2c6d6] hover:text-[#77d8ff]"><Edit3 className="h-5 w-5" /></button>
+      <div className="flex items-center justify-center gap-6 border-t border-paper-line px-4 py-2">
+        {speechSupported && <button type="button" onClick={toggleMic} title={isListening ? ui.listening : ui.micStart} className="text-body-faint hover:text-body">{isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}</button>}
+        {speechSupported && <button type="button" onClick={() => messages.at(-1)?.role === 'assistant' && speak(speechText(messages.at(-1)!.content), langConfig.speech)} title={ui.speakReply} className="text-body-faint hover:text-body"><Volume2 className="h-5 w-5" /></button>}
+        <button type="button" onClick={stopSpeaking} title="Stop" className="text-body-faint hover:text-body"><Square className="h-4 w-4" fill="currentColor" /></button>
+        <button type="button" onClick={() => setInput(messages.filter((message) => message.role === 'user').at(-1)?.content || '')} title="Edit Query" className="text-body-faint hover:text-body"><Edit3 className="h-5 w-5" /></button>
       </div>
 
-      <footer className="bg-[#101c2c] p-4">
+      <footer className="border-t border-paper-line p-4">
         <form onSubmit={handleSubmit} className="relative flex items-center">
-          <input value={input} onChange={(event) => setInput(event.target.value)} placeholder="Ask anything..." disabled={isLoading} className="w-full rounded-xl border border-white/10 bg-[#030f1e] px-4 py-3 pr-12 text-sm text-[#d7e3f9] outline-none placeholder:text-[#c2c6d6]/40 focus:border-[#adc6ff]" />
-          <button type="submit" disabled={isLoading || !input.trim()} className="absolute right-2 p-2 text-[#adc6ff] transition hover:scale-110 disabled:opacity-40" aria-label={ui.send}><Send className="h-5 w-5" /></button>
+          <input value={input} onChange={(event) => setInput(event.target.value)} placeholder={ui.placeholder} disabled={isLoading} className="w-full rounded-full border border-paper-line bg-paper px-4 py-3 pr-12 text-sm text-body outline-none placeholder:text-body-faint focus:border-body focus-visible:ring-0" />
+          <button type="submit" disabled={isLoading || !input.trim()} className="absolute right-1.5 rounded-full bg-body p-2 text-white transition-colors hover:bg-brand disabled:opacity-30" aria-label={ui.send}><Send className="h-4 w-4" /></button>
         </form>
-        <p className="mt-2 text-center text-[10px] text-[#c2c6d6]/60">{ui.poweredBy} · <Link to="/contact" className="text-[#adc6ff] hover:underline">{ui.contactLink}</Link></p>
+        <p className="mt-2 text-center text-[10px] text-body-faint">{ui.poweredBy} · <Link to="/contact" className="underline underline-offset-2 hover:text-body">{ui.contactLink}</Link></p>
       </footer>
     </div>
   );

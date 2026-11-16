@@ -14,10 +14,11 @@ const RATE_LIMIT_MAX = 30;
 // TODO: move to a shared store (e.g. Upstash Redis / Vercel KV) if abuse becomes a concern.
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
+// Only clear prompt-injection or harmful requests. Ordinary words like "bypass", "hack" or "kill"
+// appear in normal business questions ("growth hacking", "bypass our legacy system"), so they aren't blocked.
 const BLOCKED_PATTERNS = [
-  /\b(jailbreak|ignore previous|ignore all|dan mode|bypass|reveal prompt|system prompt|developer message|hidden instruction)\b/i,
-  /\b(hack|exploit|malware|ransomware)\b/i,
-  /\b(kill|murder|bomb)\b/i,
+  /\b(jailbreak|ignore (all |your )?previous instructions|dan mode|reveal (your )?(system )?prompt|developer message|hidden instruction)\b/i,
+  /\b(write|create|build) (me )?(malware|ransomware)\b/i,
 ];
 
 const ESCALATION_USER_PATTERNS = [
@@ -190,11 +191,6 @@ async function requestOpenRouter(
   return data.choices?.[0]?.message?.content?.trim() || null;
 }
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const geminiApiKey = process.env.GEMINI_API_KEY;
@@ -222,7 +218,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'Invalid message role' });
     }
     if (BLOCKED_PATTERNS.some((pattern) => pattern.test(message.content))) {
-      return res.status(400).json({
+      return res.status(200).json({
         reply:
           language === 'en'
             ? 'I cannot help with that request. I can answer questions about VislyBluq public services, pages, or how to reach the team.'
@@ -271,7 +267,7 @@ function getEscalationReply(language: LanguageCode): string {
     fr: "Je vais vous mettre en relation avec notre equipe. Remplissez le formulaire ci-dessous; reponse sous 24 h.",
     es: 'Le conectare con nuestro equipo. Complete el formulario; respondemos en 24 horas.',
     de: 'Ich verbinde Sie mit unserem Team. Bitte fuellen Sie das Formular aus; Antwort innerhalb von 24 Stunden.',
-    zh: 'æˆ‘ä¼šå¸®æ‚¨è”ç³»å›¢é˜Ÿã€‚è¯·å¡«å†™ä¸‹é¢çš„è¡¨å•ï¼Œæˆ‘ä»¬ä¼šåœ¨ 24 å°æ—¶å†…å›žå¤ã€‚',
+    zh: '我会帮您联系我们的团队。请填写下面的表单，我们会在 24 小时内回复。',
   };
   return replies[language] || replies.en;
 }
